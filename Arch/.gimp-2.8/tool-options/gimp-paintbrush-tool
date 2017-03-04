@@ -1,0 +1,8 @@
+# GIMP gimp-paintbrush-tool options
+
+(brush "Área de transferência")
+(dynamics "Dynamics Off")
+(gradient "Frente para fundo (RGB) ")
+(palette "Default")
+
+# end of gimp-paintbrush-tool options

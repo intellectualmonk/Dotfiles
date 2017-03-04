@@ -1,0 +1,62 @@
+[options]
+    resize_grip = false
+    scroll_on_output = false
+    scroll_on_keystroke = true
+    audible_bell = true
+    visible_bell = false
+    mouse_autohide = true
+    allow_bold = true
+    dynamic_title = true
+    urgent_on_bell = true
+    clickable_url = true
+    #font = Mensch 12px
+    font = Droid Sans Mono for Powerline Plus Nerd File Types Mono 8
+    scrollback_lines = 1000
+    search_wrap = true
+    #icon_name = terminal
+    geometry = 650x365
+
+    # "system", "on" or "off"
+    cursor_blink = on
+
+    # "block", "underline" or "ibeam"
+    cursor_shape = block
+    # $BROWSER is used by default
+    browser = firefox
+
+    # vte-256color has the correct terminfo, but some applications (vim, weechat)
+    # still need patches for mouse/title support
+    term = screen-256color
+
+   # Hide links that are no longer valid in url select overlay mode
+   filter_unmatched_urls = true
+
+[colors]
+background = #2b3e50
+foreground = #f8f8f2
+foreground_bold = #f8f8f2
+cursor = #e3bf21
+
+color0 = #4f4f4f
+color8 = #4f4f4f
+
+color1 = #ff6c60
+color9 = #fa6960
+
+color2 = #fbb036
+color10 = #fbb036
+
+color3 =  #ffffb6
+color11 = #feffb9
+
+color4 = #5796ed
+color12 = #6b9fed
+
+color5 = #ff73fd
+color13 = #fc6ffa
+
+color6 = #8ee478
+color14 = #8ee478
+
+color7 = #eeeeee
+color15 = #ffffff

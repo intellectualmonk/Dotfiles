@@ -1,0 +1,8 @@
+# GIMP gimp-pencil-tool options
+
+(brush "Área de transferência")
+(dynamics "Dynamics Off")
+(gradient "Frente e fundo (duas cores)")
+(palette "Default")
+
+# end of gimp-pencil-tool options

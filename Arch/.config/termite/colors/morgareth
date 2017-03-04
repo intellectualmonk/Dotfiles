@@ -1,0 +1,71 @@
+[options]
+    resize_grip = false
+    scroll_on_output = false
+    scroll_on_keystroke = true
+    audible_bell = true
+    visible_bell = false
+    mouse_autohide = true
+    allow_bold = true
+    dynamic_title = true
+    urgent_on_bell = true
+    clickable_url = true
+    font = FantasqueSansMono 8
+    scrollback_lines = 1000
+    search_wrap = true
+    #icon_name = terminal
+    geometry = 450x265
+
+    # "system", "on" or "off"
+    cursor_blink = on
+
+    # "block", "underline" or "ibeam"
+    cursor_shape = block
+    # $BROWSER is used by default
+    browser = firefox
+
+    # vte-256color has the correct terminfo, but some applications (vim, weechat)
+    # still need patches for mouse/title support
+    term = screen-256color
+
+   # Hide links that are no longer valid in url select overlay mode
+   filter_unmatched_urls = true
+
+
+[colors]
+# special
+foreground      = #d8d8d8
+foreground_bold = #d8d8d8
+cursor          =  #C12B4D
+background      = #101112
+
+# black
+color0  = #101112
+color8  = #586270
+
+# red
+color1  = #C12B4D
+color9  = #D04F6D
+
+# green
+color2  = #99ae63
+color10 = #282c33
+
+# yellow
+color3  = #d8c27a
+color11 = #383e47
+
+# blue
+color4  = #7495b6
+color12 = #798494
+
+# magenta
+color5  = #b59cd8
+color13 = #d8d8d8
+
+# cyan
+color6  = #8dc9c3
+color14 = #cc99b3
+
+# white
+color7  = #f4eed1
+color15 = #f4eed1
