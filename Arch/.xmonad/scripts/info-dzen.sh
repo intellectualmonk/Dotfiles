@@ -2,7 +2,7 @@
 
 FG='#404040'
 BG='#2B2C2B'
-fg_title='#169F85'
+fg_title='#15967D'
 
 font1="Inconsolata:size=10"
 font_title="Inconsolata:size=10"
@@ -48,7 +48,7 @@ Mail1="goo.gl/ffXGsx"
 
 
 (
- echo "   ^fg($fg_title)^fn($font_title)^p(-100)System^p()^fg()" # Fist line goes to title
+ echo "   ^fg(#FCFCFC)^fn($font_title)^p(+2)^fg($fg_title)^bg(#2B2C2B) System Information "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Host       ^fn($icons4)^fn($font1) $HOST  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) OS         ^fn($icons4)^fn($font1) $OS  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Kernel     ^fn($icons4)^fn($font1) $Kernel  "
@@ -56,8 +56,8 @@ Mail1="goo.gl/ffXGsx"
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Packages   ^fn($icons4)^fn($font1) $PACKAGES  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Update     ^fn($icons4)^fn($font1) $UPDATED  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Birth      ^fn($icons4)^fn($font1) $Birthd  "
- echo "   ^fg(#169F85)------------------------------------------------------------------"
- echo "   ^fg(#FCFCFC)^fn($font_title)^fg($fg_title)^bg(#2B2C2B) INFO "
+ echo "   ^fg(#15967D)------------------------------------------------------------------"
+ echo "   ^fg(#FCFCFC)^fn($font_title)^p(+82)^fg($fg_title)^bg(#2B2C2B) INFO "
  echo ""
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Wm 	       ^fn($icons4)^fn($font1) $De	"
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Theme      ^fn($icons4)^fn($font1) $GtkTheme  "
@@ -69,8 +69,8 @@ Mail1="goo.gl/ffXGsx"
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Gpu        ^fn($icons4)^fn($font1) $Gpu    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Resolution ^fn($icons4)^fn($font1) $Screen    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Monitor    ^fn($icons4)^fn($font1) $Monitor    "
- echo "   ^fg(#169F85)---------------------------------------------------------------------"
- echo "   ^fg(#FCFCFC)^fn($font_title)^fg($fg_title)^bg(#2B2C2B) HARDWARE "
+ echo "   ^fg(#15967D)---------------------------------------------------------------------"
+ echo "   ^fg(#FCFCFC)^fn($font_title)^p(+83)^fg($fg_title)^bg(#2B2C2B) HARDWARE "
  echo ""
  echo "   ^fg(#FCFCFC)^fn($font_title)^fg($fg_title)^bg(#2B2C2B) RAM "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Ram        ^fn($icons4)^fn($font1) $Ram_used / $Ram_total "
@@ -83,8 +83,8 @@ Mail1="goo.gl/ffXGsx"
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Cpu-temp   ^fn($icons4)^fn($font1) $Thermal3    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Hdd-temp   ^fn($icons4)^fn($font1) $Hdd    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Fan        ^fn($icons4)^fn($font1) $Fan    "
- echo "   ^fg(#169F85)---------------------------------------------------------------------"
- echo "   ^fg(#FCFCFC)^fn($font_title)^fg($fg_title)^bg(#2B2C2B) CONTACT ME "
+ echo "   ^fg(#15967D)---------------------------------------------------------------------"
+ echo "   ^fg(#FCFCFC)^fn($font_title)^p(+83)^fg($fg_title)^bg(#2B2C2B) CONTACT ME "
  echo "" 
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Author     ^fn($icons4)^fn($font1)  $HOST  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Github     ^fn($icons4)^fn($font1)  $Gitdir  "
@@ -92,12 +92,12 @@ Mail1="goo.gl/ffXGsx"
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Twitter    ^fn($icons4)^fn($font1)  $Twitter  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Facebook   ^fn($icons4)^fn($font1)  $Face  "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Email      ^fn($icons4)^fn($font1)  $Mail  "
- echo "   ^fg(#169F85)---------------------------------------------------------------------"
- echo "   ^fg(#FCFCFC)^fn($font_title)^fg($fg_title)^bg(#2B2C2B) POWER "
+ echo "   ^fg(#15967D)---------------------------------------------------------------------"
+ echo "   ^fg(#FCFCFC)^fn($font_title)^p(+83)^fg($fg_title)^bg(#2B2C2B) POWER "
  echo ""
  echo "   ^ca(1,systemctl poweroff)^fg(#FCFCFC)^fn($icons2)^fn($font1) Poweroff ^ca() " 
  echo "   ^ca(1,systemctl reboot)^fg(#FCFCFC)^fn($icons2)^fn($font1) Reboot ^ca() "   
  echo "   ^ca(1,systemctl suspend)^fg(#FCFCFC)^fn($icons2)^fn($font1) Suspend ^ca() "   
  echo ""
 
-) | dzen2 -p  -y 30 -w 300 -bg $BG -fg $FG -l 49 -sa l -ta c -e 'onstart=uncollapse;button1=exit;button3=exit' -fn $font1  
+) | dzen2 -p  -y 32 -w 300 -bg $BG -fg $FG -l 49 -sa l -ta c -e 'onstart=uncollapse;button1=exit;button3=exit' -fn $font1  

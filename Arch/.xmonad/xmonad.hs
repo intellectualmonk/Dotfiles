@@ -65,7 +65,7 @@ myLogHook h = do
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput		= hPutStrLn h
-  , ppCurrent 		= dzenColor "#169F85" "#2B2C2B" . pad . wrap  " "  " "
+  , ppCurrent 		= dzenColor "#15967D" "#2B2C2B" . pad . wrap  " "  " "
   , ppVisible		= dzenColor "#FFFBF8" "#2B2C2B" . pad . wrap  " "  " "
   , ppHidden		= dzenColor  "#FFFBF8" "#2B2C2B" . pad . wrap  " "  " "
   , ppHiddenNoWindows	= dzenColor "#FFFBF8" "#2B2C2B" . pad . wrap  " "  " "
@@ -73,12 +73,12 @@ tryPP h = def
   , ppSep			= " "
   , ppLayout		=  wrap lay_start lay_end .
           ( \x -> case x of
-        "Spacing 10 Grid"		-> "^ca(1,xdotool key super+space)^i("++laycon++"grid.xbm)^ca()" ++ "   " ++ "Grid"
-	"Spacing 10 Spiral"		-> "^ca(1,xdotool key super+space)^i("++laycon++"spiral.xbm)^ca()" ++ "   " ++ "Spiral"
-	"Spacing 10 Circle"		-> "^ca(1,xdotool key super+space)^i("++laycon++"circle.xbm)^ca()" ++ "   " ++ "Circle"
-	"Spacing 10 Tall"		-> "^ca(1,xdotool key super+space)^i("++laycon++"sptall.xbm)^ca()" ++ "   " ++ "Sptall"
-	"Mirror Spacing 10 Tall"	-> "^ca(1,xdotool key super+space)^i("++laycon++"mptall.xbm)^ca()" ++ "   " ++ "Mptall"
-        "Full"	                        -> "^ca(1,xdotool key super+space)^i("++laycon++"full.xbm)^ca()" ++ "   " ++ "Full"
+        "Spacing 10 Grid"		-> "^ca(1,xdotool key super+space)^i("++laycon++"grid.xbm)^ca()" ++ "   " ++ "GRID"
+	"Spacing 10 Spiral"		-> "^ca(1,xdotool key super+space)^i("++laycon++"spiral.xbm)^ca()" ++ "   " ++ "SPIRAL"
+	"Spacing 10 Circle"		-> "^ca(1,xdotool key super+space)^i("++laycon++"circle.xbm)^ca()" ++ "   " ++ "CIRCLE"
+	"Spacing 10 Tall"		-> "^ca(1,xdotool key super+space)^i("++laycon++"sptall.xbm)^ca()" ++ "   " ++ "SPTALL"
+	"Mirror Spacing 10 Tall"	-> "^ca(1,xdotool key super+space)^i("++laycon++"mptall.xbm)^ca()" ++ "   " ++ "MPTALL"
+        "Full"	                        -> "^ca(1,xdotool key super+space)^i("++laycon++"full.xbm)^ca()" ++ "   " ++ "FULL"
         )
         , ppOrder  = \(ws:l:t:_) -> [l,ws]
         }
@@ -90,7 +90,7 @@ myKeys = [
     ((mod4Mask, xK_a),
             spawn "firefox")
         , ((mod4Mask, xK_p),
-            spawn  "dmenu_run -i -x 415 -y 330 -w 450 -h 20 -l 4 -fn 'xft:edges:pixelsize=9:antialias=True:hinting=True' -nb '#111111' -nf '#FFFBF8' -sb '#169F85' -sf '#111111'")
+            spawn  "dmenu_run -i -x 415 -y 330 -w 450 -h 20 -l 4 -fn 'xft:edges:pixelsize=9:antialias=True:hinting=True' -nb '#111111' -nf '#FFFBF8' -sb '#15967D' -sf '#111111'")
         , ((0, xK_Print),
             spawn "maim ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'")
         , ((mod4Mask, xK_Print),
@@ -101,8 +101,8 @@ myKeys = [
             spawn "telegram")
         , ((0, xK_Insert),
             pasteSelection)
-        , ((mod4Mask, xK_n),
-            spawn "nitrogen")
+      --  , ((mod4Mask, xK_n),
+      --      spawn "nitrogen")
         , ((0, xK_F4), spawn
            "xkill")
         , ((mod4Mask, xK_f),
@@ -146,9 +146,9 @@ myApps = composeAll
 -- main code --
 ---------------------------------------------------------------------------
 main = do 
-bar1 <- spawnPipe "echo '^fg(#169F85)^p(;+16)^r(1366x7)' | dzen2 -p -e 'button3=' -fn 'Droid Sans Fallback-8:bold' -ta c -fg '#efefef' -bg '#2d2d2d' -h 30 -w 1366"
-bar2 <- spawnPipe "sleep 0.1;dzen2 -p -ta l -e 'button3=' -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC'  -bg '#2B2C2B' -h 22 -y 4 -w 400"
-bar3 <- spawnPipe "sleep 0.1;conky -c ~/.xmonad/scripts/conky_dzen2  | dzen2 -p -ta r -e 'button3='  -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#2B2C2B' -x 400 -h 22 -y 4 -w 1050"
+bar1 <- spawnPipe "echo '^fg(#15967D)^p(;+18)^r(1366x7)' | dzen2 -p -e 'button3=' -fn 'Droid Sans Fallback-8' -ta c -fg '#EFEFEF' -bg '#2B2C2B' -h 32  -w 1366"
+bar2 <- spawnPipe "sleep 0.1;dzen2 -p -ta l -e 'button3=' -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC'  -bg '#2B2C2B' -h 22 -y 5 -w 400"
+bar3 <- spawnPipe "sleep 0.1;conky -c ~/.xmonad/scripts/conky_dzen2  | dzen2 -p -ta r -e 'button3='  -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#2B2C2B' -x 400 -h 22 -y 5 -w 1050" 
 xmonad $ def
         { manageHook = myApps <+>  manageDocks <+> manageHook def
     , layoutHook = myLayout 
@@ -159,11 +159,11 @@ xmonad $ def
     , workspaces = myWorkspaces
     , modMask = mod4Mask
     , startupHook = setWMName "Xmonad"
-    , logHook = myLogHook bar2 
+    , logHook = myLogHook bar2
         } `additionalKeys` myKeys  
      where
 
 laycon   = "/home/morgareth/.xmonad/.icons/"
 laycon1 = " ^i(/home/morgareth/.xmonad/.icons/)"
-lay_start ="^bg(" ++  "#169F85" ++ ")" ++  "   " ++ laycon1
-lay_end = "^ca()^bg(" ++ "#2B2C2B" ++ ")^fg(" ++ "#169F85" ++ ")^i(/home/morgareth/.xmonad/.icons/mr1.xbm)^fg()"
+lay_start ="^bg(" ++  "#15967D" ++ ")" ++  "   " ++ laycon1
+lay_end = "^ca()^bg(" ++ "#2B2C2B" ++ ")^fg(" ++ "#15967D" ++ ")^i(/home/morgareth/.xmonad/.icons/mr1.xbm)^fg()"
