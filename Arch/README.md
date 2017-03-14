@@ -1,2 +1,2 @@
-## Athanasi Dotfiles
+## Morgareth  Dotfiles
 
