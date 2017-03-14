@@ -1,7 +1,0 @@
-# GIMP gimp-smudge-tool options
-
-(brush "Área de transferência")
-(dynamics "Dynamics Off")
-(palette "Default")
-
-# end of gimp-smudge-tool options

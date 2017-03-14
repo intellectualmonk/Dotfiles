@@ -1,7 +1,0 @@
-# GIMP gimp-dodge-burn-tool options
-
-(brush "Área de transferência")
-(dynamics "Dynamics Off")
-(palette "Default")
-
-# end of gimp-dodge-burn-tool options

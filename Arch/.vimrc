@@ -41,20 +41,6 @@ autocmd Filetype python set omnifunc=pythoncomplete#Complete "Autocomplete for p
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-" Indentation according to PEP8
-
-au BufRead,BufNewFile *.py,*.pyw set expandtab
-au BufRead,BufNewFile *.py,*.pyw set textwidth=139
-au BufRead,BufNewFile *.py,*.pyw set tabstop=4
-au BufRead,BufNewFile *.py,*.pyw set softtabstop=4
-au BufRead,BufNewFile *.py,*.pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set autoindent
-au         BufNewFile *.py,*.pyw set fileformat=unix
-
-" Syntax highlighting for markdown
-
-
-
 "Visual and generall settings 
 set shell=/bin/zsh "Sets the shell
 set nocompatible "Use the vim settings, not vi
@@ -97,6 +83,13 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set guiheadroom=0
+
+set tabstop=8                   "A tab is 8 spaces
+set expandtab                   "Always uses spaces instead of tabs
+set softtabstop=4               "Insert 4 spaces when tab is pressed
+set shiftwidth=4                "An indent is 4 spaces
+map <f3> :w\|!python %
+
 
 " Better copy & paste
 set pastetoggle=<F2>
@@ -221,7 +214,7 @@ execute pathogen#infect()
               map <leader>e :NERDTreeFind<CR>
               nmap <leader>nt :NERDTreeFind<CR>
 
-
+              
               let NERDTreeShowBookmarks=1
               let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$','^\.svn$', '\.bzr$']
               let NERDTreeChDirMode=0

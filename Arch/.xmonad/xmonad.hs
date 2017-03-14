@@ -92,17 +92,17 @@ myKeys = [
         , ((mod4Mask, xK_p),
             spawn  "dmenu_run -i -x 415 -y 330 -w 450 -h 20 -l 4 -fn 'xft:edges:pixelsize=9:antialias=True:hinting=True' -nb '#111111' -nf '#FFFBF8' -sb '#15967D' -sf '#111111'")
         , ((0, xK_Print),
-            spawn "maim ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'")
+            spawn "maim -m 10 ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'")
         , ((mod4Mask, xK_Print),
-            spawn "maim -s --showcursor -b 3 ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'")
+            spawn "maim -s -m 10 -b 3  --noopengl  ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'")
         , ((mod4Mask, xK_t),
             spawn "Thunar")
         , ((mod4Mask, xK_m),
             spawn "telegram")
         , ((0, xK_Insert),
             pasteSelection)
-      --  , ((mod4Mask, xK_n),
-      --      spawn "nitrogen")
+        , ((mod4Mask, xK_n),
+           spawn "feh -x -g 400x400 -B black -N Wallpapers/")
         , ((0, xK_F4), spawn
            "xkill")
         , ((mod4Mask, xK_f),
@@ -155,7 +155,7 @@ xmonad $ def
     , borderWidth = 1
     , normalBorderColor = "#FFFBF8"
     , focusedBorderColor = "#404040"
-    , terminal = "urxvt"
+    , terminal = "urxvtc"
     , workspaces = myWorkspaces
     , modMask = mod4Mask
     , startupHook = setWMName "Xmonad"
