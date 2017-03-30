@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="ThreeDimensional" mtime="1489759996" type="bool" value="true"/>
+	<entry name="IconSize" mtime="1489759992" type="int" value="29"/>
+	<entry name="Plugins" mtime="1489760149" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>Trash</stringvalue>
+		</li>
+	</entry>
+	<entry name="Position" mtime="1489760031" type="string">
+		<stringvalue>Bottom</stringvalue>
+	</entry>
+	<entry name="SortList" mtime="1489760149" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>/usr/share/applications/firefox.desktop</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>TrashCan</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>/home/morgareth/.local/share/applications/telegramdesktop.desktop</stringvalue>
+		</li>
+		<li type="string">
+			<stringvalue>Baixar novos widgets do Plasma3878</stringvalue>
+		</li>
+	</entry>
+	<entry name="Launchers" mtime="1489760111" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>file:///usr/share/applications/firefox.desktop</stringvalue>
+		</li>
+	</entry>
+	<entry name="WindowManager" mtime="1489759946" type="bool" value="true"/>
+</gconf>

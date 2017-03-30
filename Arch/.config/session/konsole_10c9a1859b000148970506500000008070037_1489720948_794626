@@ -1,0 +1,31 @@
+[1]
+Active=1
+Sessions=1,2
+
+[Number]
+NumberOfSessions=2
+NumberOfWindows=1
+
+[Session1]
+Encoding=UTF-8
+LocalTab=%d : %n
+Profile[$e]=$HOME/.local/share/konsole/Profile 2.profile
+RemoteTab=(%u) %H
+SessionGuid={b0f9ac94-e9d3-44c9-b312-410a7c5f2da6}
+WorkingDir[$e]=$HOME
+
+[Session2]
+Encoding=UTF-8
+LocalTab=%d : %n
+Profile[$e]=$HOME/.local/share/konsole/Profile 2.profile
+RemoteTab=(%u) %H
+SessionGuid={cc065fdd-aaed-42c4-b545-a0e153af3364}
+WorkingDir[$e]=$HOME/Downloads
+
+[WindowProperties1]
+ClassName=Konsole::MainWindow
+Height 768=719
+MenuBar=Disabled
+ObjectName=MainWindow#1
+State=AAAA/wAAAAD9AAAAAAAABVYAAALPAAAABAAAAAQAAAAIAAAACPwAAAAA
+Width 1366=1366

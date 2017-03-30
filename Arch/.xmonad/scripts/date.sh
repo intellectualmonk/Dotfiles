@@ -1,8 +1,8 @@
 #!/bin/bash
 
-TODAY=$(expr `date +'%d'` + 0)
-MONTH=`date +'%m'`
-YEAR=`date +'%Y'`
+TODAY="$(($(date +'%d') + 0))"
+#MONTH="$(date +'%m')"
+#YEAR="$(date +'%Y')"
 
 (
 echo " ^fg(#FCFCFC)^fn(FontAwesome:size=12)^fg(#dcdcdc)^fn(Inconsolata:pixelsize=12:antialias=True:hinting=True) Calendar"; echo

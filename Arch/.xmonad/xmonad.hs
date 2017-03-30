@@ -121,7 +121,6 @@ myKeys = [
 ---------------------------------------------------------------------------
 -- layout tiling --
 ---------------------------------------------------------------------------
-
 myLayout = avoidStruts $ smartBorders (  sGrid ||| sSpiral ||| sCircle ||| sTall ||| Mirror sTall ||| Full )
     where
     sTall = spacing 10 $ Tall 1 (1/2) (1/2)
@@ -147,11 +146,11 @@ myApps = composeAll
 ---------------------------------------------------------------------------
 main = do 
 bar1 <- spawnPipe "echo '^fg(#15967D)^p(;+18)^r(1366x7)' | dzen2 -p -e 'button3=' -fn 'Droid Sans Fallback-8' -ta c -fg '#EFEFEF' -bg '#2B2C2B' -h 32  -w 1366"
-bar2 <- spawnPipe "sleep 0.1;dzen2 -p -ta l -e 'button3=' -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC'  -bg '#2B2C2B' -h 22 -y 5 -w 400"
-bar3 <- spawnPipe "sleep 0.1;conky -c ~/.xmonad/scripts/conky_dzen2  | dzen2 -p -ta r -e 'button3='  -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#2B2C2B' -x 400 -h 22 -y 5 -w 1050" 
+bar2 <- spawnPipe "sleep 0.1;dzen2 -p -ta l -e 'button3=' -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC'  -bg '#2B2C2B' -h 22 -y 5 -w 365"
+bar3 <- spawnPipe "sleep 0.1;conky -c ~/.xmonad/scripts/conky_dzen2  | dzen2 -p -ta r -e 'button3='  -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#2B2C2B' -x 365 -h 22 -y 5 -w 1050" 
 xmonad $ def
         { manageHook = myApps <+>  manageDocks <+> manageHook def
-    , layoutHook = myLayout 
+    , layoutHook = myLayout   
     , borderWidth = 1
     , normalBorderColor = "#FFFBF8"
     , focusedBorderColor = "#404040"

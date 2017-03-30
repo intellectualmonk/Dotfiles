@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="show_bookmarks" mtime="1484580037" type="bool" value="true"/>
+	<entry name="show_toolbar" mtime="1483651496" type="bool" value="true"/>
+	<entry name="last_folder" mtime="1484580196" type="string">
+		<stringvalue>file://home/morgareth/Downloads</stringvalue>
+	</entry>
+</gconf>

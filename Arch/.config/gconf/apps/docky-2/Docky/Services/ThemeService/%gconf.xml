@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="Theme" mtime="1489760031" type="string">
+		<stringvalue>Glass</stringvalue>
+	</entry>
+</gconf>

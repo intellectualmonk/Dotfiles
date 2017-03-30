@@ -1,7 +1,7 @@
-#/bin/bash
+#!/bin/bash
 
 count=$(checkupdates  | awk 'END {print NR}')
-line_count=$(expr $count + 1)
+line_count=$(( count + 1))
 
 ( 
  echo " ^fg(#FCFCFC)^fn(FontAwesome:size=11)^fg(#dcdcdc)^fn(xft:Inconsolata:pixelsize=10:antialias=True:hinting=True) Updates"; echo

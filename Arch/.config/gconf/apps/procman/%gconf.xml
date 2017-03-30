@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="current_tab" mtime="1489149539" type="int" value="0"/>
+	<entry name="height" mtime="1489149539" type="int" value="677"/>
+	<entry name="width" mtime="1489149539" type="int" value="898"/>
+	<entry name="show_all_fs" mtime="1489149518" type="bool" value="false"/>
+	<entry name="disks_interval" mtime="1489149503" type="int" value="1000"/>
+	<entry name="network_in_bits" mtime="1489149500" type="bool" value="true"/>
+	<entry name="graph_update_interval" mtime="1489149500" type="int" value="250"/>
+	<entry name="smooth_refresh" mtime="1489149495" type="bool" value="true"/>
+	<entry name="show_tree" mtime="1489149473" type="bool" value="true"/>
+	<entry name="view_as" mtime="1489149482" type="int" value="0"/>
+</gconf>

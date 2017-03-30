@@ -1,0 +1,88 @@
+<!DOCTYPE Menu PUBLIC '-//freedesktop//DTD Menu 1.0//EN' 'http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd'>
+<Menu>
+ <Menu>
+  <Name>Internet</Name>
+  <Layout>
+   <Merge type="menus"/>
+   <Menuname>Terminal</Menuname>
+   <Merge type="files"/>
+   <Filename>firefox.desktop</Filename>
+   <Filename>kde4-knetattach.desktop</Filename>
+   <Filename>org.kde.ktorrent.desktop</Filename>
+   <Filename>telegramdesktop.desktop</Filename>
+   <Separator/>
+   <Menuname>More</Menuname>
+  </Layout>
+  <Exclude>
+   <Filename>bssh.desktop</Filename>
+   <Filename>bvnc.desktop</Filename>
+  </Exclude>
+ </Menu>
+ <Menu>
+  <Name>.hidden</Name>
+  <Include>
+   <Filename>bssh.desktop</Filename>
+   <Filename>bvnc.desktop</Filename>
+   <Filename>qv4l2.desktop</Filename>
+   <Filename>hdspconf.desktop</Filename>
+   <Filename>hdspmixer.desktop</Filename>
+   <Filename>avahi-discover.desktop</Filename>
+  </Include>
+ </Menu>
+ <Menu>
+  <Name>Multimedia</Name>
+  <Exclude>
+   <Filename>qv4l2.desktop</Filename>
+   <Filename>hdspconf.desktop</Filename>
+   <Filename>hdspmixer.desktop</Filename>
+  </Exclude>
+  <Layout>
+   <Merge type="files"/>
+   <Filename>org.kde.dragonplayer.desktop</Filename>
+   <Filename>kde4-org.kde.juk.desktop</Filename>
+   <Separator/>
+   <Merge type="menus"/>
+   <Menuname>More</Menuname>
+  </Layout>
+ </Menu>
+ <Layout>
+  <Merge type="menus"/>
+  <Menuname>Science</Menuname>
+  <Menuname>Settingsmenu</Menuname>
+  <Menuname>Development</Menuname>
+  <Menuname>Office</Menuname>
+  <Menuname>Graphics</Menuname>
+  <Menuname>Internet</Menuname>
+  <Menuname>Games</Menuname>
+  <Menuname>Multimedia</Menuname>
+  <Menuname>System</Menuname>
+  <Menuname>Utilities</Menuname>
+  <Menuname>Applications</Menuname>
+  <Merge type="files"/>
+  <Filename>org.kde.kfind.desktop</Filename>
+ </Layout>
+ <Menu>
+  <Name>System</Name>
+  <Layout>
+   <Merge type="menus"/>
+   <Menuname>Terminal</Menuname>
+   <Menuname>ScreenSavers</Menuname>
+   <Merge type="files"/>
+   <Filename>org.kde.kinfocenter.desktop</Filename>
+   <Filename>org.kde.dolphin.desktop</Filename>
+   <Filename>org.kde.PartitionManager.desktop</Filename>
+   <Filename>org.kde.konsole.desktop</Filename>
+   <Filename>org.kde.ksysguard.desktop</Filename>
+   <Filename>org.kde.ksystemlog.desktop</Filename>
+   <Separator/>
+   <Menuname>More</Menuname>
+  </Layout>
+  <Exclude>
+   <Filename>avahi-discover.desktop</Filename>
+  </Exclude>
+ </Menu>
+ <Menu>
+  <Name>Education</Name>
+  <Deleted/>
+ </Menu>
+</Menu>
