@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<gconf>
-	<entry name="enabled" mtime="1490391156" type="bool" value="true"/>
-	<entry name="needs_terminal" mtime="1490391156" type="bool" value="false"/>
-	<entry name="command" mtime="1490391155" type="string">
-		<stringvalue> -- %s</stringvalue>
-	</entry>
-</gconf>

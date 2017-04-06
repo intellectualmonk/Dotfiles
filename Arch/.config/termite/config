@@ -9,8 +9,7 @@
     dynamic_title = true
     urgent_on_bell = true
     clickable_url = true
-    #font = Mensch 12px
-    font = Droid Sans Mono for Powerline Plus Nerd File Types Mono 8
+    font = Iosevka 8
     scrollback_lines = 1000
     search_wrap = true
     #icon_name = terminal
@@ -32,42 +31,50 @@
    filter_unmatched_urls = true
 
 [colors]
+# hard contrast: background = #1d2021
+# normal background = #282828
+# soft contrast: background = #32302f
+background = #282828
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
 
-# special
-foreground      = #f3e7c6
-foreground_bold = #f3e7c6
-cursor          = #f3e7c6
-background      = #0d0b0d
+# dark0 + gray
+color0 = #282828
+color8 = #928374
 
-# black
-color0  = #1e2f41
-color8  = #906b61
+# neurtral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
 
-# red
-color1  = #84252c
-color9  = #c94428
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
 
-# green
-color2  = #8b9c4d
-color10 = #c0bd86
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
 
-# yellow
-color3  = #d6c08f
-color11 = #ad683b
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
 
-# blue
-color4  = #236599
-color12 = #e09657
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
 
-# magenta
-color5  = #751a37
-color13 = #c22c5b
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
 
-# cyan
-color6  = #ae7d6e
-color14 = #d9945f
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
 
-# white
-color7  = #b99f8d
-color15 = #f3e7c6
 
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
