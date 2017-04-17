@@ -18,6 +18,7 @@ foreground-alt = #555
 primary = #15967D
 secondary = #15967D
 alert = #bd2c40
+menu = #ffffff
 
 [bar/morgareth]
 monitor = ${env:MONITOR:VGA1}
@@ -32,7 +33,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 2
 line-color = #f00
 
 border-size = 
@@ -50,17 +51,18 @@ font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:size=7;0
 font-4 = Termsynu:size=10;0
 font-5 = MaterialIcons:size=10;-1
+font-6 = NotoSans-Regular:size=8;0
 
-modules-left = mpd
+modules-left = powermenu mpd
 modules-center = bspwm
-modules-right =  updates weather mail memory cpu date volume powermenu
+modules-right =  updates weather mail memory cpu date volume 
 
 ;tray-position = right
 ;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
 
-;wm-restack = bspwm
+wm-restack = bspwm
 
 ;override-redirect = true
 
@@ -101,33 +103,57 @@ label-unmounted-foreground = ${colors.foreground-alt}
 type = internal/bspwm
 format = <label-state> <label-mode>
 
-label-focused = 
-label-focused-underline =  ${colors.secondary}
+ws-icon-0 = term;
+ws-icon-1 = office;
+ws-icon-2 = code;
+ws-icon-3 = media;
+ws-icon-4 = chat;
+ws-icon-default = 
+
+label-focused = %icon%
+label-focused-background = #ee050505
+label-focused-foreground = #15967D
 label-focused-padding = 2
 
-label-occupied =  
+label-occupied = %icon%
 label-occupied-padding = 2
 
-label-empty =  
+label-urgent = %icon%
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = #444
 label-empty-padding = 2
 
+label-monocle = 
 label-monocle-padding = 2
+label-monocle-background = #171717
+label-monocle-foreground = #15967D
 
-label-monocle =  
-label-tiled = 
-label-fullscreen = 
-label-floating = 
-label-pseudotiled = P
-label-locked = 
-label-locked-foreground = #bd2c40
-label-sticky = 
-label-sticky-foreground = #fba922
-label-private = 
-label-private-foreground = #bd2c40
+label-floating = 
+label-floating-padding = 2
+label-floating-background = #171717
+label-floating-foreground = #15967D
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next> <bar-progress>
+
+format-online = <label-time>  <bar-progress>  <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>
+format-online-spacing = 0
+;format-online-background = #ee333333
+;format-online-underline = #cc333333
+format-online-padding = 3
+
+format-offline = <label-offline>
+format-offline-foreground = #777
+
+label-offline = mpd is off
+
+label-song-maxlen = 45
+label-song-ellipsis = true
+
+label-time-foreground = #777
 
 icon-prev = 
 icon-stop = 
@@ -135,22 +161,27 @@ icon-play = 
 icon-pause = 
 icon-next = 
 
-label-song-maxlen = 25
-label-song-ellipsis = true
+icon-random = 
+icon-repeat = 
 
-bar-progress-width = 20
-bar-progress-indicator = 
-bar-progress-fill = 
-bar-progress-empty = 
+toggle-on-foreground = ${colors.foreground-alt}
+toggle-off-foreground = #777
 
-bar-progress-foreground-0 = ${colors.secondary}
-bar-progress-background-0 = #00f
+bar-progress-width = 10
+bar-progress-indicator = 
+bar-progress-indicator-foreground = #bb
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-foreground = #44
+bar-progress-empty-font = 3
 
 [module/mail]
 type = custom/script
 interval = 10
 format = <label>
-format-prefix = "  "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/mail.py
 
@@ -158,13 +189,13 @@ exec = ~/.config/polybar/mail.py
 type = custom/script
 interval = 10
 format = <label>
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/weather.py
 
 [module/updates]
 type = custom/script
-interval = 1200
+interval = 120
 format = <label>
 label = "%output:0:30%"
 exec = .config/polybar/display_updates.sh
@@ -173,7 +204,7 @@ exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #f90000
 label = %percentage%%
@@ -181,7 +212,7 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "  "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
 label = %percentage_used%%
@@ -207,7 +238,7 @@ type = internal/date
 interval = 1.0
 date = %d-%m-%Y
 time = %H:%M:%S
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
 label =  %time% 
@@ -219,16 +250,16 @@ format-volume = <ramp-volume> <bar-volume>
 label-volume = %percentage%
 label-volume-foreground = ${root.foreground}
 
-ramp-volume-0 =  
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
 ramp-volume-foreground = #666
 
-label-muted = %{F#666}%{F#ccfafafa} sound muted
+label-muted = %{F#666}%{F#ccfafafa} sound muted
 label-muted-foreground = #99
 
-bar-volume-width = 10
+bar-volume-width = 8
 bar-volume-foreground-0 = #FF5555
 bar-volume-foreground-1 = #FF5555
 bar-volume-foreground-2 = #FF5555
@@ -237,11 +268,11 @@ bar-volume-foreground-4 = #FF5555
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #15967D
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator = 
 bar-volume-indicator-font = 1
-bar-volume-fill = 
+bar-volume-fill = ─
 bar-volume-fill-font = 1
-bar-volume-empty = 
+bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -269,10 +300,14 @@ type = custom/menu
 
 format-spacing = 1
 
-label-open =   
-label-open-foreground = ${colors.secondary}
+label-open = 
+label-open-foreground = ${colors.menu}
+label-open-background =  ${colors.secondary}
+
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
+;format-underline = ${colors.secondary}
+
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -284,10 +319,10 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = systemctl reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = systemctl poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 

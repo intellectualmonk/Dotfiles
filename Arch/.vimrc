@@ -49,7 +49,7 @@ filetype plugin on "Enables the recognition files
 filetype indent on
 set magic "Enable regular expressions
 set background=dark     " we're using a dark bg
-colorscheme  gruvbox     " colorscheme from plugin 
+colorscheme  bubblegum-256-dark     " colorscheme from plugin 
 set laststatus=2        " always show statusline
 set ruler   "Ruler breaks
 set wrap    "It allows navigation within a long line with j and k
@@ -137,12 +137,12 @@ let mapleader = ","
 let g:mapleader = "," 
 
 "Shortcuts
-nmap <C-t> :tabnew<CR> 
-nmap <C-PageUp> :tabnext<CR>   
-nmap <C-PageDown> :tabprevious<CR> 
-nmap <C-x> :tabclose<CR> 
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>  
-nmap <silent> <C-C> :silent noh<CR> 
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 
 "Save,exit and quit
 inoremap <C-s> <esc>:w<cr>                 " save files
@@ -397,3 +397,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+
+" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
+" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
