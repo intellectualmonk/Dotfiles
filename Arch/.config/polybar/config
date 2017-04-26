@@ -162,8 +162,7 @@ format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = "%output:0:30%"
-exec = checkupdates | wc -l 
-;exec-if = "ping -q -w 2 -c 1 8.8.8.8 > /dev/null"
+exec = checkupdates| sed -n '$=' 
 
 [module/cpu]
 type = internal/cpu
