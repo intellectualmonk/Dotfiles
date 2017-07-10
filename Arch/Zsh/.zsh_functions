@@ -1,0 +1,201 @@
+#View the last accessed directories.The command is "dirs -v"
+
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+fi
+chpwd() {
+  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+function zle-line-init () {
+    echoti smkx
+}
+function zle-line-finish () {
+    echoti rmkx
+}
+
+if [ -n "${DISPLAY:-}" ]; then
+   zle -N zle-line-init
+   zle -N zle-line-finish
+fi
+
+# Color man pages using less as pager 
+ 
+man() {
+    env \
+	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+	LESS_TERMCAP_md=$(printf "\e[1;31m") \
+	LESS_TERMCAP_me=$(printf "\e[0m") \
+	LESS_TERMCAP_se=$(printf "\e[0m") \
+	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+	LESS_TERMCAP_ue=$(printf "\e[0m") \
+	LESS_TERMCAP_us=$(printf "\e[1;32m") \
+	man "$@"
+}
+
+# Clone a git repository, cd into that repository.
+# Execute cloc to get some statistics.
+
+function clone()
+{
+    git clone "${1:?"usage: clone <GIT_CLONE_URL>"}"
+    cd ${${1%%.git}##*/}
+    cloc ./
+}
+
+
+# Interactive pgrep / pkill 
+
+function ppgrep() {
+    if [[ $1 == "" ]]; then
+        PERCOL=percol
+    else
+        PERCOL="percol --query $1"
+    fi
+    ps aux | eval $PERCOL | awk '{ print $2 }'
+}
+
+function ppkill() {
+    if [[ $1 =~ "^-" ]]; then
+        QUERY=""            # options only
+    else
+        QUERY=$1            # with a query
+        [[ $# > 0 ]] && shift
+    fi
+    ppgrep $QUERY | xargs kill $*
+}
+
+# Zsh history search with percol 
+
+function exists { which $1 &> /dev/null }
+
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi
+
+# Upload a config to ptpb and give me a link
+
+function pbx () {
+  curl -sF "c=@${1:--}" -w "%{redirect_url}" 'https://ptpb.pw/?r=1' -o /dev/stderr | xsel -l /dev/null -b
+}
+
+function pbs () {
+  gm import -window ${1:-root} /tmp/$$.png
+  pbx /tmp/$$.png
+}
+
+
+get_mac() {# Sintaxe: get_mac <interface>
+
+    ifconfig ${1:?$FUNCNAME: requer nome da interface.} | \
+     grep -Ewo --color=never '([0-9a-fA-F]{,2}:){5}[0-9a-fA-F]{,2}' # -> xx:xx:xx:xx:xx:xx
+
+    # status
+    return 0
+}
+
+#Screencast
+function screencast (){
+ffmpeg -f x11grab -video_size 1366x768 -i $DISPLAY -f alsa -i default -c:v ffvhuff -c:a flac Arch.mkv
+}
+
+get_mac() {# Sintaxe: get_mac <interface>
+
+    ifconfig ${1:?$FUNCNAME: requer nome da interface.} | \
+     grep -Ewo --color=never '([0-9a-fA-F]{,2}:){5}[0-9a-fA-F]{,2}' # -> xx:xx:xx:xx:xx:xx
+
+    # status
+    return 0
+}
+
+# myip - Find the external IP when connected to internet
+function meuip (){
+ lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | awk '{
+print $4}' | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g'
+}
+
+# Sensor
+function temp() {
+ sensors|awk '/Core/{print substr($3, 2, length($3)-5)}'|awk '{if (match($0,/[0-9]+/,m)) print m[0]"°C"}'|tr '\n' ' '
+}
+
+#Screencast
+function screencast (){
+ffmpeg -f x11grab -video_size 1366x768 -i $DISPLAY -f alsa -i default -c:v ffvhuff -c:a flac Arch.mkv
+}
+
+# Calculate real memory used (desconsider the cache)
+function  mem(){
+ echo "`free|grep Mem|awk '{printf(\"%.0f\",($3-($6+$7))/1000)}'` MiB";
+}
+
+#Check Top 20 Processes 
+function cpu(){
+ ps -A --sort -rsz -o pid,comm,pmem,pcpu|awk 'NR<=20'
+}
+
+# List erros in logs from the last system boot
+function logerr(){ journalctl -p 3 -xb}
+
+function zumbis() {
+  ps f -eo state,pid,ppid,comm | awk '
+    { cmds[$2] = $NF }
+    /^Z/ { print $(NF-1) "/" $2 " zombie child of " cmds[$3] "/" $3 }'
+}
+
+function bitrate () {
+    echo `basename "$1"`: `file "$1" | sed 's/.*, \(.*\)kbps.*/\1/' | tr -d " " ` kbps
+}
+
+# Decompress archive (to directory $2 if wished for and possible)
+
+function extract () {
+local old_dirs current_dirs lower
+lower=${(L)1}
+old_dirs=( *(N/) )
+if [[ $lower == *.tar.gz || $lower == *.tgz ]]; then
+tar zxfv $1
+elif [[ $lower == *.gz ]]; then
+gunzip $1
+elif [[ $lower == *.tar.bz2 || $lower == *.tbz ]]; then
+bunzip2 -c $1 | tar xfv -
+elif [[ $lower == *.bz2 ]]; then
+bunzip2 $1
+elif [[ $lower == *.zip ]]; then
+unzip $1
+elif [[ $lower == *.rar ]]; then
+unrar e $1
+elif [[ $lower == *.tar ]]; then
+tar xfv $1
+elif [[ $lower == *.lha ]]; then
+lha e $1
+else
+print "Unknown archive type: $1"
+return 1
+fi
+# Change in to the newly created directory, and
+# list the directory contents, if there is one.
+current_dirs=( *(N/) )
+for i in {1..${#current_dirs}}; do
+if [[ $current_dirs[$i] != $old_dirs[$i] ]]; then
+cd $current_dirs[$i]
+ls
+break
+fi
+done
+}
+
+
+

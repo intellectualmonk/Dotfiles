@@ -1,18 +1,13 @@
-####----------------------------------------------------------------------------##
-## Locales
-##----------------------------------------------------------------------------##
-
-export LANG="pt_BR.UTF-8"
-
 ##----------------------------------------------------------------------------##
 ## Set some defaults
 ##----------------------------------------------------------------------------##
 
 export EDITOR=vim
 export BROWSER=firefox
-export PAGER=less  
-#export MANPAGER=vimpager
-export TERM=xterm-256color
+export MANPAGER=less
+export TERM=rxvt-256color
+export GIT_EDITOR='/usr/bin/vim'
+export FILEBROWSER=dolphin
 
 ##----------------------------------------------------------------------------##
 ## Set PATH so it includes user's private bin if it exists
@@ -22,46 +17,41 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-PATH=$PATH:~/.cabal/bin
-
 ##----------------------------------------------------------------------------##
 ## For uniform qt theme and icons
 ##----------------------------------------------------------------------------##
 
-export QT_QPA_PLATFORMTHEME="qt5ct"
+#export QT_QPA_PLATFORMTHEME=gtk2
 
 ##----------------------------------------------------------------------------##
 ## Locales
 ##----------------------------------------------------------------------------##
 
+export LANG="pt_BR.UTF-8"
 export LC_MESSAGES="pt_BR.UTF-8"
 export MM_CHARSET"=UTF-8"
 export LC_ALL="pt_BR.UTF-8"
 export LANGUAGE="pt_BR.UTF-8"
 export LC_CTYPE="pt_BR.UTF-8"
+export LC_NUMERIC="pt_BR.UTF-8"
+export LC_TIME="pt_BR.UTF-8"
+export LC_COLLATE="pt_BR.UTF-8"
+export LC_MONETARY="pt_BR.UTF-8"
+export LC_PAPER="pt_BR.UTF-8"
+export LC_NAME="pt_BR.UTF-8"
+export LC_ADDRESS="pt_BR.UTF-8"
+export LC_TELEPHONE="pt_BR.UTF-8"
+export LC_MEASUREMENT="pt_BR.UTF-8"
+export LC_IDENTIFICATION="pt_BR.UTF-8"
 
 ##----------------------------------------------------------------------------##
-## Makes fonts darker and thicker
+## Using a GTK+ icon theme in Qt apps
 ##----------------------------------------------------------------------------##
 
-export INFINALITY_FT_BRIGHTNESS="-10"
+#export DESKTOP_SESSION=gnome
 
 ##----------------------------------------------------------------------------##
-## Not too sharp, not too smooth
+## Auto start X
 ##----------------------------------------------------------------------------##
 
-export INFINALITY_FT_FILTER_PARAMS="16 20 28 20 16"
-
-##----------------------------------------------------------------------------##
-## XFT fonts
-##----------------------------------------------------------------------------##
-
-export GDK_USE_XFT=1
-
-export PATH=/home/morgareth/.gem/ruby/2.4.0/bin:$PATH
-
-export QT_QPA_PLATFORMTHEME='gtk2'
-export DESKTOP_SESSION=gnome
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-# Auto start X.
-[[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx -- vt1 &> /dev/null
+#[[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx -- vt1 &> /dev/null
