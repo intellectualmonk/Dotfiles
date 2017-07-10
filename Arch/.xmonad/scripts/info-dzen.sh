@@ -16,7 +16,7 @@ Kernel=$(hostnamectl | awk -F- '/Kernel/{ OFS="-";NF--; print }'|awk '{print $3}
 Uptime=$(awk '{printf("%d:%02d:%02d:%02d",($1/60/60/24),($1/60/60%24),($1/60%60),($1%60))}' /proc/uptime)
 Shell=$(echo "$SHELL" | awk -F/ '{for ( i=1; i <= NF; i++) sub(".", substr(toupper($i),1,1) , $i); print $NF}')
 Cpu=$(awk < /proc/cpuinfo '/model name/{gsub(/[(TMR)]/,"");print $4,$5,$6,$8}' | head -1)
-Gpu=$(glxinfo|awk '/Device/{gsub(/[(R)]/,"");print $2,$4,$5}')
+Gpu=$(lspci|awk '/VGA/{print $5,$8,$9}' | tr -d '[]')
 Screen=$(xrandr | awk 'NR==3 {print $1}')
 UPDATED=$(awk '/upgraded/ {line=$0;} END { $0=line; gsub(/[\[\]]/,"",$0);  printf "%s %s",$1,$2;}' /var/log/pacman.log)
 Cores=$(nproc)
@@ -41,7 +41,7 @@ Fan=$(sensors | awk '/fan1/{print $2,$3}')
 Hdd=$(hddtemp /dev/sda | awk ' {print $NF}')
 Birthd=$(tune2fs -l /dev/sda1 | awk '/Filesystem created:/{print $3,$4,$5,$7}')
 Ip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
-Monitor=$(hwinfo --short | awk '/monitor/ {for(i=1; i<=1; i++) {getline; print $1,$2}}') 
+Monitor=$(awk < /var/log/Xorg.0.log '/Display/{print $6,$7}'|tr -d '()'|sed -n '1p') 
 Keyboard=$(hwinfo --short | awk '/keyboard/ {for(i=1; i<=1; i++) {getline; print $2,$3,$NF}}')
 
 

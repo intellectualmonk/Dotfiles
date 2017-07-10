@@ -82,7 +82,7 @@ urxvtd -q -o -f &
 ##----------------------------------------------------------------------------##
 
 _start_session() {
-  session=${1:-xmonad}
+  session=${1:-bspwm}
   case $session in
       awesome           ) exec awesome;;
       bspwm             ) exec bspwm;;
