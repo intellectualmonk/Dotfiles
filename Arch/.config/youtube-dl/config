@@ -1,0 +1,2 @@
+-f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]'
+-o "~/Vídeos/%(title)s.%(ext)s" 

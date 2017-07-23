@@ -30,7 +30,7 @@ encoding_list = utf8
 view_sort_current = seeding,greater=d.get_ratio= 
  
 # Diretório de download e sessão.
-directory = /home/tiago/rtorrent/Temp
+directory = /home/morgareth/rtorrent/Temp
 session = ~/rtorrent/.session
 session_save = yes
  
@@ -41,8 +41,8 @@ system.file_allocate.set = yes
 schedule = low_diskspace,15,60,close_low_diskspace=1000M
  
 # Monitoramento de pastas.
-schedule = watch_start_directory,10,10,load_start=/home/tiago/rtorrent/Sources/*.torrent
-schedule = watch_load_directory,15,20,load=/home/tiago/rtorrent/Torrents/*.torrent
+schedule = watch_start_directory,10,10,load_start=/home/morgareth/rtorrent/Sources/*.torrent
+schedule = watch_load_directory,15,20,load=/home/morgareth/rtorrent/Torrents/*.torrent
 schedule = untied_closing,30,30,close_untied=
  
 # Parar torrents quando limite de upload for atingido.

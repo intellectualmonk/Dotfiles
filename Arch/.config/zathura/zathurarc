@@ -51,8 +51,8 @@ set recolor-lightcolor \#121212
 
 #// keybindings:
 unmap q
-unmap s
+#unmap s
 map <C-q> quit
-map <BackSpace> navigate previous
-map <S-Space> navigate previous
-map w adjust_window width
+#map <BackSpace> navigate previous
+#map <S-Space> navigate previous
+#map w adjust_window width

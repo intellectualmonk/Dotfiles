@@ -9,6 +9,6 @@ weather = eval(str(urllib.request.urlopen("http://api.openweathermap.org/data/2.
 info = weather["weather"][0]["description"].capitalize()
 temp = int(float(weather["main"]["temp"]) - 272.15)
 
-print("%s, %i °C" % (info, temp))
+print("%s, %i°C" % (info, temp))
 
 
