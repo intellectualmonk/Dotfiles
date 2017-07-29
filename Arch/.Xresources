@@ -27,8 +27,8 @@ xcursor.size:               22
 !! general settings
 !!----------------------------------------------------------------------------!!
 
-urxvt.font:xft:pragmatapro for powerline:size=8,xft:meguri:pixelsize=8,xft:PowerlineSymbols:size=8,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=8
-urxvt.boldFont:xft:pragmatapro for powerline:size=8,xft:meguri:pixelsize=8,xft:PowerlineSymbols:size=8,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=8
+urxvt.font:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
+urxvt.boldFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
 
 urxvt.letterSpace: -1
 

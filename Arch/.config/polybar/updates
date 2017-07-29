@@ -1,12 +1,12 @@
 #!/bin/bash
 
-pac=$(checkupdates | wc -l)
-aur=$(cower -u | wc -l)
+pac=$(checkupdates|perl -lne 'END { print $. }' )
+aur=$(cower -u| perl -lne 'END { print $. }' )
 
 check=$((pac + aur))
 if [[ "$check" != "0" ]]
 then
-    echo "$pac %{F#5b5b5b} %{F-} $aur"
+    echo "$pac %{F#15967D} %{F-} $aur"
 else
-    echo "%{F#5b5b5b}%{F-}Updated"
+    echo "%{F#15967D}%{F-}Updated"
 fi

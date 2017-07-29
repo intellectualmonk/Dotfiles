@@ -1,3 +1,21 @@
+#Mass rename pictures
+
+function mrename() { 
+    ls -1 --color=never .|nl -n rz -w3|sed -r 's/^\s*([0-9]+)\s+(.*)(\.\w+)$/mv "\2\3" "image_\1\3"/'|bash;  
+}
+
+# Remove EXIF Metadata from all photos in the current directory
+
+function metadel(){ 
+    for i in *; do echo "Processing $i"; exiftool -all= "$i"; done 
+}    
+
+# Convert a unicode text file to pdf
+
+function txt_to_pdf(){ 
+    paps "$*" --header | ps2pdf - "${*%.*}.pdf"; 
+}
+
 #View the last accessed directories.The command is "dirs -v"
 
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
@@ -10,6 +28,7 @@ chpwd() {
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
+
 function zle-line-init () {
     echoti smkx
 }
@@ -23,7 +42,7 @@ if [ -n "${DISPLAY:-}" ]; then
 fi
 
 # Color man pages using less as pager 
- 
+
 man() {
     env \
 	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -45,7 +64,6 @@ function clone()
     cd ${${1%%.git}##*/}
     cloc ./
 }
-
 
 # Interactive pgrep / pkill 
 
@@ -96,7 +114,6 @@ function pbs () {
   pbx /tmp/$$.png
 }
 
-
 get_mac() {# Sintaxe: get_mac <interface>
 
     ifconfig ${1:?$FUNCNAME: requer nome da interface.} | \
@@ -127,21 +144,25 @@ print $4}' | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g'
 }
 
 # Sensor
+
 function temp() {
  sensors|awk '/Core/{print substr($3, 2, length($3)-5)}'|awk '{if (match($0,/[0-9]+/,m)) print m[0]"°C"}'|tr '\n' ' '
 }
 
 #Screencast
+
 function screencast (){
 ffmpeg -f x11grab -video_size 1366x768 -i $DISPLAY -f alsa -i default -c:v ffvhuff -c:a flac Arch.mkv
 }
 
 # Calculate real memory used (desconsider the cache)
+
 function  mem(){
  echo "`free|grep Mem|awk '{printf(\"%.0f\",($3-($6+$7))/1000)}'` MiB";
 }
 
 #Check Top 20 Processes 
+
 function cpu(){
  ps -A --sort -rsz -o pid,comm,pmem,pcpu|awk 'NR<=20'
 }
@@ -150,6 +171,7 @@ function cpu(){
 function logerr(){ journalctl -p 3 -xb}
 
 function zumbis() {
+
   ps f -eo state,pid,ppid,comm | awk '
     { cmds[$2] = $NF }
     /^Z/ { print $(NF-1) "/" $2 " zombie child of " cmds[$3] "/" $3 }'

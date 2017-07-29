@@ -26,6 +26,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
+underline-size = 2
+
 font-0 = fixed:pixelsize=8;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
@@ -36,7 +38,7 @@ font-6 = NotoSans-Regular:size=8;0
 font-7 = Powerline Extra Symbols:size=25
 font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
-modules-left = powermenu spotify
+modules-left = powermenu mpd
 modules-center = bspwm
 modules-right =   updates  weather mail coretemps  memory cpu fanspeed  volume date  
 
@@ -51,15 +53,17 @@ exec-if = sensors
 exec = sensors  | awk '/Core 0/{print $3}' |awk '{if (match($0,/[0-9]+/,m)) print m[0]"°C"}'
 format =  <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.secondary}
 
 [module/spotify]
 type = custom/script
-exec = sh  ~/.config/polybar/spotify.sh %artist% - %album% -  %title%    
-;exec = spotify-dbus-status --template="{artist} - {album} - {song}"    
-interval = 2
+exec = ~/.config/polybar/spotify.py   
+exec-if = pgrep -x spotify
+interval = 5
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt} 
+format-prefix-foreground = ${colors.secondary 
+format-underline = ${colors.secondary}
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 [module/bspwm]
 type = internal/bspwm
@@ -113,16 +117,15 @@ exec-if = sensors
 exec = sensors|awk '/fan1/{print $2,$3}'
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.secondary}
 
 [module/mpd]
 type = internal/mpd
-
 format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <icon-repeat> <icon-random> <bar-progress>  <label-song>
 format-online-spacing = 0
-;format-online-background = #ee333333
-;format-online-underline = #cc333333
+format-prefix = " "
 format-online-padding = 3
+
 
 format-offline = <label-offline>
 format-offline-foreground = #777
@@ -148,13 +151,13 @@ toggle-off-foreground = #777
 
 bar-progress-width = 20
 bar-progress-indicator = |
-bar-progress-indicator-foreground = #bb
+bar-progress-indicator-foreground = ${colors.secondary}
 bar-progress-indicator-font = 3
 bar-progress-fill = ─
-bar-progress-fill-foreground = #bb
+bar-progress-fill-foreground = ${colors.secondary}
 bar-progress-fill-font = 3
 bar-progress-empty = ─
-bar-progress-empty-foreground = #44
+bar-progress-empty-foreground = ${colors.secondary}
 bar-progress-empty-font = 3
 bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
 
@@ -163,7 +166,7 @@ type = custom/script
 interval = 10
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.secondary}
 exec = ~/.config/polybar/mail.py
 
 [module/weather]
@@ -171,23 +174,22 @@ type = custom/script
 interval = 10
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.secondary}
 exec = ~/.config/polybar/weather.py
 
 [module/updates]
 type = custom/script
-interval = 1200
+interval = 900
 format = <label>
-format-underline = #dc322f
 label = "%output:0:30%"
 exec = sh ~/.config/polybar/updates
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+exec-if = "ping -q -w 2 -c 1 138.201.81.199 > /dev/null"
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.secondary}
 ;format-underline = #f90000
 label = %percentage%%
 
@@ -196,7 +198,7 @@ type = internal/memory
 interval = 2
 ;format = <label> <bar-used>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.secondary}
 ;format-underline = #4bffdc
 label = %gb_used%
 
@@ -206,8 +208,7 @@ interval = 1.0
 date = %d-%m
 time = %H:%M:%S
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #0a6cf5
+format-prefix-foreground =  ${colors.secondary}
 label = %time%  
 
 [module/volume]
@@ -221,7 +222,7 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
-ramp-volume-foreground =  ${colors.foreground-alt}
+ramp-volume-foreground =  ${colors.secondary}
 
 label-muted = %{F#666}%{F#ccfafafa} sound muted
 label-muted-foreground = #99
