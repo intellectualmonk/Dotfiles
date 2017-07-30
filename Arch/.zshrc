@@ -12,6 +12,9 @@
 #Thealiases used in this configuration are exclusive from Arch Linux and derivates.                        #
 #############################################################################################################
 
+source /etc/profile.d/autojump.zsh
+
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
 if [ -f ~/Zsh/.zsh_aliases ]; then
   source ~/.zsh_aliases
@@ -21,16 +24,9 @@ if [ -f ~/Zsh/.zsh_functions ]; then
   source ~/Zsh/.zsh_functions
 fi
 
-#Yet another colouriser for beautifying your logfiles or output of commands.
-[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
-
-#Autojump allows navigating the file system by searching for strings in a database with the user's most-visited paths.
-source /etc/profile.d/autojump.zsh
-
 #Syntax-highlighting  similar to shell Fish. Its necessary install the package zsh-syntax-highlighting
  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-#A ZSH plugin to search history, a clean-room implementation of the Fish shell feature
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 #Fish-like autosuggestions for zsh
@@ -199,6 +195,17 @@ setopt PROMPT_CR
 setopt PROMPT_SP
 export PROMPT_EOL_MARK=""
 
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+DIRSTACKSIZE=20
+
+# Stop on '/' character when deleting words using ^H.
+autoload -U select-word-style
+select-word-style bash
+
+# Automatically quote meta-characters like question marks, quotes and ampersands during typing or pasting.
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
 # Powerfonts
 if [[ -r/usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -206,7 +213,6 @@ fi
 
 # Syntax coloring# wget https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -O ~/.dircolors
 eval $(dircolors -b $HOME/.dircolors)
-alias ls="ls -F -h --color=auto"
 
 # Bindkeys
 bindkey -v
@@ -224,11 +230,6 @@ zle -N down-line-or-beginning-search
 
 #[[ -n "$key[Up]"   ]] && bindkey — "$key[Up]"   up-line-or-beginning-search
 #[[ -n "$key[Down]" ]] && bindkey — "$key[Down]" down-line-or-beginning-search
-
-
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=default,fg=default,bold'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=default,fg=white,bold'
-HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
 
 typeset -A key
  
@@ -253,5 +254,77 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
 [[ -n "${key[Right]}" ]] && bindkey "${key[Right]}" forward-char
 
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-DIRSTACKSIZE=20
+#--------------------------------------------------------------------#
+# Global Configuration Variables                                     #
+#--------------------------------------------------------------------#
+
+# Color to use when highlighting suggestion
+# Uses format of `region_highlight`
+# More info: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+
+# Prefix to use when saving original versions of bound widgets
+ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX=autosuggest-orig-
+
+ZSH_AUTOSUGGEST_STRATEGY=default
+
+# Widgets that clear the suggestion
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
+	history-search-forward
+	history-search-backward
+	history-beginning-search-forward
+	history-beginning-search-backward
+	history-substring-search-up
+	history-substring-search-down
+	up-line-or-history
+	down-line-or-history
+	accept-line
+)
+
+# Widgets that accept the entire suggestion
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
+	forward-char
+	end-of-line
+	vi-forward-char
+	vi-end-of-line
+	vi-add-eol
+)
+
+# Widgets that accept the entire suggestion and execute it
+ZSH_AUTOSUGGEST_EXECUTE_WIDGETS=(
+)
+
+# Widgets that accept the suggestion as far as the cursor moves
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
+	forward-word
+	vi-forward-word
+	vi-forward-word-end
+	vi-forward-blank-word
+	vi-forward-blank-word-end
+)
+
+# Widgets that should be ignored (globbing supported but must be escaped)
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(
+	orig-\*
+	beep
+	run-help
+	set-local-history
+	which-command
+	yank
+)
+
+# Max size of buffer to trigger autosuggestion. Leave undefined for no upper bound.
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=
+
+# Pty name for calculating autosuggestions asynchronously
+ZSH_AUTOSUGGEST_ASYNC_PTY_NAME=zsh_autosuggest_pty
+
+#  Is a global variable that defines how the query should be highlighted inside a matching command
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=default,fg=default,bold'
+
+# Is a global variable that defines how the query should be highlighted when no commands in the history match it.
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=default,fg=white,bold'
+
+# Is a global variable that defines how the command history will be searched for your query. Its default value causes this script to perform a case-insensitive search
+HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+
