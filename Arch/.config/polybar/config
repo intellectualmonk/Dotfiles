@@ -1,8 +1,6 @@
 [colors]
-;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #15967D
@@ -68,6 +66,7 @@ click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/
 [module/bspwm]
 type = internal/bspwm
 format = <label-state> <label-mode>
+reverse-scroll = false
 
 ws-icon-0 = term;
 ws-icon-1 = office;
@@ -78,7 +77,7 @@ ws-icon-default = 
 
 label-focused = %icon%
 label-focused-background = #ee050505
-label-focused-foreground = #15967D
+label-focused-foreground =  ${colors.secondary}
 label-focused-padding = 2
 
 label-occupied = %icon%
@@ -95,12 +94,12 @@ label-empty-padding = 2
 label-monocle = 
 label-monocle-padding = 2
 label-monocle-background = #171717
-label-monocle-foreground = #15967D
+label-monocle-foreground =  ${colors.secondary}
 
 label-floating = 
 label-floating-padding = 2
 label-floating-background = #171717
-label-floating-foreground = #15967D
+label-floating-foreground =  ${colors.secondary}
 
 [module/github]
 type = internal/github
@@ -121,21 +120,18 @@ format-prefix-foreground = ${colors.secondary}
 
 [module/mpd]
 type = internal/mpd
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <icon-repeat> <icon-random> <bar-progress>  <label-song>
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <icon-repeat> <icon-random> <bar-progress>  <label-song> %{B-}
+format-stopped = <icon-prev>   <toggle>   <icon-next>   0:00/0:00   %{B-}
 format-online-spacing = 0
 format-prefix = " "
 format-online-padding = 3
-
-
 format-offline = <label-offline>
 format-offline-foreground = #777
-
 label-offline = mpd is off
-
 label-song-maxlen = 45
 label-song-ellipsis = true
+label-time-foreground =  ${colors.secondary}
 
-label-time-foreground = #15967D
 
 icon-prev = 
 icon-stop = 
@@ -179,11 +175,11 @@ exec = ~/.config/polybar/weather.py
 
 [module/updates]
 type = custom/script
-interval = 900
+interval = 1200
 format = <label>
 label = "%output:0:30%"
-exec = sh ~/.config/polybar/updates
-exec-if = "ping -q -w 2 -c 1 138.201.81.199 > /dev/null"
+exec = sh ~/.config/polybar/updates.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 [module/cpu]
 type = internal/cpu
@@ -234,7 +230,7 @@ label-muted-foreground = #99
 ;bar-volume-foreground-3 = #FF5555
 ;bar-volume-foreground-4 = #FF5555
 ;bar-volume-foreground-5 = #f5a70a
-;bar-volume-foreground-6 = #15967D
+;bar-volume-foreground-6 =  ${colors.secondary}
 ;bar-volume-gradient = false
 ;bar-volume-indicator = |
 ;bar-volume-indicator-font = 3

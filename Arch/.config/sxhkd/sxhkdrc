@@ -4,24 +4,27 @@
 
 # terminal emulator
 super + Return
-	termite
+	urxvtc
 
 # Firefox 
 super + w 
-    firefox
+    chromium  
 
-
-# i3lock
+# Telegram
 super + a
-    lock
+    telegram-desktop
 
 # thunar
 super + r 
     thunar
 
+# kill the currently active window 
+ super + F4
+   xdotool getwindowfocus windowkill
+
 # program launcher
 super + space
-    dmenu_run -b -i -l 0 -o 0.8 -fn 'xft:FontAwesome:pixelsize=10' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'Menu' 
+    dmenu_run -i -x 415 -y 330 -w 450 -h 20 -l 4 -fn 'xft:FontAwesome:pixelsize=10' -nb '#111111' -nf '#FFFBF8' -sb '#15967D' -sf '#111111'
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -30,19 +33,11 @@ super + Escape
 # screenshot
 
 Print
-   maim -m 10 ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'
+   imlib2_grab ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens' 
 
-Print2 
-   maim -s -m 10 -b 3  --noopengl  ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'
+super + Print 
+   import ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'
 
-# vol
-super + {F3,F2}
-  {amixer sset Master playback 5%+,amixer sset Master playback 5%-}
-
-
-# mute
-super + F5
-  amixer sset Master toggle
 
 #
 # bspwm hotkeys
@@ -165,3 +160,4 @@ super + button{1-3}
 # end move/resize
 super + @button{1-3}
 	bspc pointer -u
+

@@ -3,11 +3,11 @@
 ##----------------------------------------------------------------------------##
 
 export EDITOR=vim
-export BROWSER=firefox
+export BROWSER=chromium
 export MANPAGER=less
 export TERM=rxvt-256color
 export GIT_EDITOR='/usr/bin/vim'
-export FILEBROWSER=dolphin
+export FILEBROWSER=thunar
 
 ##----------------------------------------------------------------------------##
 ## Set PATH so it includes user's private bin if it exists
@@ -21,7 +21,7 @@ fi
 ## For uniform qt theme and icons
 ##----------------------------------------------------------------------------##
 
-#export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME=qt5
 
 ##----------------------------------------------------------------------------##
 ## Locales
@@ -54,4 +54,6 @@ export LC_IDENTIFICATION="pt_BR.UTF-8"
 ## Auto start X
 ##----------------------------------------------------------------------------##
 
-#[[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx -- vt1 &> /dev/null
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -le 2 ]; then
+  exec startx
+fi

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #-------------------------------# 
 #  ╻ ╻╻┏┓╻╻╺┳╸┏━┓┏━╸            #
@@ -9,21 +9,10 @@
 #-------------------------------#
 
 ##----------------------------------------------------------------------------##
-## Launch dbus 
-##----------------------------------------------------------------------------##
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
-
-##----------------------------------------------------------------------------##
 ## Update Xresources 
 ##----------------------------------------------------------------------------##
 
-[[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 ##----------------------------------------------------------------------------##
 ## My fonts   
@@ -71,10 +60,10 @@ redshift -l -18.914608:-48.275380 -g 0.8 -m randr -v  &
 xautolock -time 10 -locker slimlock -detectsleep &   
 xrandr --dpi 96 
 thunar --daemon &
-[ !  -s ~/.config/mpd/pid ] && mpd
+urxvtd -q -o &
+#[ !  -s ~/.config/mpd/pid ] && mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-nitrogen --restore &
-urxvtd -q -o -f & 
+feh --bg-scale Wallpapers/image_006.png
 #export LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so'
 
 ##----------------------------------------------------------------------------##
@@ -84,16 +73,9 @@ urxvtd -q -o -f &
 _start_session() {
   session=${1:-bspwm}
   case $session in
-      awesome           ) exec awesome;;
       bspwm             ) exec bspwm;;
       xmonad            ) exec xmonad;;
-      dwm               ) exec dwm;;
-      bspwm             ) exec bspwm;;
       2bwm              ) exec 2bwm ;;
-      i3wm              ) exec i3;;
-      xfwm4             ) exec xfwm4;;
-      openbox           ) exec openbox-session;;
-      xfce4             ) exec startxfce4;;
       # No known session, try to run it as command
       *) exec "$1";;
   esac

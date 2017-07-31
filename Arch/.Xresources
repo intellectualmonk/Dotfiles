@@ -42,6 +42,7 @@ URxvt.visualBell: False
 URxvt.saveLines: 1024
 URxvt.mouseWheelScrollPage: true
 URxvt.termName: rxvt-unicode-256color
+URxvt.geometry: 153x26+302+161
 !!----------------------------------------------------------------------------!!
 !! Extensions ~/.urxvt./ext
 !!----------------------------------------------------------------------------!!
