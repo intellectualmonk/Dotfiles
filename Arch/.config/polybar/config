@@ -38,7 +38,7 @@ font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
 modules-left = powermenu mpd
 modules-center = bspwm
-modules-right =   updates  weather mail coretemps  memory cpu fanspeed  volume date  
+modules-right =   updates  weather kernel coretemps  memory cpu fanspeed  volume date  
 
 wm-restack = bspwm
 override-redirect = true
@@ -53,15 +53,14 @@ format =  <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 
-[module/spotify]
+[module/kernel]
 type = custom/script
-exec = ~/.config/polybar/spotify.py   
-exec-if = pgrep -x spotify
-interval = 5
-format-prefix = " "
-format-prefix-foreground = ${colors.secondary 
-format-underline = ${colors.secondary}
-click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+exec = uname -r|awk -F- '{ OFS="-";NF--; print }'  
+format = <label>
+format-prefix =" "
+tail = false
+format-prefix-foreground = ${colors.secondary}
+interval = 1024
 
 [module/bspwm]
 type = internal/bspwm
@@ -100,15 +99,6 @@ label-floating = 
 label-floating-padding = 2
 label-floating-background = #171717
 label-floating-foreground =  ${colors.secondary}
-
-[module/github]
-type = internal/github
-token = ${file:/home/morgareth/.git-token}
-;empty-notifications = true
-label = %notifications%
-label-padding = 2
-label-background = #f0c209
-label-foreground = #000
 
 [module/fanspeed]
 type = custom/script
@@ -169,7 +159,7 @@ exec = ~/.config/polybar/mail.py
 type = custom/script
 interval = 10
 format = <label>
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 exec = ~/.config/polybar/weather.py
 
