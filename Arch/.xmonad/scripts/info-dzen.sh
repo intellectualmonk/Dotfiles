@@ -96,4 +96,4 @@ Keyboard=$(hwinfo --short | awk '/keyboard/ {for(i=1; i<=1; i++) {getline; print
  echo "   ^ca(1,systemctl suspend)^fg(#FCFCFC)^fn($icons2)^fn($font1) Lock ^ca() "   
  echo ""
 
-) | dzen2 -p  -y 32 -w 300 -bg $BG -fg $FG -l 49 -sa l -ta c -e 'onstart=uncollapse;button1=exit;button3=exit' -fn $font1  
+) | dzen2 -p  -y 32 -w 300 -bg $BG -fg $FG -l 43 -sa l -ta c -e 'onstart=uncollapse;button1=exit;button3=exit' -fn $font1  
