@@ -1,5 +1,5 @@
 [colors]
-background = #222
+background = #282A2E
 background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
@@ -38,7 +38,7 @@ font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
 modules-left = powermenu mpd
 modules-center = bspwm
-modules-right =   updates  weather kernel coretemps  memory cpu fanspeed  volume date  
+modules-right =   updates  weather coretemps hddtemp nvidiatemp  memory cpu  volume date  
 
 wm-restack = bspwm
 override-redirect = true
@@ -50,7 +50,23 @@ type = custom/script
 exec-if = sensors
 exec = sensors  | awk '/Core 0/{print $3}' |awk '{if (match($0,/[0-9]+/,m)) print m[0]"°C"}'
 format =  <label>
-format-prefix = " "
+format-prefix = " "
+
+
+format-prefix-foreground = ${colors.secondary}
+
+[module/nvidiatemp]
+type = custom/script
+exec = nvidia-smi -q -d temperature|awk '{print $5}' | sed -n -r '/[0-9]{2}/{s/$/ºC/;p}'
+format =  <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/hddtemp]
+type = custom/script
+exec = hddtemp /dev/sda|awk '{print $4}'
+format =  <label>
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 
 [module/kernel]
@@ -58,7 +74,6 @@ type = custom/script
 exec = uname -r|awk -F- '{ OFS="-";NF--; print }'  
 format = <label>
 format-prefix =" "
-tail = false
 format-prefix-foreground = ${colors.secondary}
 interval = 1024
 
@@ -174,7 +189,7 @@ exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 ;format-underline = #f90000
 label = %percentage%%

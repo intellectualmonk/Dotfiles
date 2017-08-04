@@ -22,7 +22,12 @@ xft*lcdfilter: lcddefault
 xcursor.theme:              Vanilla-DMZ
 xcursor.size:               22
  
- 
+!!----------------------------------------------------------------------------!!
+!! Extensions ~/.urxvt./ext
+!!----------------------------------------------------------------------------!!
+
+URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select,font-size
+
 !!----------------------------------------------------------------------------!!
 !! general settings
 !!----------------------------------------------------------------------------!!
@@ -30,8 +35,13 @@ xcursor.size:               22
 urxvt.font:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
 urxvt.boldFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
 
-urxvt.letterSpace: -1
+URxvt.font-size.step: 4
+URxvt.keysym.C-plus:      font-size:increase
+URxvt.keysym.C-minus:    font-size:decrease
+URxvt.keysym.C-equal:   font-size:reset
+URxvt.keysym.C-slash:   font-size:show
 
+urxvt.letterSpace: -1
 Urxvt.scrollBar: false
 URxvt.internalBorder: 4
 URxvt.dynamicColors: on
@@ -43,12 +53,6 @@ URxvt.saveLines: 1024
 URxvt.mouseWheelScrollPage: true
 URxvt.termName: rxvt-unicode-256color
 URxvt.geometry: 153x26+302+161
-!!----------------------------------------------------------------------------!!
-!! Extensions ~/.urxvt./ext
-!!----------------------------------------------------------------------------!!
-
-URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
-
 
 !!----------------------------------------------------------------------------!!
 !! Clipboard
@@ -89,31 +93,40 @@ URxvt.colorUL:                       #6B6767
 !!General   colors
 !!----------------------------------------------------------------------------!!
 
-*background: #151515
-*foreground: #888888
-*cursorColor: #169F85
+! special
+*foreground:   #c5c8c6
+*background:   #282a2e
+*cursorColor:  #c5c8c6
+
 ! black
-*color0: #1C1C1C
-*color8: #404040
+*color0:       #282a2e
+*color8:       #373b41
+
 ! red
-*color1: #B85335
-*color9: #CF6A4C
+*color1:       #a54242
+*color9:       #cc6666
+
 ! green
-*color2: #169F85
-*color10: #169F85
+*color2:       #15967D
+*color10:      #2A8674
+
 ! yellow
-*color3: #FFB964
-*color11: #FAD07A
+*color3:       #de935f
+*color11:      #f0c674
+
 ! blue
-*color4: #667899
-*color12: #8197BF
+*color4:       #5f819d
+*color12:      #81a2be
+
 ! magenta
-*color5: #8787AF
-*color13: #C6B6EE
+*color5:       #85678f
+*color13:      #b294bb
+
 ! cyan
-*color6: #668799
-*color14: #8FBFDC
+*color6:       #5e8d87
+*color14:      #8abeb7
+
 ! white
-*color7: #888888
-*color15: #E8E8D3
+*color7:       #707880
+*color15:      #c5c8c6
 
