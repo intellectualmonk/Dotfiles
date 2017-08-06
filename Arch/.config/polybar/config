@@ -151,7 +151,7 @@ toggle-on-foreground = ${colors.foreground-alt}
 toggle-off-foreground = #777
 
 bar-progress-width = 20
-bar-progress-indicator = |
+bar-progress-indicator = 
 bar-progress-indicator-foreground = ${colors.secondary}
 bar-progress-indicator-font = 3
 bar-progress-fill = ─
@@ -208,7 +208,7 @@ type = internal/date
 interval = 1.0
 date = %d-%m
 time = %H:%M:%S
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground =  ${colors.secondary}
 label = %time%  
 
