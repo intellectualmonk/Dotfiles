@@ -60,11 +60,11 @@ redshift -l -18.914608:-48.275380 -g 0.8 -m randr -v  &
 xautolock -time 10 -locker slimlock -detectsleep &   
 xrandr --dpi 96 
 thunar --daemon &
-urxvtd -q -o &
 #[ !  -s ~/.config/mpd/pid ] && mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-feh --bg-scale Wallpapers/image_006.png
-#export LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so'
+wmname LG3D
+hsetroot -tile  Wallpapers/image_015.png 
+firefox  & 
 
 ##----------------------------------------------------------------------------##
 ## startx
