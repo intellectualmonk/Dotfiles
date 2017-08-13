@@ -1,4 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# File              : .config/polybar/spotify.py
+# Author            : Morgareth <morgareth@tutanota.com>
+# Date              : 10.08.2017
+# Last Modified Date: 10.08.2017
+# Last Modified By  : Morgareth <morgareth@tutanota.com>
 
 import dbus
 try:
@@ -8,5 +14,5 @@ try:
 	props = spotify_iface.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
 	print(str(props['xesam:artist'][0]) + " - " + str(props['xesam:album']) + " - " + str(props['xesam:title']))
 	exit
-except dbus.exceptions.DBusException:
+exciept dbus.exceptions.DBusException:
 	exit

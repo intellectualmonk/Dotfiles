@@ -1,10 +1,8 @@
 #! /bin/bash
 
-
 bspc monitor -d term office code media chat  
 "$HOME"/.config/polybar/launch.sh &
 sxhkd &
-
 # -----------------------------------------
 # bspwm config
 # -----------------------------------------
@@ -17,7 +15,6 @@ bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 bspc config focus_follows_pointer true
-
 #------------------------------------------------
 # Border Colors
 #------------------------------------------------
@@ -29,15 +26,13 @@ bspc config normal_border_color         "#222222"
 bspc config normal_locked_border_color  "#3F3E3B"
 bspc config presel_border_color         "#15967D"
 bspc config urgent_border_color         "#93a1a1"
-
-
 # -----------------------------------------------
 # Rules
 # -----------------------------------------------
-
 bspc rule -a Firefox desktop=^2 focus=on
-bspc rule -a Thunar desktop=^4 state=floating center=on
+bspc rule -a Thunar desktop=^4 pseudo_tiled=on
 bspc rule -a Pavucontrol state=floating center=on
-bspc rule -a URxvt state=floating manage=on layer=normal
 bspc rule -a mpv state=floating
-bspc rule -a URxvt:neofetch -o state=floating
+bspc rule -a Telegram desktop=^1
+bspc rule -a feh floating=on manage=off
+bspc rule -a Xarchiver pseudo_tiled=on
