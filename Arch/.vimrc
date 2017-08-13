@@ -1,4 +1,3 @@
-
 "
 "
 "                         ███████████████████████████
@@ -21,27 +20,21 @@
 "                         ██████████▄▄▄▄▄▄▄██████████
 "                         ███████████████████████████
 "
-"   
 "
-"    
-"     
+"
+"
+"
 "                ╔══════════════════════════════════════════╗
 "                ║           Created by Morgareth           ║
-"                ║                                          ║ 
-"                ║        Email:thiagors1983@gmail.com      ║ 
-"                ║                                          ║ 
+"                ║                                          ║
+"                ║        Email:thiagors1983@gmail.com      ║
+"                ║                                          ║
 "                ╚══════════════════════════════════════════╝
 "
 "
 "
 
-
-"Autocomplete
-autocmd Filetype python set omnifunc=pythoncomplete#Complete "Autocomplete for pyhon
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-"Visual and generall settings 
+"Visual and generall settings
 set shell=/bin/zsh "Sets the shell
 set nocompatible "Use the vim settings, not vi
 set completeopt=longest,menuone
@@ -49,13 +42,13 @@ filetype plugin on "Enables the recognition files
 filetype indent on
 set magic "Enable regular expressions
 set background=dark     " we're using a dark bg
-colorscheme  bubblegum-256-dark     " colorscheme from plugin 
+colorscheme atom-dark-256  " colorscheme from plugin
 set laststatus=2        " always show statusline
 set ruler   "Ruler breaks
 set wrap    "It allows navigation within a long line with j and k
 set showcmd " Show me what I'm typing
 set hlsearch " Highlight found searches
-set lazyredraw "Redraw only when we need to. 
+set lazyredraw "Redraw only when we need to.
 set splitbelow " Split horizontal windows below to the current windows
 set splitright " Split vertical windows right to the current windows
 set t_Co=256 " Enable 256 colors
@@ -64,11 +57,11 @@ set nolinebreak
 set showmatch  " highlight matching [{()}]
 set number  "Show line numbers
 set relativenumber
-set updatetime=250 
+set updatetime=250
 set cursorline
 set showmode  " Show current mode.
 set whichwrap=b,s,<,>,[,]
-set title " Show title 
+set title " Show title
 set showtabline=2
 set fillchars+=stl:\ ,stlnc:\
 set cmdheight=2 "Height command bar
@@ -84,12 +77,35 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set guiheadroom=0
 
-set tabstop=8                   "A tab is 8 spaces
-set expandtab                   "Always uses spaces instead of tabs
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-set shiftwidth=4                "An indent is 4 spaces
-map <f3> :w\|!python %
+" PEP8 indentation
 
+au BufNewFile              : .vimrc
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+match ErrorMsg '\s\+$'
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+
+autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd BufWritePre     * :call TrimWhiteSpace()
+
+autocmd FileType python autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileType python autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FileType python autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd FileType python autocmd BufWritePre     * :call TrimWhiteSpace()
 
 " Better copy & paste
 set pastetoggle=<F2>
@@ -105,8 +121,9 @@ set binary
 set ttyfast
 
 "File handling
+
 set autoread " Automatically reread changed files without asking me anything
-set history=50 
+set history=50
 set noswapfile " Don't use swapfile
 
 " Use modeline overrides
@@ -127,24 +144,24 @@ set nowritebackup
 set startofline "It allows you to change the column when moving through the line
 set sm "Every time you close a parenthesis, bracket or brace, Vi shows where it was opened. If there is no  pair.
 
-"Spell pt_BR 
-"set spell spelllang=pt 
+"Spell pt_BR
+"set spell spelllang=pt
 
 "hi SpellCap ctermfg=Gray ctermbg=Blue
-"hi SpellBad ctermfg=Gray ctermbg=DarkRed 
+"hi SpellBad ctermfg=Gray ctermbg=DarkRed
 
-let mapleader = ","  
-let g:mapleader = "," 
+let mapleader = ","
+let g:mapleader = ","
 
 "Shortcuts
+nnoremap <C-Delete> :tabclose<CR>
 nnoremap <C-S-tab> :tabprevious<CR>
 nnoremap <C-tab>   :tabnext<CR>
 nnoremap <C-t>     :tabnew<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew<CR>
+
 
 "Save,exit and quit
+
 inoremap <C-s> <esc>:w<cr>                 " save files
 nnoremap <C-s> :w<cr>
 inoremap <C-d> <esc>:wq!<cr>               " save and exit
@@ -182,6 +199,12 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
 \ endif
 
+" Auutomatic Shebang
+augroup Shebang
+  autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl># -*- coding: utf-8  -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
+  autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl># -*- coding: None -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
+  autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl># -*- coding: None -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
+augroup END
 
 "Completion
 set wildmode=list:longest
@@ -196,10 +219,10 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
- 
-"Scrolling 
+
+"Scrolling
 "Start scrolling when we're 8 lines away from  margins
-set scrolloff=8         
+set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 
@@ -214,7 +237,7 @@ execute pathogen#infect()
               map <leader>e :NERDTreeFind<CR>
               nmap <leader>nt :NERDTreeFind<CR>
 
-              
+
               let NERDTreeShowBookmarks=1
               let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$','^\.svn$', '\.bzr$']
               let NERDTreeChDirMode=0
@@ -227,13 +250,44 @@ execute pathogen#infect()
           endif
       " }
 
-                                    
+" Settings for Vim-Nerdtree-Tabs
+
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_focus_on_files = 1
+
+
 " " Settings for Vim-airline
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'molokai'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#virtualenv#enabled = 1
+
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#symbol = '*'
+let g:airline#extensions#whitespace#max_lines = 20000
+
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline#extensions#wordcount#format = '%d words'
+
+let g:airline#extensions#ctrlp#show_adjacent_modes = 1
+let g:airline#extensions#ctrlp#color_template = 'normal'
+
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#flags = 'f'
+
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_detect_crypt=1
+let g:airline_inactive_collapse=1
+let g:airline_exclude_preview = 0
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#branch#vcs_priority = ["git", "mercurial"]
 
 "Vim-airline
 if !exists('g:airline_symbols')
@@ -256,7 +310,7 @@ if !exists('g:airline_powerline_fonts')
   let g:airline_symbols.paste     = 'ρ'
   let g:airline_symbols.paste     = 'Þ'
   let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
+  let g:airline_symbols.whitespace = '*'
 else
   let g:airline#extensions#tabline#left_sep = ''
   let g:airline#extensions#tabline#left_alt_sep = ''
@@ -271,74 +325,43 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-" Settings for python-mode
-
- map <Leader>g :call RopeGotoDefinition()<CR>
- let g:pymode_python = 'python3'
- let ropevim_enable_shortcuts = 1
- let g:pymode_folding = 0
- let g:pymode_doc = 1
- let g:pymode_doc_key = 'K'
- let g:pymode_rope_goto_def_newwin = "vnew"
- let g:pymode_rope_extended_complete = 1
- let g:pymode_breakpoint = 0
- let g:pymode_syntax_builtin_objs = 0
- let g:pymode_syntax_builtin_funcs = 0
- let g:pymode_syntax = 1
- let g:pymode_syntax_all = 1
- let g:pymode_syntax_indent_errors = g:pymode_syntax_all
- let g:pymode_syntax_space_errors = g:pymode_syntax_all
- let g:pymode_lint = 1
- let g:pymode_lint_checker = "pyflakes,pep8"
- let g:pymode_virtualenv = 1
- map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
-" Settings for Minimap 
-
-let g:minimap_highlight='Visual'
-let g:minimap_show='<leader>ms'
-let g:minimap_update='<leader>mu'
-let g:minimap_close='<leader>gc'
-let g:minimap_toggle='<leader>gt'
-
 " Settings for Vim-gitgutter
 
 let g:gitgutter_override_sign_column_highlight = 0
 highlight SignColumn ctermbg=237
-let g:gitgutter_sign_column_always = 1
+" let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 let g:gitgutter_sign_added = 'xx'
 let g:gitgutter_sign_modified = 'yy'
 let g:gitgutter_sign_removed = 'zz'
 let g:gitgutter_sign_removed_first_line = '^^'
 let g:gitgutter_sign_modified_removed = 'ww'
 
-" Settings for Syntastic 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"Settings for  ale (Asynchronous Lint Engine)
 
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:ale_sign_column_always = 1
 
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
-" Settings for Vim-Nerdtree-Tabs
+let g:airline#extensions#ale#enabled = 1
 
-let g:nerdtree_tabs_open_on_console_startup = 1
-let g:nerdtree_tabs_focus_on_files = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Settings for Vim-Easy-Tags
-let g:easytags_async = 1 
+let g:easytags_async = 1
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
 set tags=./tags;
 let g:easytags_dynamic_files = 1
 let g:easytags_resolve_links = 1
 let g:easytags_suppress_ctags_warning = 1
 
-" Settings for Tagbar 
+" Settings for Tagbar
 nmap <silent> <leader>b :TagbarToggle<CR>
 
 " Settings for indentLine
@@ -346,41 +369,25 @@ nmap <silent> <leader>b :TagbarToggle<CR>
 let g:indentLine_color_term = 197
 let g:indentLine_char = '│'
 
+" Settings for Jedi-vim
+
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#popup_select_first = 0
+let g:jedi#show_call_signatures = "1"
+
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
 " Settings for Vim-hybrid
 
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
-
-" Settings for Vim-header
-let g:header_field_filename = 1
-let g:header_field_author = 'Morgareth'
-let g:header_field_author_email = 'morgareth@tutanota.com'
-let g:header_field_timestamp_format = '%d.%m.%Y'
-map <F4> :AddHeader<CR>
-
-" Settings for Limelight.vim 
-
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 240
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-" Beginning/end of paragraph
-"   When there's no empty line between the paragraphs
-"   and each paragraph starts with indentation
-let g:limelight_bop = '^\s'
-let g:limelight_eop = '\ze\n^\s'
-
-" Highlighting priority (default: 10)
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-" Goyo.vim integration
-autocmd! User GoyoEnter Limelight
-
-" Settings for Vim-markdown
-
-let g:vim_markdown_folding_disabled=1
 
 " Settings for CtrlP
 
@@ -398,6 +405,3 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-
-" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
-" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
