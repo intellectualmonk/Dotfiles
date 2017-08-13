@@ -1,10 +1,14 @@
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+#                                                                Twm independent hotkeys                                                         #
+#------------------------------------------------------------------------------------------------------------------------------------------------#
 
-# wm independent hotkeys
-#
+#Lock 
+ super + x 
+     ./.config/polybar/lock.sh    
 
 # terminal emulator
 super + Return
-	urxvtc
+	urxvt
 
 # Firefox 
 super + w 
@@ -12,7 +16,7 @@ super + w
 
 # Telegram
 super + a
-    telegram-desktop
+    ./Telegram/Telegram 
 
 # thunar
 super + r 
@@ -33,15 +37,15 @@ super + Escape
 # screenshot
 
 Print
-   imlib2_grab ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens' 
+   maim -m 10 -f png  -u ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'
 
 super + Print 
-   import ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'
+   maim -s -m 10 -f png  -b 3 -u  ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'                      
 
+#----------------------------------------------------------------------------------------------------------------------------------------------------------#
+#                                                                    Bspwm hotkeys                                                                         #
+#----------------------------------------------------------------------------------------------------------------------------------------------------------#
 
-#
-# bspwm hotkeys
-#
 
 # quit bspwm normally
 super + alt + Escape
