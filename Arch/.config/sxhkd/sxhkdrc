@@ -12,7 +12,7 @@ super + Return
 
 # Firefox 
 super + w 
-    chromium  
+    firefox  
 
 # Telegram
 super + a

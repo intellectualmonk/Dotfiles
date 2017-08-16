@@ -3,7 +3,7 @@
 	"groups": {
 		"background:divider":        { "fg": "gray5", "bg": "gray0", "attr": [] },
 		"session":                   { "fg": "black", "bg": "gray10", "attr": ["bold"] },
-		"date":                      { "fg": "gray8", "bg": "gray2", "attr": [] },
+		"date":                      { "fg": "white", "bg": "gray2", "attr": [] },
 		"time":                      { "fg": "black", "bg": "darkcyan", "attr": ["bold"]},
 		"time:divider":              { "fg": "gray5", "bg": "gray2", "attr": [] },
 		"email_alert":               { "fg": "white", "bg": "brightred", "attr": ["bold"] },
@@ -29,7 +29,7 @@
 		"battery_full":              { "fg": "red", "bg": "gray0", "attr": [] },
 		"battery_empty":             { "fg": "white", "bg": "gray0", "attr": [] },
 		"player":                    { "fg": "gray10", "bg": "black", "attr": [] },
-		"user":                      { "fg": "white", "bg": "green", "attr":["bold"]},
+		"user":                      { "fg": "white", "bg": "red", "attr":["bold"]},
 		"superuser":                 { "fg": "yellow", "bg": "orange", "attr": ["bold"] },
 		"branch":                    { "fg": "white", "bg":  "gray2", "attr": [] },
 		"branch_dirty":              { "fg": "brightyellow", "bg": "darkblue", "attr": [] },
@@ -40,6 +40,6 @@
 		"cwd:divider":               { "fg": "white", "bg": "black", "attr": [] },
 		"virtualenv":                { "fg": "white", "bg": "darkcyan", "attr": [] },
 		"attached_clients":          { "fg": "gray8", "bg": "gray0", "attr": [] },
-		"fuzzy_time":          { "fg": "gray8", "bg": "gray0", "attr": [] }
+		"fuzzy_time":          { "fg": "white", "bg": "gray0", "attr": [] }
 	}
 }

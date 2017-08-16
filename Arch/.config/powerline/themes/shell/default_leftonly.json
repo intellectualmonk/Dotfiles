@@ -2,9 +2,25 @@
         "segments": {
                 "left": [
                         {
-                                "function": "powerline.segments.common.net.hostname",
-                                "priority": 10
+				"function": "powerline.segments.common.net.hostname",
+				"priority": 10
                         },
+
+
+                        {      
+                          
+                                "function": "powerline.segments.common.time.date",
+                                "args": {
+					"format": "$"
+                        }
+                       
+                        },
+                     
+                        {
+				"function": "powerline.segments.common.time.fuzzy_time"
+                        },
+                      
+
                         {
                                 "function": "powerline.segments.common.env.user",
                                 "priority": 30

@@ -1,5 +1,3 @@
-"
-"
 "                         ███████████████████████████
 "                         ███████▀▀▀░░░░░░░▀▀▀███████
 "                         ████▀░░░░░░░░░░░░░░░░░▀████
@@ -34,15 +32,15 @@
 "
 "
 
+
 "Visual and generall settings
 set shell=/bin/zsh "Sets the shell
-set nocompatible "Use the vim settings, not vi
 set completeopt=longest,menuone
 filetype plugin on "Enables the recognition files
 filetype indent on
 set magic "Enable regular expressions
 set background=dark     " we're using a dark bg
-colorscheme atom-dark-256  " colorscheme from plugin
+colorscheme bubblegum-256-dark  " colorscheme from plugin
 set laststatus=2        " always show statusline
 set ruler   "Ruler breaks
 set wrap    "It allows navigation within a long line with j and k
@@ -79,7 +77,8 @@ set guiheadroom=0
 
 " PEP8 indentation
 
-au BufNewFile              : .vimrc
+augroup pep8
+    au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -87,6 +86,7 @@ au BufNewFile              : .vimrc
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
+augroup END
 
 match ErrorMsg '\s\+$'
 
@@ -97,15 +97,19 @@ endfunction
 
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
-autocmd FileWritePre    * :call TrimWhiteSpace()
-autocmd FileAppendPre   * :call TrimWhiteSpace()
-autocmd FilterWritePre  * :call TrimWhiteSpace()
-autocmd BufWritePre     * :call TrimWhiteSpace()
+augroup WhiteSpace
+    autocmd FileWritePre    * :call TrimWhiteSpace()
+    autocmd FileAppendPre   * :call TrimWhiteSpace()
+    autocmd FilterWritePre  * :call TrimWhiteSpace()
+    autocmd BufWritePre     * :call TrimWhiteSpace()
+augroup END
 
-autocmd FileType python autocmd FileWritePre    * :call TrimWhiteSpace()
-autocmd FileType python autocmd FileAppendPre   * :call TrimWhiteSpace()
-autocmd FileType python autocmd FilterWritePre  * :call TrimWhiteSpace()
-autocmd FileType python autocmd BufWritePre     * :call TrimWhiteSpace()
+augroup WhiteSpace1
+    autocmd FileType python autocmd FileWritePre    * :call TrimWhiteSpace()
+    autocmd FileType python autocmd FileAppendPre   * :call TrimWhiteSpace()
+    autocmd FileType python autocmd FilterWritePre  * :call TrimWhiteSpace()
+    autocmd FileType python autocmd BufWritePre     * :call TrimWhiteSpace()
+augroup END
 
 " Better copy & paste
 set pastetoggle=<F2>
@@ -114,8 +118,8 @@ set clipboard=unnamed
 "Encoding
 " Set default encoding to UTF-8
 set encoding=utf-8
+scriptencoding utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
@@ -142,7 +146,7 @@ set incsearch " Shows the match while typing
 set nobackup " Don't create annoying backup files
 set nowritebackup
 set startofline "It allows you to change the column when moving through the line
-set sm "Every time you close a parenthesis, bracket or brace, Vi shows where it was opened. If there is no  pair.
+set showmatch "Every time you close a parenthesis, bracket or brace, Vi shows where it was opened. If there is no  pair.
 
 "Spell pt_BR
 "set spell spelllang=pt
@@ -150,8 +154,7 @@ set sm "Every time you close a parenthesis, bracket or brace, Vi shows where it 
 "hi SpellCap ctermfg=Gray ctermbg=Blue
 "hi SpellBad ctermfg=Gray ctermbg=DarkRed
 
-let mapleader = ","
-let g:mapleader = ","
+let g:mapleader = ','
 
 "Shortcuts
 nnoremap <C-Delete> :tabclose<CR>
@@ -194,16 +197,11 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 
 
 " Return to last edit position when opening files
-autocmd BufReadPost *
+augroup last
+    autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
 \ endif
-
-" Auutomatic Shebang
-augroup Shebang
-  autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl># -*- coding: utf-8  -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
-  autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl># -*- coding: None -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
-  autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl># -*- coding: None -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
 augroup END
 
 "Completion
@@ -226,26 +224,32 @@ set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 
+augroup Shebang
+    autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl># -*- coding: utf-8  -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
+    autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl># -*- coding: None -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
+    autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl># -*- coding: None -*-\<nl># Author: Morgareth <morgareth@tutanota.com>\"|$
+augroup END
+
 " Plugins
 
 " Settings for  Patogen
 execute pathogen#infect()
 
 " NerdTree {
-          if isdirectory(expand("~/.vim/bundle/nerdtree"))
+          if isdirectory(expand('~/.vim/bundle/nerdtree'))
               map <C-e> :NERDTreeToggle<CR>
               map <leader>e :NERDTreeFind<CR>
               nmap <leader>nt :NERDTreeFind<CR>
 
 
-              let NERDTreeShowBookmarks=1
-              let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$','^\.svn$', '\.bzr$']
-              let NERDTreeChDirMode=0
-              let NERDTreeQuitOnOpen=1
-              let NERDTreeMouseMode=2
-              let NERDTreeShowHidden=1
-              let NERDTreeKeepTreeInNewTab=1
-              let NERDTreeDirArrows = 0
+              let g:NERDTreeShowBookmarks=1
+              let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$','^\.svn$', '\.bzr$']
+              let g:NERDTreeChDirMode=0
+              let g:NERDTreeQuitOnOpen=1
+              let g:NERDTreeMouseMode=2
+              let g:NERDTreeShowHidden=1
+              let g:NERDTreeKeepTreeInNewTab=1
+              let g:NERDTreeDirArrows = 0
               let g:nerdtree_tabs_open_on_gui_startup=0
           endif
       " }
@@ -287,7 +291,7 @@ let g:airline_detect_crypt=1
 let g:airline_inactive_collapse=1
 let g:airline_exclude_preview = 0
 let g:airline_skip_empty_sections = 1
-let g:airline#extensions#branch#vcs_priority = ["git", "mercurial"]
+let g:airline#extensions#branch#vcs_priority = ['git', 'mercurial']
 
 "Vim-airline
 if !exists('g:airline_symbols')
@@ -372,17 +376,17 @@ let g:indentLine_char = '│'
 " Settings for Jedi-vim
 
 let g:jedi#auto_vim_configuration = 0
-let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#use_splits_not_buffers = 'left'
 let g:jedi#popup_select_first = 0
-let g:jedi#show_call_signatures = "1"
+let g:jedi#show_call_signatures = '1'
 
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#goto_command = '<leader>d'
+let g:jedi#goto_assignments_command = '<leader>g'
+let g:jedi#goto_definitions_command = ''
+let g:jedi#documentation_command = 'K'
+let g:jedi#usages_command = '<leader>n'
+let g:jedi#completions_command = '<C-Space>'
+let g:jedi#rename_command = '<leader>r'
 
 " Settings for Vim-hybrid
 

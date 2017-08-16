@@ -27,19 +27,19 @@ printinfo () {
     info "DE" de
     info "WM" wm
     info "WM Theme" wmtheme
-    info "Theme" theme
-    info "Icons" icons
-    info "Font" font
+    #info "Theme" theme
+    #info "Icons" icons
+    # info "Font" font
     info "CPU" cpu
     info "GPU" gpu
     info "Memory" memory
 
-      info "Disk" disk
+    # info "Disk" disk
     # info "Battery" battery
     #  info "Local IP" localip
     # info "Public IP" publicip
     # info "Users" users
-    # info "Birthday" birthday
+    #  info "Birthday" birthday
     # info "Song" song
 
     info linebreak
@@ -174,7 +174,7 @@ song_shorthand="off"
 # or a shortened one
 # NOTE: Long pretty output doesn't work on OpenBSD or NetBSD.
 # --birthday_shorthand on/off
-birthday_shorthand="off"
+birthday_shorthand="on"
 
 # Whether to show the time in the output
 # --birthday_time on/off
@@ -213,7 +213,7 @@ block_width=3
 # colors=(4 6 1 8 8 6)
 # You can also specify:
 # fg (foreground color)
-colors=(7 7 7 7 7 7 )
+colors=(7 1 1 1 7 7 )
 
 
 # }}}

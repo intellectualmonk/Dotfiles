@@ -2,7 +2,8 @@
 
 maim /tmp/screen.png
 convert /tmp/screen.png -scale 15% -scale 670% -fill black -colorize 20% /tmp/screen.png
-lock_icon=$HOME/Wallpapers/image_032.png
+#lock_icon=$HOME/Wallpapers/image_032.png
+lock_icon=$HOME/Wallpapers/teste.png
 
 if [[ -f $lock_icon ]]; then
   px=0

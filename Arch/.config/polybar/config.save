@@ -4,7 +4,7 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #15967D
-secondary = #C12B4D
+secondary = #15967D
 alert = #bd2c40
 menu = #ffffff
 
@@ -268,13 +268,13 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/menu
 
 format-spacing = 1
+
 label-open = 
 label-open-foreground = ${colors.menu}
 label-open-background =  ${colors.secondary}
 
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
-;format-underline = ${colors.secondary}
 
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
