@@ -3,5 +3,5 @@
 </p>
 
 
-## My persolnal  dotfiles.
+## My personal  dotfiles.
 
