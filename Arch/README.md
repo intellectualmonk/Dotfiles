@@ -1,6 +1,7 @@
-![alt text](https://cdn.rawgit.com/Morgareth99/Dotfiles/4ed3e219/Arch/logo.png)
+<p align="center"> 
+<img src="https://raw.githubusercontent.com/Morgareth99/Dotfiles/4ed3e219/Arch/logo.png">
+</p>
 
 
-
-## Morgareth  Dotfiles
+## My persolnal  dotfiles.
 
