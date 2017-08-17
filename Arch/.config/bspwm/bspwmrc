@@ -29,10 +29,6 @@ bspc config urgent_border_color         "#93a1a1"
 # -----------------------------------------------
 # Rules
 # -----------------------------------------------
-bspc rule -a Firefox desktop=^2 focus=on
-bspc rule -a Thunar desktop=^4 pseudo_tiled=on
-bspc rule -a Pavucontrol state=floating center=on
-bspc rule -a mpv state=floating
+bspc rule -a Firefox desktop=^2 
+bspc rule -a Thunar desktop=^4 
 bspc rule -a Telegram desktop=^1
-bspc rule -a feh floating=on manage=off
-bspc rule -a Xarchiver pseudo_tiled=on

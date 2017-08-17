@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#-------------------------------# 
+#-------------------------------#
 #  ╻ ╻╻┏┓╻╻╺┳╸┏━┓┏━╸            #
 #  ┏╋┛┃┃┗┫┃ ┃ ┣┳┛┃              #
 # ╹╹ ╹╹╹ ╹╹ ╹ ╹┗╸┗━╸            #
@@ -9,13 +9,13 @@
 #-------------------------------#
 
 ##----------------------------------------------------------------------------##
-## Update Xresources 
+## Update Xresources
 ##----------------------------------------------------------------------------##
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 ##----------------------------------------------------------------------------##
-## My fonts   
+## My fonts
 ##----------------------------------------------------------------------------##
 
 xset +fp ~/.local/share/fonts
@@ -27,7 +27,7 @@ xset fp+ /usr/share/fonts/misc
 xset fp rehash
 
 ##----------------------------------------------------------------------------##
-## General settings 
+## General settings
 ##----------------------------------------------------------------------------##
 #x cursor
 xsetroot -cursor_name left_ptr&
@@ -56,15 +56,15 @@ devmon --exec-on-video "notify-send '%f mounted' 'Launching mpv...' -i mpv & mpc
 compton --config ~/.config/compton.conf -b &> /tmp/compton.log
 udiskie &
 numlockx &
-redshift -l -18.914608:-48.275380 -g 0.8 -m randr -v  & 
-xautolock -time 10 -locker slimlock -detectsleep &   
-xrandr --dpi 96 
+redshift -l -18.914608:-48.275380 -g 0.8 -m randr -v  &
+xautolock -time 10 -locker slimlock -detectsleep &
+xrandr --dpi 96
 thunar --daemon &
 #[ !  -s ~/.config/mpd/pid ] && mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 wmname LG3D
-hsetroot -tile  Wallpapers/image_015.png 
-firefox  & 
+hsetroot -tile  Wallpapers/image_039.png
+firefox  &
 
 ##----------------------------------------------------------------------------##
 ## startx

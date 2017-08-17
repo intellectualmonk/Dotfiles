@@ -68,9 +68,9 @@ URxvt.clipboard.pastecmd: xsel -ob
 !! Tabs
 !!----------------------------------------------------------------------------!!
 
-URxvt.tabbed.tabbar-fg : 6
+URxvt.tabbed.tabbar-fg : 161
 URxvt.tabbed.tabbar-bg : 235
-URxvt.tabbed.tab-fg : 6 
+URxvt.tabbed.tab-fg : 15 
 URxvt.tabbed.tab-bg : 235
 
 !!----------------------------------------------------------------------------!!
@@ -94,26 +94,26 @@ URxvt.url-select.underline: true
 !!Urxvt  colors
 !!----------------------------------------------------------------------------!!
 
-URxvt.colorIT:                       #DEDEDE
-URxvt.colorBD:                       #B1ACAC
-URxvt.colorUL:                       #6B6767
+!!URxvt.colorIT:                       #DEDEDE
+!!URxvt.colorBD:                       #B1ACAC
+!!URxvt.colorUL:                       #6B6767
 
 !!----------------------------------------------------------------------------!!
 !!General   colors
 !!----------------------------------------------------------------------------!!
 
-*cursorColor:  #c5c8c6
+*cursorColor:  #C12B4D
 *background:   #171A1F
 *foreground:   #c5c5c5
+*fadeColor :   #002233
 
-! black
-! Second black is grey
+! black! Second black is grey
 *color0:       #434e4a
 *color8:       #70838c
 
 ! red
-*color1:       #99736e
-*color9:       #99736e
+*color1:       #C12B4D
+*color9:       #EA1F4D
 
 ! green
 *color2:       #15967D

@@ -37,7 +37,7 @@ font-7 = Powerline Extra Symbols:size=25
 font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
 modules-left = powermenu mpd
-modules-center = bspwm
+modules-center = bspwm 
 modules-right =   updates  weather coretemps hddtemp nvidiatemp  memory cpu  volume date  
 
 wm-restack = bspwm
@@ -315,3 +315,5 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
+
