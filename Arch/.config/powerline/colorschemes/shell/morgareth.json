@@ -40,6 +40,6 @@
 		"cwd:divider":               { "fg": "white", "bg": "black", "attr": [] },
 		"virtualenv":                { "fg": "white", "bg": "darkcyan", "attr": [] },
 		"attached_clients":          { "fg": "gray8", "bg": "gray0", "attr": [] },
-		"fuzzy_time":          { "fg": "white", "bg": "gray0", "attr": [] }
+		"fuzzy_time":                { "fg": "gray2", "bg": "white", "attr": [] }
 	}
 }

@@ -11,7 +11,7 @@
                           
                                 "function": "powerline.segments.common.time.date",
                                 "args": {
-					"format": "$"
+					"format": ""
                         }
                        
                         },
