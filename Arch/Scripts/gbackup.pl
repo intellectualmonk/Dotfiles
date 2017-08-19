@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Usage: gbackup.pl <user>
 # Clone all the gists of a GitHub user
