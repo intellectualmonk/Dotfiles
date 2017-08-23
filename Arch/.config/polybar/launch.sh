@@ -9,5 +9,6 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
 polybar morgareth -q &
+polybar morgareth1 -q &
 
 echo "Launched the main bar ..."
