@@ -3,8 +3,8 @@ background = #171A1F
 background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #15967D
-secondary = #15967D
+primary = #000000D
+secondary = #000000D
 alert = #bd2c40
 menu = #ffffff
 

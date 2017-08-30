@@ -1,10 +1,10 @@
 [colors]
-background = #2C2F34
+background = #212121
 background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #15967D
-secondary = #C12B4D
+primary = #000000D
+secondary = #C02A4C
 alert = #bd2c40
 menu = #ffffff
 
@@ -37,7 +37,7 @@ font-7 = Powerline Extra Symbols:size=25
 font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
 modules-left =  mpd
-modules-center = date 
+modules-center = date clock  
 modules-right =   updates  coretemps hddtemp nvidiatemp  memory cpu    
 
 
@@ -70,15 +70,14 @@ font-6 = NotoSans-Regular:size=8;0
 font-7 = Powerline Extra Symbols:size=25
 font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
-modules-left = menu github xkeyboard
-modules-center = bspwm 
+modules-left = menu github xkeyboard bitcoin
+modules-center = bspwm  
 modules-right = filesystem mail  weather  volume    
 
 wm-restack = bspwm
 override-redirect = true
 enable-ipc = true
 locale = pt_BR.UTF-8
-
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -108,6 +107,13 @@ exec-if = sensors
 exec = sensors|awk '/Core/{print substr($3, 2, length($3)-5)}'|awk '{if (match($0,/[0-9]+/,m)) print m[0]"°C"}'|tr '\n' ' '
 format =  <label>
 format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/bitcoin]
+type = custom/script
+exec = curl -sSL https://api.coinmarketcap.com/v1/ticker/bitcoin/\?convert\=BRL | jq -r '.[0]|.price_usd' | sed 's/^/Ƀ /'   
+format =  <label>
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 
 [module/filesystem]
@@ -254,26 +260,30 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
-;format-underline = #f90000
 label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-;format = <label> <bar-used>
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
-;format-underline = #4bffdc
 label = %gb_used%
 
 [module/date]
 type = internal/date
 interval = 1.0
 date = %a %d-%m-%y
+format-prefix = " "
+format-prefix-foreground =  ${colors.secondary}
+label = %date%  
+
+[module/clock]
+type = internal/date
+interval = 1.0
 time = %H:%M:%S
 format-prefix = " "
 format-prefix-foreground =  ${colors.secondary}
-label = %date% %time%  
+label = %time%  
 
 [module/volume]
 type = internal/volume

@@ -50,6 +50,8 @@ setopt autopushd pushdsilent pushdtohome
 
 setopt prompt_subst
 
+setopt INTERACTIVE_COMMENTS
+
 ## Remove duplicate entries
 setopt pushdignoredups
  
@@ -327,4 +329,56 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=default,fg=white,bold'
 
 # Is a global variable that defines how the command history will be searched for your query. Its default value causes this script to perform a case-insensitive search
 HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+
+
+#Zsh Highlight Styles (main)
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=white,bold'
+
+ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=151,bold'
+
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=166,bold'
+
+ZSH_HIGHLIGHT_STYLES[command]='fg=red,bold'
+
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=red,bold'
+
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=red,bold'
+
+ZSH_HIGHLIGHT_STYLES[function]='fg=blue,bold'
+
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=154,bold'
+
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
+
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=123,bold'
+
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=99,bold'
+
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=6,bold'
+
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=137,bold'
+
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=177,bold'
+
+#Zsh styles for  brackets
+
+# To define styles for nested brackets up to level 4
+ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=yellow,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
+
+#To define styles for unmatched brackets
+ZSH_HIGHLIGHT_STYLES[bracket-error]='fg=118,bold'
+
+
+
+
 

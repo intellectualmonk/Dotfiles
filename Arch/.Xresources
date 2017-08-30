@@ -98,9 +98,12 @@ URxvt.cursorBlink: true
 !!Urxvt  colors
 !!----------------------------------------------------------------------------!!
 
-URxvt.colorIT:                       #DEDEDE
-URxvt.colorBD:                       #B1ACAC
-URxvt.colorUL:                       #6B6767
+URxvt.colorIT:                        #DEDEDE
+URxvt.colorBD:                        #B1ACAC
+!URxvt.colorUL:                        #C02A4C
+URxvt.highlightTextColor:             #ffffff
+URxvt.highlightColor:                 #C02A4C
+!URxvt.underlineColor:                 #1D1F21
 
 !!----------------------------------------------------------------------------!!
 !!General   colors
@@ -108,7 +111,7 @@ URxvt.colorUL:                       #6B6767
 
 *background: #1D1F21
 *foreground: #C5C8C6
-*cursorColor: #C3FF00
+*cursorColor: #C02A4C
 
 ! black
 *color0: #282A2E
@@ -132,5 +135,6 @@ URxvt.colorUL:                       #6B6767
 *color6: #5E8D87
 *color14: #8ABEB7
 ! white
-*color7: #707880
+*color7: #F5F6F7
 *color15: #C5C8C6 
+
