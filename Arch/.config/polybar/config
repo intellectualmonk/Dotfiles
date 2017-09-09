@@ -70,7 +70,7 @@ font-6 = NotoSans-Regular:size=8;0
 font-7 = Powerline Extra Symbols:size=25
 font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
-modules-left = menu github xkeyboard bitcoin
+modules-left = menu github xkeyboard bitcoin news 
 modules-center = bspwm  
 modules-right = filesystem mail  weather  volume    
 
@@ -78,6 +78,16 @@ wm-restack = bspwm
 override-redirect = true
 enable-ipc = true
 locale = pt_BR.UTF-8
+
+[module/news]
+type = custom/script
+interval = 1200
+format = <label> 
+label = "%output%"
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+exec = .config/polybar/news.py
+
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -267,7 +277,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
-label = %gb_used%
+label = %percentage_used%%
 
 [module/date]
 type = internal/date

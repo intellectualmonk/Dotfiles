@@ -35,6 +35,9 @@ xsetroot -cursor_name left_ptr&
 #typematic delay/ rate
 xset r rate 200 20
 
+#Change blank time to 1 hour 
+xset s 3600 3600
+
 #no bell
 xset b off
 
@@ -60,11 +63,11 @@ redshift -l -18.914608:-48.275380 -g 0.8 -m randr -v  &
 xautolock -time 10 -locker slimlock -detectsleep &
 xrandr --dpi 96
 thunar --daemon &
-#[ !  -s ~/.config/mpd/pid ] && mpd
+[ !  -s ~/.config/mpd/pid ] && mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 wmname LG3D
-hsetroot -tile  Wallpapers/image_039.png
-firefox  &
+feh --bg-scale Wallpapers/image_037.png &
+# ~/.config/mopidy/start &
 
 ##----------------------------------------------------------------------------##
 ## startx
@@ -75,7 +78,7 @@ _start_session() {
   case $session in
       bspwm             ) exec bspwm;;
       xmonad            ) exec xmonad;;
-      2bwm              ) exec 2bwm ;;
+      i3wm              ) exec i3;;
       # No known session, try to run it as command
       *) exec "$1";;
   esac

@@ -12,10 +12,6 @@
 #Thealiases used in this configuration are exclusive from Arch Linux and derivates.                        #
 #############################################################################################################
 
-source /etc/profile.d/autojump.zsh
-
-[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
-
 if [ -f ~/Zsh/.zsh_aliases ]; then
   source ~/.zsh_aliases
 fi
@@ -24,10 +20,18 @@ if [ -f ~/Zsh/.zsh_functions ]; then
   source ~/Zsh/.zsh_functions
 fi
 
-#Syntax-highlighting  similar to shell Fish. Its necessary install the package zsh-syntax-highlighting
- source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+#Generic colouriser
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
+
+#Syntax-highlighting  similar to shell Fish. Its necessary install the package zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#ZSH port of the FISH shell's history search
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+#A cd command that learns - easily navigate directories from the command line
+source /etc/profile.d/autojump.zsh
 
 #Fish-like autosuggestions for zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
