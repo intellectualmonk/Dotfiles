@@ -4,7 +4,7 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #000000D
-secondary = #C02A4C
+secondary = #1A8A74
 alert = #bd2c40
 menu = #ffffff
 

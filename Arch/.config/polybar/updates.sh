@@ -6,7 +6,7 @@ aur=$(cower -u| perl -lne 'END { print $. }' )
 check=$((pac + aur))
 if [[ "$check" != "0" ]]
 then
-    echo "$pac %{F#C02A4C} %{F-} $aur"
+    echo "$pac %{F#1A8A74} %{F-} $aur"
 else
-    echo "%{F#C02A4C}%{F-}Updated"
+    echo "%{F#1A8A74}%{F-}Updated"
 fi

@@ -1,0 +1,10 @@
+python2-autopep8
+python2-isort
+python2-pillow
+python2-pylint
+python2-six
+python2-yapf
+python-dbus
+python-feedparser
+python-ipdb
+ 
