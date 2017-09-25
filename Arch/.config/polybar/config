@@ -4,7 +4,7 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #000000D
-secondary = #1A8A74
+secondary = #C02A4C
 alert = #bd2c40
 menu = #ffffff
 
@@ -24,17 +24,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-underline-size = 2
-
-font-0 = fixed:pixelsize=8;1
+font-0 = Exo 2:pixelsize=8;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:size=7;0
-font-4 = Termsynu:size=10;0
-font-5 = MaterialIcons:size=10;-1
-font-6 = NotoSans-Regular:size=8;0
-font-7 = Powerline Extra Symbols:size=25
-font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
 modules-left =  mpd
 modules-center = date clock  
@@ -57,20 +49,13 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-underline-size = 2
 bottom  = true 
 
-font-0 = fixed:pixelsize=8;1
+font-0 = Exo 2:pixelsize=8;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:size=7;0
-font-4 = Termsynu:size=10;0
-font-5 = MaterialIcons:size=10;-1
-font-6 = NotoSans-Regular:size=8;0
-font-7 = Powerline Extra Symbols:size=25
-font-8 = Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=25
 
-modules-left = menu github xkeyboard bitcoin news 
+modules-left = menu load-average kernel bitcoin news 
 modules-center = bspwm  
 modules-right = filesystem mail  weather  volume    
 
@@ -84,31 +69,24 @@ type = custom/script
 interval = 1200
 format = <label> 
 label = "%output%"
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 exec = .config/polybar/news.py
 
-
-[module/xkeyboard]
-type = internal/xkeyboard
-
-blacklist-0 = num lock
-
-format-prefix = " "
+[module/kernel]
+type = custom/script
+exec = hostnamectl | awk -F- '/Kernel/{ OFS="-";NF--; print }'|awk '{print $3}'
+format =  <label>
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
-label-layout = %layout%
 
-label-indicator-padding = 2
-label-indicator-background = #ffffff
-
-[module/github]
-type = internal/github
-token = ${file:/home/morgareth/GITHUB_ACCESS_TOKEN}
-empty-notifications = true
-format = <label>
-format-prefix = " "
+[module/load-average]
+type = custom/script
+exec = < /proc/loadavg | awk '!($4=$NF="")'
+interval = 5
+format =  <label>
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
-label = %notifications%
 
 [module/coretemps]
 type = custom/script
@@ -122,6 +100,7 @@ format-prefix-foreground = ${colors.secondary}
 [module/bitcoin]
 type = custom/script
 exec = curl -sSL https://api.coinmarketcap.com/v1/ticker/bitcoin/\?convert\=BRL | jq -r '.[0]|.price_usd' | sed 's/^/Ƀ /'   
+interval = 15
 format =  <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
@@ -142,18 +121,18 @@ format-prefix-foreground = ${colors.secondary}
 
 [module/hddtemp]
 type = custom/script
-exec = hddtemp /dev/sda|awk '{print $4}'
+exec = nc localhost 7634 | awk -F'|' '{print $4}' | sed 's/$/°C/'
 format =  <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 
-[module/kernel]
-type = custom/script
-exec = uname -r|awk -F- '{ OFS="-";NF--; print }'  
-format = <label>
-format-prefix =" "
-format-prefix-foreground = ${colors.secondary}
-interval = 1024
+;[module/kernel]
+;type = custom/script
+;exec = uname -r|awk -F- '{ OFS="-";NF--; print }'  
+;format = <label>
+;format-prefix =" "
+;format-prefix-foreground = ${colors.secondary}
+;interval = 1024
 
 [module/bspwm]
 type = internal/bspwm
@@ -215,7 +194,6 @@ label-offline = mpd is off
 label-song-maxlen = 45
 label-song-ellipsis = true
 label-time-foreground =  ${colors.secondary}
-
 
 icon-prev = 
 icon-stop = 
