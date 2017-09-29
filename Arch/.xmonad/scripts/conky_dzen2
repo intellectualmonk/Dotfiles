@@ -7,7 +7,7 @@ use_spacer none
  
 
 TEXT
-^fg(\#C03A58) ^i($HOME/.xmonad/.icons/temp.xbm)^fg() ${exec python  $HOME/.config/polybar/weather.py}  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/temp.xbm)^fg() ${exec python  $HOME/.xmonad/scripts/weather.py}  \
 ^ca(1, $HOME/.xmonad/scripts/mpd.sh)^fg(\#C03A58) ^i($HOME/.xmonad/.icons/music.xbm)^fg() ^ca()  ${exec sh $HOME/.xmonad/scripts/mpc.sh}  \
 ^fg(\#C03A58) ^i($HOME/.xmonad/.icons/mail.xbm)^fg()  ${exec  sh $HOME/.xmonad/scripts/mail.sh}  \
 ^fg(\#C03A58) ^i($HOME/.xmonad/.icons/mem.xbm)^fg()  ${exec awk '/MemTotal/ {t=$2} /MemFree/ {f=$2} /^Cached/ {c=$2} END {print t-f-c " " t;}' /proc/meminfo  | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#C03A58' -ss 1 -sw 3  -nonl -s o -max 101 }  \
