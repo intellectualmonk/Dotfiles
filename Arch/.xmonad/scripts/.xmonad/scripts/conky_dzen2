@@ -7,20 +7,20 @@ use_spacer none
  
 
 TEXT
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/temp.xbm)^fg() ${execi 10 curl -s "https://www.wunderground.com/q/zmw:00000.68.83525" | grep "og:title"|cut -d\" -f4|sed 's/&deg;/°C /;s/[,|]//g'|awk 'NR==1!($2="");{sub(" ", "")}1'}  \
-^ca(1, $HOME/.xmonad/scripts/mpd.sh)^fg(\#15967D) ^i($HOME/.xmonad/.icons/music.xbm)^fg() ^ca()  ${exec sh $HOME/.xmonad/scripts/mpc.sh}  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/mail.xbm)^fg()  ${exec  sh $HOME/.xmonad/scripts/mail.sh}  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/mem.xbm)^fg()  ${exec awk '/MemTotal/ {t=$2} /MemFree/ {f=$2} /^Cached/ {c=$2} END {print t-f-c " " t;}' /proc/meminfo  | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#15967D' -ss 1 -sw 3  -nonl -s o -max 101 }  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/diskette.xbm)^fg()  ${exec df -h / | awk 'NR==2{gsub(/[[:punct:]]/,""); print $5}'  | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#15967D' -ss 1 -sw 3  -nonl -s o -max }  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/cpu.xbm)^fg()  ${exec ps -eo pcpu | awk 'BEGIN {sum=0.0f} {sum+=$1} END {print sum}' | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#15967D' -ss 1 -sw 3  -nonl -s o -max}  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/arch1.xbm)^fg()  ${exec pacaur -k | awk 'END {print NR}' }  \
-^ca(1, $HOME/.xmonad/scripts/update.sh)^fg(\#15967D) ^i($HOME/.xmonad/.icons/pacman.xbm)^fg() ^ca()  ${exec checkupdates | awk 'END {print NR}' }  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/net_up_01.xbm)^fg()  ${upspeedf enp2s0}  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/net_down_01.xbm)^fg()  ${downspeedf enp2s0}  \
-^fg(\#15967D) ^i($HOME/.xmonad/.icons/vol2.xbm)^fg()  ${exec  amixer | awk 'NR==5{gsub(/[[:punct:]]/,""); print $4}' | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#15967D' -ss 1 -sw 3  -nonl -s o -max 101}  \
-^ca(1, $HOME/.xmonad/scripts/date.sh)^fg(\#15967D)^i($HOME/.xmonad/.icons/clock1.xbm)^fg() ^ca()  ${exec timedatectl | awk 'NR==1 {print $3,$5}'}  \
-^fg(\#15967D)^i($HOME/.xmonad/.icons/mr2.xbm)^fg()\
-^ca(1, $HOME/.xmonad/scripts/info-dzen.sh)^bg(\#15967D)^i($HOME/.xmonad/.icons/user.xbm)^fg() ^ca()  ${exec hostnamectl|awk '{$1=$2="";sub(/^[ \t]+/, "")}NR==1'}\
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/temp.xbm)^fg() ${execi 10 curl -s "https://www.wunderground.com/q/zmw:00000.68.83525" | grep "og:title"|cut -d\" -f4|sed 's/&deg;/°C /;s/[,|]//g'|awk 'NR==1!($2="");{sub(" ", "")}1'}  \
+^ca(1, $HOME/.xmonad/scripts/mpd.sh)^fg(\#C03A58) ^i($HOME/.xmonad/.icons/music.xbm)^fg() ^ca()  ${exec sh $HOME/.xmonad/scripts/mpc.sh}  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/mail.xbm)^fg()  ${exec  sh $HOME/.xmonad/scripts/mail.sh}  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/mem.xbm)^fg()  ${exec awk '/MemTotal/ {t=$2} /MemFree/ {f=$2} /^Cached/ {c=$2} END {print t-f-c " " t;}' /proc/meminfo  | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#C03A58' -ss 1 -sw 3  -nonl -s o -max 101 }  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/diskette.xbm)^fg()  ${exec df -h / | awk 'NR==2{gsub(/[[:punct:]]/,""); print $5}'  | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#C03A58' -ss 1 -sw 3  -nonl -s o -max }  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/cpu.xbm)^fg()  ${exec ps -eo pcpu | awk 'BEGIN {sum=0.0f} {sum+=$1} END {print sum}' | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#C03A58' -ss 1 -sw 3  -nonl -s o -max}  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/arch1.xbm)^fg()  ${exec pacaur -k | awk 'END {print NR}' }  \
+^ca(1, $HOME/.xmonad/scripts/update.sh)^fg(\#C03A58) ^i($HOME/.xmonad/.icons/pacman.xbm)^fg() ^ca()  ${exec checkupdates | awk 'END {print NR}' }  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/net_up_01.xbm)^fg()  ${upspeedf enp2s0}  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/net_down_01.xbm)^fg()  ${downspeedf enp2s0}  \
+^fg(\#C03A58) ^i($HOME/.xmonad/.icons/vol2.xbm)^fg()  ${exec  amixer | awk 'NR==5{gsub(/[[:punct:]]/,""); print $4}' | gdbar -h 7 -w 60 -fg  '#FFFBF8' -bg  '#C03A58' -ss 1 -sw 3  -nonl -s o -max 101}  \
+^ca(1, $HOME/.xmonad/scripts/date.sh)^fg(\#C03A58)^i($HOME/.xmonad/.icons/clock1.xbm)^fg() ^ca()  ${exec timedatectl | awk 'NR==1 {print $3,$5}'}  \
+^fg(\#C03A58)^i($HOME/.xmonad/.icons/mr2.xbm)^fg()\
+^ca(1, $HOME/.xmonad/scripts/info-dzen.sh)^bg(\#C03A58)^i($HOME/.xmonad/.icons/user.xbm)^fg() ^ca()  ${exec hostnamectl|awk '{$1=$2="";sub(/^[ \t]+/, "")}NR==1'}\
       
 
 

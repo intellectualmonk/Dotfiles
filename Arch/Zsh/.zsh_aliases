@@ -1,3 +1,5 @@
+alias tabs=" jq '.windows[].tabs[].entries[].url' $HOME/.mozilla/firefox/*.default/sessionstore-backups/recovery.js"
+
 alias ex=extract_archive
 
 #Alias git
@@ -5,7 +7,7 @@ alias ex=extract_archive
  alias autogit="git add Arch && git commit -m ':construction:' && git push origin master"
 
 #Aliases - Shortcuts to commands
- alias ls="ls -F -h --color=auto"
+ alias ls='ls -F -h --color=auto'
  alias dir='dir --color=auto'
  alias vdir='vdir --color=auto'
  alias grep='grep --color=auto'

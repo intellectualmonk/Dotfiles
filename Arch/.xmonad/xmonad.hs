@@ -65,7 +65,7 @@ myLogHook h = do
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput		= hPutStrLn h
-  , ppCurrent 		= dzenColor "#15967D" "#2B2C2B" . pad . wrap  " "  " "
+  , ppCurrent 		= dzenColor "#C03A58" "#2B2C2B" . pad . wrap  " "  " "
   , ppVisible		= dzenColor "#FFFBF8" "#2B2C2B" . pad . wrap  " "  " "
   , ppHidden		= dzenColor  "#FFFBF8" "#2B2C2B" . pad . wrap  " "  " "
   , ppHiddenNoWindows	= dzenColor "#FFFBF8" "#2B2C2B" . pad . wrap  " "  " "
@@ -90,7 +90,7 @@ myKeys = [
     ((mod4Mask, xK_a),
             spawn "firefox")
         , ((mod4Mask, xK_p),
-            spawn  "dmenu_run -i -x 415 -y 330 -w 450 -h 20 -l 4 -fn 'xft:edges:pixelsize=9:antialias=True:hinting=True' -nb '#111111' -nf '#FFFBF8' -sb '#15967D' -sf '#111111'")
+            spawn  "dmenu_run -i -x 415 -y 330 -w 450 -h 20 -l 4 -fn 'xft:edges:pixelsize=9:antialias=True:hinting=True' -nb '#111111' -nf '#FFFBF8' -sb '#C03A58' -sf '#111111'")
         , ((0, xK_Print),
             spawn "maim -m 10 ~/Imagens/$(date +%d-%m-%y_%H:%M:%S).png | notify-send -u low 'Screenshot saved to ~/Imagens'")
         , ((mod4Mask, xK_Print),
@@ -145,7 +145,7 @@ myApps = composeAll
 -- main code --
 ---------------------------------------------------------------------------
 main = do 
-bar1 <- spawnPipe "echo '^fg(#15967D)^p(;+18)^r(1366x7)' | dzen2 -p -e 'button3=' -fn 'Droid Sans Fallback-8' -ta c -fg '#EFEFEF' -bg '#2B2C2B' -h 32  -w 1366"
+bar1 <- spawnPipe "echo '^fg(#C03A58)^p(;+18)^r(1366x7)' | dzen2 -p -e 'button3=' -fn 'Droid Sans Fallback-8' -ta c -fg '#EFEFEF' -bg '#2B2C2B' -h 32  -w 1366"
 bar2 <- spawnPipe "sleep 0.1;dzen2 -p -ta l -e 'button3=' -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC'  -bg '#2B2C2B' -h 22 -y 5 -w 365"
 bar3 <- spawnPipe "sleep 0.1;conky -c ~/.xmonad/scripts/conky_dzen2  | dzen2 -p -ta r -e 'button3='  -fn  'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#2B2C2B' -x 365 -h 22 -y 5 -w 1050" 
 xmonad $ def
@@ -154,7 +154,7 @@ xmonad $ def
     , borderWidth = 1
     , normalBorderColor = "#FFFBF8"
     , focusedBorderColor = "#404040"
-    , terminal = "urxvtc"
+    , terminal = "st"
     , workspaces = myWorkspaces
     , modMask = mod4Mask
     , startupHook = setWMName "Xmonad"
@@ -164,5 +164,5 @@ xmonad $ def
 
 laycon   = "/home/morgareth/.xmonad/.icons/"
 laycon1 = " ^i(/home/morgareth/.xmonad/.icons/)"
-lay_start ="^bg(" ++  "#15967D" ++ ")" ++  "   " ++ laycon1
-lay_end = "^ca()^bg(" ++ "#2B2C2B" ++ ")^fg(" ++ "#15967D" ++ ")^i(/home/morgareth/.xmonad/.icons/mr1.xbm)^fg()"
+lay_start ="^bg(" ++  "#C03A58" ++ ")" ++  "   " ++ laycon1
+lay_end = "^ca()^bg(" ++ "#2B2C2B" ++ ")^fg(" ++ "#C03A58" ++ ")^i(/home/morgareth/.xmonad/.icons/mr1.xbm)^fg()"

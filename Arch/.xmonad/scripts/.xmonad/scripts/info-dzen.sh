@@ -2,7 +2,7 @@
 
 FG='#404040'
 BG='#2B2C2B'
-fg_title='#15967D'
+fg_title='#C03A58'
 
 font1="Inconsolata:size=10"
 font_title="Inconsolata:size=10"
@@ -59,7 +59,7 @@ Keyboard=$(hwinfo --short | awk '/keyboard/ {for(i=1; i<=1; i++) {getline; print
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Font       ^fn($icons4)^fn($font1) $GtkFont    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Shell      ^fn($icons4)^fn($font1) $Shell    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Birth      ^fn($icons4)^fn($font1) $Birthd  "
- echo "   ^fg(#15967D)------------------------------------------------------------------"
+ echo "   ^fg(#C03A58)------------------------------------------------------------------"
  echo "   ^fg(#FCFCFC)^fn($font_title)^p(+82)^fg($fg_title)^bg(#2B2C2B) INFO "
  echo ""
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Processor  ^fn($icons4)^fn($font1) $Cpu    "
@@ -73,7 +73,7 @@ Keyboard=$(hwinfo --short | awk '/keyboard/ {for(i=1; i<=1; i++) {getline; print
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) HD Model   ^fn($icons4)^fn($font1) $Hd    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Bios Date  ^fn($icons4)^fn($font1) $Bdate    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Vendor     ^fn($icons4)^fn($font1) $Bvendor    "
- echo "   ^fg(#15967D)---------------------------------------------------------------------"
+ echo "   ^fg(#C03A58)---------------------------------------------------------------------"
  echo "   ^fg(#FCFCFC)^fn($font_title)^p(+83)^fg($fg_title)^bg(#2B2C2B) HARDWARE "
  echo ""
  echo "   ^fg(#FCFCFC)^fn($font_title)^fg($fg_title)^bg(#2B2C2B) RAM "
@@ -88,7 +88,7 @@ Keyboard=$(hwinfo --short | awk '/keyboard/ {for(i=1; i<=1; i++) {getline; print
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Hdd-temp   ^fn($icons4)^fn($font1) $Hdd    "
  echo "   ^fg(#FCFCFC)^fn($icons2)^fn($font1) Fan        ^fn($icons4)^fn($font1) $Fan    "
  echo ""
- echo "   ^fg(#15967D)---------------------------------------------------------------------"
+ echo "   ^fg(#C03A58)---------------------------------------------------------------------"
  echo "   ^fg(#FCFCFC)^fn($font_title)^p(+83)^fg($fg_title)^bg(#2B2C2B) POWER "
  echo "   ^ca(1,systemctl poweroff)^fg(#FCFCFC)^fn($icons2)^fn($font1) Poweroff ^ca() " 
  echo "   ^ca(1,systemctl reboot)^fg(#FCFCFC)^fn($icons2)^fn($font1) Reboot ^ca() "   

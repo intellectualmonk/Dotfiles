@@ -2,7 +2,7 @@
 
 position(){
 pos="$(mpc | awk 'NR==2' | awk '{print $4}' | sed 's/(//' | sed 's/%)//')"
-bar="$(echo "$pos" | gdbar -w 190 -h 2.5 -fg "#15967D" -bg "#FFFFFF")"
+bar="$(echo "$pos" | gdbar -w 190 -h 2.5 -fg "#C03A58" -bg "#FFFFFF")"
 echo "$bar"
 return
 }
