@@ -8,11 +8,12 @@
 # no login manager since forever#
 #-------------------------------#
 
+
 ##----------------------------------------------------------------------------##
 ## Update Xresources
 ##----------------------------------------------------------------------------##
 
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge -I "$HOME" ~/.Xresources
 
 ##----------------------------------------------------------------------------##
 ## My fonts
@@ -35,7 +36,7 @@ xsetroot -cursor_name left_ptr&
 #typematic delay/ rate
 xset r rate 200 20
 
-#Change blank time to 1 hour 
+#Change blank time to 1 hour
 xset s 3600 3600
 
 #no bell
@@ -48,6 +49,13 @@ xset s 600 600
 ## Autostart programs + scripts
 ##----------------------------------------------------------------------------------------------------------------------##
 
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
 devmon --exec-on-video "notify-send '%f mounted' 'Launching mpv...' -i mpv & mpc pause & mpv -vo opengl-hq dvdnav://menu"\
 	--exec-on-drive "thunar %d"\
 	--exec-on-disc "thunar %d"\
@@ -58,7 +66,6 @@ devmon --exec-on-video "notify-send '%f mounted' 'Launching mpv...' -i mpv & mpc
 (sleep 2s && dunst) &
 compton --config ~/.config/compton.conf -b &> /tmp/compton.log
 udiskie &
-numlockx &
 redshift -l -18.914608:-48.275380 -g 0.8 -m randr -v  &
 xautolock -time 10 -locker slimlock -detectsleep &
 xrandr --dpi 96
@@ -66,19 +73,19 @@ thunar --daemon &
 [ !  -s ~/.config/mpd/pid ] && mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 wmname LG3D
-feh --bg-scale Wallpapers/image_037.png &
+nitrogen --restore &
 # ~/.config/mopidy/start &
-
+numlockx &
 ##----------------------------------------------------------------------------##
 ## startx
 ##----------------------------------------------------------------------------##
 
 _start_session() {
-  session=${1:-bspwm}
+  session=${1:-xmonad}
   case $session in
       bspwm             ) exec bspwm;;
       xmonad            ) exec xmonad;;
-      i3wm              ) exec i3;;
+      rat               ) exec /usr/bin/ratpoison;;
       # No known session, try to run it as command
       *) exec "$1";;
   esac
