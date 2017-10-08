@@ -25,7 +25,7 @@ super + w
 
 # Telegram
 super + a
-    ./Telegram/Telegram 
+    ./.config/Telegram/Telegram 
 
 # thunar
 super + r 

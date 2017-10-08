@@ -1,5 +1,5 @@
 [colors]
-background = #212121
+background = #17181A
 background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
@@ -55,7 +55,7 @@ font-0 = Exo 2:pixelsize=8;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = menu load-average kernel bitcoin news 
+modules-left = menu load-average kernel bitcoin  
 modules-center = bspwm  
 modules-right = filesystem mail  weather  volume    
 
@@ -82,7 +82,7 @@ format-prefix-foreground = ${colors.secondary}
 
 [module/load-average]
 type = custom/script
-exec = < /proc/loadavg | awk '!($4=$NF="")'
+exec = cat /proc/loadavg | awk '!($4=$NF="")'
 interval = 5
 format =  <label>
 format-prefix = " "
