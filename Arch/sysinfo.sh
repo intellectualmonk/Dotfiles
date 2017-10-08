@@ -1,7 +1,7 @@
 #!/bin/bash
  
  
-OS=$(hostnamectl|awk '{$1=$2="";sub(/^[ \t]+/, "")}NR==6')
+OS=$(hostnamectl|awk '{$1=$2="";sub(/^[ \t]+/, "")}NR==7')
 HOST=$(hostnamectl|awk '{$1=$2="";sub(/^[ \t]+/, "")}NR==1')
 KERNEL=$(hostnamectl | awk -F- '/Kernel/{ OFS="-";NF--; print }'|awk '{print $3}')
 ARCH=$(uname -m)
