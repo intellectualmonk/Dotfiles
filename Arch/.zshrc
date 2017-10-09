@@ -327,3 +327,69 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=default,fg=white,bold'
 
 # Is a global variable that defines how the command history will be searched for your query. Its default value causes this script to perform a case-insensitive search
 HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+
+# To define styles for nested brackets up to level 4
+ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=yellow,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
+
+ZSH_HIGHLIGHT_STYLES[bracket-error]='fg=blue,bold'
+
+# Declare the variable
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# To differentiate aliases from other command types
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta'
+
+ZSH_HIGHLIGHT_STYLES[function]='fg=yellow'
+
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=green'
+
+ZSH_HIGHLIGHT_STYLES[command]='fg=red'
+
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=blue'
+
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=127'
+
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=167'
+
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=253'
+
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan'
+
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=208'
+
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=135'
+
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=123'
+
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=105'
+
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=14'
+
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=7'
+
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=30'
+
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=15'
+
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=220'
+
+# To have paths colored instead of underlined
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=208'
+
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=161'
+
+ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=154'
+
+# To enable highlighting of globbing expressions
+ZSH_HIGHLIGHT_STYLES[globbing]='yellow'
+
+# To enable cursor highlighting 
+ZSH_HIGHLIGHT_STYLES[cursor]='bg=cyan'
+
+#The style for the whole line
+ZSH_HIGHLIGHT_STYLES[line]='bold'
