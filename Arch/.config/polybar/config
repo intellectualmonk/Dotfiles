@@ -27,10 +27,11 @@ module-margin-right = 2
 font-0 = Exo 2:pixelsize=8;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=10;1
 
-modules-left =  mpd
+modules-left = mpd
 modules-center = date clock  
-modules-right =   updates  coretemps hddtemp nvidiatemp  memory cpu    
+modules-right = coretemps hddtemp nvidiatemp memory cpu    
 
 
 [bar/morgareth1]
@@ -57,8 +58,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = menu load-average kernel bitcoin  
 modules-center = bspwm  
-modules-right = filesystem mail  weather  volume    
-
+modules-right = updates filesystem weather volume    
 wm-restack = bspwm
 override-redirect = true
 enable-ipc = true
@@ -99,7 +99,7 @@ format-prefix-foreground = ${colors.secondary}
 
 [module/bitcoin]
 type = custom/script
-exec = curl -sSL https://api.coinmarketcap.com/v1/ticker/bitcoin/\?convert\=BRL | jq -r '.[0]|.price_usd' | sed 's/^/Ƀ /'   
+exec = curl -sSL https://coinbase.com/api/v1/prices/historical| awk -F"," 'NR==1{print $NF}'| sed 's/^/$/'   
 interval = 15
 format =  <label>
 format-prefix = " "
@@ -107,7 +107,8 @@ format-prefix-foreground = ${colors.secondary}
 
 [module/filesystem]
 type = custom/script
-exec = df -h / | awk 'NR==2 {total=$2; used=$3; print used" - "total}'
+;exec = df -h | awk '$NF=="/"{printf "%s\t\t",$5}'
+exec =  df -h / | awk 'NR==2 {print $5}'
 format =  <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
@@ -250,28 +251,35 @@ format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 label = %percentage%%
 
+;[module/memory]
+;type = internal/memory
+;interval = 2
+;format-prefix = " "
+;format-prefix-foreground = ${colors.secondary}
+;label = %percentage_used%%
+
 [module/memory]
-type = internal/memory
+type = custom/script
+exec =  awk '/^Mem/ {printf("%u%%", 100*$3/$2);}' <(free -m)
 interval = 2
+format =  <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
-label = %percentage_used%%
 
 [module/date]
-type = internal/date
-interval = 1.0
-date = %a %d-%m-%y
+type = custom/script
+exec =  date +%a\ %d/%m/%y|sed -E 's/\S+/\u&/'
+format =  <label>
 format-prefix = " "
-format-prefix-foreground =  ${colors.secondary}
-label = %date%  
+format-prefix-foreground = ${colors.secondary}
 
 [module/clock]
-type = internal/date
-interval = 1.0
-time = %H:%M:%S
+type = custom/script
+exec = date +%H:%M:%S
+interval = 1
+format =  <label>
 format-prefix = " "
-format-prefix-foreground =  ${colors.secondary}
-label = %time%  
+format-prefix-foreground = ${colors.secondary}
 
 [module/volume]
 type = internal/volume
