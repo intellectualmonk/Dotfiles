@@ -10,3 +10,4 @@ then
 else
     echo "%{F#C02A4C}%{F-}Updated"
 fi
+
