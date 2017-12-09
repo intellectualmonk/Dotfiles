@@ -58,7 +58,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = menu load-average kernel bitcoin  
 modules-center = bspwm  
-modules-right = updates filesystem weather volume    
+modules-right = updates filesystem  weathericons volume    
 wm-restack = bspwm
 override-redirect = true
 enable-ipc = true
@@ -212,13 +212,19 @@ format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 exec = ~/.config/polybar/mail.py
 
-[module/weather]
+;[module/weather]
+;type = custom/script
+;interval = 10
+;format = <label>
+;format-prefix = " "
+;format-prefix-foreground = ${colors.secondary}
+;exec = ~/.config/polybar/weather.py
+
+[module/weathericons]
 type = custom/script
 interval = 10
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.secondary}
-exec = ~/.config/polybar/weather.py
+exec = ~/.config/polybar/weathericons
 
 [module/updates]
 type = custom/script

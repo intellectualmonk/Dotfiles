@@ -74,18 +74,19 @@ thunar --daemon &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 wmname LG3D
 nitrogen --restore &
-# ~/.config/mopidy/start &
-numlockx &
+numlockx on &
+(sleep 3s && conky -c ~/.xmonad/scripts/conky_dzen2 | dzen2 -p -ta r -e 'button3=' -fn 'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#03070B' -x 365 -h 25 -w 1050) &
+
 ##----------------------------------------------------------------------------##
 ## startx
 ##----------------------------------------------------------------------------##
 
 _start_session() {
-  session=${1:-xmonad}
+  session=${1:-dwm}
   case $session in
       bspwm             ) exec bspwm;;
       xmonad            ) exec xmonad;;
-      rat               ) exec /usr/bin/ratpoison;;
+      dwm               ) exec dwm;;
       # No known session, try to run it as command
       *) exec "$1";;
   esac

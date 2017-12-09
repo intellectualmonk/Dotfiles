@@ -12,6 +12,12 @@
 #Thealiases used in this configuration are exclusive from Arch Linux and derivates.                        #
 #############################################################################################################
 
+source  /usr/share/fzf/key-bindings.zsh
+source  /usr/share/fzf/completion.zsh
+
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
 source /etc/profile.d/autojump.zsh
 
 [[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
@@ -31,6 +37,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 
 #Fish-like autosuggestions for zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 # pkgfile includes a "command not found" hook for Bash and Zsh that will automatically search the official repositories, when entering an unrecognized command:
   source /usr/share/doc/pkgfile/command-not-found.zsh
@@ -98,8 +105,7 @@ setopt complete_aliases
 autoload -Uz compinit promptinit vcs_info
 compinit
 promptinit
-autoload -U colors 
-colors
+autoload -U colors && colors
 
 # Misc
 setopt ZLE                                  
@@ -207,9 +213,28 @@ autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
 # Powerfonts
-if [[ -r/usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-    source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
-fi
+#if [[ -r/usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+#    source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+#fi
+
+
+#precmd () {
+#      vcs_info
+#      print -Pn "\e]0;[%n@%M][%~]%#\a"
+#} 
+
+#export PROMPT="
+#┌─[⛧  %n ⛧ ]──────────────────────[%~]
+#└─[〠 %M 〠]─╼ "                          
+
+#RPROMPT=$'${vcs_info_msg_0_}\✠'
+ 
+# prompt hjem 8bit vimode                                                         
+
+PROMPT="%1d%F{1} ➜ "
+source /home/morgareth/zsh-git-prompt/zshrc.sh
+RPROMPT='$(git_super_status)'
+
 
 # Syntax coloring# wget https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -O ~/.dircolors
 eval $(dircolors -b $HOME/.dircolors)
@@ -244,7 +269,6 @@ key[Right]=${terminfo[kcuf1]}
 key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
  
-# setup key accordingly
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
@@ -393,3 +417,5 @@ ZSH_HIGHLIGHT_STYLES[cursor]='bg=cyan'
 
 #The style for the whole line
 ZSH_HIGHLIGHT_STYLES[line]='bold'
+
+
