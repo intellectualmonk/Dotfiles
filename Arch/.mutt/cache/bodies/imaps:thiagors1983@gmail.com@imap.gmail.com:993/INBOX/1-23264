@@ -1,0 +1,185 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.134.2 with SMTP id j2csp4309357pjj;
+        Tue, 12 Dec 2017 08:59:31 -0800 (PST)
+X-Received: by 10.129.80.137 with SMTP id e131mr3366559ywb.368.1513097971420;
+        Tue, 12 Dec 2017 08:59:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513097971; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vfWohgrljb/ZtD302GZbcZrHLcBAm3e+C1DyM7OFnckgwzmdMIY/R9ui9uOn3H88TW
+         qs6emEUpcqoEg++h1GeonZfbZCGODd6QhkUBmH+KfxEZKIyWFJh4AbAYhdnxXnfpQY3r
+         Rw+Wo9wqmFYwDYch/o+TCbwNS+m1sgVsbwgUAdhkkAkeOeGuybvS5E1PFBuFMrDsC96S
+         PnTuaxM1VDglSm17ezNGLCwhWCyEv3NUnDAEzbF9BzK3AK9o4r5rX5hLXBHQW7d3fdB9
+         MDHsS4S5s/U/JvxENcoc3HR8/RHf9soUaeYJun8C3or35Td0QXhcNlErhZUI+lLM0CRL
+         rNFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=b5JnL10gbNPRr1EJQav9VTftaV9hf99dELJJbjEmHrI=;
+        b=ug8DfvfNql3L95ighCENwUJNixji82CUvtz5ietWxkWJHySSFuqdvjT1KYa4KDNy/k
+         EUf0UqB+76VERXrp9kC6tuhxME1ZMVk2uJCVdDKT8NlrfPleZGGOoqdcNdp7GU7lQNcU
+         YTYNuX7jwLdleQYi4AJm83jh9FcwTVEYS/XHupuOB8SvMZiWtQWBNTS11Fg2i8Si0Np0
+         OMdAj2mrqH2c+hBdlh1lc4pPm9G9dMh6xgu2TN5TR5RwgsRfSYsraR6WWNZjQd4OH4yN
+         xI2tcIkp2nRdbSzVHBbhSctJscFOg9b/Kf3xtSVc8GM+4P5LC5n8D0oT1+/XA34Jsc8N
+         qR7g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=MHN5lNa1;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id s45sor5674831ybe.100.2017.12.12.08.59.31
+        for <thiagors1983@gmail.com>
+        (Google Transport Security);
+        Tue, 12 Dec 2017 08:59:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=MHN5lNa1;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=b5JnL10gbNPRr1EJQav9VTftaV9hf99dELJJbjEmHrI=;
+        b=MHN5lNa1b1okfTMYxUI6VcMxjWKStNK9cnK9E7qyzBoDBVN8iWqXQfwXxY0v7vdihf
+         ckq+n4C16Vm6DplCS0vYrIz9n8veflKuM4ZSAKqMC9wthqHeBz8V3SrmJY3sVVwLACsr
+         AtfgcAENJBS21STCaS+sLM8w6Jfsofh7xdsAtGEGjtXO+3KTJZVdn52eSW7Jg8a4tvXy
+         dUFI3sMothTowEcqoW1yTtb/Ae+6pOvGoXHv3xYrIgEG9XCQn7W6oUY3ibtFlLCHPSXb
+         ChvH0MDE/kkGCkTQwK2u96KdeXersB7+nr2G+u54Tx8rXpQeaniyNyZ0C6HetX0J3hkw
+         PWSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=b5JnL10gbNPRr1EJQav9VTftaV9hf99dELJJbjEmHrI=;
+        b=XGqe0rZbLrQZZEEn/RhpoglRdtPoPhEKr1TUHEfjWOWT0yEHq7Bb7rdlLmqzWNdk8T
+         uA5OnIYTQhKkdwFW5GMzsAbZa81o80h+aIZSRph6Vl+L00ZWdZsG50c7sbNRxvQnH0Oz
+         mfOYWNp3AlVfINl5fFPiSnwNZz2nsBfoWPdyKXhnUop5Z5ROYz73jNgIvYiu3jyZYIAw
+         MCyRHMw07Aj4xErvNhAQeRPx5ywCTrSF7LvYCza0k2tLbLtiD8ZtN6zDGL2Bce1IQtaY
+         t8UctV7gluxDs24WDIZSE1kbj6DGPLWgbCvVdm14Uj4O82ufZV+EZsFlwvm5rQlI4zBW
+         gXEA==
+X-Gm-Message-State: AKGB3mJoPZzVMOBcn8Litp15AC5udAyyB/FMHVzJ/BKdwDjBN1aomeAH
+	P0cSDETpWhhdgp0nX+lI4FRclH/69I5GsfucjZ1etLVpibkMPs9n+lLXk/4M
+X-Google-Smtp-Source: ACJfBouoHQHCTxATpFLGUjTYCAB42iWOW5CRUJlaQkNEzf8GTgBUQiD6Gio41Rpkq3PSlRIeVhpKrfFyo2UVXrDpbGRF/FyTgsseAYaxCk9Hw7sP
+MIME-Version: 1.0
+X-Received: by 10.37.210.146 with SMTP id j140mr2071834ybg.42.1513097971174;
+ Tue, 12 Dec 2017 08:59:31 -0800 (PST)
+Date: Tue, 12 Dec 2017 08:59:31 -0800 (PST)
+X-Notifications: XEAAAADeBBa5BxZDukIEj_nTbEHE
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTA5MzQzOTkyMDQwOTYzMTY0OTc1MiZhOlNRVUFSRV9TVUJTQ1JJUFRJT046MGMwZjMxYzEyN2Y3NWE0Mw
+X-Entity-Ref-ID: z13pyzqxrkepi1o5504cfvag0wv2hjyqzrs0k
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 116496275956756547808
+Reply-To: "Google+ (timeforchange 1)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMl82otTBMPOpbxntFoqdqtt803t414Kp35kuQuSzg4DsJgxuZjee37zr9Y2i1yOKWJUb0mnKtt-SdjFtoxlU-vaz_GusLPpdZ2qPMAIVZkIdGzYSB6HCrLCZVmDtztQWlCJji9NvrDrqGXncCC0tkbZ0EEIuegGJWFtAye0ptroVIMU4yE>
+X-UB: 63
+Precedence: bulk
+Message-ID: <-709801090@plus.google.com>
+Subject: [ArchMerge] I'm not sure what I'm missing, but I have...
+From: "Google+ (timeforchange 1)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="94eb2c05e19c150c680560279325"
+
+--94eb2c05e19c150c680560279325
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+dGltZWZvcmNoYW5nZSAxIGNvbXBhcnRpbGhvdSB1bWEgcG9zdGFnZW0gY29tIEFyY2hNZXJnZS4g
+VmVqYTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9l
+bXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DTkQxMDVqNWhOZ0NGUWxLVXdvZERXc0RvdyZw
+YXRoPSUyRjExNjQ5NjI3NTk1Njc1NjU0NzgwOCUyRnBvc3RzJTJGVWhweTRCRmdEUUUmZHQ9MTUx
+MzA5Nzk3MTA5MSZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANClZvY8OqIHJlY2ViZXUgZXN0ZSBl
+LW1haWwgcG9ycXVlIHNlIGluc2NyZXZldSBubyBBcmNoTWVyZ2Ugbm8gR29vZ2xlKy4gIA0KQXJj
+aE1lcmdlICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9ucy9lbWxpbms/
+ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q05EMTA1ajVoTmdDRlFsS1V3b2REV3NEb3cm
+cGF0aD0lMkZjb21tdW5pdGllcyUyRjEwOTM0Mzk5MjA0MDk2MzE2NDk3NSZkdD0xNTEzMDk3OTcx
+MDkxJnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIEFs
+dGVyZSBxdWFpcyBub3RpZmljYcOnw7VlcyB2b2PDqiByZWNlYmUgZGVzdGEgIA0KY29tdW5pZGFk
+ZTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9
+MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DTkQxMDVqNWhOZ0NGUWxLVXdvZERXc0RvdyZwYXRo
+PSUyRmNvbW11bml0aWVzJTJGMTA5MzQzOTkyMDQwOTYzMTY0OTc1JTNGcHJvbW8lM0Rub3RpZmlj
+YXRpb25zJmR0PTE1MTMwOTc5NzEwOTEmdWI9U1FVQVJFX1NVQlNDUklQVElPTiAgDQpFc3RhIG5v
+dGlmaWNhw6fDo28gZm9pIGVudmlhZGEgcGFyYSB0aGlhZ29yczE5ODNAZ21haWwuY29tLiBBY2Vz
+c2Ugc3VhcyAgDQpjb25maWd1cmHDp8O1ZXMgZGUgZW52aW8gZGUgbm90aWZpY2HDp8O1ZXMgcGFy
+YSBhdHVhbGl6YXIgc2V1IGVuZGVyZcOnbzogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9u
+b3RpZmljYXRpb25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DTkQxMDVq
+NWhOZ0NGUWxLVXdvZERXc0RvdyZwYXRoPSUyRnNldHRpbmdzJTJGcGx1cyZkdD0xNTEzMDk3OTcx
+MDkxJnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KQ2FuY2VsYXIgaW5zY3Jpw6fDo28gZGVzc2Vz
+IGUtbWFpbHM6ICANCmh0dHBzOi8vbm90aWZpY2F0aW9ucy5nb29nbGUuY29tL3Vuc3Vic2NyaWJl
+L0FKN1NzTWw4Mm90VEJNUE9wYnhudEZvcWRxdHQ4MDN0NDE0S3AzNWt1UXVTemc0RHNKZ3h1Wmpl
+ZTM3enI5WTJpMXlPS1dKVWIwbW5LdHQtU2RqRnRveGxVLXZhel9HdXNMUHBkWjJxUE1BSVZaa0lk
+R3pZU0I2SENyTENaVm1EdHp0UVdsQ0pqaTlOdnJEcnFHWG5jQ0MwdGtiWjBFRUl1ZWdHSldGdEF5
+ZTBwdHJvVklNVTR5RQ0KDQo=
+--94eb2c05e19c150c680560279325
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:28a3b37798400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">timeforchange 1 compartilho=
+u uma <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152=
+803313885971532&amp;emid=3DCND105j5hNgCFQlKUwodDWsDow&amp;path=3D%2F1164962=
+75956756547808%2Fposts%2FUhpy4BFgDQE&amp;dt=3D1513097971091&amp;ub=3DSQUARE=
+_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">postagem</a> co=
+m <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033=
+13885971532&emid=3DCND105j5hNgCFQlKUwodDWsDow&path=3D%2Fcommunities%2F10934=
+3992040963164975&dt=3D1513097971091&ub=3DSQUARE_SUBSCRIPTION" style=3D"colo=
+r:#3366CC;text-decoration:none">ArchMerge</a><div style=3D"margin-top:20px;=
+width:0;height:0; border-bottom:10px solid #fff; border-left:10px solid tra=
+nsparent; border-right:10px solid transparent"></div></div></td><td style=
+=3D"vertical-align:middle;text-align:right;padding-right:30px"><img src=3D"=
+https://ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_118x36dp.=
+png"/></td></tr></table><div style=3D"font-size:14px;line-height:18px;backg=
+round-color:#fff;"><div style=3D"padding:30px 40px 40px"><table cellpadding=
+=3D0 cellspacing=3D0><tr><td style=3D"padding-right:15px;vertical-align:top=
+"><a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033=
+13885971532&emid=3DCND105j5hNgCFQlKUwodDWsDow&path=3D%2F1164962759567565478=
+08&dt=3D1513097971091&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"75" height=3D=
+"75" style=3D"border:solid 1px #cccccc;" src=3D"https://lh6.googleuserconte=
+nt.com/-LLl-I29_y0s/AAAAAAAAAAI/AAAAAAAADBw/LXHMGxmttsA/s75-c-k-a-no/photo.=
+jpg"/></a></td><td style=3D"width:578px;color:#333;font:13px Arial;vertical=
+-align:top"><div style=3D"padding-bottom:10px;"><strong>timeforchange 1</st=
+rong>:</div><div style=3D"padding-bottom:10px">I&#39;m not sure what I&#39;=
+m missing, but I have installed virtualbox through terminal and the pkg man=
+ager. It will allow me to fix settings and put iso IMG but when I to run it=
+ says <br />Sudo /sbin/config, then I try that and there&#39;s no directory=
+. What am I missing? </div><br/><a href=3D"https://plus.google.com/_/notifi=
+cations/emlink?emr=3D05152803313885971532&emid=3DCND105j5hNgCFQlKUwodDWsDow=
+&path=3D%2F116496275956756547808%2Fposts%2FUhpy4BFgDQE&dt=3D1513097971091&u=
+b=3DSQUARE_SUBSCRIPTION" style=3D"background-color:#d44b38;border:solid 1px=
+ #dfdfdf;border-radius:3px;color:#fff;display:inline-block;font-family: Ari=
+al;font-size:13px;height:30px;line-height:30px;min-width:54px;padding:1px 2=
+0px;text-align:center;text-decoration:none;white-space:nowrap;">Ver postage=
+m</a></td></tr></table></div></div><div style=3D"border-top:solid 1px #dfdf=
+df;background-color:#fff; padding:30px;font-size:14px;line-height:18px;bord=
+er-radius:0 0 5px 5px">Voc=C3=AA est=C3=A1 recebendo este e-mail pela inscr=
+i=C3=A7=C3=A3o realizada no <a href=3D"https://plus.google.com/_/notificati=
+ons/emlink?emr=3D05152803313885971532&emid=3DCND105j5hNgCFQlKUwodDWsDow&pat=
+h=3D%2Fcommunities%2F109343992040963164975&dt=3D1513097971091&ub=3DSQUARE_S=
+UBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">ArchMerge</a> do =
+Google+.</div></div><div style=3D"padding-top:10px;color:#999;font:11px Ari=
+al;width:670px"><a href=3D"https://plus.google.com/_/notifications/emlink?e=
+mr=3D05152803313885971532&emid=3DCND105j5hNgCFQlKUwodDWsDow&path=3D%2F11649=
+6275956756547808%2Fop%2Fmute&dt=3D1513097971091&ub=3DSQUARE_SUBSCRIPTION" s=
+tyle=3D"color:#3366CC;text-decoration:none">Ignore timeforchange 1</a> para=
+ parar de receber notifica=C3=A7=C3=B5es desta pessoa.  <a href=3D"https://=
+plus.google.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3DCN=
+D105j5hNgCFQlKUwodDWsDow&path=3D%2Fcommunities%2F109343992040963164975%3Fpr=
+omo%3Dnotifications&dt=3D1513097971091&ub=3DSQUARE_SUBSCRIPTION" style=3D"c=
+olor:#3366CC;text-decoration:none">Altere</a> quais notifica=C3=A7=C3=B5es =
+voc=C3=AA recebe desta comunidade. Esta notifica=C3=A7=C3=A3o foi enviada p=
+ara thiagors1983@gmail.com. Acesse suas <a href=3D"https://plus.google.com/=
+_/notifications/emlink?emr=3D05152803313885971532&emid=3DCND105j5hNgCFQlKUw=
+odDWsDow&path=3D%2Fsettings%2Fplus&dt=3D1513097971091&ub=3DSQUARE_SUBSCRIPT=
+ION" style=3D"color:#3366CC;text-decoration:none">configura=C3=A7=C3=B5es d=
+e envio de notifica=C3=A7=C3=B5es</a> para atualizar seu endere=C3=A7o. <a =
+href=3D"https://notifications.google.com/unsubscribe/AJ7SsMl82otTBMPOpbxntF=
+oqdqtt803t414Kp35kuQuSzg4DsJgxuZjee37zr9Y2i1yOKWJUb0mnKtt-SdjFtoxlU-vaz_Gus=
+LPpdZ2qPMAIVZkIdGzYSB6HCrLCZVmDtztQWlCJji9NvrDrqGXncCC0tkbZ0EEIuegGJWFtAye0=
+ptroVIMU4yE" style=3D"color:#3366CC;text-decoration:none">Cancelar inscri=
+=C3=A7=C3=A3o</a> destes e-mails.<br/>Google Inc., 1600 Amphitheatre Pkwy, =
+Mountain View, CA 94043 USA</div></body></html>
+--94eb2c05e19c150c680560279325--

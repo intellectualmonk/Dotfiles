@@ -1,0 +1,196 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp1398558pje;
+        Mon, 26 Jun 2017 09:06:39 -0700 (PDT)
+X-Received: by 10.84.218.134 with SMTP id r6mr918519pli.49.1498493199947;
+        Mon, 26 Jun 2017 09:06:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498493199; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Y3jIXyVIXhNXrKfLXznTGTlvZoSqd18OmL36gUoC/O3pyP072oToWve+h+zlWVoCgn
+         b3J7ueIs5xu8ffVqalJ2I3RtHV/ukLOLM79aTh0YjR6sUaWR5hHaLviu3YT8L5C2dGJG
+         EtMcl4DY8mnH5pBY0SK6/kzTgTI1/3FB85Xw2LT9dCs9lbK3Dj8OI/PiF0veLQSCq0ta
+         +xddkvZvmWmTHAt+lt+D7HqKYyg8dpavb5lpmrMdFFgk4cZXnzIxVAldtS9VD6VnaVqR
+         pwoM6OEqpC+J+rGS4PX0eQnoyOF+FzKfKfi1V/10Pp3LsegHCWhICngSLwF4D8tk4+K/
+         qGDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=vcGia4/1MSvNs9tMFMbE63pSD6glCZ1AlkpNdwxvTeA=;
+        b=yirkgM9w57/x6LnRVHKpr7BVvYxzKWmnE0MzMjdXnWqMPQPGItAHVx8dAZY2bWJIvD
+         kLe/27KGFnpYGfMKQNIPL+6wZYt7YU9xZpeglDE8aTiTeCiNLIF1TgcGGHIv4d+OYSiO
+         Z02ygwpx/RY5FG8lqXsfttGKviDet/nFx9layJN9wyrRxTPkdL9InMNDcun48t1LP+w6
+         5uu5HwcByc3abYfui/kY7aerhag4WCJ+j3sDkPxWrzizRkg/vh6kBfDT4it2wezbeI+/
+         cVgX93lUHMfZ4uIeEDVCZoexzWgpGPXUTHqHTbk/yfd1Cx5e6n5l1CpVDfYynjduQ+BB
+         aQxg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=UVSTC3kC;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:400e:c00::245 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-pf0-x245.google.com (mail-pf0-x245.google.com. [2607:f8b0:400e:c00::245])
+        by mx.google.com with ESMTPS id e15si297809pln.373.2017.06.26.09.06.39
+        for <thiagors1983@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Jun 2017 09:06:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:400e:c00::245 as permitted sender) client-ip=2607:f8b0:400e:c00::245;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=UVSTC3kC;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:400e:c00::245 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Received: by mail-pf0-x245.google.com with SMTP id m82so4091990pfk.0
+        for <thiagors1983@gmail.com>; Mon, 26 Jun 2017 09:06:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=vcGia4/1MSvNs9tMFMbE63pSD6glCZ1AlkpNdwxvTeA=;
+        b=UVSTC3kC9gniqh1qeaClPTICjuuSHI1qO0v6EIc1IOzVlCCnWG/3KVRpoR7fxddDUn
+         Fj/V7M1NeJq5IWq9lFlr6bj2r5nO59VYJdD0zK4lDV9/YdE+Aj91uTi+RfZyOCy4os6T
+         w5H7MgHx+1VWPZ3+XtxMV0X2v6ZSn6GiyPvlQYMFX6gvPTqgEkJA9JjMm9SnG91ziXBd
+         KOiAhMJsrNqxAOj3r+eBMW86Dv3+2rqQC0+phqrOt4t4oBpyKUUabqlpdoxRaWCNIoep
+         OuJnDdZmjwqO2I2woRBtNl8sNP6ns+sWcB3cgW7gHR9repsDUQUgAsWrzjcAnXNIkFc2
+         Ef3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=vcGia4/1MSvNs9tMFMbE63pSD6glCZ1AlkpNdwxvTeA=;
+        b=WMPWSJrGpOyDib+wm1EOAo6NhZtGvogjx2eeF3fO6F0FsLGFGXtwD8tGIs1zoQhF/h
+         sPU0m5nZ3fr27MTUhXMz8o6FJgO2v8yDkUMThL2sIicSgfFBB1JHdoT6FguKmG3xA4Dj
+         LlmtdR79NKbPq6a4cgW9ELFUhlLWmHhA1qYrr4beeZkSOWWJiFaPVku+sJF5TI/SH7Yh
+         3pDQL6mFXs/Y291g2B+5p3B4mJua/7+g4REqevm4QxQSkxVqa/MyOc87Uh6HMljoIRex
+         gD1FK0rqCUZQo6T3jgBlCDUt6VVDTg7/67YJKnMpVo71ilaCQGGhnPVN9kb9b8zRx3kV
+         cL+Q==
+X-Gm-Message-State: AKS2vOx8G/Hngo0U6j657M7WOI35xnvnzox1KkiBcOGLhXVyKsLwaJZL
+	hkVqeNGqX+sf+xfFU/2Q0hwPA425/lDpkC1DmKu0/PhqzncAsP0pXX8cnp6J
+MIME-Version: 1.0
+X-Received: by 10.99.122.79 with SMTP id j15mr527432pgn.169.1498493199498;
+ Mon, 26 Jun 2017 09:06:39 -0700 (PDT)
+Date: Mon, 26 Jun 2017 09:06:39 -0700 (PDT)
+X-Notifications: XEAAAAN2Ra2ONusEzjJafnIJAuaw
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTEwMDc1ODE1MTIzNjM1MzAwNTY5
+X-Entity-Ref-ID: z12rgzgpms3st3bib04civb5qk24jzwa2qw0k
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 101240314605645699331
+Reply-To: "Google+ (Dinesh Maroju)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMn3NTtQQSyUsogxPj5MDSnd_8ozqJOOC3b2WOsOsHarMwAhpGAGBPGc3UR6rgbePoYYJIKTdoE3HjdJuOh7N5RtgWftCRxZgmTSDLk9GT8mkMZfqCo0cbUgUsOdQRrVZNTdIbJZhZoSz_BU67Rd4Dl8G8J9Id9WuyGM14Xs7JxHBbLyxzc>
+X-UB: 63
+Precedence: bulk
+Message-ID: <-1076671604@plus.google.com>
+Subject: [Usemos Linux] nShield | Anti-DDoS Solution For IoT Devices...
+From: "Google+ (Dinesh Maroju)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="f403045c616edabf910552df22be"
+
+--f403045c616edabf910552df22be
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RGluZXNoIE1hcm9qdSBjb21wYXJ0aWxob3UgdW1hIHBvc3RhZ2VtIGNvbSBVc2Vtb3MgTGludXgu
+IFZlamE6ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9ucy9lbWxpbms/
+ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0xqQzZaYnkyOVFDRmV2alFBb2QtMlVKTkEm
+cGF0aD0lMkYxMDEyNDAzMTQ2MDU2NDU2OTkzMzElMkZwb3N0cyUyRmFLa3hHWlBLeGVaJmR0PTE0
+OTg0OTMxOTkyNjUmdWI9U1FVQVJFX1NVQlNDUklQVElPTiAgDQpWb2PDqiByZWNlYmV1IGVzdGUg
+ZS1tYWlsIHBvcnF1ZSBzZSBpbnNjcmV2ZXUgbm8gVXNlbW9zIExpbnV4IG5vIEdvb2dsZSsuICAN
+ClVzZW1vcyBMaW51eCAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9fL25vdGlmaWNhdGlvbnMv
+ZW1saW5rP2Vtcj0wNTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNMakM2WmJ5MjlRQ0ZldmpRQW9k
+LTJVSk5BJnBhdGg9JTJGY29tbXVuaXRpZXMlMkYxMTAwNzU4MTUxMjM2MzUzMDA1NjkmZHQ9MTQ5
+ODQ5MzE5OTI2NSZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANCi0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLSBBbHRlcmUgcXVhaXMgbm90aWZpY2HDp8O1ZXMgdm9jw6ogcmVjZWJlIGRlc3RhICANCmNv
+bXVuaWRhZGU6ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9ucy9lbWxp
+bms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0xqQzZaYnkyOVFDRmV2alFBb2QtMlVK
+TkEmcGF0aD0lMkZjb21tdW5pdGllcyUyRjExMDA3NTgxNTEyMzYzNTMwMDU2OSUzRnByb21vJTNE
+bm90aWZpY2F0aW9ucyZkdD0xNDk4NDkzMTk5MjY1JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0K
+RXN0YSBub3RpZmljYcOnw6NvIGZvaSBlbnZpYWRhIHBhcmEgdGhpYWdvcnMxOTgzQGdtYWlsLmNv
+bS4gQWNlc3NlIHN1YXMgIA0KY29uZmlndXJhw6fDtWVzIGRlIGVudmlvIGRlIG5vdGlmaWNhw6fD
+tWVzIHBhcmEgYXR1YWxpemFyIHNldSBlbmRlcmXDp286ICANCmh0dHBzOi8vcGx1cy5nb29nbGUu
+Y29tL18vbm90aWZpY2F0aW9ucy9lbWxpbms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9
+Q0xqQzZaYnkyOVFDRmV2alFBb2QtMlVKTkEmcGF0aD0lMkZzZXR0aW5ncyUyRnBsdXMmZHQ9MTQ5
+ODQ5MzE5OTI2NSZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANCkNhbmNlbGFyIGluc2NyacOnw6Nv
+IGRlc3NlcyBlLW1haWxzOiAgDQpodHRwczovL25vdGlmaWNhdGlvbnMuZ29vZ2xlLmNvbS91bnN1
+YnNjcmliZS9BSjdTc01uM05UdFFRU3lVc29neFBqNU1EU25kXzhvenFKT09DM2IyV09zT3NIYXJN
+d0FocEdBR0JQR2MzVVI2cmdiZVBvWVlKSUtUZG9FM0hqZEp1T2g3TjVSdGdXZnRDUnhaZ21UU0RM
+azlHVDhta01aZnFDbzBjYlVnVXNPZFFSclZaTlRkSWJKWmhab1N6X0JVNjdSZDREbDhHOEo5SWQ5
+V3V5R00xNFhzN0p4SEJiTHl4emMNCg0K
+--f403045c616edabf910552df22be
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:a908d85c0c400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">Dinesh Maroju compartilhou =
+uma <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280=
+3313885971532&amp;emid=3DCLjC6Zby29QCFevjQAod-2UJNA&amp;path=3D%2F101240314=
+605645699331%2Fposts%2FaKkxGZPKxeZ&amp;dt=3D1498493199265&amp;ub=3DSQUARE_S=
+UBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">postagem</a> com =
+<a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152803313=
+885971532&emid=3DCLjC6Zby29QCFevjQAod-2UJNA&path=3D%2Fcommunities%2F1100758=
+15123635300569&dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:=
+#3366CC;text-decoration:none">Usemos Linux</a><div style=3D"margin-top:20px=
+;width:0;height:0; border-bottom:10px solid #fff; border-left:10px solid tr=
+ansparent; border-right:10px solid transparent"></div></div></td><td style=
+=3D"vertical-align:middle;text-align:right;padding-right:30px"><img src=3D"=
+https://ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_118x36dp.=
+png"/></td></tr></table><div style=3D"font-size:14px;line-height:18px;backg=
+round-color:#fff;"><div style=3D"padding:30px 40px 40px"><table cellpadding=
+=3D0 cellspacing=3D0><tr><td style=3D"padding-right:15px;vertical-align:top=
+"><a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033=
+13885971532&emid=3DCLjC6Zby29QCFevjQAod-2UJNA&path=3D%2F1012403146056456993=
+31&dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"75" height=3D=
+"75" style=3D"border:solid 1px #cccccc;" src=3D"https://lh3.googleuserconte=
+nt.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/s75/photo.jpg"/></a=
+></td><td style=3D"width:578px;color:#333;font:13px Arial;vertical-align:to=
+p"><div style=3D"padding-bottom:10px;"><strong>Dinesh Maroju</strong>:</div=
+><div style=3D"padding-bottom:10px">nShield | Anti-DDoS Solution For IoT De=
+vices | Kali Linux 2017.1<br /><br /><a href=3D"https://www.youtube.com/wat=
+ch?v=3DRL9bIPRZ1b8" class=3D"ot-anchor">https://www.yo<wbr>utube.com/watch?=
+v=3DRL<wbr>9bIPRZ1b8</a></div><a href=3D"https://plus.google.com/_/notifica=
+tions/emlink?emr=3D05152803313885971532&amp;emid=3DCLjC6Zby29QCFevjQAod-2UJ=
+NA&amp;path=3D%2F101240314605645699331%2Fposts%2FaKkxGZPKxeZ&amp;dt=3D14984=
+93199265&amp;ub=3DSQUARE_SUBSCRIPTION"><div style=3D"max-width:100%;max-hei=
+ght:390px;margin-top:14px;overflow:hidden;"><div style=3D"display:block; he=
+ight:284px; background:#eee url('https://lh5.googleusercontent.com/proxy/44=
+AG66EUccBXHByZ6XhJyeDC2Po1Cq0hmXml0IBtbEoARNRl1CiN2ia3lk4RyR4qM_nDDBNpCPOy7=
+HZjjfZqcQ=3Dw506-h284-n') no-repeat center; margin:0 auto;text-align:center=
+;background-size:contain;min-width:100%"><img src=3D"https://ssl.gstatic.co=
+m/s2/oz/images/notifications/play-6a93a9db8d9ff74b9a694c60498a43f4.png" wid=
+th=3D"50px" height=3D"50px" style=3D"padding-top:117px;border:0"></div></di=
+v></a><br/><a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D=
+05152803313885971532&emid=3DCLjC6Zby29QCFevjQAod-2UJNA&path=3D%2F1012403146=
+05645699331%2Fposts%2FaKkxGZPKxeZ&dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTI=
+ON" style=3D"background-color:#d44b38;border:solid 1px #dfdfdf;border-radiu=
+s:3px;color:#fff;display:inline-block;font-family: Arial;font-size:13px;hei=
+ght:30px;line-height:30px;min-width:54px;padding:1px 20px;text-align:center=
+;text-decoration:none;white-space:nowrap;">Ver postagem</a></td></tr></tabl=
+e></div></div><div style=3D"border-top:solid 1px #dfdfdf;background-color:#=
+fff; padding:30px;font-size:14px;line-height:18px;border-radius:0 0 5px 5px=
+">Voc=C3=AA est=C3=A1 recebendo este e-mail pela inscri=C3=A7=C3=A3o realiz=
+ada no <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515=
+2803313885971532&emid=3DCLjC6Zby29QCFevjQAod-2UJNA&path=3D%2Fcommunities%2F=
+110075815123635300569&dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTION" style=3D=
+"color:#3366CC;text-decoration:none">Usemos Linux</a> do Google+.</div></di=
+v><div style=3D"padding-top:10px;color:#999;font:11px Arial;width:670px"><a=
+ href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280331388=
+5971532&emid=3DCLjC6Zby29QCFevjQAod-2UJNA&path=3D%2F101240314605645699331%2=
+Fop%2Fmute&dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#336=
+6CC;text-decoration:none">Ignore Dinesh Maroju</a> para parar de receber no=
+tifica=C3=A7=C3=B5es desta pessoa.  <a href=3D"https://plus.google.com/_/no=
+tifications/emlink?emr=3D05152803313885971532&emid=3DCLjC6Zby29QCFevjQAod-2=
+UJNA&path=3D%2Fcommunities%2F110075815123635300569%3Fpromo%3Dnotifications&=
+dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-de=
+coration:none">Altere</a> quais notifica=C3=A7=C3=B5es voc=C3=AA recebe des=
+ta comunidade. Esta notifica=C3=A7=C3=A3o foi enviada para thiagors1983@gma=
+il.com. Acesse suas <a href=3D"https://plus.google.com/_/notifications/emli=
+nk?emr=3D05152803313885971532&emid=3DCLjC6Zby29QCFevjQAod-2UJNA&path=3D%2Fs=
+ettings%2Fplus&dt=3D1498493199265&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:=
+#3366CC;text-decoration:none">configura=C3=A7=C3=B5es de envio de notifica=
+=C3=A7=C3=B5es</a> para atualizar seu endere=C3=A7o. <a href=3D"https://not=
+ifications.google.com/unsubscribe/AJ7SsMn3NTtQQSyUsogxPj5MDSnd_8ozqJOOC3b2W=
+OsOsHarMwAhpGAGBPGc3UR6rgbePoYYJIKTdoE3HjdJuOh7N5RtgWftCRxZgmTSDLk9GT8mkMZf=
+qCo0cbUgUsOdQRrVZNTdIbJZhZoSz_BU67Rd4Dl8G8J9Id9WuyGM14Xs7JxHBbLyxzc" style=
+=3D"color:#3366CC;text-decoration:none">Cancelar inscri=C3=A7=C3=A3o</a> de=
+stes e-mails.<br/>Google Inc., 1600 Amphitheatre Pkwy, Mountain View, CA 94=
+043 USA</div></body></html>
+--f403045c616edabf910552df22be--

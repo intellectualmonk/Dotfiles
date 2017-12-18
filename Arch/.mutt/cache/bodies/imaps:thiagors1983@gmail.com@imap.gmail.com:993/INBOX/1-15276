@@ -1,0 +1,201 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp1730878pje;
+        Mon, 26 Jun 2017 15:26:41 -0700 (PDT)
+X-Received: by 10.157.0.104 with SMTP id 95mr1443129ota.126.1498516001578;
+        Mon, 26 Jun 2017 15:26:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498516001; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Cq+Zw4J6oytp8+RqCdjUzAjQB/CasYT1pn5SFUR2NmVD/JSSUy8tWxUnDy9F5dYvHO
+         H+R7w1cBIlfiMMdVctqd6zbbJEFyvtA9BlZJJKhxZ2KKOgw8HE7NDmAFxj8ymtIMkPkj
+         tQ2SjWXofpWrOGMgLTfm9G5ptiy6AJ0IqduZrST9Nvv8U9BEOSJs6CY0oSIfL9XBEyxF
+         BizQNKxw04kLQTmtHEU+sRXfpHfgp4qMHiPi8hZywCiEI2t6qNa4aF9h5zCzoyZNBMEV
+         BVkMuWHhbHCIO7ZRKcll92LnZUSXlOpAIt8QODFk3jC1NUsxjPKucvWiTmSIamTHkQbR
+         BW+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=TuEQJGu/NhPNXwDmYpKhgILa0oL2nwf8tbVbwMYANlA=;
+        b=nBV2v74n4NnNj4h08QNCYH95alIIG5+KO5q54ikV6g8WDVpCp6MD58Go2A6VvR5JDO
+         b98c+KxkPjLUZ2F/v+6qktqn7BBafGBeQM0+6QjyJO5Dnyc7a611RDseByDadp0RJrY7
+         Xq7Z9C/PoaeFCBN9VubDtYSCJRX820BsE9NOY1sSwTgc55tfSTbzvVXe3gbNrP+f+G9v
+         qBJAhCAUvIbwIGyXdDSxjUaTGHhx5YfMZQlCNQwAKGtVAiSUnytVtzQvpDnI6e/p26BI
+         QTqAxifhP9mZv87MZWhd5gWzmMDS7Od2LgHZ3Z3aEheDzlB+s/KxbH2Mn9YbtyRM+9BX
+         TVCg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=YMKZ0rdP;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:4001:c0b::245 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-it0-x245.google.com (mail-it0-x245.google.com. [2607:f8b0:4001:c0b::245])
+        by mx.google.com with ESMTPS id c198si153760oib.24.2017.06.26.15.26.41
+        for <thiagors1983@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Jun 2017 15:26:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:4001:c0b::245 as permitted sender) client-ip=2607:f8b0:4001:c0b::245;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=YMKZ0rdP;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:4001:c0b::245 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Received: by mail-it0-x245.google.com with SMTP id o66so3025648ita.5
+        for <thiagors1983@gmail.com>; Mon, 26 Jun 2017 15:26:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=TuEQJGu/NhPNXwDmYpKhgILa0oL2nwf8tbVbwMYANlA=;
+        b=YMKZ0rdPUL+pEWFsVEbec8Hv6F2xpBPCCAHXCZh6rAleA9GUR6SX6Z+fkZkP1lrxOG
+         ETbDnNpnEyDlQgNHq5dRl/pXlGkVdPGYlNWCNLRFmexGP7icokqwn0GfvAMeJC3OU/Of
+         BTQfGohC38/VdYJMB/W7E3ohWNQ1YnSza9CuT+Oli7X1KytzuMbuuhZwHxuls6Cvxqh3
+         zXZ7q3sZAk/gBZG+Cj8R+XEUe17iE7l9j0682lJ5z3FWeLFAtoR6Rz9Hv9EDplBqQTRo
+         c0hZgVYWQF3iJ508UT1RUJQsURAh25+gzb6EnkI+5RUyUuztacYEAY+zC+jy2e9zGM7t
+         G7Ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=TuEQJGu/NhPNXwDmYpKhgILa0oL2nwf8tbVbwMYANlA=;
+        b=IJGmCxGs1qwBnvj0YEp/uVf9yvYKUKZ+76MPmUGsD2xTEb9+9rlwSc8JJzK6uXSgPP
+         c8ZoyLBMufAoFqZzHcuwKqONTz0F/zb8hva5VIO2p983ELhuLfu0g+1Ez48vIx5RToyB
+         IDKWB0TBWGzMmAK9kRalfDU4BBREHW+1rVMwJW52RyiQbgIqZ0h1mrkG538WeOxMgw0U
+         c16u0sCxu4Ta09BMM/89Zs0QKqeaqRuonfmCpKQqZ3IK53x5Fv03peXsxbg12IO3pxdF
+         LuFh+f4BcQJYtRKx440XRnGiNESBL/W4RKbjFm+p53xzuY0V7BUXWWm044BVCwW2eJ1N
+         7Jyw==
+X-Gm-Message-State: AKS2vOx7Oc+hjE1CtmHN1d7b1JTG5URqxrp0W/TNVnRw+BQoMeWrspoK
+	EtxDgNiO8wRx70COtXoO9lCsMouR6ieKTyw29oo6WdggcJXI6O1Y1JyobdKB
+MIME-Version: 1.0
+X-Received: by 10.107.134.23 with SMTP id i23mr1277141iod.62.1498516001076;
+ Mon, 26 Jun 2017 15:26:41 -0700 (PDT)
+Date: Mon, 26 Jun 2017 15:26:40 -0700 (PDT)
+X-Notifications: XEAAAAMARie3Z9MWJ3gXf-oZXCik
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTEwMDc1ODE1MTIzNjM1MzAwNTY5
+X-Entity-Ref-ID: z12rtxhgnsviv1nrn04cflszgl22cfc5y3c
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 102880675870201866771
+Reply-To: "Google+ (Manuel Cabrera Caballero)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMnrgEYdBDYjo-VVeo4PU9HgLN3I_FxcUPXkkyWv0oSLjyydZzIHKjqEpZro_dgc1zBnL5aSWWYHukCdA87H2GV5eSYM-rVyTg680IEqW2D5w_zUn6W47PlyjxuLYjE_Wl249n1X6k0aImJ149gTaSegdZEbdCdMXz-ljqqXqHY-23Oly9U>
+X-UB: 63
+Precedence: bulk
+Message-ID: <1294644594@plus.google.com>
+Subject: [Usemos Linux] No eres experto en consola? Usa #Webmin ...
+From: "Google+ (Manuel Cabrera Caballero)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="001a113ecba6ef363f0552e471de"
+
+--001a113ecba6ef363f0552e471de
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+TWFudWVsIENhYnJlcmEgQ2FiYWxsZXJvIGNvbXBhcnRpbGhvdSB1bWEgcG9zdGFnZW0gY29tIFVz
+ZW1vcyBMaW51eC4gVmVqYTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRp
+b25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DT0NxdTRfSDNOUUNGUk1J
+UUFvZENRVUJHZyZwYXRoPSUyRjEwMjg4MDY3NTg3MDIwMTg2Njc3MSUyRnBvc3RzJTJGaGtNMVFt
+TThZQXImZHQ9MTQ5ODUxNjAwMDg1NiZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANClZvY8OqIHJl
+Y2ViZXUgZXN0ZSBlLW1haWwgcG9ycXVlIHNlIGluc2NyZXZldSBubyBVc2Vtb3MgTGludXggbm8g
+R29vZ2xlKy4gIA0KVXNlbW9zIExpbnV4ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90
+aWZpY2F0aW9ucy9lbWxpbms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q09DcXU0X0gz
+TlFDRlJNSVFBb2RDUVVCR2cmcGF0aD0lMkZjb21tdW5pdGllcyUyRjExMDA3NTgxNTEyMzYzNTMw
+MDU2OSZkdD0xNDk4NTE2MDAwODU2JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tIEFsdGVyZSBxdWFpcyBub3RpZmljYcOnw7VlcyB2b2PDqiByZWNlYmUg
+ZGVzdGEgIA0KY29tdW5pZGFkZTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmlj
+YXRpb25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DT0NxdTRfSDNOUUNG
+Uk1JUUFvZENRVUJHZyZwYXRoPSUyRmNvbW11bml0aWVzJTJGMTEwMDc1ODE1MTIzNjM1MzAwNTY5
+JTNGcHJvbW8lM0Rub3RpZmljYXRpb25zJmR0PTE0OTg1MTYwMDA4NTYmdWI9U1FVQVJFX1NVQlND
+UklQVElPTiAgDQpFc3RhIG5vdGlmaWNhw6fDo28gZm9pIGVudmlhZGEgcGFyYSB0aGlhZ29yczE5
+ODNAZ21haWwuY29tLiBBY2Vzc2Ugc3VhcyAgDQpjb25maWd1cmHDp8O1ZXMgZGUgZW52aW8gZGUg
+bm90aWZpY2HDp8O1ZXMgcGFyYSBhdHVhbGl6YXIgc2V1IGVuZGVyZcOnbzogIA0KaHR0cHM6Ly9w
+bHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5
+NzE1MzImZW1pZD1DT0NxdTRfSDNOUUNGUk1JUUFvZENRVUJHZyZwYXRoPSUyRnNldHRpbmdzJTJG
+cGx1cyZkdD0xNDk4NTE2MDAwODU2JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KQ2FuY2VsYXIg
+aW5zY3Jpw6fDo28gZGVzc2VzIGUtbWFpbHM6ICANCmh0dHBzOi8vbm90aWZpY2F0aW9ucy5nb29n
+bGUuY29tL3Vuc3Vic2NyaWJlL0FKN1NzTW5yZ0VZZEJEWWpvLVZWZW80UFU5SGdMTjNJX0Z4Y1VQ
+WGtreVd2MG9TTGp5eWRaeklIS2pxRXBacm9fZGdjMXpCbkw1YVNXV1lIdWtDZEE4N0gyR1Y1ZVNZ
+TS1yVnlUZzY4MElFcVcyRDV3X3pVbjZXNDdQbHlqeHVMWWpFX1dsMjQ5bjFYNmswYUltSjE0OWdU
+YVNlZ2RaRWJkQ2RNWHotbGpxcVhxSFktMjNPbHk5VQ0KDQo=
+--001a113ecba6ef363f0552e471de
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:84ed53f20c400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">Manuel Cabrera Caballero co=
+mpartilhou uma <a href=3D"https://plus.google.com/_/notifications/emlink?em=
+r=3D05152803313885971532&amp;emid=3DCOCqu4_H3NQCFRMIQAodCQUBGg&amp;path=3D%=
+2F102880675870201866771%2Fposts%2FhkM1QmM8YAr&amp;dt=3D1498516000856&amp;ub=
+=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">postag=
+em</a> com <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D=
+05152803313885971532&emid=3DCOCqu4_H3NQCFRMIQAodCQUBGg&path=3D%2Fcommunitie=
+s%2F110075815123635300569&dt=3D1498516000856&ub=3DSQUARE_SUBSCRIPTION" styl=
+e=3D"color:#3366CC;text-decoration:none">Usemos Linux</a><div style=3D"marg=
+in-top:20px;width:0;height:0; border-bottom:10px solid #fff; border-left:10=
+px solid transparent; border-right:10px solid transparent"></div></div></td=
+><td style=3D"vertical-align:middle;text-align:right;padding-right:30px"><i=
+mg src=3D"https://ssl.gstatic.com/images/branding/google_plus/1x/gplus_word=
+_118x36dp.png"/></td></tr></table><div style=3D"font-size:14px;line-height:=
+18px;background-color:#fff;"><div style=3D"padding:30px 40px 40px"><table c=
+ellpadding=3D0 cellspacing=3D0><tr><td style=3D"padding-right:15px;vertical=
+-align:top"><a href=3D"https://plus.google.com/_/notifications/emlink?emr=
+=3D05152803313885971532&emid=3DCOCqu4_H3NQCFRMIQAodCQUBGg&path=3D%2F1028806=
+75870201866771&dt=3D1498516000856&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"7=
+5" height=3D"75" style=3D"border:solid 1px #cccccc;" src=3D"https://lh3.goo=
+gleusercontent.com/-EW67W2phMss/AAAAAAAAAAI/AAAAAAAAG6c/w8T-TvFcq-A/s75-c-k=
+-a-no/photo.jpg"/></a></td><td style=3D"width:578px;color:#333;font:13px Ar=
+ial;vertical-align:top"><div style=3D"padding-bottom:10px;"><strong>Manuel =
+Cabrera Caballero</strong>:</div><div style=3D"padding-bottom:10px">No eres=
+ experto en consola? Usa <a rel=3D"nofollow" class=3D"ot-hashtag" href=3D"h=
+ttps://plus.google.com/s/%23Webmin">#Webmin</a> en tus equipos <a rel=3D"no=
+follow" class=3D"ot-hashtag" href=3D"https://plus.google.com/s/%23Linux">#L=
+inux</a></div><div style=3D"padding-left:11px;padding-right:5px;margin-top:=
+14px;"><table cols=3D2 rows=3D1 width=3D"100%"><tr><td rowspan=3D2><a href=
+=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859715=
+32&amp;emid=3DCOCqu4_H3NQCFRMIQAodCQUBGg&amp;path=3D%2F10288067587020186677=
+1%2Fposts%2FhkM1QmM8YAr&amp;dt=3D1498516000856&amp;ub=3DSQUARE_SUBSCRIPTION=
+"><div style=3D"background:#fff"><img src=3D"https://4.bp.blogspot.com/-zHH=
+XIpUAutY/WVF-g-PSjXI/AAAAAAAAZQQ/MbiWWVpNMrUr2ep9FF7PtmaCzEfcZDLUACLcBGAs/s=
+220-p-k-a/Como%2Binstalar%2BWebmin%2Ben%2BLinux%2BUbuntu%2Bpaso%2Ba%2Bpaso.=
+png" style=3D"margin-left:auto;margin-right:auto;display:block;border:0; ma=
+x-width:220px;max-height:220px;" alt=3D"imagem n=C3=A3o exibida"></div></a>=
+</td><td><table cols=3D1 rows=3D2 width=3D"240" style=3D"font-size:13px"><t=
+r><td><a href=3D"http://bit.ly/2sfGFgl" style=3D"font-weight:bold">Como ins=
+talar Webmin en Linux Ubuntu paso a paso</a></td></tr><tr><td>Administra y =
+ten el control de tu equipo Ubuntu Linux desde la interfaz web de Webmin si=
+n necesidad de manejar complejos comandos en consola. Mira ...</td></tr></t=
+able></td></tr></table></div><br/><a href=3D"https://plus.google.com/_/noti=
+fications/emlink?emr=3D05152803313885971532&emid=3DCOCqu4_H3NQCFRMIQAodCQUB=
+Gg&path=3D%2F102880675870201866771%2Fposts%2FhkM1QmM8YAr&dt=3D1498516000856=
+&ub=3DSQUARE_SUBSCRIPTION" style=3D"background-color:#d44b38;border:solid 1=
+px #dfdfdf;border-radius:3px;color:#fff;display:inline-block;font-family: A=
+rial;font-size:13px;height:30px;line-height:30px;min-width:54px;padding:1px=
+ 20px;text-align:center;text-decoration:none;white-space:nowrap;">Ver posta=
+gem</a></td></tr></table></div></div><div style=3D"border-top:solid 1px #df=
+dfdf;background-color:#fff; padding:30px;font-size:14px;line-height:18px;bo=
+rder-radius:0 0 5px 5px">Voc=C3=AA est=C3=A1 recebendo este e-mail pela ins=
+cri=C3=A7=C3=A3o realizada no <a href=3D"https://plus.google.com/_/notifica=
+tions/emlink?emr=3D05152803313885971532&emid=3DCOCqu4_H3NQCFRMIQAodCQUBGg&p=
+ath=3D%2Fcommunities%2F110075815123635300569&dt=3D1498516000856&ub=3DSQUARE=
+_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">Usemos Linux</a=
+> do Google+.</div></div><div style=3D"padding-top:10px;color:#999;font:11p=
+x Arial;width:670px"><a href=3D"https://plus.google.com/_/notifications/eml=
+ink?emr=3D05152803313885971532&emid=3DCOCqu4_H3NQCFRMIQAodCQUBGg&path=3D%2F=
+102880675870201866771%2Fop%2Fmute&dt=3D1498516000856&ub=3DSQUARE_SUBSCRIPTI=
+ON" style=3D"color:#3366CC;text-decoration:none">Ignore Manuel Cabrera Caba=
+llero</a> para parar de receber notifica=C3=A7=C3=B5es dele.  <a href=3D"ht=
+tps://plus.google.com/_/notifications/emlink?emr=3D05152803313885971532&emi=
+d=3DCOCqu4_H3NQCFRMIQAodCQUBGg&path=3D%2Fcommunities%2F11007581512363530056=
+9%3Fpromo%3Dnotifications&dt=3D1498516000856&ub=3DSQUARE_SUBSCRIPTION" styl=
+e=3D"color:#3366CC;text-decoration:none">Altere</a> quais notifica=C3=A7=C3=
+=B5es voc=C3=AA recebe desta comunidade. Esta notifica=C3=A7=C3=A3o foi env=
+iada para thiagors1983@gmail.com. Acesse suas <a href=3D"https://plus.googl=
+e.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3DCOCqu4_H3NQC=
+FRMIQAodCQUBGg&path=3D%2Fsettings%2Fplus&dt=3D1498516000856&ub=3DSQUARE_SUB=
+SCRIPTION" style=3D"color:#3366CC;text-decoration:none">configura=C3=A7=C3=
+=B5es de envio de notifica=C3=A7=C3=B5es</a> para atualizar seu endere=C3=
+=A7o. <a href=3D"https://notifications.google.com/unsubscribe/AJ7SsMnrgEYdB=
+DYjo-VVeo4PU9HgLN3I_FxcUPXkkyWv0oSLjyydZzIHKjqEpZro_dgc1zBnL5aSWWYHukCdA87H=
+2GV5eSYM-rVyTg680IEqW2D5w_zUn6W47PlyjxuLYjE_Wl249n1X6k0aImJ149gTaSegdZEbdCd=
+MXz-ljqqXqHY-23Oly9U" style=3D"color:#3366CC;text-decoration:none">Cancelar=
+ inscri=C3=A7=C3=A3o</a> destes e-mails.<br/>Google Inc., 1600 Amphitheatre=
+ Pkwy, Mountain View, CA 94043 USA</div></body></html>
+--001a113ecba6ef363f0552e471de--

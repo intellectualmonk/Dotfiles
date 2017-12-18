@@ -1,0 +1,183 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp4240137pje;
+        Wed, 28 Jun 2017 17:06:04 -0700 (PDT)
+X-Received: by 10.84.217.219 with SMTP id d27mr14686382plj.180.1498694764261;
+        Wed, 28 Jun 2017 17:06:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498694764; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hYmxgsojof7DlJoTHZlqloB003C0PpwxoNnPH1DASlHd45WP00Ulo6HbyZyeZ/vexP
+         +PQtcsluawM8yMe1UdslaMblRGaUdL5E2N13EykU29hSwdi5NxVKNgfWjFI3ze14t/Y+
+         X2gBvzlWMiS0jXftquSEjjy9dY68OUNSpVAj5n9QFKLWgXyKDnS3Jr11PSWBdRGnluq3
+         jaujsIBZ8r3/kfObEfOmcNpLuf4BObQgtX/If7ZpXsxlU/yLXtvSv4bXfDZD+CM3B+k3
+         zgD9ADR+nOrv/Y4BEub3Zdg5y6Xh0c7vmPYOhwcurUi2RQbnr/ClDx/z5jhsUZJRV79d
+         MxNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=f2j3dONLKnw0K5zvZgoD3iCsC2JSJftHL35J/WA2MIQ=;
+        b=jhfyegbts22hn48/oYQVt+ARKT5Bp16yiOPA+8XXbzJpKp/eKbgO+wKGM5G6Ii6qvi
+         bJEJ2gh2kLA7mHPd14y41L7YkHU58A+gC6oBzw8OOphGA/XThnBGPyVZmJx1Ldgqfxvd
+         OuaeSrWxd1qsXnC9tpVVOUoPQdN+RdC5zCvS7eYNfq6dSCweJ7ctnVD716JQT063Bukv
+         Wf7vmVWMYq/6zTmhe5NhB1L/acfMiglynHCBoj+pcZjq5x4eX2yCdE2qLb7ypmcN2oyH
+         gDXSJpxXx7ElcCV/Ix+6Y04xsQRioLhZXihuxR47j9UkWWQsWLnOmalNLpYOlUkjrf7G
+         al3Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=bEgV5WGs;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:400e:c00::246 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-pf0-x246.google.com (mail-pf0-x246.google.com. [2607:f8b0:400e:c00::246])
+        by mx.google.com with ESMTPS id d17si2162311pge.245.2017.06.28.17.06.03
+        for <thiagors1983@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Jun 2017 17:06:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:400e:c00::246 as permitted sender) client-ip=2607:f8b0:400e:c00::246;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=bEgV5WGs;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:400e:c00::246 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Received: by mail-pf0-x246.google.com with SMTP id v9so66479296pfk.5
+        for <thiagors1983@gmail.com>; Wed, 28 Jun 2017 17:06:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=f2j3dONLKnw0K5zvZgoD3iCsC2JSJftHL35J/WA2MIQ=;
+        b=bEgV5WGstDKbliUyAPHZyLqj15ywksx9amqaaSllsgzfs7MKzbW7MX0AcUYWEqmeuZ
+         0dhdVS1KjmX6OyuQn5WlyxbiS6mJ83mKTInRU6L2wT3jxwfa+DQnGfu7RNYF+/71xpO7
+         xDL5VqPaq5K3FBUTapp68fom5LHx7Nb3UQ9N+pIJSmeHyYaKo5k7/UOqF3db6du44mTO
+         eaHW8k9xvJXcXxI3kYGHYd7h0hewUqjaXdr1Ae6ICokxTAPUsS98IvbYTx95fnqJTqqo
+         qzrQDldm9B1xrnKyQ03w1SVNNtVqsgDXPdXNcRUHefHMw/f77JY2YgCUPguTvx3gf6QG
+         3vAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=f2j3dONLKnw0K5zvZgoD3iCsC2JSJftHL35J/WA2MIQ=;
+        b=YLTxRb3Yflqe0+MBU67vSjdY7of9Y0QXbJXfMjqmCsAHN/q6YLXWrwzIWswz5DFxXL
+         3PpbQYRISrz+O1uxM2AwbM9Wh6yP/rz4PXsERRwrLsxTju7ovaJZ8GTb5V32KP1icPMc
+         1ffUShWDb0LapNKmgjEtwrM8eyiroupmKiKHBoNHx9TnqbX3XbPKTGrJubm/ULQOnz5E
+         3rG03WwM5OAviB0/+VdlexzDpnQcWthAyJDgH8ccfbRDxze2M/I0nDwFp54MO4BXszgA
+         ohW3+n69dezWt9nZIZdtGbf5G0rw3m1Z8/7c4DAp295BGCyzzjoPGJOkjNB42OdTPgeC
+         klXw==
+X-Gm-Message-State: AKS2vOyN2IL7irTsnCELWfpquvW0GQ0Wu5Jypt+InV9h+KxFL8YuMbmI
+	Eor+vYrDF5ibnufkDTzgSsUKBUl9FNccbWy1ImJhwe9az5r1vt5dc2LUKNO8
+MIME-Version: 1.0
+X-Received: by 10.99.123.65 with SMTP id k1mr8504879pgn.80.1498694763754; Wed,
+ 28 Jun 2017 17:06:03 -0700 (PDT)
+Date: Wed, 28 Jun 2017 17:06:03 -0700 (PDT)
+X-Notifications: XEAAAAArKqqUBbYk3TM6pcLa7VTk
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTEwMDc1ODE1MTIzNjM1MzAwNTY5
+X-Entity-Ref-ID: z12utrsgskbgx5v1o220iz3plrirdxqfh
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 113321712150684343738
+Reply-To: "Google+ (Jeff)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMnz6rjjK37-TW9OoI64TZ1BCSiiVTHU3B-v4HqhYB1qtPtim5y89GCOJFt4aQ-K6OVsRXrmEeDBqfR75OyYlmTBcztDnL5ZWZIQgFhMrZNruZ0s__ZvR8nZ6eN3YVas1li53Q5TLUkar2l8j7hLGMW86TUGqUInP2tsDX_FYx_RZoIk6Zg>
+X-UB: 63
+Precedence: bulk
+Message-ID: <-235015324@plus.google.com>
+Subject: [Usemos Linux] Alguien trabajo con el Protocolo TR-069?...
+From: "Google+ (Jeff)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="f403045c71ea05358a05530e11f1"
+
+--f403045c71ea05358a05530e11f1
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+SmVmZiBjb21wYXJ0aWxob3UgdW1hIHBvc3RhZ2VtIGNvbSBVc2Vtb3MgTGludXguIFZlamE6ICAN
+Cmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9ucy9lbWxpbms/ZW1yPTA1MTUy
+ODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0pEcWtvamg0ZFFDRlpDRlV3b2RfUG9CQUEmcGF0aD0lMkYx
+MTMzMjE3MTIxNTA2ODQzNDM3MzglMkZwb3N0cyUyRjlxaGFFaG1HcGRTJmR0PTE0OTg2OTQ3NjM0
+OTgmdWI9U1FVQVJFX1NVQlNDUklQVElPTiAgDQpWb2PDqiByZWNlYmV1IGVzdGUgZS1tYWlsIHBv
+cnF1ZSBzZSBpbnNjcmV2ZXUgbm8gVXNlbW9zIExpbnV4IG5vIEdvb2dsZSsuICANClVzZW1vcyBM
+aW51eCAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9fL25vdGlmaWNhdGlvbnMvZW1saW5rP2Vt
+cj0wNTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNKRHFrb2poNGRRQ0ZaQ0ZVd29kX1BvQkFBJnBh
+dGg9JTJGY29tbXVuaXRpZXMlMkYxMTAwNzU4MTUxMjM2MzUzMDA1NjkmZHQ9MTQ5ODY5NDc2MzQ5
+OCZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBBbHRl
+cmUgcXVhaXMgbm90aWZpY2HDp8O1ZXMgdm9jw6ogcmVjZWJlIGRlc3RhICANCmNvbXVuaWRhZGU6
+ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9ucy9lbWxpbms/ZW1yPTA1
+MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0pEcWtvamg0ZFFDRlpDRlV3b2RfUG9CQUEmcGF0aD0l
+MkZjb21tdW5pdGllcyUyRjExMDA3NTgxNTEyMzYzNTMwMDU2OSUzRnByb21vJTNEbm90aWZpY2F0
+aW9ucyZkdD0xNDk4Njk0NzYzNDk4JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KRXN0YSBub3Rp
+ZmljYcOnw6NvIGZvaSBlbnZpYWRhIHBhcmEgdGhpYWdvcnMxOTgzQGdtYWlsLmNvbS4gQWNlc3Nl
+IHN1YXMgIA0KY29uZmlndXJhw6fDtWVzIGRlIGVudmlvIGRlIG5vdGlmaWNhw6fDtWVzIHBhcmEg
+YXR1YWxpemFyIHNldSBlbmRlcmXDp286ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90
+aWZpY2F0aW9ucy9lbWxpbms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0pEcWtvamg0
+ZFFDRlpDRlV3b2RfUG9CQUEmcGF0aD0lMkZzZXR0aW5ncyUyRnBsdXMmZHQ9MTQ5ODY5NDc2MzQ5
+OCZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANCkNhbmNlbGFyIGluc2NyacOnw6NvIGRlc3NlcyBl
+LW1haWxzOiAgDQpodHRwczovL25vdGlmaWNhdGlvbnMuZ29vZ2xlLmNvbS91bnN1YnNjcmliZS9B
+SjdTc01uejZyampLMzctVFc5T29JNjRUWjFCQ1NpaVZUSFUzQi12NEhxaFlCMXF0UHRpbTV5ODlH
+Q09KRnQ0YVEtSzZPVnNSWHJtRWVEQnFmUjc1T3lZbG1UQmN6dERuTDVaV1pJUWdGaE1yWk5ydVow
+c19fWnZSOG5aNmVOM1lWYXMxbGk1M1E1VExVa2FyMmw4ajdoTEdNVzg2VFVHcVVJblAydHNEWF9G
+WXhfUlpvSWs2WmcNCg0K
+--f403045c71ea05358a05530e11f1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:c88e800518400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">Jeff compartilhou uma <a hr=
+ef=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280331388597=
+1532&amp;emid=3DCJDqkojh4dQCFZCFUwod_PoBAA&amp;path=3D%2F113321712150684343=
+738%2Fposts%2F9qhaEhmGpdS&amp;dt=3D1498694763498&amp;ub=3DSQUARE_SUBSCRIPTI=
+ON" style=3D"color:#3366CC;text-decoration:none">postagem</a> com <a href=
+=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859715=
+32&emid=3DCJDqkojh4dQCFZCFUwod_PoBAA&path=3D%2Fcommunities%2F11007581512363=
+5300569&dt=3D1498694763498&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC=
+;text-decoration:none">Usemos Linux</a><div style=3D"margin-top:20px;width:=
+0;height:0; border-bottom:10px solid #fff; border-left:10px solid transpare=
+nt; border-right:10px solid transparent"></div></div></td><td style=3D"vert=
+ical-align:middle;text-align:right;padding-right:30px"><img src=3D"https://=
+ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_118x36dp.png"/></=
+td></tr></table><div style=3D"font-size:14px;line-height:18px;background-co=
+lor:#fff;"><div style=3D"padding:30px 40px 40px"><table cellpadding=3D0 cel=
+lspacing=3D0><tr><td style=3D"padding-right:15px;vertical-align:top"><a hre=
+f=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152803313885971=
+532&emid=3DCJDqkojh4dQCFZCFUwod_PoBAA&path=3D%2F113321712150684343738&dt=3D=
+1498694763498&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"75" height=3D"75" sty=
+le=3D"border:solid 1px #cccccc;" src=3D"https://lh3.googleusercontent.com/-=
+7Z5HVsrUOB0/AAAAAAAAAAI/AAAAAAAAABA/VstpkoTeXd8/s75-c-k-a-no/photo.jpg"/></=
+a></td><td style=3D"width:578px;color:#333;font:13px Arial;vertical-align:t=
+op"><div style=3D"padding-bottom:10px;"><strong>Jeff</strong>:</div><div st=
+yle=3D"padding-bottom:10px">Alguien trabajo  con el Protocolo TR-069?<br />=
+Cualquier ayuda servir=C3=ADa  de mucho gracias!</div><br/><a href=3D"https=
+://plus.google.com/_/notifications/emlink?emr=3D05152803313885971532&emid=
+=3DCJDqkojh4dQCFZCFUwod_PoBAA&path=3D%2F113321712150684343738%2Fposts%2F9qh=
+aEhmGpdS&dt=3D1498694763498&ub=3DSQUARE_SUBSCRIPTION" style=3D"background-c=
+olor:#d44b38;border:solid 1px #dfdfdf;border-radius:3px;color:#fff;display:=
+inline-block;font-family: Arial;font-size:13px;height:30px;line-height:30px=
+;min-width:54px;padding:1px 20px;text-align:center;text-decoration:none;whi=
+te-space:nowrap;">Ver postagem</a></td></tr></table></div></div><div style=
+=3D"border-top:solid 1px #dfdfdf;background-color:#fff; padding:30px;font-s=
+ize:14px;line-height:18px;border-radius:0 0 5px 5px">Voc=C3=AA est=C3=A1 re=
+cebendo este e-mail pela inscri=C3=A7=C3=A3o realizada no <a href=3D"https:=
+//plus.google.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3D=
+CJDqkojh4dQCFZCFUwod_PoBAA&path=3D%2Fcommunities%2F110075815123635300569&dt=
+=3D1498694763498&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-deco=
+ration:none">Usemos Linux</a> do Google+.</div></div><div style=3D"padding-=
+top:10px;color:#999;font:11px Arial;width:670px"><a href=3D"https://plus.go=
+ogle.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3DCJDqkojh4=
+dQCFZCFUwod_PoBAA&path=3D%2F113321712150684343738%2Fop%2Fmute&dt=3D14986947=
+63498&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none=
+">Ignore Jeff</a> para parar de receber notifica=C3=A7=C3=B5es dele.  <a hr=
+ef=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280331388597=
+1532&emid=3DCJDqkojh4dQCFZCFUwod_PoBAA&path=3D%2Fcommunities%2F110075815123=
+635300569%3Fpromo%3Dnotifications&dt=3D1498694763498&ub=3DSQUARE_SUBSCRIPTI=
+ON" style=3D"color:#3366CC;text-decoration:none">Altere</a> quais notifica=
+=C3=A7=C3=B5es voc=C3=AA recebe desta comunidade. Esta notifica=C3=A7=C3=A3=
+o foi enviada para thiagors1983@gmail.com. Acesse suas <a href=3D"https://p=
+lus.google.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3DCJD=
+qkojh4dQCFZCFUwod_PoBAA&path=3D%2Fsettings%2Fplus&dt=3D1498694763498&ub=3DS=
+QUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">configura=
+=C3=A7=C3=B5es de envio de notifica=C3=A7=C3=B5es</a> para atualizar seu en=
+dere=C3=A7o. <a href=3D"https://notifications.google.com/unsubscribe/AJ7SsM=
+nz6rjjK37-TW9OoI64TZ1BCSiiVTHU3B-v4HqhYB1qtPtim5y89GCOJFt4aQ-K6OVsRXrmEeDBq=
+fR75OyYlmTBcztDnL5ZWZIQgFhMrZNruZ0s__ZvR8nZ6eN3YVas1li53Q5TLUkar2l8j7hLGMW8=
+6TUGqUInP2tsDX_FYx_RZoIk6Zg" style=3D"color:#3366CC;text-decoration:none">C=
+ancelar inscri=C3=A7=C3=A3o</a> destes e-mails.<br/>Google Inc., 1600 Amphi=
+theatre Pkwy, Mountain View, CA 94043 USA</div></body></html>
+--f403045c71ea05358a05530e11f1--

@@ -1,0 +1,39 @@
+ # Go to folder...
+ #macro index,pager gi "<change-folder>=INBOX<enter>"                                                              "open inbox"
+ # macro index,pager gd "<change-folder>=Drafts<enter>"                                                              "open drafts"
+ # macro index,pager gs "<change-folder>=Sent<enter>"                                                                "open sent"
+ #macro index,pager gt "<change-folder>$trash<enter>"                                                               "open trash"
+ #macro index,pager gf "<change-folder>?"                                                                           "open mailbox..."
+
+ macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+ macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+
+ 
+ macro index \Cr "<tag-prefix><clear-flag>N"                                                                       "mark tagged messages as read"
+ macro index \Cs "<pipe-message>cat > ~/"                                                                          "save message as" 
+ macro index B   "<limit>~b "                                                                                      "search message bodies"
+
+
+ macro index,pager <F1> "<shell-escape>less /usr/share/doc/mutt/manual.txt<enter>" "Show Mutt  documentation"
+ macro index,pager <F2> ":toggle help<enter>:set ?help<enter>"  "toggle help status line"
+ macro index,pager <F5> ":source ~/.config/mutt/muttrc\n"              "Reload the muttrc"
+
+ macro compose \Cg    "Fgpg --clearsign\ny"
+ macro compose \Cp    "Fgpg --clearsign\ny^T^Uapplication/pgp; format=text; x-action=sign\n"
+ macro compose Y pfy  "send mail without pgp"
+
+ # Sidebar
+ macro index B '<enter-command>toggle sidebar_visible<enter><refresh>'
+ macro pager B '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+ macro index \cB '<enter-command>toggle sidebar_visible<enter><refresh>'
+ macro pager \cB '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+ 
+ # GooBook
+ macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+
+ # Extract_url - Ctrl + B list email URLs , Enter to open url
+ macro index,pager \cb "<enter-command> set my_pdsave=\$pipe_decode<enter>\
+        <enter-command> unset pipe_decode<enter>\
+        <pipe-message>extract_url<enter>\
+        <enter-command> set pipe_decode=\$my_pdsave<enter>" "get URLs"
+

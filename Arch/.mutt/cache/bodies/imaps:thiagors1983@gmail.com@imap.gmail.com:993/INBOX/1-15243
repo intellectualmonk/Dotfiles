@@ -1,0 +1,212 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp1225110pje;
+        Mon, 26 Jun 2017 03:04:36 -0700 (PDT)
+X-Received: by 10.157.42.4 with SMTP id t4mr13543944ota.146.1498471476388;
+        Mon, 26 Jun 2017 03:04:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498471476; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wTUO6GgS3FkodVEbxJNiGlOb/DaN/SiBzAr9X/bhcwb5yiP3VyP+XLuMUbPiMaKzCg
+         0YsKa+lVNsXHvyXieW7yZ7vNWkqwx5cjbNwiHJrUxLOgvEAFmncNH/wTOtVeoPXkujDU
+         LGK9ndt2iVeREtm+IT/7Y8KSOlTppeVgtO4lFgbsj0E2uqhOWLtzmAvFTJQYPAq48EbO
+         bUWz5lhVWyMlUyS9d9vOCtFJ4U0BbHjjHg6E4zUhz/eWDfZJmp1pABQckdZYtlsps/p0
+         hwC4Cj8D7PVPGynPMi4Laq6mqYD9AdvUE91cQXqwRU53nMek2JoUxf7fIqFCyXkgDmEl
+         VkGQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=imxlSjadExmKuxqLMJMZ2Vh5Z0RvHt5jTK2IvY/C77I=;
+        b=YFB2heo+8ThKE0p+PCR55Yeeb/SYsP9hbVvAUNsPkZMnK8vSkLicFAGNdmU6GPLp56
+         OwXYNZOER3G/dqItnVG32woi9cQCEHEdFSLsiNfurxGTHVUpB5MhEltxL47w+ULY+J1k
+         6NTz3ZtYgyidwgIrCVyjn/tiqwLB9Qd+ROakqqFqca1+pPGn3VpmWMStlo08o4gv6GQ3
+         FWqZFs2mgNNWacA7PiiCt28PBCcU50lP3HSujlHHqh4C+THr5wjTsq7APVq1KtnmNJxq
+         uw0KNYwypl4PX2X6O6WwtSOSKeV6gJgt8htIwp/TxCQrtk7o9BdyMdgXx49N6tGBo3NC
+         skeg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=KS9DBeQ6;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:4001:c0b::246 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-it0-x246.google.com (mail-it0-x246.google.com. [2607:f8b0:4001:c0b::246])
+        by mx.google.com with ESMTPS id t51si2654792ota.365.2017.06.26.03.04.35
+        for <thiagors1983@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Jun 2017 03:04:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:4001:c0b::246 as permitted sender) client-ip=2607:f8b0:4001:c0b::246;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.b=KS9DBeQ6;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 2607:f8b0:4001:c0b::246 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Received: by mail-it0-x246.google.com with SMTP id i71so66809401itf.2
+        for <thiagors1983@gmail.com>; Mon, 26 Jun 2017 03:04:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=imxlSjadExmKuxqLMJMZ2Vh5Z0RvHt5jTK2IvY/C77I=;
+        b=KS9DBeQ6cbrPJnerjISamnt/21czNh9VGnTLt7R8AQknK6qfOACwn35qMjTVJ91g9T
+         NdhsBWnKsYdUBN6P++LfPoqpjiy0HTD0EIY+WXs0TWtUvxBSCG+7lBkxvxKkI2Py3JzI
+         LR1Iq874sp/qQjMSyO7iE/IEVFpuzLMPC1M22H4IFi9/fgW2lJgT3/1yAyCMk6ewVLWq
+         HRSX82VIxc3nyppRPEjwRD2edHOkruiMl/2wm7fzVAEV9fPfMwRUfHwvK/d/51tvjzpz
+         vS3gXO8LeK7SkRc2SqWFMpl2zAgOl7oAJx4NHOTqKrJcPaGVcazuhXO6AG9IzZKvQ+xn
+         +stg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=imxlSjadExmKuxqLMJMZ2Vh5Z0RvHt5jTK2IvY/C77I=;
+        b=DRfn91zjEkUJbPxGAxD65HXZLPflbMfedAmmzA7X5tE//H22N9UE8jRbGZ5scdme1p
+         hcvXllnNg64QxvCG3aCJg7Jap92hLdRFf/qZ+/s1EPYos8r7GxweG4mrORAYZuSoJBKL
+         m2VduaWqQGQTxSRCm2Tt5LI8y6BY/LDXBf7xzHmchi9iaHoj1ofTDFgrETl8McRnJzPx
+         4k7R3XcWO+SQ9ilj2hdRIiLp3v5oXHQJNZwlo8u4eJZcXkCez6s4ONTTJO0DADuR2/Bk
+         Avo1cH7vtLav4doaSheiP1/H+5maLfsFVey8C0b262yI8ZP+R9NvOTYXhaOdsfxjZ577
+         fM1Q==
+X-Gm-Message-State: AKS2vOxzNQiug/+pvZSmHRJii7jPGuc2JgfMULRU9aJUlqzwK1Vm3N8W
+	xhuNrzSL/xYhkUG7FRmjMms8Wr9plODt8JsCCwYuxJg/CYBCTwm2pLAiE2wm
+MIME-Version: 1.0
+X-Received: by 10.36.79.150 with SMTP id c144mr9604474itb.21.1498471475688;
+ Mon, 26 Jun 2017 03:04:35 -0700 (PDT)
+Date: Mon, 26 Jun 2017 03:04:35 -0700 (PDT)
+X-Notifications: XEAAAAHjX3IF_I5hNQp5qBskRWNg
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTEwMDc1ODE1MTIzNjM1MzAwNTY5
+X-Entity-Ref-ID: z13sezdaoqbdwppiw04cevwgnzqowje4twk0k
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 107311581090363729647
+Reply-To: "Google+ (Antonio Atienza)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMl90FAXMwY_mpp0C0-fM2w6ZP-JT5BD_iVvufIs4z1FaLn8qu2C71V5LPNZ4LAyEDyrEaQ4pgfSzGQPjFjVxKUl_Haqj_MWsiQZVW8pzLUE4Aagu0xAToixznsycOujtK18lm5qnZCJVtZyJHSVxTfDknxWvWz-FCflyLqtN-5DjL7taYg>
+X-UB: 63
+Precedence: bulk
+Message-ID: <1328559759@plus.google.com>
+Subject: [Usemos Linux] Ciao ragazzi, t-shirt di #Deepin consegnata...
+From: "Google+ (Antonio Atienza)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="001a11447e5203b7460552da140e"
+
+--001a11447e5203b7460552da140e
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+QW50b25pbyBBdGllbnphIGNvbXBhcnRpbGhvdSB1bWEgcG9zdGFnZW0gY29tIFVzZW1vcyBMaW51
+eC4gVmVqYTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGlu
+az9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DSUNwamFDaDI5UUNGV3pZUUFvZDRfOEVs
+USZwYXRoPSUyRjEwNzMxMTU4MTA5MDM2MzcyOTY0NyUyRnBvc3RzJTJGZHVtQ1N5Um1YVzcmZHQ9
+MTQ5ODQ3MTQ3NTUyNyZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANClZvY8OqIHJlY2ViZXUgZXN0
+ZSBlLW1haWwgcG9ycXVlIHNlIGluc2NyZXZldSBubyBVc2Vtb3MgTGludXggbm8gR29vZ2xlKy4g
+IA0KVXNlbW9zIExpbnV4ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9u
+cy9lbWxpbms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0lDcGphQ2gyOVFDRld6WVFB
+b2Q0XzhFbFEmcGF0aD0lMkZjb21tdW5pdGllcyUyRjExMDA3NTgxNTEyMzYzNTMwMDU2OSZkdD0x
+NDk4NDcxNDc1NTI3JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tIEFsdGVyZSBxdWFpcyBub3RpZmljYcOnw7VlcyB2b2PDqiByZWNlYmUgZGVzdGEgIA0K
+Y29tdW5pZGFkZTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2Vt
+bGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DSUNwamFDaDI5UUNGV3pZUUFvZDRf
+OEVsUSZwYXRoPSUyRmNvbW11bml0aWVzJTJGMTEwMDc1ODE1MTIzNjM1MzAwNTY5JTNGcHJvbW8l
+M0Rub3RpZmljYXRpb25zJmR0PTE0OTg0NzE0NzU1MjcmdWI9U1FVQVJFX1NVQlNDUklQVElPTiAg
+DQpFc3RhIG5vdGlmaWNhw6fDo28gZm9pIGVudmlhZGEgcGFyYSB0aGlhZ29yczE5ODNAZ21haWwu
+Y29tLiBBY2Vzc2Ugc3VhcyAgDQpjb25maWd1cmHDp8O1ZXMgZGUgZW52aW8gZGUgbm90aWZpY2HD
+p8O1ZXMgcGFyYSBhdHVhbGl6YXIgc2V1IGVuZGVyZcOnbzogIA0KaHR0cHM6Ly9wbHVzLmdvb2ds
+ZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1p
+ZD1DSUNwamFDaDI5UUNGV3pZUUFvZDRfOEVsUSZwYXRoPSUyRnNldHRpbmdzJTJGcGx1cyZkdD0x
+NDk4NDcxNDc1NTI3JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KQ2FuY2VsYXIgaW5zY3Jpw6fD
+o28gZGVzc2VzIGUtbWFpbHM6ICANCmh0dHBzOi8vbm90aWZpY2F0aW9ucy5nb29nbGUuY29tL3Vu
+c3Vic2NyaWJlL0FKN1NzTWw5MEZBWE13WV9tcHAwQzAtZk0ydzZaUC1KVDVCRF9pVnZ1ZklzNHox
+RmFMbjhxdTJDNzFWNUxQTlo0TEF5RUR5ckVhUTRwZ2ZTekdRUGpGalZ4S1VsX0hhcWpfTVdzaVFa
+Vlc4cHpMVUU0QWFndTB4QVRvaXh6bnN5Y091anRLMThsbTVxblpDSlZ0WnlKSFNWeFRmRGtueFd2
+V3otRkNmbHlMcXROLTVEakw3dGFZZw0KDQo=
+--001a11447e5203b7460552da140e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:9a1349640c400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">Antonio Atienza compartilho=
+u uma <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152=
+803313885971532&amp;emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&amp;path=3D%2F1073115=
+81090363729647%2Fposts%2FdumCSyRmXW7&amp;dt=3D1498471475527&amp;ub=3DSQUARE=
+_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none">postagem</a> co=
+m <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033=
+13885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&path=3D%2Fcommunities%2F11007=
+5815123635300569&dt=3D1498471475527&ub=3DSQUARE_SUBSCRIPTION" style=3D"colo=
+r:#3366CC;text-decoration:none">Usemos Linux</a><div style=3D"margin-top:20=
+px;width:0;height:0; border-bottom:10px solid #fff; border-left:10px solid =
+transparent; border-right:10px solid transparent"></div></div></td><td styl=
+e=3D"vertical-align:middle;text-align:right;padding-right:30px"><img src=3D=
+"https://ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_118x36dp=
+.png"/></td></tr></table><div style=3D"font-size:14px;line-height:18px;back=
+ground-color:#fff;"><div style=3D"padding:30px 40px 40px"><table cellpaddin=
+g=3D0 cellspacing=3D0><tr><td style=3D"padding-right:15px;vertical-align:to=
+p"><a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152803=
+313885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&path=3D%2F107311581090363729=
+647&dt=3D1498471475527&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"75" height=
+=3D"75" style=3D"border:solid 1px #cccccc;" src=3D"https://lh5.googleuserco=
+ntent.com/--0XUZFdEiKU/AAAAAAAAAAI/AAAAAAAAJC8/j-ekJ14Z6pE/s75-c-k-a-no/pho=
+to.jpg"/></a></td><td style=3D"width:578px;color:#333;font:13px Arial;verti=
+cal-align:top"><div style=3D"color:#686868;font:16px Arial;padding-bottom:1=
+5px">Antonio Atienza compartilhou a postagem de Massimo Antonio Carofano co=
+m voc=C3=AA.</div><div style=3D"padding-bottom:10px"></div></td></tr></tabl=
+e><div style=3D"margin:20px 0;border-bottom:solid 1px #dfdfdf;width:670px">=
+</div><table cellpadding=3D0 cellspacing=3D0><tr><td style=3D"padding-right=
+:15px;vertical-align:top"><a href=3D"https://plus.google.com/_/notification=
+s/emlink?emr=3D05152803313885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&path=
+=3D%2F103953514571789006640&dt=3D1498471475527&ub=3DSQUARE_SUBSCRIPTION"><i=
+mg width=3D"75" height=3D"75" style=3D"border:solid 1px #cccccc;" src=3D"ht=
+tps://lh5.googleusercontent.com/-VKFqj57b8So/AAAAAAAAAAI/AAAAAAAADA4/-CNyEf=
+XBrx4/s75-c-k-a-no/photo.jpg"/></a></td><td style=3D"width:578px;color:#333=
+;font:13px Arial;vertical-align:top"><div style=3D"font-weight:bold;padding=
+-bottom:10px">Massimo Antonio Carofano:</div><div style=3D"padding-bottom:1=
+0px">Ciao ragazzi, t-shirt di <a rel=3D"nofollow" class=3D"ot-hashtag" href=
+=3D"https://plus.google.com/s/%23Deepin">#Deepin</a> consegnata!<br />Link =
+allo Store:<br /> <a href=3D"http://s.aliexpress.com/BFzqEV3E" class=3D"ot-=
+anchor">http://s.aliexpress.<wbr>com/BFzqEV3E</a> </div><div style=3D"paddi=
+ng-top:14px"></div><div style=3D"padding:12px 14px;background:#EEE"><a href=
+=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859715=
+32&amp;emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&amp;path=3D%2Fphotos%2F10395351457=
+1789006640%2Falbums%2F6435303581957665521&amp;dt=3D1498471475527&amp;ub=3DS=
+QUARE_SUBSCRIPTION" style=3D"text-decoration:none"><div style=3D"font:13px =
+arial, bold;color:black"> 6 fotos neste =C3=A1lbum</div></a></div><a href=
+=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859715=
+32&amp;emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&amp;path=3D%2Fphotos%2F10395351457=
+1789006640%2Falbums%2F6435303581957665521&amp;dt=3D1498471475527&amp;ub=3DS=
+QUARE_SUBSCRIPTION"><div style=3D"padding:0 5px;background:#eee"><div style=
+=3D"background:#eee"><img src=3D"https://lh3.googleusercontent.com/-241NyKy=
+kFno/WU7KgwL38LI/AAAAAAAASRM/jevd8XoULWMxJQZOjTjTIF8xX5K3XkfqgCJoC/w379-h0/=
+IMG_20170624_213628.jpg" style=3D"max-width:100%;margin-left:auto;margin-ri=
+ght:auto;display:block;border:0;" width=3D"379" alt=3D"imagem n=C3=A3o exib=
+ida"></div></div></a><br/><a href=3D"https://plus.google.com/_/notification=
+s/emlink?emr=3D05152803313885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&path=
+=3D%2F107311581090363729647%2Fposts%2FdumCSyRmXW7&dt=3D1498471475527&ub=3DS=
+QUARE_SUBSCRIPTION" style=3D"background-color:#d44b38;border:solid 1px #dfd=
+fdf;border-radius:3px;color:#fff;display:inline-block;font-family: Arial;fo=
+nt-size:13px;height:30px;line-height:30px;min-width:54px;padding:1px 20px;t=
+ext-align:center;text-decoration:none;white-space:nowrap;">Ver postagem</a>=
+</td></tr></table></div></div><div style=3D"border-top:solid 1px #dfdfdf;ba=
+ckground-color:#fff; padding:30px;font-size:14px;line-height:18px;border-ra=
+dius:0 0 5px 5px">Voc=C3=AA est=C3=A1 recebendo este e-mail pela inscri=C3=
+=A7=C3=A3o realizada no <a href=3D"https://plus.google.com/_/notifications/=
+emlink?emr=3D05152803313885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&path=3D=
+%2Fcommunities%2F110075815123635300569&dt=3D1498471475527&ub=3DSQUARE_SUBSC=
+RIPTION" style=3D"color:#3366CC;text-decoration:none">Usemos Linux</a> do G=
+oogle+.</div></div><div style=3D"padding-top:10px;color:#999;font:11px Aria=
+l;width:670px"><a href=3D"https://plus.google.com/_/notifications/emlink?em=
+r=3D05152803313885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&path=3D%2F107311=
+581090363729647%2Fop%2Fmute&dt=3D1498471475527&ub=3DSQUARE_SUBSCRIPTION" st=
+yle=3D"color:#3366CC;text-decoration:none">Ignore Antonio Atienza</a> para =
+parar de receber notifica=C3=A7=C3=B5es dele.  <a href=3D"https://plus.goog=
+le.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3DCICpjaCh29Q=
+CFWzYQAod4_8ElQ&path=3D%2Fcommunities%2F110075815123635300569%3Fpromo%3Dnot=
+ifications&dt=3D1498471475527&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#336=
+6CC;text-decoration:none">Altere</a> quais notifica=C3=A7=C3=B5es voc=C3=AA=
+ recebe desta comunidade. Esta notifica=C3=A7=C3=A3o foi enviada para thiag=
+ors1983@gmail.com. Acesse suas <a href=3D"https://plus.google.com/_/notific=
+ations/emlink?emr=3D05152803313885971532&emid=3DCICpjaCh29QCFWzYQAod4_8ElQ&=
+path=3D%2Fsettings%2Fplus&dt=3D1498471475527&ub=3DSQUARE_SUBSCRIPTION" styl=
+e=3D"color:#3366CC;text-decoration:none">configura=C3=A7=C3=B5es de envio d=
+e notifica=C3=A7=C3=B5es</a> para atualizar seu endere=C3=A7o. <a href=3D"h=
+ttps://notifications.google.com/unsubscribe/AJ7SsMl90FAXMwY_mpp0C0-fM2w6ZP-=
+JT5BD_iVvufIs4z1FaLn8qu2C71V5LPNZ4LAyEDyrEaQ4pgfSzGQPjFjVxKUl_Haqj_MWsiQZVW=
+8pzLUE4Aagu0xAToixznsycOujtK18lm5qnZCJVtZyJHSVxTfDknxWvWz-FCflyLqtN-5DjL7ta=
+Yg" style=3D"color:#3366CC;text-decoration:none">Cancelar inscri=C3=A7=C3=
+=A3o</a> destes e-mails.<br/>Google Inc., 1600 Amphitheatre Pkwy, Mountain =
+View, CA 94043 USA</div></body></html>
+--001a11447e5203b7460552da140e--

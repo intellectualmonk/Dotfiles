@@ -1,0 +1,481 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp2314688pje;
+        Tue, 27 Jun 2017 04:52:38 -0700 (PDT)
+X-Received: by 10.237.52.38 with SMTP id w35mr6232402qtd.142.1498564358229;
+        Tue, 27 Jun 2017 04:52:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498564358; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IBLTe+WUTxIJqfEtkBTroUwiI6SGadXR3Swsa6mcu5e5JY7t0eRU7oReGUXfbG/f5N
+         eXW7Xy9nu0LhpiCobZnWv8N0PycUkcIxfEFpdPauW1yV7gAl9R3onhTeFe9jVykpfKwB
+         AWa9ZyN9QfejCoc7X6MRNdvO09NJ1smxG/SvE7LNCWD8Le8awPNpBhgznxUYbCCLfZtL
+         4G/4O3BT6fXHWEIGsr6r8YPAqLj9g3gb4N8PoxoYJpYo2gKtWDd0zNjk7XDkyucoJS2i
+         V7ipz7UWqJOnm18ItzBU9sf/3t51EemS6KDIuy9mMThKpbNvTpgtaJPUwz/igCibubOy
+         DTkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:list-id:mime-version:list-unsubscribe:date
+         :subject:to:from:domainkey-signature:dkim-signature
+         :arc-authentication-results;
+        bh=FDqKejhFmrgTppoLS9CzK2BmPetk9qZHZhIGmGmMnKY=;
+        b=J2mCvFQwFO3fcVq1C+g9wFb+PhyybENI6P2n+0ae7NyDfk7aZjT5rE9L3mZaay0xR5
+         dWOhml7CrTkOOlWjuvIKqnMi9uBRDoxFxP1RmmfVId3e+oEVakbI0Q88hOFvWuaT95k1
+         IMWEisvBdPP/6U71EUJOY2zIkBuD/DNKin47YNX2MO/HWboV+K3sp0NJGVFwQ3/prNGy
+         GI0E4u7x03l2C6d1fRK/+Q1QWoBWHljgha9dN9yV0CWotii2ZpsaZut2Z1NBAfMZ8afw
+         nbtVrZ4DfHro1+2bIQfU0OCthPzrjp+NAdnncZLtLPfKHhc6Zq34S3FQoVePiCHuhTHo
+         Mjkw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@info.netshoes.com.br header.b=klii6Geb;
+       spf=pass (google.com: domain of bounce-16_html-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br designates 199.122.127.99 as permitted sender) smtp.mailfrom=bounce-16_HTML-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=netshoes.com.br
+Return-Path: <bounce-16_HTML-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br>
+Received: from mta5.mailmkt.netshoes.com.br (mta5.mailmkt.netshoes.com.br. [199.122.127.99])
+        by mx.google.com with ESMTPS id u2si2523512qkh.392.2017.06.27.04.52.37
+        for <thiagors1983@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Jun 2017 04:52:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-16_html-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br designates 199.122.127.99 as permitted sender) client-ip=199.122.127.99;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@info.netshoes.com.br header.b=klii6Geb;
+       spf=pass (google.com: domain of bounce-16_html-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br designates 199.122.127.99 as permitted sender) smtp.mailfrom=bounce-16_HTML-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=netshoes.com.br
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=200608; d=info.netshoes.com.br;
+ h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:List-ID:Message-ID:Content-Type; i=netshoes@info.netshoes.com.br;
+ bh=vujbIVIVVuLj0gGmW1yWkzsMM6c=;
+ b=klii6GebLb0MO6BQBxwFdnvWLfv+okIA3RYbsupvo+WTyvkQ2PDs0yQ0vs0Bp+ix9F2WrtWE1gjK
+   cIQgpT3IvEQQesjb8oAfW4aEXnp5kw9ZadoBpILuX68YVk12pL0h7y+ooE0+lDnV7iCNk44RX5V9
+   RrKGBpZd/JFLD+0jUQE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=200608; d=info.netshoes.com.br;
+ b=AoxQ3lMgjE3RgMkmXKW9pMBtRoGDPAdvl9ZrOsScsV+ncvipUNuS5UqfjcyKhK0AKEMMxkPL2CVc
+   JiwawOh48axHlyZ9m1DyiIqQ3Y0CQ9429Os5oK9SNl/Q+poxP2MRZ9R+aNxLgWRuFIASQUdsmq6L
+   pIC2RhFs+h+yzbTw4r0=;
+Received: by mta5.mailmkt.netshoes.com.br id ha93gc163hs4 for <thiagors1983@gmail.com>; Tue, 27 Jun 2017 05:48:51 -0600 (envelope-from <bounce-16_HTML-14468296-68818-1429766-1305@bounce.mailmkt.netshoes.com.br>)
+From: "Netshoes" <netshoes@info.netshoes.com.br>
+To: <thiagors1983@gmail.com>
+Subject: =?ISO-8859-1?Q?Ter=E7a_=E9_dia_de_que=3F_R$120_de_desconto,_claro?=
+ =?ISO-8859-1?Q?!?=
+Date: Tue, 27 Jun 2017 05:48:50 -0600
+List-Unsubscribe: <mailto:leave-fd8415761a3c402029-fe57157471620c7f7c12-fef012787d650c-fe8c1574776d037b73-ff3615737561@leave.mailmkt.netshoes.com.br>
+MIME-Version: 1.0
+List-ID: <1429766_68818.xt.local>
+X-CSA-Complaints: whitelistcomplaints@eco.de
+x-job: 1429766_68818
+Message-ID: <1972398f-c122-46a4-995e-2ffc6975687a@xtnvmta4348.xt.local>
+Feedback-ID: 1429766:68818:199.122.127.99:sfmktgcld
+Content-Type: multipart/alternative;
+	boundary="xr5rB3ph92aE=_?:"
+
+This is a multi-part message in MIME format.
+
+--xr5rB3ph92aE=_?:
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Netshoes.com.br
+
+
+
++ qualquer tenis da lista com R$50 de desconto!
+
+
+
+ Caso nao consiga visualizar, 
+http://view.mailmkt.netshoes.com.br/?qs=79a36a858621b830db353a8ccc66d8124b5b86e16d918a886cac2066f0c032e2f90ff0f3887abbb162c009530ebe9d7e0dc0cd6a30db3ab25484e36dc02a0b84d1233de22c448131 
+acesse este link
+
+ Adicione 
+mailto:netshoes@info.netshoes.com.br 
+netshoes@info.netshoes.com.br  ao seus contatos
+ 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c701243dd5dfa581bbe45f0096ef6c593b729e68a671b55a63b94be76fb6b7799bd4989888ecea762dd033b747fa423b0856dba2945fe30129 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c74829eec4a717a5fbfa2ae39ea930cdb26fecb1fb25dec6941f5226744fd7dffaa3a48efa673715493fc1b4b68caf813ac20b4b5c547173ca 
+|
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c73ff37a819f7dc72a1b50d46ca18ac809330416824b6a5a49c23ee0939efd381d0fe9705ffec40cd89701468926115eb86b10aa0faabc82b4 
+|
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c79214b14aa0fb2a24752a70d9f27e5409b83335bda687cb93d8a53dfe06822bfb7d121ee6b06e1c7e1b2cc0b551abf1884209d5231676f002 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7c8a525f9a9261bb6e6211b064a2d8eba6fa89d49df3d1c95617c215e0f34e34c0a48d4f9bcb44f900277d4d4c1df8489 
+
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7fee0aa0faee4bac7dc376e2e87482bbb38e98f9e17f21ef59a139e5d2d6177594f6298e12d5e9a516264213b120e3413dd012f7a1504d768 
+
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c71ecbbc913987efc064196c179a96d5f31a6b9378bdb85e8c098c82e59de3eb4adca115b31729c9a8fe5f231fea9e0f82d52fc6d9718bc03e 
+
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c75a2816c7559d2d265bbbeea68c981ee8e4f19dd1ff21d41b170038959a0a0a994fd6e4490c7a7b6abda2046d25f8523c095212e22cce43d3 
+
+
+
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7695e4e658fb662099de9a2507ea897681fb8e01006fa6f998a29c125dc227e476b3b0c6fa7a164ac2ae2c4e82fe3c2b25bf8f708c032f5cb 
+
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7c45173db7b02aea218bbd827342e87212608d6baf354211ffdff799469bf876d96cdd75af623399e7da5e4602b03773a15c5b571b49362d4 
+
+
+
+
+
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7c3b7b481c5ca670718c732a1107158078a87bb560b68738d63fc63cb72c18b3f1edac58a3558af9ac1b4c41606f96d4174218e7dd50b86fa 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c766d35471fcca727439a9e9e6edf1f1cdea83bad13f524e99346963ac108707b908450c0e7bad1907b8e7ecee3af24f074fd00fcfab63e4c2 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7536184d44da91381adadeefca8c72137ee09b9fbd7593896190b26c0c7a3ba5c1c837f9ab2f710e5539731b7468237426f19bb22db6df5ad 
+
+
+
+trl:eval>
+
+
+
+
+DIVIDA EM
+ATE 2 CARTOES
+
+PARCELE EM
+ATE 10X SEM JUROS
+
+PAGUE COM
+BOLETO BANCARIO
+
+ATE 30 DIAS
+PARA TROCA
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7cbf6598f120532f3d840a08903a0d2b957e500d85e770e7505638c1a84a6cf80be5f2a2bbb908ff0a5587447ee4b07f4 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7f64db253e600b5805284620391e9781197680621b4f3f2a5e3eba4e59ea0e247028f8a5fa2b536e1ff19b2a24d7552fe 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7bd711aa222134ebb6daba4e840127cf63fa56415fdeb6a80e7753c0b6f92bcc0973da4163dafc087e8676a5e1d987440 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7f780ec24cc49fbde84dd0489e6a516702d3854bac2782fcf4fca9ae550519d332ad44d1e3d24a303535bf5d7b0a74e9a 
+
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7ef926692efdfa5e5bc448ec71dc70b51299d90085c5a6d67ce6faaa69370b7c6897130a99b25164033dd0ec43c6dd5a1 
+
+
+ Para esclarecer duvidas ou enviar sugestoes, acesse nossa 
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7b96ddadc0345cc0598aa4501c77a8751544456acf6c5ead17d13fe5f4a4bdd4e428cea0e04887c216258c869e2ca2e16 
+Central de relacionamento .
+ 
+
+Politica de Privacidade
+Este e-mail foi enviado para o e-mail 
+mailto:thiagors1983@gmail.com 
+thiagors1983@gmail.com  porque esta inscrito para receber nossos comunicados e ofertas. Leia nossa 
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7d0c16cf31bcc50cf9fc14112de752a3e5807b15f00a6dea3479c5f2803282ea251299d0798b0fb437a176dfb78d75cd0 
+politica de privacidade  para mais informacoes.
+Como a Netshoes e contra o spam na rede, caso voce nao deseje mais recebe-los, 
+http://click.mailmkt.netshoes.com.br/subscription_center.aspx?qs=7c8d80735c175c87b8b8e945baef1c9c29656d68f9363695072b45d5abe73ad61f976489b93803b243eaa8140c196fedc031ef51b402bde9 
+clique neste link .
+ 
+
+Validade do E-mail
+ 
+ As ofertas anunciadas neste e-mail sao validas ate 27/06/2017 as 23:59, ou enquanto durarem os estoques.
+
+
+Precos e Condicoes
+
+ Precos sujeitos a alteracao e exclusivos para este canal de comunicacao. Para ativar determinados precos e promocoes e necessario clicar neste e-mail. Compras feitas com cartoes de credito podem ser parceladas em ate 10x sem juros. Caso haja diferenca de preco ou descricao do produto entre este e-mail e o site, a condicao valida e praticada sera a do site.
+ 
+
+Promocoes
+
+ As promocoes na Netshoes nao sao cumulativas. Sempre que voce optar pela promocao disponivel neste e-mail, outras promocoes ativas no site ou em outros canais serao automaticamente invalidadas, e vice-versa. As promocoes sao validas somente para produtos vendidos e entregues pela Netshoes.
+ 
+
+
+ Este e-mail e um aviso informativo e nao significa que voce esta comprando este produto nem tenha feito uma reserva de compra deste item. As imagens encontradas no e-mail sao meramente ilustrativas.
+ 
+
+Prazo de troca
+
+ O prazo para troca varia de acordo com o tipo de produto, para saber em qual prazo seu produto se aplica acesse nossa pagina de 
+http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c78c6b0e9dc7af689436cc31b725fe77873f7084169d83a7686db9f47b3717c97ae7b0c41007b4f1bdce8c8fcc03244f0e 
+informacoes de troca .
+ 
+
+ 
+
+
+ Nosso endereco: Rua Vergueiro, 943 - Liberdade - CEP 01504-000 - Sao Paulo - SP - Brasil
+ 
+
+
+
+--xr5rB3ph92aE=_?:
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><!--       --><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Netshoes.com.br</title>
+<style type="text/css">
+@media only screen and (max-width: 480px) {
+	#main {
+		width: 100% !important;
+	}
+	.top-info .info-holder,
+.top-info .username-holder {
+		display: block;
+		text-align: center !important;
+	}
+	.top-info .username-holder {
+		padding-bottom: 10px;
+	}
+	.footer .social-list .social-icon {
+		padding: 0 15px !important;
+		display: block;
+	}
+	.footer-content .column {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	.footer-content .column:first-child {
+		padding-bottom: 20px !important;
+	}
+	.footer-list {
+		width: 100%;
+	}
+	.footer-list .item {
+		display: block;
+		float: left;
+		width: 50%;
+		padding: 0 0 20px !important;
+	}
+	.footer-text .image.cr img {
+		width: 100%;
+	}
+	.header .column {
+		display: block;
+		text-align: center !important;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	.header .column .brand {
+		display: inline-block;
+	}
+	.header .column:first-child {
+		padding-bottom: 20px !important;
+	}
+	.banner .column {
+		display: block;
+		width: 100%;
+	text-align: center!important;
+
+	}
+	.product-two-images .column {
+		text-align: center;
+	}
+	.product-two-images .column:last-child {
+		display: none;
+	}
+	.product-plus-name .column {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	.product-plus-name .column:first-child {
+		padding-bottom: 20px !important;
+	}
+	.product-plus-name .product-info {
+		display: inline-block;
+		text-align: left;
+		width: 260px;
+	}
+	.product-image-large .product-name {
+		font-size: 16px !important;
+	}
+	.product-image-large .image-holder {
+		width: 100% !important;
+	}
+	.product-image-large .image-holder img {
+		width: 100% !important;
+		height: auto !important;
+	}
+	.product-two-col .column,
+.product-three-col .column {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	.product-two-col .image-holder,
+.product-three-col .image-holder {
+		width: 200px;
+	}
+	.product-two-col .product-info,
+.product-three-col .product-info {
+		text-align: left;
+		display: block;
+		max-width: 200px;
+		margin: 0 auto;
+	}
+	.product-two-col.name-only .image-holder,
+.product-two-col.medium-product .image-holder {
+		width: 260px;
+	}
+	.product-two-col.name-only .product-info,
+.product-two-col.medium-product .product-info {
+		max-width: 260px;
+	}
+	.product-inline .sub-table .item {
+		display: block;
+	}
+	.product-inline .sub-table .item:first-child {
+		margin-bottom: 20px;
+	}
+	.product-name {
+		font-size: 16px !important;
+	}
+	.product-info .new-price {
+		font-size: 18px !important;
+	}
+	.product-info .old-price {
+		font-size: 11px !important;
+	}
+	.product-info .free-shipping {
+		font-size: 14px !important;
+	}
+	.golden-chance .image-holder {
+		width: 100%;
+	}
+	.golden-chance .image-holder img {
+		width: 100%;
+		height: auto !important;
+	}
+	.golden-chance .text-holder p {
+		font-size: 11px !important;
+	}
+	.golden-chance .cupom-code {
+		width: 100%;
+	}
+	.golden-chance .cupom-code .code {
+		font-size: 19px !important;
+	}
+	.golden-chance .cupom-code .cupom-button {
+		width: 100%;
+	}
+	.golden-chance .cupom-code .cupom-button img {
+		width: 100%;
+		height: auto !important;
+	}
+	.imagem img {width:100% !important;}
+	
+	.mobilehide{display:none!important;}
+	
+	 .columncupom{width:100%!important; text-align:center!important; display:block!important;padding: 20px 0!important;margin:0 auto;}
+	 
+	 .cupomtexto {width:100%!important;
+	 text-align:center!important;
+	 padding: 10px 0!important;
+	 font-size:22px!important;}
+	 
+	 .cupomimagem img{width:100%!important;}
+}
+
+
+
+@media only screen and (max-width: 380px) {
+	.product-inline .column {
+		width: 50% !important;
+	}
+	.product-inline .image-holder {
+		width: 100% !important;
+	}
+	.product-inline .image-holder img {
+		width: 100% !important;
+		height: auto !important;
+	}
+}
+</style>
+</head><body class="outlook" style="min-width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0; background-color: #ededed; width: 100%;"><table id="backgroundTable" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0; background-color: #ededed; width: 100%; line-height: 100%; font-family: 'trebuchet ms', sans-serif;" bgcolor="#ededed"><tr><td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;">
+<table id="main" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 600px; font-family: 'trebuchet ms', sans-serif;" width="600"><tr><td style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><!-- CONFIGURACAO DE CAMPAIGN --><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><!--  --></td></tr></tbody></table><!-- CONFIGURACAO DE CAMPAIGN --><!--         /*******************************************         TAGUEAMENTO AUTOMATICO DOS LINKS         *******************************************/                  /*******************************************         TAGUEAMENTO AUTOMATICO DOS LINKS         *******************************************/         --><!-- PR&#201;-HEADER E PREVIEW -->
+<table class="top-info" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td class="username-holder" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;">
+<p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><font face="trebuchet ms, helvetica, sans-serif"><span style="font-size: 12px;"><b>+ qualquer t&ecirc;nis da lista com R$50 de desconto!</b></span></font></td></tr></tbody></table></strong></p></td><td class="info-holder" style="border-collapse: collapse; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; display: inline; font-family: 'trebuchet ms', sans-serif;">
+           Caso n&#227;o consiga visualizar, <a href="http://view.mailmkt.netshoes.com.br/?qs=79a36a858621b830db353a8ccc66d8124b5b86e16d918a886cac2066f0c032e2f90ff0f3887abbb162c009530ebe9d7e0dc0cd6a30db3ab25484e36dc02a0b84d1233de22c448131" style="color: #5a2d82; text-decoration: none;"><strong>acesse este link</strong></a><br>
+           Adicione <a href="mailto:netshoes@info.netshoes.com.br" style="color: #5a2d82; text-decoration: none;">netshoes@info.netshoes.com.br</a> ao seus contatos
+            </p></td></tr><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr></table><!-- FIM DE PR&#201;-HEADER E PREVIEW --><img src="http://click.mailmkt.netshoes.com.br/open.aspx?ffcb10-fef012787d650c-fe5b157471630c797316-fe8c1574776d037b73-ff981576-fe57157471620c7f7c12-ff3615737561" width="1" height="1"><!-- CONTENT --><table id="content" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr>
+<td class="content" style="border-collapse: collapse; background-color: #ffffff; font-family: 'trebuchet ms', sans-serif;" bgcolor="#ffffff"><!-- HEADER --><table class="header" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td class="column" style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;">
+<a class="brand" href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c701243dd5dfa581bbe45f0096ef6c593b729e68a671b55a63b94be76fb6b7799bd4989888ecea762dd033b747fa423b0856dba2945fe30129" target="_blank" style="color: #5a2d82; text-decoration: none; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;"><img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/netshoes.jpg" alt="Netshoes" width="160" height="20" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="column" style="border-collapse: collapse; padding: 0 20px; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right">
+<p class="menu" style="margin-bottom: 0; margin: 0; padding: 0; display: inline; font-family: 'trebuchet ms', sans-serif;"><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c74829eec4a717a5fbfa2ae39ea930cdb26fecb1fb25dec6941f5226744fd7dffaa3a48efa673715493fc1b4b68caf813ac20b4b5c547173ca" class="item" target="_blank" style="color: #5a2d82; text-decoration: none; display: inline-block; vertical-align: middle;"><img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/menu/homens.jpg" alt="Homens" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a><span class="bar" style="color: #e5e5e5; vertical-align: middle;">|</span>
+<a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c73ff37a819f7dc72a1b50d46ca18ac809330416824b6a5a49c23ee0939efd381d0fe9705ffec40cd89701468926115eb86b10aa0faabc82b4" class="item" target="_blank" style="color: #5a2d82; text-decoration: none; display: inline-block; vertical-align: middle;"><img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/menu/mulheres.jpg" alt="Mulheres" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a><span class="bar" style="color: #e5e5e5; vertical-align: middle;">|</span><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c79214b14aa0fb2a24752a70d9f27e5409b83335bda687cb93d8a53dfe06822bfb7d121ee6b06e1c7e1b2cc0b551abf1884209d5231676f002" class="item" target="_blank" style="color: #5a2d82; text-decoration: none; display: inline-block; vertical-align: middle;">
+<img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/menu/outlet.jpg" alt="Outlet" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></p></td><td class="column" style="border-collapse: collapse; padding: 0 ; font-family: 'trebuchet ms', sans-serif;"><a class="brand" href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7c8a525f9a9261bb6e6211b064a2d8eba6fa89d49df3d1c95617c215e0f34e34c0a48d4f9bcb44f900277d4d4c1df8489" target="_blank" style="color: #5a2d82; text-decoration: none; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;">
+<img src="http://imgemail.netshoes.com.br/20161226/vespertino/img/app_header.jpg" alt="Netshoes" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td></tr><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr></table><!-- FIM DO HEADER --><!-- DESTAQUE --><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7fee0aa0faee4bac7dc376e2e87482bbb38e98f9e17f21ef59a139e5d2d6177594f6298e12d5e9a516264213b120e3413dd012f7a1504d768" title=""   data-linkto="http://">
+<img data-assetid="1785" src="http://imgemail.netshoes.com.br/20170627/vespertino/img/01.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style="margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px; "><tbody><tr><td class="stylingblock-content-wrapper camarker-inner" style="padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;"><table cellspacing="0" cellpadding="0" style="width: 100%;"><tbody><tr><td><table cellspacing="0" cellpadding="0" style="width: 100%;"><tbody><tr><td class="responsive-td" valign="top" style="width: 50%; padding-right: 0px;"><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr>
+<td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c71ecbbc913987efc064196c179a96d5f31a6b9378bdb85e8c098c82e59de3eb4adca115b31729c9a8fe5f231fea9e0f82d52fc6d9718bc03e" title=""   data-linkto="http://"><img data-assetid="1785" src="http://imgemail.netshoes.com.br/20170627/vespertino/img/02.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table></td>
+<td class="responsive-td" valign="top" style="width: 50%; padding-left: 0px;"><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tr><td><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c75a2816c7559d2d265bbbeea68c981ee8e4f19dd1ff21d41b170038959a0a0a994fd6e4490c7a7b6abda2046d25f8523c095212e22cce43d3" title=""   data-linkto="http://"><img data-assetid="1785" src="http://imgemail.netshoes.com.br/20170627/vespertino/img/03.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></table></td></tr></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody>
+</table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7695e4e658fb662099de9a2507ea897681fb8e01006fa6f998a29c125dc227e476b3b0c6fa7a164ac2ae2c4e82fe3c2b25bf8f708c032f5cb" title=""   data-linkto="http://"><img data-assetid="1785" src="http://imgemail.netshoes.com.br/20170627/vespertino/img/05.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody>
+<tr><td><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7c45173db7b02aea218bbd827342e87212608d6baf354211ffdff799469bf876d96cdd75af623399e7da5e4602b03773a15c5b571b49362d4" title=""   data-linkto="http://"><img data-assetid="1785" src="http://imgemail.netshoes.com.br/20170627/vespertino/img/06.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table><!-- FIM DO DESTAQUE -->
+<!-- Bn1 --><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style="margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px; "><tbody><tr><td class="stylingblock-content-wrapper camarker-inner" style="padding-top: 2px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;">
+
+
+<!--////////////    INCLUDE   ZATTINI   ///////// -->
+
+	
+	<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="banner" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif; background-color:#ffffff">
+
+	<tr><!-- TARJA -->
+		<td border="0" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;">
+			<a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7c3b7b481c5ca670718c732a1107158078a87bb560b68738d63fc63cb72c18b3f1edac58a3558af9ac1b4c41606f96d4174218e7dd50b86fa" target="_blank">
+				<img alt="" src="http://imgemail.netshoes.com.br/20170408/casual/img/01zat.jpg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block; width: 100%;"/>
+			</a>
+		</td>
+	</tr>
+
+	</table>
+	<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="banner" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif; text-align:center; background-color:#ffffff">
+
+	<tr>
+		<td align="center" style="border-collapse: collapse;  text-align: right; " valign="top">
+		<!-- LINK --><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c766d35471fcca727439a9e9e6edf1f1cdea83bad13f524e99346963ac108707b908450c0e7bad1907b8e7ecee3af24f074fd00fcfab63e4c2" style="color: #5a2d82; text-decoration: none; display: block;" target="_blank">
+		<!-- IMAGEM--><img alt="" src="http://imgemail.netshoes.com.br/20170619/zattini/img/01_zat.jpg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block; width: 100%;"></a></td>
+		<td align="center" style="border-collapse: collapse;  text-align: right; " valign="top">
+		<!-- LINK --><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7536184d44da91381adadeefca8c72137ee09b9fbd7593896190b26c0c7a3ba5c1c837f9ab2f710e5539731b7468237426f19bb22db6df5ad" style="color: #5a2d82; text-decoration: none; display: block;" target="_blank">
+		<!-- IMAGEM--><img alt="" src="http://imgemail.netshoes.com.br/20170619/zattini/img/02_zat.jpg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block; width: 100%;"></a></td>
+	</tr>
+
+	</table>
+	<!--////////////    INCLUDE   ZATTINI   ///////// -->
+
+
+
+</td></tr></tbody></table><!-- BN1 --><!-- RECOMENDACOES CHAORDIC --><!-- RECOMENDACOES CHAORDIC --><!--////////////    INCLUDE   ZATTINI   ///////// --><!-- FOOTER - ICONES --><table class="footer-list" cellpadding="0" cellspacing="0" border="0" align="center" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr><td align="center" class="space" colspan="4" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr>
+<td class="item" style="border-collapse: collapse; text-align: center; font-family: 'trebuchet ms', sans-serif;" align="center"><table align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr><td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/footer/icon-1.jpg" alt="Netshoes" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: inline-block;" align="center"></td></tr><tr>
+<td align="center" class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;" align="center"><p align="center" class="parcel-price" style="margin: 0; padding: 0; margin-bottom: 0; font-size: 12px; line-height: 12px; color: #AAA; display: inline; font-family: 'trebuchet ms', sans-serif;">DIVIDA EM<br>AT&#201; 2 CART&#213;ES</p></td></tr></table></td><td align="center" class="item" style="border-collapse: collapse; text-align: center; font-family: 'trebuchet ms', sans-serif;" align="center">
+<table align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr><td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><img align="center" src="http://origin.mailmkt.netshoes.net/email__responsivo/reguas/footer/icon-2_10x.jpg" alt="Netshoes" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: inline-block;"></td></tr><tr><td align="center" class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr>
+<tr><td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><p align="center" class="parcel-price" style="margin: 0; padding: 0; margin-bottom: 0; font-size: 12px; line-height: 12px; color: #AAA; display: inline; font-family: 'trebuchet ms', sans-serif;">PARCELE EM<br>AT&#201; 10X SEM JUROS</p></td></tr></table></td><td align="center" class="item" style="border-collapse: collapse; text-align: center; font-family: 'trebuchet ms', sans-serif;" align="center">
+<table align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr><td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><img align="center" src="http://imgemail.netshoes.com.br/email__responsivo/reguas/footer/icon-3.jpg" alt="Netshoes" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: inline-block;"></td></tr><tr><td align="center" class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr>
+<td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><p align="center" class="parcel-price" style="margin: 0; padding: 0; margin-bottom: 0; font-size: 12px; line-height: 12px; color: #AAA; display: inline; font-family: 'trebuchet ms', sans-serif;">PAGUE COM<br>BOLETO BANC&#193;RIO</p></td></tr></table></td><td class="item" style="border-collapse: collapse; text-align: center; font-family: 'trebuchet ms', sans-serif;" align="center"><table align="center" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-family: 'trebuchet ms', sans-serif;"><tr>
+<td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/footer/icon-4.jpg" align="center" alt="Netshoes" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: inline-block;"></td></tr><tr><td align="center" class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td align="center" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;">
+<p class="parcel-price" align="center" style="margin: 0; padding: 0; margin-bottom: 0; font-size: 12px; line-height: 12px; color: #AAA; display: inline; font-family: 'trebuchet ms', sans-serif;">AT&#201; 30 DIAS<br>PARA TROCA</p></td></tr></table></td></tr><tr><td align="center" class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr></table><!-- FIM DE FOOTER - ICONES --><!-- FOOTER - REDES SOCIAIS -->
+<table align="center" class="footer" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #643C8C; font-family: 'trebuchet ms', sans-serif;" bgcolor="#643C8C"><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif; align: center">
+<table class="social-list" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; text-align: center; font-family: 'trebuchet ms', sans-serif;" align="center"><tr><td class="social-icon" style="border-collapse: collapse; padding: 0 30px; float: left; font-family: 'trebuchet ms', sans-serif;"><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7cbf6598f120532f3d840a08903a0d2b957e500d85e770e7505638c1a84a6cf80be5f2a2bbb908ff0a5587447ee4b07f4" target="_blank" style="color: #5a2d82; text-decoration: none;"><!-- INSTAGRAM -->
+<img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/social-icons/instagram.jpg" alt="Instagram" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="social-icon" style="border-collapse: collapse; padding: 0 30px; float: left; font-family: 'trebuchet ms', sans-serif;"><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7f64db253e600b5805284620391e9781197680621b4f3f2a5e3eba4e59ea0e247028f8a5fa2b536e1ff19b2a24d7552fe" target="_blank" style="color: #5a2d82; text-decoration: none;"><!-- FACEBOOK -->
+<img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/social-icons/facebook.jpg" alt="Facebook" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="social-icon" style="border-collapse: collapse; padding: 0 30px; float: left; font-family: 'trebuchet ms', sans-serif;"><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7bd711aa222134ebb6daba4e840127cf63fa56415fdeb6a80e7753c0b6f92bcc0973da4163dafc087e8676a5e1d987440" target="_blank" style="color: #5a2d82; text-decoration: none;"><!-- TWITTER -->
+<img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/social-icons/twitter.jpg" alt="Twitter" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="social-icon" style="border-collapse: collapse; padding: 0 30px; float: left; font-family: 'trebuchet ms', sans-serif;"><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7f780ec24cc49fbde84dd0489e6a516702d3854bac2782fcf4fca9ae550519d332ad44d1e3d24a303535bf5d7b0a74e9a" target="_blank" style="color: #5a2d82; text-decoration: none;"><!-- YOUTUBE -->
+<img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/social-icons/youtube.jpg" alt="Youtube" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="social-icon" style="border-collapse: collapse; padding: 0 30px; float: left; font-family: 'trebuchet ms', sans-serif;"><a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7ef926692efdfa5e5bc448ec71dc70b51299d90085c5a6d67ce6faaa69370b7c6897130a99b25164033dd0ec43c6dd5a1" target="_blank" style="color: #5a2d82; text-decoration: none;"><!-- GOOGLE PLUS -->
+<img src="http://imgemail.netshoes.com.br/email__responsivo/reguas/social-icons/gplus.jpg" alt="Google Plus" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td></tr></table></td></tr><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr></table><!-- FIM DE FOOTER - REDES SOCIAIS --></td></tr></table><!-- FIM DE CONTENT --><!-- FOOTER - TJ -->
+<table class="footer-text" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; text-align: center; font-family: 'trebuchet ms', sans-serif;" align="center"><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td class="image" style="border-collapse: collapse; text-align: center; padding-bottom: 20px; font-family: 'trebuchet ms', sans-serif;" align="center">
+<img src="http://imgemail.netshoes.com.br/email__responsivo/footer_0116.jpg" alt="Netshoes" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: inline-block;max-width:600px; width:100%"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;">
+                Para esclarecer d&#250;vidas ou enviar sugest&#245;es, acesse nossa <a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7b96ddadc0345cc0598aa4501c77a8751544456acf6c5ead17d13fe5f4a4bdd4e428cea0e04887c216258c869e2ca2e16" style="color: #843C8E; text-decoration: none; font-weight: bold;">Central de relacionamento</a>.
+              </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong>Pol&#237;tica de Privacidade</strong><br>Este e-mail foi enviado para o e-mail <a href="mailto:thiagors1983@gmail.com" style="color: #843C8E; text-decoration: none; font-weight: bold;">thiagors1983@gmail.com</a> porque est&#225; inscrito para receber nossos comunicados e ofertas. Leia nossa 
+<a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c7d0c16cf31bcc50cf9fc14112de752a3e5807b15f00a6dea3479c5f2803282ea251299d0798b0fb437a176dfb78d75cd0" style="color: #843C8E; text-decoration: none; font-weight: bold;">pol&#237;tica de privacidade</a> para mais informa&#231;&#245;es.<br>Como a Netshoes &#233; contra o spam na rede, caso voc&#234; n&#227;o deseje mais receb&#234;-los, <a href="http://click.mailmkt.netshoes.com.br/subscription_center.aspx?qs=7c8d80735c175c87b8b8e945baef1c9c29656d68f9363695072b45d5abe73ad61f976489b93803b243eaa8140c196fedc031ef51b402bde9" style="color: #843C8E; text-decoration: none; font-weight: bold;">clique neste link</a>.
+              </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong>Validade do E-mail</strong><br><!--- VALIDADE DO EMAIL --><!--- VALIDADE DO EMAIL --><!--- VALIDADE DO EMAIL --><!--- VALIDADE DO EMAIL -->        
+            As ofertas anunciadas neste e-mail s&#227;o v&#225;lidas at&#233; 27/06/2017 &#224;s 23:59, ou enquanto durarem os estoques.
+<!--- VALIDADE DO EMAIL --><!--- VALIDADE DO EMAIL --><!--- VALIDADE DO EMAIL --><!--- VALIDADE DO EMAIL --></p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong>Pre&#231;os e Condi&#231;&#245;es</strong><br>
+            Pre&#231;os sujeitos &#224; altera&#231;&#227;o e exclusivos para este canal de comunica&#231;&#227;o. Para ativar determinados pre&#231;os e promo&#231;&#245;es &#233; necess&#225;rio clicar neste e-mail. Compras feitas com cart&#245;es de cr&#233;dito podem ser parceladas em at&#233; 10x sem juros. Caso haja diferen&#231;a de pre&#231;o ou descri&#231;&#227;o do produto entre este e-mail e o site, a condi&#231;&#227;o v&#225;lida e praticada ser&#225; a do site.
+           </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong>Promo&#231;&#245;es</strong><br>
+            As promo&#231;&#245;es na Netshoes n&#227;o s&#227;o cumulativas. Sempre que voc&#234; optar pela promo&#231;&#227;o dispon&#237;vel neste e-mail, outras promo&#231;&#245;es ativas no site ou em outros canais ser&#227;o automaticamente invalidadas, e vice-versa. As promo&#231;&#245;es s&#227;o v&#225;lidas somente para produtos vendidos e entregues pela Netshoes.
+           </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;">
+            Este e-mail &#233; um aviso informativo e n&#227;o significa que voc&#234; est&#225; comprando este produto nem tenha feito uma reserva de compra deste item. As imagens encontradas no e-mail s&#227;o meramente ilustrativas.
+           </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong>Prazo de troca</strong><br>
+                O prazo para troca varia de acordo com o tipo de produto, para saber em qual prazo seu produto se aplica acesse nossa p&#225;gina de <a href="http://click.mailmkt.netshoes.com.br/?qs=a12a0f82275ae3c78c6b0e9dc7af689436cc31b725fe77873f7084169d83a7686db9f47b3717c97ae7b0c41007b4f1bdce8c8fcc03244f0e" style="color: #843C8E; text-decoration: none; font-weight: bold;">informa&#231;&#245;es de troca</a>.
+              </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;">&nbsp;</td></tr><tr><td style="border-collapse: collapse; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; color: #666; display: inline; font-family: 'trebuchet ms', sans-serif;">
+            Nosso endere&#231;o: Rua Vergueiro, 943 - Liberdade - CEP 01504-000 - S&#227;o Paulo - SP - Brasil
+           </p></td></tr><tr><td class="space" style="border-collapse: collapse; font-size: 0; height: 20px; padding: 0 20px; font-family: 'trebuchet ms', sans-serif;"></td></tr></table><!-- FIM DE FOOTER - TJ --></custom></td></tr></table></td></tr></table></body></html>
+
+--xr5rB3ph92aE=_?:--
+

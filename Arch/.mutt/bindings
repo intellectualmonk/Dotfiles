@@ -1,0 +1,54 @@
+# movement ------------------------------------------------------------
+bind generic,index,pager    J   next-entry
+bind generic,index,pager    K   previous-entry
+bind generic,index          j   next-entry
+bind generic,index          k   previous-entry
+bind pager                  j   next-line
+bind pager                  k   previous-line
+bind index,pager            l   next-thread
+bind index,pager            h   previous-thread
+bind generic,index,pager    J   next-entry
+bind generic,index,pager    K   previous-entry
+bind index,pager            \Cu next-new-then-unread # ctrl-j conflicts with the <return> bindings below so I use n/p cf http://dev.mutt.org/trac/ticket/3494
+bind index,pager            \Ch previous-new-then-unread
+bind generic,index,pager    \Cd half-down
+bind generic,index,pager    \Cu half-up
+bind generic,index,pager    \Cf next-page
+bind generic,index,pager    \Cb previous-page
+bind index,pager            {   previous-thread
+bind index,pager            }   next-thread
+bind pager                  g   top
+bind pager                  G   bottom
+bind attach,index           g   first-entry
+bind index,index            G   last-entry
+bind index                  H   top-page
+bind index                  M   middle-page
+bind index                  L   bottom-page
+bind pager                  H   top
+bind pager                  L   bottom
+bind pager                  <space> next-page
+bind pager                  ] skip-quoted
+bind editor                 <space> noop
+bind index                  C   delete-pattern
+bind pager                  K   previous-undeleted
+bind pager                  J   next-undeleted
+bind index                  K   previous-unread
+bind index                  J   next-unread
+bind index                  W   clear-flag
+bind index                  w   set-flag
+bind index,pager            R   group-reply
+bind compose                p   pgp-menu
+bind attach                 <return> view-mailcap
+
+# other actions --------------------------------------------------------------
+bind generic,index,pager    /   search
+bind generic,index,pager    %   shell-escape # mnemonic: zsh standard prompt
+bind generic                \Cl refresh # this is default and same as vim
+bind index,pager @ display-address # defaul mutt
+
+# Sidebar-----------------------------------------------------------------------
+bind index,pager \CP sidebar-prev       # Ctrl-Shift-P - Previous Mailbox
+bind index,pager \CN sidebar-next       # Ctrl-Shift-N - Next Mailbox
+bind index,pager \CO sidebar-open       # Ctrl-Shift-O - Open Highlighted Mailbox
+
+

@@ -1,0 +1,1348 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp2151382pje;
+        Tue, 27 Jun 2017 01:12:40 -0700 (PDT)
+X-Received: by 10.237.34.39 with SMTP id n36mr4927702qtc.29.1498551160247;
+        Tue, 27 Jun 2017 01:12:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498551160; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xcYNPTjItE5+pjBN62vL9/7+eP1Wfi5LRpoa2BiASFlEGykKMRQckWekGecNObRoLD
+         pSzYZHfiiX3sf2HfVFLmwr4lyKaswDHfWtYnEeoy3vX4nhXYlv9fmEpH1FtfwBMaLS/q
+         j3SKkj4uxnPH6fwPQN8T8RWIGZ6QM/a3SLUD1dQiVODnMeTy2sKUV7Z9xrpf6Gw+Hiji
+         sT5Lk+5+hTztrAyKauYJzyo9dXeiZwJz+lAiW0UqBrirvY/b2nrPzFuaIw7OQKw4FYan
+         ChJymw6iT9XyoDIrVpaRRAemjqjvU3pBtg8Dlco21gHOKeuNBF0ezwcdHEfCL/2K65g/
+         Osmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:bounces-to:mime-version:subject:message-id:to:from:date
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=G+bE1PQjWbGfexEwBg4yINMCgCL869w7Yh1xj1Fk5q0=;
+        b=Qyo80cPliCpmrx1qQoPgzB5snb/rGf0GVfAFtkOgHj1gnK0A2EWaHxdr4D/683pJsQ
+         gazcShXAC4EMW59Nru149ODi956QeygJfM4Fl8gwieJy1ltC1K1M41E3Mk+Uf1MStjhK
+         KFrJi6XcoXOAPB6Or1zGNXUWnhgd0NK0D8kDv2Cdrpbsn9OC7oJ6zOutjGbfujYy00Hq
+         2SRokr6lci8WSYMJJ7OEBVF/qhXaaW88AGzegMEyfZCWk6+hyrTJuSLuFQMK79R7bN1/
+         HUlTU9bZu85I3575okepxRAy4pfMe59NOGpVo7xJO3fhH8r/GHtJcwY7OIZpklKFdcuz
+         Un9g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@amazon.com.br header.b=VhIbants;
+       dkim=pass header.i=@amazonses.com header.b=czVF2LaK;
+       spf=pass (google.com: domain of 201706270812383d3620db17d641f2917ec6865ae0p0na-c16bh9kbilas6y@bounces.amazon.com.br designates 54.240.15.163 as permitted sender) smtp.mailfrom=201706270812383d3620db17d641f2917ec6865ae0p0na-C16BH9KBILAS6Y@bounces.amazon.com.br;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com.br
+Return-Path: <201706270812383d3620db17d641f2917ec6865ae0p0na-C16BH9KBILAS6Y@bounces.amazon.com.br>
+Received: from a15-163.smtp-out.amazonses.com (a15-163.smtp-out.amazonses.com. [54.240.15.163])
+        by mx.google.com with ESMTPS id d18si1981147qkb.223.2017.06.27.01.12.39
+        for <thiagors1983@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Jun 2017 01:12:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 201706270812383d3620db17d641f2917ec6865ae0p0na-c16bh9kbilas6y@bounces.amazon.com.br designates 54.240.15.163 as permitted sender) client-ip=54.240.15.163;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amazon.com.br header.b=VhIbants;
+       dkim=pass header.i=@amazonses.com header.b=czVF2LaK;
+       spf=pass (google.com: domain of 201706270812383d3620db17d641f2917ec6865ae0p0na-c16bh9kbilas6y@bounces.amazon.com.br designates 54.240.15.163 as permitted sender) smtp.mailfrom=201706270812383d3620db17d641f2917ec6865ae0p0na-C16BH9KBILAS6Y@bounces.amazon.com.br;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com.br
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=fakyn2ruen7fg44c2kynzwzlurfd5ix6; d=amazon.com.br; t=1498551159;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type;
+	bh=HY9xwPlj3wIrw7Tk5PtYuGgidtXAp5Csqbjmw7vssiE=;
+	b=VhIbantsi+zAZbSo8OU8B8gpORVdm2RKfh3G4sBTHCx0CHmPQlKR+po1L1xw6DFs
+	6mcMCVzfMek8hJi0hyVvW2X9YXplyCd8ODp3PnOlBUd/lAPfsR2lygHAd15ol0VZaGi
+	KhuIrhkrsKD7R5BpLKyoOg/o0InecF8XpIFamr3I=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1498551159;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Feedback-ID;
+	bh=HY9xwPlj3wIrw7Tk5PtYuGgidtXAp5Csqbjmw7vssiE=;
+	b=czVF2LaKj8RsmEvXAPRoyVFkdCL0eS3bUBMlISZ/uCIVc1DVqr0hdNdcm3S194Yb
+	6/+lvw1DSJWUYFtrvJkUnQejUCF8rb4zyHCDPefFSYuWbmZPve7ami8c04mjX0EY0NA
+	dOF9t0TA6wUlBlDHrlYYPGQmGGMD7g/evFEv4qcA=
+Date: Tue, 27 Jun 2017 08:12:39 +0000
+From: "Amazon.com.br" <vfe-campaign-response@amazon.com.br>
+To: "thiagors1983@gmail.com" <thiagors1983@gmail.com>
+Message-ID: <0100015ce89c08d5-0f489735-b822-4ed9-aff0-a9b9c5913dd6-000000@email.amazonses.com>
+Subject: =?UTF-8?Q?O_Chefe:_A_reden=C3=A7=C3=A3o_do_Alfa_Livro_1?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_129195960_1684949722.1498551158955"
+X-AMAZON-RTE-VERSION: 2.0
+X-AMAZON-METADATA: CA=C16BH9KBILAS6Y-CU=A2IW9REBFOM79Y-RI=A3VWAST5PE5W5V
+Bounces-to: 201706270812383d3620db17d641f2917ec6865ae0p0na-C16BH9KBILAS6Y@bounces.amazon.com.br
+X-AMAZON-MAIL-RELAY-TYPE: merchandizing
+X-Original-MessageID: <urn.correios.msg.201706270812383d3620db17d641f2917ec6865ae0p0na@1498551158960.mms-na-m4a-dcc5988d.us-east-1.amazon.com>
+X-SES-Outgoing: 2017.06.27-54.240.15.163
+Feedback-ID: 1.us-east-1.+gzE1S+MWTFXXYmwxo7wkk651GMxMPAUFYiyN/09X40=:AmazonSES
+
+------=_Part_129195960_1684949722.1498551158955
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_129195961_1881839118.1498551158955"
+
+------=_Part_129195961_1881839118.1498551158955
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+             AMAZON.COM.BR
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+   N=C3=B3s achamos que voc=C3=AA tem interesse por eBooks de Romance. Por =
+isso, fizemos algumas recomenda=C3=A7=C3=B5es para voc=C3=AA:              =
+                                                                           =
+                                                                           =
+                                                                           =
+                                                                           =
+                                                                           =
+            =20
+   O Chefe: A reden=C3=A7=C3=A3o do Alfa Livro 1
+por Gabriela Lins
+https://www.amazon.com.br/gp/product/B0728ND4JK/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 8,99
+...
+   O Chefe - A Reconquista do Alfa (Duologia O Alfa Livro 2)
+por Gabriela Lins
+https://www.amazon.com.br/gp/product/B071W94FZT/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 8,99
+...
+   CARL (Guarda-costas - Livro 3)
+por MAYJO
+https://www.amazon.com.br/gp/product/B071KLPQZ4/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 9,99
+...
+   O Filho Inesperado do Ex-namorado Bilionario
+por Nicki Jackson
+https://www.amazon.com.br/gp/product/B072M1TL9P/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 9,75
+...
+   Era Pra Ser
+por Mila Cris
+https://www.amazon.com.br/gp/product/B071K2WQV7/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 8,99
+...
+   Doce Proposta: Uma simples proposta pode mudar tudo
+por Gabriela Lins
+https://www.amazon.com.br/gp/product/B01HSSZSHG/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 8,84
+...
+   Doce Desejo (Os Hamiltons Livro 2)
+por Tatiana Pinheiro
+https://www.amazon.com.br/gp/product/B072Q7ZG8K/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 10,00
+...
+   Dominada pelo Bilion=C3=A1rio (O Magnata Livro 2)
+por Valentina Grayson
+https://www.amazon.com.br/gp/product/B071VX8QP4/ref=3Dem_si_text
+
+Pre=C3=A7o: R$ 8,99
+...
+
+Visualizar mais itens similares
+http://www.amazon.com.br/sim/B0728ND4JK/2/ref=3Dpe_vfe
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Amazon.com.br
+http://www.amazon.com.br/ref=3Dpe_footer/
+
+Nossa p=C3=A1gina do Facebook
+http://www.amazon.com.br/gp/redirect.html/ref=3Dpe_423371_38478931_pe_0_343=
+6_pe_fb_ftr/?location=3Dhttp://www.facebook.com/amazon.com.br&token=3D6BD0F=
+B927CC51E76FF446584B1040F70EA7E88E1
+
+Siga-nos no Twitter
+http://www.amazon.com.br/gp/redirect.html/ref=3Dpe_423371_38478931_pe_0_343=
+6_pe_tw_ftr/?location=3Dhttps://twitter.com/amazonbr&token=3D7A1A4AE8F6CE0B=
+D277D8295E58702D283F329C0F
+
+Esperamos que essa mensagem tenha sido =C3=BAtil para voc=C3=AA. No entanto=
+, se voc=C3=AA prefere n=C3=A3o receber mais este tipo de comunica=C3=A7=C3=
+=A3o da Amazon.com.br no email thiagors1983@gmail.com, clique aqui:
+http://www.amazon.com.br//gp/gss/o/1CMB13alNIUjW7nQkIrgnpH6BTfK8ntLNhQNF6kX=
+8jH2AzSBJB.D2l6BmGyrhR2QU.
+
+Por favor, note que os pre=C3=A7os de produtos e sua disponibilidade est=C3=
+=A3o sujeitos a altera=C3=A7=C3=B5es.=20
+
+=C2=A9 Amazon.com, Inc. ou suas afiliadas. Todos os direitos reservados. Am=
+azon, Kindle e o logotipo da Amazon s=C3=A3o marcas registradas da Amazon.c=
+om, Inc. ou de suas afiliadas. Refer=C3=AAncia: 243588010.
+
+
+
+------=_Part_129195961_1881839118.1498551158955
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns=3D"http://www.w3=
+.org/1999/xhtml"> <head> <style type=3D"text/css">
+  #outlook a{padding:0;}
+  body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{wid=
+th:100%;}=20
+  body{-webkit-text-size-adjust:none;}
+
+  body{margin:0; padding:0;}
+  img{border:0; line-height:100%; outline:none; text-decoration:none;}
+  table td{border-collapse:collapse;}
+</style> <style type=3D"text/css">
+    a:link, a:visited {
+      color: #336699;
+    }
+    body {
+      font-family: Arial,Helvetica,Sans-Serif;
+      font-size: 12px;
+      color: #333333;
+    }
+  =20
+  </style> </head> <body link=3D"#336699" alink=3D"#336699" vlink=3D"#33669=
+9" text=3D"#333333" yahoo=3D"fix"   marginwidth=3D"0" marginheight=3D"0" bg=
+color=3D#e3e3e3 topmargin=3D"0"    leftmargin=3D"0" style=3D"font-family: A=
+rial,Helvetica,Sans-Serif; font-size: 12px;"><img src=3D"https://www.amazon=
+.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DO&U=3Dhttps%3A%2F=
+%2Fimages-na.ssl-images-amazon.com%2Fimages%2FG%2F01%2Fnav%2Ftransp.gif&A=
+=3DJU7JN93TADBWI3ORR3XZUDWJ8D0A&H=3DNJHSSHA1NGGMTVR5Q8XSPBRWDY8A&ref_=3Dpe_=
+805970_243588010" /> <table cellpadding=3D0 cellspacing=3D"0" align=3D"cent=
+er" border=3D"0" bgcolor=3D#e3e3e3 width=3D"100%"> <!-- Super subjectline a=
+nd ContentSymphony ad slot up top--> <tr><td> <center> <table class=3Dcs-sl=
+ot cellspacing=3D"0" cellpadding=3D10 border=3D"0" width=3D"640" align=3D"c=
+enter"> <tr> <td align=3D"left"> <table cellspacing=3D"0" cellpadding=3D"0"=
+ border=3D"0"> <tr><td><span style=3D"font-family:verdana,arial,sans-serif;=
+font-size:9px;line-height:11px;color:#555;"> </span></td></tr> </table> </t=
+d> <td align=3D"right"></td> </tr> </table> </center> </td></tr> <!-- Banne=
+r bar - defined as a static but can be overriden through ContentSymphony --=
+> <tr><td> <center> <table class=3D"orangebar" bgcolor=3D"#ff9900" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"6" width=3D"640"> <tbo=
+dy><tr><td height=3D"6"></td></tr></tbody> </table> </center> </td></tr> <!=
+-- Header of the email, can contain additional intro message too --> <tr><t=
+d> <center>
+       =20
+
+
+
+<table class=3D"gradientbar" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" height=3D"9" width=3D"640">
+</table>
+<table bgcolor=3D"#FFFFFF" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"640" class=3D"sef_logo_header">
+    <tbody>
+    <tr>
+        <td style=3D"width: 640px;"><table class=3D"header-promo-stripe" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+            <tbody><tr>
+                <td align=3D"right">
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"100%">
+                        <tbody><tr>
+                            <td>
+                                    <a href=3D"https://www.amazon.com.br/gp=
+/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amaz=
+on.com.br%2Fref%3Dpe_805970_243588010_sef_logo&A=3DOCOKONRH0BE5RBHSJMGGA7BL=
+9O4A&H=3DJF6WVIMVWQEMZ6MSSVMTDKSDAEIA&ref_=3Dpe_805970_243588010_sef_logo">
+                                        <img src=3D"http://g-ec2.images-ama=
+zon.com/images/G/32/kindle/merch/email/amazon_br_logo.gif" alt=3D"Amazon.co=
+m.br" border=3D"0" hspace=3D"6" vspace=3D"6">
+                                    </a>
+                            </td>
+                            <td align=3D"right"><table class=3D"sef_header_=
+menu" border=3D"0" cellpadding=3D"20" cellspacing=3D"0" align=3D"right">
+                                <tbody><tr>
+                                    <td align=3D"right"><table cellpadding=
+=3D"0" cellspacing=3D"0">
+                                        <tbody><tr>
+
+                                          =20
+                                                    <td><a href=3D"https://=
+www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dh=
+ttp%3A%2F%2Fwww.amazon.com.br%2Flivros%3Fref_%3Dpe_805970_243588010&A=3DBLA=
+HCK6CAYPO1ZEAOAFBEE2VMJ4A&H=3DJAFQLSDUR7YXRJPLTKL1TAQPJZGA&ref_=3Dpe_805970=
+_243588010" style=3D"font-family: arial,verdana,sans-serif; font-size: 12px=
+; color: rgb(51, 102, 153); text-decoration: none; font-weight: bold;">
+
+                                          =20
+                                                        Loja&nbsp;de&nbsp;L=
+ivros
+
+                                                    </a></td>
+                                                    <td rowspan=3D"2" width=
+=3D"8">&nbsp;</td>
+                                                    <td bgcolor=3D"#ccc" wi=
+dth=3D"2" height=3D"15"></td>
+                                                    <td rowspan=3D"2" width=
+=3D"12">&nbsp;</td>
+                                                   =20
+                                                        <td><a href=3D"http=
+s://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=
+=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Flojakindle%3Fref_%3Dpe_805970_243588010=
+&A=3DAAFJDUYXZEZLUIBGNDBF1WFWAFQA&H=3DZJUDP3ZXY0IWJZA7CSSFGGVG9D8A&ref_=3Dp=
+e_805970_243588010" style=3D"font-family: arial,verdana,sans-serif; font-si=
+ze: 12px; color: rgb(51, 102, 153); text-decoration: none; font-weight: bol=
+d;">
+                                                          =20
+                                                            eBooks&nbsp;Kin=
+dle&nbsp;
+                                                        </a></td>
+                                                        <td rowspan=3D"2" w=
+idth=3D"8">&nbsp;</td>
+                                                        <td bgcolor=3D"#ccc=
+" width=3D"2" height=3D"15"></td>
+                                                        <td rowspan=3D"2" w=
+idth=3D"8">&nbsp;</td>
+
+                                          =20
+                                                     <td><a href=3D"https:/=
+/www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3D=
+http%3A%2F%2Fwww.amazon.com.br%2Fku%3Fref_%3Dpe_805970_243588010&A=3DHZQ6OI=
+4KYZ0GGU9AODUNVA99D4AA&H=3DWQJ2JJ471ULYICLIVMAL7VIQHQCA&ref_=3Dpe_805970_24=
+3588010" style=3D"font-family: arial,verdana,sans-serif; font-size: 12px; c=
+olor: rgb(51, 102, 153); text-decoration: none; font-weight: bold;">
+
+                                          =20
+                                                        Leia&nbsp;de&nbsp;G=
+ra=C3=A7a
+
+                                                      </a></td>
+                                                      <td rowspan=3D"2" wid=
+th=3D"8">&nbsp;</td>
+                                        </tr>
+                                        </tbody></table></td>
+                                </tr>
+                                </tbody></table></td>
+                        </tr>
+                        </tbody></table>
+                    <table class=3D"gradientbar" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" height=3D"9" width=3D"640">
+                    </table></td>
+            </tr>
+            </tbody></table></td>
+    </tr>
+    </tbody>
+</table>
+
+      </center> </td></tr> <tr><td> <center> <table border=3D"0" align=3D"c=
+enter" width=3D"640" cellspacing=3D"0" cellpadding=3D"0" class=3D"seperator=
+"> <tr><td height=3D"8"><img src=3D"https://images-na.ssl-images-amazon.com=
+/images/G/32/email/template/student/custom-rule_640._CB358414829_.gif" widt=
+h=3D"640" style=3D"display:block;" height=3D"8" border=3D"0" /></td></tr> <=
+/table> <table width=3D"640" cellpadding=3D"0" cellspacing=3D"0" align=3D"c=
+enter"    bgcolor=3D"#ffffff" class=3D"intro"> <tr height=3D"10" class=3D"s=
+pacer"><td colspan=3D"3" width=3D"640"><div width=3D"640" class=3D"spacer" =
+style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr> <td =
+width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:10px;lin=
+e-height:10px;">&nbsp;</div></td> <td align=3D"left" valign=3D"top"> <span =
+style=3D"font-family: Arial,Helvetica,sans-serif; font-size: 12px; color: #=
+333333" class=3D"content">
+          Ol=C3=A1, Thiago Rodrigues Da Silva.
+          <br/><br/>
+        N=C3=B3s achamos que voc=C3=AA tem interesse por <b> eBooks de Roma=
+nce</b>. Por isso, fizemos algumas recomenda=C3=A7=C3=B5es para voc=C3=AA:
+      </span> </td> <td width=3D"15"><div width=3D"15" class=3D"spacer" sty=
+le=3D"font-size:10px;line-height:10px;">&nbsp;</div></td> </tr> <tr height=
+=3D"10" class=3D"spacer"><td colspan=3D"3" width=3D"640"><div width=3D"640"=
+ class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></=
+td></tr> </table> <table border=3D"0" align=3D"center" width=3D"640" cellsp=
+acing=3D"0" cellpadding=3D"0" class=3D"seperator"> <tr><td height=3D"8"><im=
+g src=3D"https://images-na.ssl-images-amazon.com/images/G/32/email/template=
+/student/custom-rule_640._CB358414829_.gif" width=3D"640" style=3D"display:=
+block;" height=3D"8" border=3D"0" /></td></tr> </table> <table width=3D"640=
+" border=3D"0" bgcolor=3D"#FFFFFF" cellspacing=3D"0" cellpadding=3D"0" clas=
+s=3D"widget_header" align=3D"center"> <tr><td colspan=3D"3" width=3D"640"><=
+div width=3D"640" class=3D"spacer" style=3D"font-size:8px;line-height:8px;"=
+>&nbsp;</div></td></tr> <tr> <td width=3D"15"><div width=3D"15" class=3D"sp=
+acer" style=3D"font-size:1px;line-height:1px;">&nbsp;</div></td> <td height=
+=3D"16"> <table border=3D"0" bgcolor=3D"#FFFFFF" cellspacing=3D"2" align=3D=
+"left" cellpadding=3D"0" class=3D"widget_content"> <tr> <td valign=3D"botto=
+m" class=3D"category"> <span style=3D"text-decoration:none;color:#E47911;fo=
+nt-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">eBoo=
+ks de Romance</span> </td> <td width=3D"10"><div width=3D"10" class=3D"spac=
+er" style=3D"font-size:1px;line-height:1px;">&nbsp;</div></td> </tr> </tabl=
+e> </td> <td width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-=
+size:1px;line-height:1px;">&nbsp;</div></td> </tr> <tr> <td width=3D"15"><d=
+iv width=3D"15" class=3D"spacer" style=3D"font-size:1px;line-height:1px;">&=
+nbsp;</div></td> <td bgcolor=3D"#e3e3e3" width=3D"640"><div width=3D"610" c=
+lass=3D"spacer" style=3D"font-size:1px;line-height:1px;">&nbsp;</div></td> =
+<td width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:1px;=
+line-height:1px;">&nbsp;</div></td> </tr> <tr><td colspan=3D"3" width=3D"64=
+0"><div width=3D"640" class=3D"spacer" style=3D"font-size:5px;line-height:5=
+px;">&nbsp;</div></td></tr> </table> <table width=3D"640" cellspacing=3D"0"=
+ cellpadding=3D"0" border=3D"0"            bgcolor=3D"#ffffff" class=3D"lis=
+t_widget" align=3D"center"> <tr height=3D"10"><td><div width=3D"640" class=
+=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></t=
+r> <tr> <td> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=
+=3D"left"> <tr> <td width=3D"15"><div width=3D"15" class=3D"spacer" style=
+=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> <td width=3D"620" v=
+align=3D"top" align=3D"left" class=3D"pr_container"> <table width=3D"620" c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"list_product"> <tr=
+> <td width=3D"150" align=3D"left" valign=3D"top" class=3D"pr_image"> <a hr=
+ef=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DG=
+HY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB0728ND4JK%2F=
+ref%3Dpe_805970_243588010_em_1p_0_im&A=3DXNMKHUEJZQM8GEWFVHQMBJDTIVCA&H=3D0=
+5C0LRRQLJDAHAEN98Y6IU3BGNKA&ref_=3Dpe_805970_243588010_em_1p_0_im"  > <img =
+src=3D"https://images-na.ssl-images-amazon.com/images/I/41If0YtxMyL._SL500_=
+SS140_PJku-sticker-v5,TopRight,-23,-12_.jpg" width=3D"140" height=3D"140" c=
+lass=3D"pr_image_140 pr_image_desktop" alt=3D"O Chefe: A reden=C3=A7=C3=A3o=
+ do Alfa Livro 1" border=3D"0" /> </a> </td> <td width=3D"365" valign=3D"to=
+p" align=3D"left"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0">=
+ <tr class=3D"pr_title"><td> <span style=3D"font-family:Arial,Helvetica,San=
+s-Serif;font-size:14px;             font-style:normal;text-align:left;color=
+:#336699;" class=3D"pr_title"> <a href=3D"https://www.amazon.com.br/gp/r.ht=
+ml?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.c=
+om.br%2Fgp%2Fproduct%2FB0728ND4JK%2Fref%3Dpe_805970_243588010_em_1p_0_ti&A=
+=3DKER1PTUEULPDVETYUWAGWRQA4PKA&H=3DEFVWAFLG7NNKIGKMJLHK8UZ2CAUA&ref_=3Dpe_=
+805970_243588010_em_1p_0_ti" style=3D"text-decoration: underline; color:#33=
+6699; font-size: 14px"  >O Chefe: A reden=C3=A7=C3=A3o do Alfa Livro 1</a> =
+</span> </td></tr> <tr class=3D"pr_byline"><td> <span style=3D"font-family:=
+Arial,Helvetica,Sans-Serif;font-size:12px;font-weight:normal;             f=
+ont-style:normal;text-decoration:none;color:#333;text-align:left;" class=3D=
+"pr_byline"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJO=
+OQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encodi=
+ng%3DUTF8%26field-author%3DGabriela%2520Lins%26search-alias%3Ddigital-text%=
+26ref_%3Dpe_805970_243588010&A=3DBNWIQ43INAR3VTSTJGJDDAAYHJQA&H=3DM7QULLACH=
+BEKJNPMW5KJHIL2FKAA&ref_=3Dpe_805970_243588010" style=3D'text-decoration: n=
+one; color: #336699; font-size: 12px'>Gabriela Lins</a> <span class=3D"byLi=
+nePipe">(Autor)</span>, <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D=
+2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2F=
+s%3F_encoding%3DUTF8%26field-author%3DSonho%2520Azul%26search-alias%3Ddigit=
+al-text%26ref_%3Dpe_805970_243588010&A=3DSV4VYIUYY6VAVGT7RGX2YLQKSH0A&H=3DP=
+VYNZ05FLTWHSP2EX9SJH3ASDGMA&ref_=3Dpe_805970_243588010" style=3D'text-decor=
+ation: none; color: #336699; font-size: 12px'>Sonho Azul</a> <span class=3D=
+"byLinePipe">(Editor)</span> </span> </td></tr> <tr class=3D"spacer"><td he=
+ight=3D"10"><div width=3D"1" class=3D"spacer" style=3D"font-size:10px;line-=
+height:10px;">&nbsp;</div></td></tr> <tr class=3D"pr_price_our"><td> <span =
+style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> <spa=
+n class=3D"pr_price_label">Pre=C3=A7o:</span> <span style=3D"font-size: 13p=
+x; font-weight: bold; color: #CC0000;" class=3D"pr_price_highlight">R$ 8,99=
+</span> </span> </span> </td></tr> </table></td> <td width=3D"105" align=3D=
+"center" valign=3D"top"> <div class=3D"pr_learn_more"> <a href=3D"https://w=
+ww.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dht=
+tps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB0728ND4JK%2Fref%3Dpe_805970=
+_243588010_em_1p_0_lm&A=3DCGQ5NCPRNZ3AAAMYAWZJGT7IRJKA&H=3DFCJEPTRPMDDUKHQR=
+IKWI3D2EZVCA&ref_=3Dpe_805970_243588010_em_1p_0_lm"  ><img src=3D"https://i=
+mages-na.ssl-images-amazon.com/images/G/32/tea/learn-more._CB307034741_.jpg=
+" width=3D"160" alt=3D"Saiba mais" height=3D"27" border=3D"0" /></a> </div>=
+ <div class=3D"pr_wishlist"> <div width=3D"1" class=3D"spacer" style=3D"fon=
+t-size:5px;line-height:5px;">&nbsp;</div> <a href=3D"https://www.amazon.com=
+.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fw=
+ww.amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dpe_805970_243588010_em_1p_0_a=
+tw%3F_encoding%3DUTF8%26action%3Dadd-to-registry.wishlist%26asin.1%3DB0728N=
+D4JK%26submit.add-to-registry.wishlist.x%3D1%26submit.add-to-registry.wishl=
+ist.y%3D1%26template-name%3Dstores%252Fdetail&A=3DABVU7ABTNXQ76ISYDKEEOWH8R=
+B8A&H=3D6CXLBJPOSZA8ACAVOQAYD36VUAUA&ref_=3Dpe_805970_243588010_em_1p_0_atw=
+"  ><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/add=
+-wishlist._CB332975953_.jpg" width=3D"160" alt=3D"Adicionar =C3=A0 lista de=
+ desejos" height=3D"27" border=3D"0" /></a> </div> </td> </tr> </table> <ta=
+ble width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D=
+"left" class=3D"seperator"> <tr height=3D"10"><td width=3D"620" height=3D"1=
+0"><div width=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:=
+10px;">&nbsp;</div></td></tr> <tr height=3D"1"><td bgcolor=3D"#eaebec" widt=
+h=3D"620" height=3D"1"><div width=3D"620" class=3D"spacer" style=3D"font-si=
+ze:1px;line-height:1px;">&nbsp;</div></td></tr> <tr height=3D"10"><td width=
+=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer" style=3D"font-si=
+ze:10px;line-height:10px;">&nbsp;</div></td></tr> </table> </td> <td width=
+=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line-hei=
+ght:15px;">&nbsp;</div></td> </tr> <tr> <td width=3D"15"><div width=3D"15" =
+class=3D"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></t=
+d> <td width=3D"620" valign=3D"top" align=3D"left" class=3D"pr_container"> =
+<table width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=
+=3D"list_product"> <tr> <td width=3D"150" align=3D"left" valign=3D"top" cla=
+ss=3D"pr_image"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQV=
+JJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fp=
+roduct%2FB071W94FZT%2Fref%3Dpe_805970_243588010_em_1p_1_im&A=3DMETQICMJQ28I=
+DMAI4UAYG1J8PHIA&H=3DUAQNXZOXXBJSWBC2AGZS1LYOFI8A&ref_=3Dpe_805970_24358801=
+0_em_1p_1_im"  > <img src=3D"https://images-na.ssl-images-amazon.com/images=
+/I/41J62SAGhML._SL500_SS140_PJku-sticker-v5,TopRight,-26,-12_.jpg" width=3D=
+"140" height=3D"140" class=3D"pr_image_140 pr_image_desktop" alt=3D"O Chefe=
+ - A Reconquista do Alfa (Duologia O Alfa Livro 2)" border=3D"0" /> </a> </=
+td> <td width=3D"365" valign=3D"top" align=3D"left"> <table cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0"> <tr class=3D"pr_title"><td> <span style=
+=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:14px;             font=
+-style:normal;text-align:left;color:#336699;" class=3D"pr_title"> <a href=
+=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY=
+&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071W94FZT%2Fre=
+f%3Dpe_805970_243588010_em_1p_1_ti&A=3D2XGT5XRAGFNMECW2NJAOXE0XBIWA&H=3DQMZ=
+MEC2KRYKHH7ZYERASDM7DYUGA&ref_=3Dpe_805970_243588010_em_1p_1_ti" style=3D"t=
+ext-decoration: underline; color:#336699; font-size: 14px"  >O Chefe - A Re=
+conquista do Alfa (Duologia O Alfa Livro 2)</a> </span> </td></tr> <tr clas=
+s=3D"pr_byline"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;=
+font-size:12px;font-weight:normal;             font-style:normal;text-decor=
+ation:none;color:#333;text-align:left;" class=3D"pr_byline"> <a href=3D"htt=
+ps://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&=
+U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUTF8%26field-author%3D=
+Gabriela%2520Lins%26search-alias%3Ddigital-text%26ref_%3Dpe_805970_24358801=
+0&A=3DBNWIQ43INAR3VTSTJGJDDAAYHJQA&H=3DM7QULLACHBEKJNPMW5KJHIL2FKAA&ref_=3D=
+pe_805970_243588010" style=3D'text-decoration: none; color: #336699; font-s=
+ize: 12px'>Gabriela Lins</a> <span class=3D"byLinePipe">(Autor)</span>, <a =
+href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71=
+DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUTF8%26fiel=
+d-author%3DLins%26search-alias%3Ddigital-text%26ref_%3Dpe_805970_243588010&=
+A=3DLM9BF2RDCRCN28AU1WUDPB5RM1KA&H=3DVDVEGS4CSVVHDXGP2AMA9GXI50QA&ref_=3Dpe=
+_805970_243588010" style=3D'text-decoration: none; color: #336699; font-siz=
+e: 12px'>Lins</a> <span class=3D"byLinePipe">(Autor)</span> </span> </td></=
+tr> <tr class=3D"spacer"><td height=3D"10"><div width=3D"1" class=3D"spacer=
+" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr cla=
+ss=3D"pr_price_our"><td> <span style=3D"font-family: Arial, Helvetica, sans=
+-serif; font-size: 12px;"> <span class=3D"pr_price_label">Pre=C3=A7o:</span=
+> <span style=3D"font-size: 13px; font-weight: bold; color: #CC0000;" class=
+=3D"pr_price_highlight">R$ 8,99</span> </span> </span> </td></tr> </table><=
+/td> <td width=3D"105" align=3D"center" valign=3D"top"> <div class=3D"pr_le=
+arn_more"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ=
+&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct=
+%2FB071W94FZT%2Fref%3Dpe_805970_243588010_em_1p_1_lm&A=3DHRS7BK7RDUIZIZVI4S=
+G3VYPFQIOA&H=3DVZEG5A5UHHTWKDOE0FTIBD8J5M4A&ref_=3Dpe_805970_243588010_em_1=
+p_1_lm"  ><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/t=
+ea/learn-more._CB307034741_.jpg" width=3D"160" alt=3D"Saiba mais" height=3D=
+"27" border=3D"0" /></a> </div> <div class=3D"pr_wishlist"> <div width=3D"1=
+" class=3D"spacer" style=3D"font-size:5px;line-height:5px;">&nbsp;</div> <a=
+ href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I7=
+1DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%=
+3Dpe_805970_243588010_em_1p_1_atw%3F_encoding%3DUTF8%26action%3Dadd-to-regi=
+stry.wishlist%26asin.1%3DB071W94FZT%26submit.add-to-registry.wishlist.x%3D1=
+%26submit.add-to-registry.wishlist.y%3D1%26template-name%3Dstores%252Fdetai=
+l&A=3DUZFTTK6FLFLNESHBWZUSL2MHUHCA&H=3DF0PZOBYRA0PONI9G8GATUUOFE7CA&ref_=3D=
+pe_805970_243588010_em_1p_1_atw"  ><img src=3D"https://images-na.ssl-images=
+-amazon.com/images/G/32/tea/add-wishlist._CB332975953_.jpg" width=3D"160" a=
+lt=3D"Adicionar =C3=A0 lista de desejos" height=3D"27" border=3D"0" /></a> =
+</div> </td> </tr> </table> <table width=3D"620" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" align=3D"left" class=3D"seperator"> <tr height=3D"10=
+"><td width=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer" style=
+=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr height=3D"=
+1"><td bgcolor=3D"#eaebec" width=3D"620" height=3D"1"><div width=3D"620" cl=
+ass=3D"spacer" style=3D"font-size:1px;line-height:1px;">&nbsp;</div></td></=
+tr> <tr height=3D"10"><td width=3D"620" height=3D"10"><div width=3D"620" cl=
+ass=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td>=
+</tr> </table> </td> <td width=3D"15"><div width=3D"15" class=3D"spacer" st=
+yle=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> </tr> <tr> <td w=
+idth=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line=
+-height:15px;">&nbsp;</div></td> <td width=3D"620" valign=3D"top" align=3D"=
+left" class=3D"pr_container"> <table width=3D"620" cellspacing=3D"0" cellpa=
+dding=3D"0" border=3D"0" class=3D"list_product"> <tr> <td width=3D"150" ali=
+gn=3D"left" valign=3D"top" class=3D"pr_image"> <a href=3D"https://www.amazo=
+n.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2=
+F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071KLPQZ4%2Fref%3Dpe_805970_2435880=
+10_em_1p_2_im&A=3DMFV8ID2FASJ8QWUSDXKLWAMVVJOA&H=3DNCIFRVMCZSQIAPAFZOBGYUP8=
+UASA&ref_=3Dpe_805970_243588010_em_1p_2_im"  > <img src=3D"https://images-n=
+a.ssl-images-amazon.com/images/I/51bRqv8CWuL._SL500_SS140_PJku-sticker-v5,T=
+opRight,-26,-12_.jpg" width=3D"140" height=3D"140" class=3D"pr_image_140 pr=
+_image_desktop" alt=3D"CARL (Guarda-costas - Livro 3)" border=3D"0" /> </a>=
+ </td> <td width=3D"365" valign=3D"top" align=3D"left"> <table cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0"> <tr class=3D"pr_title"><td> <span st=
+yle=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:14px;             f=
+ont-style:normal;text-align:left;color:#336699;" class=3D"pr_title"> <a hre=
+f=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGH=
+Y&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071KLPQZ4%2Fr=
+ef%3Dpe_805970_243588010_em_1p_2_ti&A=3DJEROSUTQHEPIHQPYHW1SAPFE1NOA&H=3DNE=
+1EKCBHMKFN6TAASSWRA4JBJDGA&ref_=3Dpe_805970_243588010_em_1p_2_ti" style=3D"=
+text-decoration: underline; color:#336699; font-size: 14px"  >CARL (Guarda-=
+costas - Livro 3)</a> </span> </td></tr> <tr class=3D"pr_byline"><td> <span=
+ style=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:12px;font-weight=
+:normal;             font-style:normal;text-decoration:none;color:#333;text=
+-align:left;" class=3D"pr_byline"> <a href=3D"https://www.amazon.com.br/gp/=
+r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazo=
+n.com.br%2Fs%3F_encoding%3DUTF8%26field-author%3DMAYJO%26search-alias%3Ddig=
+ital-text%26ref_%3Dpe_805970_243588010&A=3DQ5EAW94WWT4IKTZAMGNXNNU2TOYA&H=
+=3DHD8ANFEADGAH1MVGAC3IOYYOFHYA&ref_=3Dpe_805970_243588010" style=3D'text-d=
+ecoration: none; color: #336699; font-size: 12px'>MAYJO</a> <span class=3D"=
+byLinePipe">(Autor)</span> </span> </td></tr> <tr class=3D"spacer"><td heig=
+ht=3D"10"><div width=3D"1" class=3D"spacer" style=3D"font-size:10px;line-he=
+ight:10px;">&nbsp;</div></td></tr> <tr class=3D"pr_price_our"><td> <span st=
+yle=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> <span =
+class=3D"pr_price_label">Pre=C3=A7o:</span> <span style=3D"font-size: 13px;=
+ font-weight: bold; color: #CC0000;" class=3D"pr_price_highlight">R$ 9,99</=
+span> </span> </span> </td></tr> </table></td> <td width=3D"105" align=3D"c=
+enter" valign=3D"top"> <div class=3D"pr_learn_more"> <a href=3D"https://www=
+.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp=
+s%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071KLPQZ4%2Fref%3Dpe_805970_2=
+43588010_em_1p_2_lm&A=3DTKBAN32YUMXW8MVRWU33XOKOGD4A&H=3DV5OXGCZBFVVGKNE9UC=
+HOTBPMBUEA&ref_=3Dpe_805970_243588010_em_1p_2_lm"  ><img src=3D"https://ima=
+ges-na.ssl-images-amazon.com/images/G/32/tea/learn-more._CB307034741_.jpg" =
+width=3D"160" alt=3D"Saiba mais" height=3D"27" border=3D"0" /></a> </div> <=
+div class=3D"pr_wishlist"> <div width=3D"1" class=3D"spacer" style=3D"font-=
+size:5px;line-height:5px;">&nbsp;</div> <a href=3D"https://www.amazon.com.b=
+r/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww=
+.amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dpe_805970_243588010_em_1p_2_atw=
+%3F_encoding%3DUTF8%26action%3Dadd-to-registry.wishlist%26asin.1%3DB071KLPQ=
+Z4%26submit.add-to-registry.wishlist.x%3D1%26submit.add-to-registry.wishlis=
+t.y%3D1%26template-name%3Dstores%252Fdetail&A=3DJDHTAEVCGAANSARQVUVMA5GGCMA=
+A&H=3DASAQYBAUROYY6LC0DZAUMYAEWOOA&ref_=3Dpe_805970_243588010_em_1p_2_atw" =
+ ><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/add-w=
+ishlist._CB332975953_.jpg" width=3D"160" alt=3D"Adicionar =C3=A0 lista de d=
+esejos" height=3D"27" border=3D"0" /></a> </div> </td> </tr> </table> <tabl=
+e width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"l=
+eft" class=3D"seperator"> <tr height=3D"10"><td width=3D"620" height=3D"10"=
+><div width=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:10=
+px;">&nbsp;</div></td></tr> <tr height=3D"1"><td bgcolor=3D"#eaebec" width=
+=3D"620" height=3D"1"><div width=3D"620" class=3D"spacer" style=3D"font-siz=
+e:1px;line-height:1px;">&nbsp;</div></td></tr> <tr height=3D"10"><td width=
+=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer" style=3D"font-si=
+ze:10px;line-height:10px;">&nbsp;</div></td></tr> </table> </td> <td width=
+=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line-hei=
+ght:15px;">&nbsp;</div></td> </tr> <tr> <td width=3D"15"><div width=3D"15" =
+class=3D"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></t=
+d> <td width=3D"620" valign=3D"top" align=3D"left" class=3D"pr_container"> =
+<table width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=
+=3D"list_product"> <tr> <td width=3D"150" align=3D"left" valign=3D"top" cla=
+ss=3D"pr_image"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQV=
+JJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fp=
+roduct%2FB072M1TL9P%2Fref%3Dpe_805970_243588010_em_1p_3_im&A=3DWJJR69P8UDZC=
+XAQ4NK3PRQOK4BUA&H=3DD6SYVOVXPYKQNSA288AFZAXRSF8A&ref_=3Dpe_805970_24358801=
+0_em_1p_3_im"  > <img src=3D"https://images-na.ssl-images-amazon.com/images=
+/I/51GlL4HVOOL._SL500_SS140_PJku-sticker-v5,TopRight,-21,-12_.jpg" width=3D=
+"140" height=3D"140" class=3D"pr_image_140 pr_image_desktop" alt=3D"O Filho=
+ Inesperado do Ex-namorado Bilionario" border=3D"0" /> </a> </td> <td width=
+=3D"365" valign=3D"top" align=3D"left"> <table cellspacing=3D"0" cellpaddin=
+g=3D"0" border=3D"0"> <tr class=3D"pr_title"><td> <span style=3D"font-famil=
+y:Arial,Helvetica,Sans-Serif;font-size:14px;             font-style:normal;=
+text-align:left;color:#336699;" class=3D"pr_title"> <a href=3D"https://www.=
+amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps=
+%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB072M1TL9P%2Fref%3Dpe_805970_24=
+3588010_em_1p_3_ti&A=3DT7ALYMTCLOTBX33X5JKKCADMVA8A&H=3D5AA3ESDX79TD0CEB1HL=
+IMVRPV9WA&ref_=3Dpe_805970_243588010_em_1p_3_ti" style=3D"text-decoration: =
+underline; color:#336699; font-size: 14px"  >O Filho Inesperado do Ex-namor=
+ado Bilionario</a> </span> </td></tr> <tr class=3D"pr_byline"><td> <span st=
+yle=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:12px;font-weight:no=
+rmal;             font-style:normal;text-decoration:none;color:#333;text-al=
+ign:left;" class=3D"pr_byline"> <a href=3D"https://www.amazon.com.br/gp/r.h=
+tml?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.c=
+om.br%2Fs%3F_encoding%3DUTF8%26field-author%3DNicki%2520Jackson%26search-al=
+ias%3Ddigital-text%26ref_%3Dpe_805970_243588010&A=3DUQOCVNRAXMS9UCQJE8XOTAF=
+EHPCA&H=3DMJWTYVKYSCNIJSKTCNUNSTUUT2SA&ref_=3Dpe_805970_243588010" style=3D=
+'text-decoration: none; color: #336699; font-size: 12px'>Nicki Jackson</a> =
+<span class=3D"byLinePipe">(Autor)</span> </span> </td></tr> <tr class=3D"s=
+pacer"><td height=3D"10"><div width=3D"1" class=3D"spacer" style=3D"font-si=
+ze:10px;line-height:10px;">&nbsp;</div></td></tr> <tr class=3D"pr_price_our=
+"><td> <span style=3D"font-family: Arial, Helvetica, sans-serif; font-size:=
+ 12px;"> <span class=3D"pr_price_label">Pre=C3=A7o:</span> <span style=3D"f=
+ont-size: 13px; font-weight: bold; color: #CC0000;" class=3D"pr_price_highl=
+ight">R$ 9,75</span> </span> </span> </td></tr> </table></td> <td width=3D"=
+105" align=3D"center" valign=3D"top"> <div class=3D"pr_learn_more"> <a href=
+=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY=
+&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB072M1TL9P%2Fre=
+f%3Dpe_805970_243588010_em_1p_3_lm&A=3DOA1TUVJ2QNRJY1WARLALMS8EGSWA&H=3DB6C=
+5RVYTTHTW4IIERCRY5EJWBDCA&ref_=3Dpe_805970_243588010_em_1p_3_lm"  ><img src=
+=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/learn-more._CB3=
+07034741_.jpg" width=3D"160" alt=3D"Saiba mais" height=3D"27" border=3D"0" =
+/></a> </div> <div class=3D"pr_wishlist"> <div width=3D"1" class=3D"spacer"=
+ style=3D"font-size:5px;line-height:5px;">&nbsp;</div> <a href=3D"https://w=
+ww.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dht=
+tps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dpe_805970_243588=
+010_em_1p_3_atw%3F_encoding%3DUTF8%26action%3Dadd-to-registry.wishlist%26as=
+in.1%3DB072M1TL9P%26submit.add-to-registry.wishlist.x%3D1%26submit.add-to-r=
+egistry.wishlist.y%3D1%26template-name%3Dstores%252Fdetail&A=3D5VBTJUKRPMMH=
+75HAZ7QU7A73ADMA&H=3DAJWLBI5PEDWBHAU7H9G5OOO5KROA&ref_=3Dpe_805970_24358801=
+0_em_1p_3_atw"  ><img src=3D"https://images-na.ssl-images-amazon.com/images=
+/G/32/tea/add-wishlist._CB332975953_.jpg" width=3D"160" alt=3D"Adicionar =
+=C3=A0 lista de desejos" height=3D"27" border=3D"0" /></a> </div> </td> </t=
+r> </table> <table width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"left" class=3D"seperator"> <tr height=3D"10"><td width=3D"6=
+20" height=3D"10"><div width=3D"620" class=3D"spacer" style=3D"font-size:10=
+px;line-height:10px;">&nbsp;</div></td></tr> <tr height=3D"1"><td bgcolor=
+=3D"#eaebec" width=3D"620" height=3D"1"><div width=3D"620" class=3D"spacer"=
+ style=3D"font-size:1px;line-height:1px;">&nbsp;</div></td></tr> <tr height=
+=3D"10"><td width=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer"=
+ style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> </table>=
+ </td> <td width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-si=
+ze:15px;line-height:15px;">&nbsp;</div></td> </tr> <tr> <td width=3D"15"><d=
+iv width=3D"15" class=3D"spacer" style=3D"font-size:15px;line-height:15px;"=
+>&nbsp;</div></td> <td width=3D"620" valign=3D"top" align=3D"left" class=3D=
+"pr_container"> <table width=3D"620" cellspacing=3D"0" cellpadding=3D"0" bo=
+rder=3D"0" class=3D"list_product"> <tr> <td width=3D"150" align=3D"left" va=
+lign=3D"top" class=3D"pr_image"> <a href=3D"https://www.amazon.com.br/gp/r.=
+html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon=
+.com.br%2Fgp%2Fproduct%2FB071K2WQV7%2Fref%3Dpe_805970_243588010_em_1p_4_im&=
+A=3DABX6TRZGABMP1AOGLKVZ9OV3AEUA&H=3DJMKBMTDTPIKDWFBHWYWWVMOFQ7UA&ref_=3Dpe=
+_805970_243588010_em_1p_4_im"  > <img src=3D"https://images-na.ssl-images-a=
+mazon.com/images/I/41LgHJcnXbL._SL500_SS140_PJku-sticker-v5,TopRight,-26,-1=
+2_.jpg" width=3D"140" height=3D"140" class=3D"pr_image_140 pr_image_desktop=
+" alt=3D"Era Pra Ser" border=3D"0" /> </a> </td> <td width=3D"365" valign=
+=3D"top" align=3D"left"> <table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0"> <tr class=3D"pr_title"><td> <span style=3D"font-family:Arial,Helvet=
+ica,Sans-Serif;font-size:14px;             font-style:normal;text-align:lef=
+t;color:#336699;" class=3D"pr_title"> <a href=3D"https://www.amazon.com.br/=
+gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.a=
+mazon.com.br%2Fgp%2Fproduct%2FB071K2WQV7%2Fref%3Dpe_805970_243588010_em_1p_=
+4_ti&A=3DCBVXEXHJA8CV7W5AQPZRUCNRBOEA&H=3DZG90LPYXXL8KUOKEIGA0ORLUSKCA&ref_=
+=3Dpe_805970_243588010_em_1p_4_ti" style=3D"text-decoration: underline; col=
+or:#336699; font-size: 14px"  >Era Pra Ser</a> </span> </td></tr> <tr class=
+=3D"pr_byline"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;f=
+ont-size:12px;font-weight:normal;             font-style:normal;text-decora=
+tion:none;color:#333;text-align:left;" class=3D"pr_byline"> <a href=3D"http=
+s://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=
+=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUTF8%26field-author%3DM=
+ila%2520%2520Cris%26search-alias%3Ddigital-text%26ref_%3Dpe_805970_24358801=
+0&A=3DTGL60FUID0SRAUD4GH0NE6CJ10QA&H=3D2ECFGB89J74ILDYHIHSQRMIPYTAA&ref_=3D=
+pe_805970_243588010" style=3D'text-decoration: none; color: #336699; font-s=
+ize: 12px'>Mila  Cris</a> <span class=3D"byLinePipe">(Autor)</span> </span>=
+ </td></tr> <tr class=3D"spacer"><td height=3D"10"><div width=3D"1" class=
+=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></t=
+r> <tr class=3D"pr_price_our"><td> <span style=3D"font-family: Arial, Helve=
+tica, sans-serif; font-size: 12px;"> <span class=3D"pr_price_label">Pre=C3=
+=A7o:</span> <span style=3D"font-size: 13px; font-weight: bold; color: #CC0=
+000;" class=3D"pr_price_highlight">R$ 8,99</span> </span> </span> </td></tr=
+> </table></td> <td width=3D"105" align=3D"center" valign=3D"top"> <div cla=
+ss=3D"pr_learn_more"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2Y=
+TLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fg=
+p%2Fproduct%2FB071K2WQV7%2Fref%3Dpe_805970_243588010_em_1p_4_lm&A=3DMQ8JW3E=
+69IHFOY94XBS45SOVEK4A&H=3DZLDCQZVBWCDIIYJUQVUQSFQYBQKA&ref_=3Dpe_805970_243=
+588010_em_1p_4_lm"  ><img src=3D"https://images-na.ssl-images-amazon.com/im=
+ages/G/32/tea/learn-more._CB307034741_.jpg" width=3D"160" alt=3D"Saiba mais=
+" height=3D"27" border=3D"0" /></a> </div> <div class=3D"pr_wishlist"> <div=
+ width=3D"1" class=3D"spacer" style=3D"font-size:5px;line-height:5px;">&nbs=
+p;</div> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=
+=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fitem-disp=
+atch%2Fref%3Dpe_805970_243588010_em_1p_4_atw%3F_encoding%3DUTF8%26action%3D=
+add-to-registry.wishlist%26asin.1%3DB071K2WQV7%26submit.add-to-registry.wis=
+hlist.x%3D1%26submit.add-to-registry.wishlist.y%3D1%26template-name%3Dstore=
+s%252Fdetail&A=3DUQJXSM9OFAJDCIFPYFKI4D81BOWA&H=3DZZKTQKKYL89KWUSYBVAGHVJ4X=
+TWA&ref_=3Dpe_805970_243588010_em_1p_4_atw"  ><img src=3D"https://images-na=
+.ssl-images-amazon.com/images/G/32/tea/add-wishlist._CB332975953_.jpg" widt=
+h=3D"160" alt=3D"Adicionar =C3=A0 lista de desejos" height=3D"27" border=3D=
+"0" /></a> </div> </td> </tr> </table> <table width=3D"620" cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" align=3D"left" class=3D"seperator"> <tr h=
+eight=3D"10"><td width=3D"620" height=3D"10"><div width=3D"620" class=3D"sp=
+acer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr=
+ height=3D"1"><td bgcolor=3D"#eaebec" width=3D"620" height=3D"1"><div width=
+=3D"620" class=3D"spacer" style=3D"font-size:1px;line-height:1px;">&nbsp;</=
+div></td></tr> <tr height=3D"10"><td width=3D"620" height=3D"10"><div width=
+=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;=
+</div></td></tr> </table> </td> <td width=3D"15"><div width=3D"15" class=3D=
+"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> </tr>=
+ <tr> <td width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-siz=
+e:15px;line-height:15px;">&nbsp;</div></td> <td width=3D"620" valign=3D"top=
+" align=3D"left" class=3D"pr_container"> <table width=3D"620" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" class=3D"list_product"> <tr> <td widt=
+h=3D"150" align=3D"left" valign=3D"top" class=3D"pr_image"> <a href=3D"http=
+s://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=
+=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB01HSSZSHG%2Fref%3Dpe_8=
+05970_243588010_em_1p_5_im&A=3D6UEUJYKNRIY9PVNUFZGC5IYR3QIA&H=3DF8RXN0BMPOP=
+LYK3KZW9NHQHQ2ROA&ref_=3Dpe_805970_243588010_em_1p_5_im"  > <img src=3D"htt=
+ps://images-na.ssl-images-amazon.com/images/I/51MXOz3OXOL._SL500_SS140_PJku=
+-sticker-v5,TopRight,-23,-12_.jpg" width=3D"140" height=3D"140" class=3D"pr=
+_image_140 pr_image_desktop" alt=3D"Doce Proposta: Uma simples proposta pod=
+e mudar tudo" border=3D"0" /> </a> </td> <td width=3D"365" valign=3D"top" a=
+lign=3D"left"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0"> <tr=
+ class=3D"pr_title"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Se=
+rif;font-size:14px;             font-style:normal;text-align:left;color:#33=
+6699;" class=3D"pr_title"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=
+=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.b=
+r%2Fgp%2Fproduct%2FB01HSSZSHG%2Fref%3Dpe_805970_243588010_em_1p_5_ti&A=3DSX=
+AGGY9LBVFWZD6VIAATA3OPJGWA&H=3D4FM64UTINVAUAUHVWKEBALM3CKKA&ref_=3Dpe_80597=
+0_243588010_em_1p_5_ti" style=3D"text-decoration: underline; color:#336699;=
+ font-size: 14px"  >Doce Proposta: Uma simples proposta pode mudar tudo</a>=
+ </span> </td></tr> <tr class=3D"pr_byline"><td> <span style=3D"font-family=
+:Arial,Helvetica,Sans-Serif;font-size:12px;font-weight:normal;             =
+font-style:normal;text-decoration:none;color:#333;text-align:left;" class=
+=3D"pr_byline"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJ=
+JJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_enc=
+oding%3DUTF8%26field-author%3DGabriela%2520Lins%26search-alias%3Ddigital-te=
+xt%26ref_%3Dpe_805970_243588010&A=3DBNWIQ43INAR3VTSTJGJDDAAYHJQA&H=3DM7QULL=
+ACHBEKJNPMW5KJHIL2FKAA&ref_=3Dpe_805970_243588010" style=3D'text-decoration=
+: none; color: #336699; font-size: 12px'>Gabriela Lins</a> <span class=3D"b=
+yLinePipe">(Autor)</span> </span> </td></tr> <tr class=3D"spacer"><td heigh=
+t=3D"10"><div width=3D"1" class=3D"spacer" style=3D"font-size:10px;line-hei=
+ght:10px;">&nbsp;</div></td></tr> <tr class=3D"pr_price_our"><td> <span sty=
+le=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> <span c=
+lass=3D"pr_price_label">Pre=C3=A7o:</span> <span style=3D"font-size: 13px; =
+font-weight: bold; color: #CC0000;" class=3D"pr_price_highlight">R$ 8,84</s=
+pan> </span> </span> </td></tr> </table></td> <td width=3D"105" align=3D"ce=
+nter" valign=3D"top"> <div class=3D"pr_learn_more"> <a href=3D"https://www.=
+amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps=
+%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB01HSSZSHG%2Fref%3Dpe_805970_24=
+3588010_em_1p_5_lm&A=3DARUOFHUQRPQKMEBINVT67PX0CKOA&H=3DEULVLQN310GOAYXBZ31=
+AXOT8H4KA&ref_=3Dpe_805970_243588010_em_1p_5_lm"  ><img src=3D"https://imag=
+es-na.ssl-images-amazon.com/images/G/32/tea/learn-more._CB307034741_.jpg" w=
+idth=3D"160" alt=3D"Saiba mais" height=3D"27" border=3D"0" /></a> </div> <d=
+iv class=3D"pr_wishlist"> <div width=3D"1" class=3D"spacer" style=3D"font-s=
+ize:5px;line-height:5px;">&nbsp;</div> <a href=3D"https://www.amazon.com.br=
+/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.=
+amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dpe_805970_243588010_em_1p_5_atw%=
+3F_encoding%3DUTF8%26action%3Dadd-to-registry.wishlist%26asin.1%3DB01HSSZSH=
+G%26submit.add-to-registry.wishlist.x%3D1%26submit.add-to-registry.wishlist=
+.y%3D1%26template-name%3Dstores%252Fdetail&A=3DRK3ZNA1APPMPBBQYKAEBYBBDWDQA=
+&H=3DYJX4QCSC2TEUIUKKMJNWNPVBQPIA&ref_=3Dpe_805970_243588010_em_1p_5_atw"  =
+><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/add-wi=
+shlist._CB332975953_.jpg" width=3D"160" alt=3D"Adicionar =C3=A0 lista de de=
+sejos" height=3D"27" border=3D"0" /></a> </div> </td> </tr> </table> <table=
+ width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"le=
+ft" class=3D"seperator"> <tr height=3D"10"><td width=3D"620" height=3D"10">=
+<div width=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:10p=
+x;">&nbsp;</div></td></tr> <tr height=3D"1"><td bgcolor=3D"#eaebec" width=
+=3D"620" height=3D"1"><div width=3D"620" class=3D"spacer" style=3D"font-siz=
+e:1px;line-height:1px;">&nbsp;</div></td></tr> <tr height=3D"10"><td width=
+=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer" style=3D"font-si=
+ze:10px;line-height:10px;">&nbsp;</div></td></tr> </table> </td> <td width=
+=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line-hei=
+ght:15px;">&nbsp;</div></td> </tr> <tr> <td width=3D"15"><div width=3D"15" =
+class=3D"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></t=
+d> <td width=3D"620" valign=3D"top" align=3D"left" class=3D"pr_container"> =
+<table width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=
+=3D"list_product"> <tr> <td width=3D"150" align=3D"left" valign=3D"top" cla=
+ss=3D"pr_image"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQV=
+JJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fp=
+roduct%2FB072Q7ZG8K%2Fref%3Dpe_805970_243588010_em_1p_6_im&A=3DASKJQG93URQP=
+FH1JT7OA73DX2W8A&H=3DIWCIX3NWNRSQJFRL9TKGROSHPCEA&ref_=3Dpe_805970_24358801=
+0_em_1p_6_im"  > <img src=3D"https://images-na.ssl-images-amazon.com/images=
+/I/51i7I6eliCL._SL500_SS140_PJku-sticker-v5,TopRight,-21,-12_.jpg" width=3D=
+"140" height=3D"140" class=3D"pr_image_140 pr_image_desktop" alt=3D"Doce De=
+sejo (Os Hamiltons Livro 2)" border=3D"0" /> </a> </td> <td width=3D"365" v=
+align=3D"top" align=3D"left"> <table cellspacing=3D"0" cellpadding=3D"0" bo=
+rder=3D"0"> <tr class=3D"pr_title"><td> <span style=3D"font-family:Arial,He=
+lvetica,Sans-Serif;font-size:14px;             font-style:normal;text-align=
+:left;color:#336699;" class=3D"pr_title"> <a href=3D"https://www.amazon.com=
+.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fw=
+ww.amazon.com.br%2Fgp%2Fproduct%2FB072Q7ZG8K%2Fref%3Dpe_805970_243588010_em=
+_1p_6_ti&A=3DFB6YS4LK97AEW0GOQRZ5PHMWNNOA&H=3DI1LHQNNVWNDEGPDJRWAX72JK13QA&=
+ref_=3Dpe_805970_243588010_em_1p_6_ti" style=3D"text-decoration: underline;=
+ color:#336699; font-size: 14px"  >Doce Desejo (Os Hamiltons Livro 2)</a> <=
+/span> </td></tr> <tr class=3D"pr_byline"><td> <span style=3D"font-family:A=
+rial,Helvetica,Sans-Serif;font-size:12px;font-weight:normal;             fo=
+nt-style:normal;text-decoration:none;color:#333;text-align:left;" class=3D"=
+pr_byline"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOO=
+Q&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encodin=
+g%3DUTF8%26field-author%3DTatiana%2520Pinheiro%26search-alias%3Ddigital-tex=
+t%26ref_%3Dpe_805970_243588010&A=3DJWQ2J5ZZL6DEQA1QUGVMG79WN3KA&H=3DMI9J1TG=
+I6REGDTQZWTZAI58ZVZKA&ref_=3Dpe_805970_243588010" style=3D'text-decoration:=
+ none; color: #336699; font-size: 12px'>Tatiana Pinheiro</a> <span class=3D=
+"byLinePipe">(Autor)</span> </span> </td></tr> <tr class=3D"spacer"><td hei=
+ght=3D"10"><div width=3D"1" class=3D"spacer" style=3D"font-size:10px;line-h=
+eight:10px;">&nbsp;</div></td></tr> <tr class=3D"pr_price_our"><td> <span s=
+tyle=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> <span=
+ class=3D"pr_price_label">Pre=C3=A7o:</span> <span style=3D"font-size: 13px=
+; font-weight: bold; color: #CC0000;" class=3D"pr_price_highlight">R$ 10,00=
+</span> </span> </span> </td></tr> </table></td> <td width=3D"105" align=3D=
+"center" valign=3D"top"> <div class=3D"pr_learn_more"> <a href=3D"https://w=
+ww.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dht=
+tps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB072Q7ZG8K%2Fref%3Dpe_805970=
+_243588010_em_1p_6_lm&A=3DKYV5VNNSEONLSLHLUM6G5A0NQQ4A&H=3DJZULHEMGC09BIPBG=
+AADSMPSIAAQA&ref_=3Dpe_805970_243588010_em_1p_6_lm"  ><img src=3D"https://i=
+mages-na.ssl-images-amazon.com/images/G/32/tea/learn-more._CB307034741_.jpg=
+" width=3D"160" alt=3D"Saiba mais" height=3D"27" border=3D"0" /></a> </div>=
+ <div class=3D"pr_wishlist"> <div width=3D"1" class=3D"spacer" style=3D"fon=
+t-size:5px;line-height:5px;">&nbsp;</div> <a href=3D"https://www.amazon.com=
+.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fw=
+ww.amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dpe_805970_243588010_em_1p_6_a=
+tw%3F_encoding%3DUTF8%26action%3Dadd-to-registry.wishlist%26asin.1%3DB072Q7=
+ZG8K%26submit.add-to-registry.wishlist.x%3D1%26submit.add-to-registry.wishl=
+ist.y%3D1%26template-name%3Dstores%252Fdetail&A=3DTX9NCR1YOMLRRS1ZSWK3GFUSM=
+IQA&H=3DS3CSCLSN8S7YWAYDAEPEVI2JECIA&ref_=3Dpe_805970_243588010_em_1p_6_atw=
+"  ><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/add=
+-wishlist._CB332975953_.jpg" width=3D"160" alt=3D"Adicionar =C3=A0 lista de=
+ desejos" height=3D"27" border=3D"0" /></a> </div> </td> </tr> </table> <ta=
+ble width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D=
+"left" class=3D"seperator"> <tr height=3D"10"><td width=3D"620" height=3D"1=
+0"><div width=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:=
+10px;">&nbsp;</div></td></tr> <tr height=3D"1"><td bgcolor=3D"#eaebec" widt=
+h=3D"620" height=3D"1"><div width=3D"620" class=3D"spacer" style=3D"font-si=
+ze:1px;line-height:1px;">&nbsp;</div></td></tr> <tr height=3D"10"><td width=
+=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer" style=3D"font-si=
+ze:10px;line-height:10px;">&nbsp;</div></td></tr> </table> </td> <td width=
+=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line-hei=
+ght:15px;">&nbsp;</div></td> </tr> <tr> <td width=3D"15"><div width=3D"15" =
+class=3D"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></t=
+d> <td width=3D"620" valign=3D"top" align=3D"left" class=3D"pr_container"> =
+<table width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=
+=3D"list_product"> <tr> <td width=3D"150" align=3D"left" valign=3D"top" cla=
+ss=3D"pr_image"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQV=
+JJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fp=
+roduct%2FB071VX8QP4%2Fref%3Dpe_805970_243588010_em_1p_7_im&A=3DQBONOR7WKCYI=
+9AIKWKTMQMKIKBCA&H=3D6CX1ORNGUBP9BH6QYJOPO4MEJX0A&ref_=3Dpe_805970_24358801=
+0_em_1p_7_im"  > <img src=3D"https://images-na.ssl-images-amazon.com/images=
+/I/51K-T9UCKIL._SL500_SS140_PJku-sticker-v5,TopRight,-21,-12_.jpg" width=3D=
+"140" height=3D"140" class=3D"pr_image_140 pr_image_desktop" alt=3D"Dominad=
+a pelo Bilion=C3=A1rio (O Magnata Livro 2)" border=3D"0" /> </a> </td> <td =
+width=3D"365" valign=3D"top" align=3D"left"> <table cellspacing=3D"0" cellp=
+adding=3D"0" border=3D"0"> <tr class=3D"pr_title"><td> <span style=3D"font-=
+family:Arial,Helvetica,Sans-Serif;font-size:14px;             font-style:no=
+rmal;text-align:left;color:#336699;" class=3D"pr_title"> <a href=3D"https:/=
+/www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3D=
+https%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071VX8QP4%2Fref%3Dpe_8059=
+70_243588010_em_1p_7_ti&A=3D1PBAMA6DHKAAPRC1EJSY4HNHNAUA&H=3D5LMFQACBVV7NEH=
+TZQRPDZDFFU3CA&ref_=3Dpe_805970_243588010_em_1p_7_ti" style=3D"text-decorat=
+ion: underline; color:#336699; font-size: 14px"  >Dominada pelo Bilion=C3=
+=A1rio (O Magnata Livro 2)</a> </span> </td></tr> <tr class=3D"pr_byline"><=
+td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:12px;fo=
+nt-weight:normal;             font-style:normal;text-decoration:none;color:=
+#333;text-align:left;" class=3D"pr_byline"> <a href=3D"https://www.amazon.c=
+om.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2F=
+www.amazon.com.br%2Fs%3F_encoding%3DUTF8%26field-author%3DValentina%2520Gra=
+yson%26search-alias%3Ddigital-text%26ref_%3Dpe_805970_243588010&A=3DOOPQ3KO=
+EYODEVP2DPRLFAPDEENYA&H=3D9MPFATFK32CXVTADPBQEGAIEXKIA&ref_=3Dpe_805970_243=
+588010" style=3D'text-decoration: none; color: #336699; font-size: 12px'>Va=
+lentina Grayson</a> <span class=3D"byLinePipe">(Autor)</span> </span> </td>=
+</tr> <tr class=3D"spacer"><td height=3D"10"><div width=3D"1" class=3D"spac=
+er" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr c=
+lass=3D"pr_price_our"><td> <span style=3D"font-family: Arial, Helvetica, sa=
+ns-serif; font-size: 12px;"> <span class=3D"pr_price_label">Pre=C3=A7o:</sp=
+an> <span style=3D"font-size: 13px; font-weight: bold; color: #CC0000;" cla=
+ss=3D"pr_price_highlight">R$ 8,99</span> </span> </span> </td></tr> </table=
+></td> <td width=3D"105" align=3D"center" valign=3D"top"> <div class=3D"pr_=
+learn_more"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJO=
+OQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fprodu=
+ct%2FB071VX8QP4%2Fref%3Dpe_805970_243588010_em_1p_7_lm&A=3D3PRAANFAC8FJO9UU=
+I1GMCMCUJOIA&H=3DOZYXARORFLXWMTDOZAXJH05GUGAA&ref_=3Dpe_805970_243588010_em=
+_1p_7_lm"  ><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32=
+/tea/learn-more._CB307034741_.jpg" width=3D"160" alt=3D"Saiba mais" height=
+=3D"27" border=3D"0" /></a> </div> <div class=3D"pr_wishlist"> <div width=
+=3D"1" class=3D"spacer" style=3D"font-size:5px;line-height:5px;">&nbsp;</di=
+v> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P=
+6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fitem-dispatch%2=
+Fref%3Dpe_805970_243588010_em_1p_7_atw%3F_encoding%3DUTF8%26action%3Dadd-to=
+-registry.wishlist%26asin.1%3DB071VX8QP4%26submit.add-to-registry.wishlist.=
+x%3D1%26submit.add-to-registry.wishlist.y%3D1%26template-name%3Dstores%252F=
+detail&A=3DDUOVAIA62YBQVDANMNIAXZY1MK8A&H=3DF8EUDXIV5CBJTZTNOR6SAMVUP3OA&re=
+f_=3Dpe_805970_243588010_em_1p_7_atw"  ><img src=3D"https://images-na.ssl-i=
+mages-amazon.com/images/G/32/tea/add-wishlist._CB332975953_.jpg" width=3D"1=
+60" alt=3D"Adicionar =C3=A0 lista de desejos" height=3D"27" border=3D"0" />=
+</a> </div> </td> </tr> </table> <table width=3D"620" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" align=3D"left" class=3D"seperator"> <tr height=
+=3D"10"><td width=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer"=
+ style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr heig=
+ht=3D"1"><td bgcolor=3D"#eaebec" width=3D"620" height=3D"1"><div width=3D"6=
+20" class=3D"spacer" style=3D"font-size:1px;line-height:1px;">&nbsp;</div><=
+/td></tr> <tr height=3D"10"><td width=3D"620" height=3D"10"><div width=3D"6=
+20" class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div=
+></td></tr> </table> </td> <td width=3D"15"><div width=3D"15" class=3D"spac=
+er" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> </tr> <tr>=
+ <td width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15p=
+x;line-height:15px;">&nbsp;</div></td> <td width=3D"620" valign=3D"top" ali=
+gn=3D"left" class=3D"pr_container"> <table width=3D"620" cellspacing=3D"0" =
+cellpadding=3D"0" border=3D"0" class=3D"list_product"> <tr> <td width=3D"15=
+0" align=3D"left" valign=3D"top" class=3D"pr_image"> <a href=3D"https://www=
+.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp=
+s%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071W4TC4R%2Fref%3Dpe_805970_2=
+43588010_em_1p_8_im&A=3DWOYFDMRYNF591XKKPYVD6KDKQ8EA&H=3DWYKUHS0BCJT6MHXEKL=
+DZPASFSBIA&ref_=3Dpe_805970_243588010_em_1p_8_im"  > <img src=3D"https://im=
+ages-na.ssl-images-amazon.com/images/I/51znjN3ZV2L._SL500_SS140_PJku-sticke=
+r-v5,TopRight,-24,-12_.jpg" width=3D"140" height=3D"140" class=3D"pr_image_=
+140 pr_image_desktop" alt=3D"Louca por Hunter (S=C3=A9rie Sem Limites Livro=
+ 1)" border=3D"0" /> </a> </td> <td width=3D"365" valign=3D"top" align=3D"l=
+eft"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0"> <tr class=3D=
+"pr_title"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;font-=
+size:14px;             font-style:normal;text-align:left;color:#336699;" cl=
+ass=3D"pr_title"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQ=
+VJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2F=
+product%2FB071W4TC4R%2Fref%3Dpe_805970_243588010_em_1p_8_ti&A=3DLTBHIDGYAGD=
+7DWZMHXKRQ6QDL38A&H=3DZFPHJDAOODE4V5O4K9MPSYYUKGIA&ref_=3Dpe_805970_2435880=
+10_em_1p_8_ti" style=3D"text-decoration: underline; color:#336699; font-siz=
+e: 14px"  >Louca por Hunter (S=C3=A9rie Sem Limites Livro 1)</a> </span> </=
+td></tr> <tr class=3D"pr_byline"><td> <span style=3D"font-family:Arial,Helv=
+etica,Sans-Serif;font-size:12px;font-weight:normal;             font-style:=
+normal;text-decoration:none;color:#333;text-align:left;" class=3D"pr_byline=
+"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P=
+6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUTF8%=
+26field-author%3DF.%2520Gerbatin%26search-alias%3Ddigital-text%26ref_%3Dpe_=
+805970_243588010&A=3DD3GDNCQ7VFAOZ1MWMRPPWD9HJHGA&H=3D3B6ZSCAO6I361NDVOAARF=
+6R8NFCA&ref_=3Dpe_805970_243588010" style=3D'text-decoration: none; color: =
+#336699; font-size: 12px'>F. Gerbatin</a> <span class=3D"byLinePipe">(Autor=
+)</span> </span> </td></tr> <tr class=3D"spacer"><td height=3D"10"><div wid=
+th=3D"1" class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;=
+</div></td></tr> <tr class=3D"pr_price_our"><td> <span style=3D"font-family=
+: Arial, Helvetica, sans-serif; font-size: 12px;"> <span class=3D"pr_price_=
+label">Pre=C3=A7o:</span> <span style=3D"font-size: 13px; font-weight: bold=
+; color: #CC0000;" class=3D"pr_price_highlight">R$ 5,99</span> </span> </sp=
+an> </td></tr> </table></td> <td width=3D"105" align=3D"center" valign=3D"t=
+op"> <div class=3D"pr_learn_more"> <a href=3D"https://www.amazon.com.br/gp/=
+r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amaz=
+on.com.br%2Fgp%2Fproduct%2FB071W4TC4R%2Fref%3Dpe_805970_243588010_em_1p_8_l=
+m&A=3DLGONJEKSMKIXUY7J1HZ4ZASEFWUA&H=3DJXKTVLSUADNGHPPWRE7ITH6FIEWA&ref_=3D=
+pe_805970_243588010_em_1p_8_lm"  ><img src=3D"https://images-na.ssl-images-=
+amazon.com/images/G/32/tea/learn-more._CB307034741_.jpg" width=3D"160" alt=
+=3D"Saiba mais" height=3D"27" border=3D"0" /></a> </div> <div class=3D"pr_w=
+ishlist"> <div width=3D"1" class=3D"spacer" style=3D"font-size:5px;line-hei=
+ght:5px;">&nbsp;</div> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2=
+YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2F=
+gp%2Fitem-dispatch%2Fref%3Dpe_805970_243588010_em_1p_8_atw%3F_encoding%3DUT=
+F8%26action%3Dadd-to-registry.wishlist%26asin.1%3DB071W4TC4R%26submit.add-t=
+o-registry.wishlist.x%3D1%26submit.add-to-registry.wishlist.y%3D1%26templat=
+e-name%3Dstores%252Fdetail&A=3DSMADDROVMMCRCXNJMMOD3E715M8A&H=3DOOGHMGCS2JT=
+UANGHVDDELCHSA9WA&ref_=3Dpe_805970_243588010_em_1p_8_atw"  ><img src=3D"htt=
+ps://images-na.ssl-images-amazon.com/images/G/32/tea/add-wishlist._CB332975=
+953_.jpg" width=3D"160" alt=3D"Adicionar =C3=A0 lista de desejos" height=3D=
+"27" border=3D"0" /></a> </div> </td> </tr> </table> <table width=3D"620" c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"left" class=3D"sep=
+erator"> <tr height=3D"10"><td width=3D"620" height=3D"10"><div width=3D"62=
+0" class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div>=
+</td></tr> <tr height=3D"1"><td bgcolor=3D"#eaebec" width=3D"620" height=3D=
+"1"><div width=3D"620" class=3D"spacer" style=3D"font-size:1px;line-height:=
+1px;">&nbsp;</div></td></tr> <tr height=3D"10"><td width=3D"620" height=3D"=
+10"><div width=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height=
+:10px;">&nbsp;</div></td></tr> </table> </td> <td width=3D"15"><div width=
+=3D"15" class=3D"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;<=
+/div></td> </tr> <tr> <td width=3D"15"><div width=3D"15" class=3D"spacer" s=
+tyle=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> <td width=3D"62=
+0" valign=3D"top" align=3D"left" class=3D"pr_container"> <table width=3D"62=
+0" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"list_product">=
+ <tr> <td width=3D"150" align=3D"left" valign=3D"top" class=3D"pr_image"> <=
+a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I=
+71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB071W6VYT=
+Z%2Fref%3Dpe_805970_243588010_em_1p_9_im&A=3DAIDT3BD55QZM53EWBSZF0E6AKYIA&H=
+=3DWEWVTAQFGL5FHXIPMTXR0Z6HHOCA&ref_=3Dpe_805970_243588010_em_1p_9_im"  > <=
+img src=3D"https://images-na.ssl-images-amazon.com/images/I/51Lj68DV84L._SL=
+500_SS140_PJku-sticker-v5,TopRight,-23,-12_.jpg" width=3D"140" height=3D"14=
+0" class=3D"pr_image_140 pr_image_desktop" alt=3D"Uma Surpresa do Destino" =
+border=3D"0" /> </a> </td> <td width=3D"365" valign=3D"top" align=3D"left">=
+ <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0"> <tr class=3D"pr_t=
+itle"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:=
+14px;             font-style:normal;text-align:left;color:#336699;" class=
+=3D"pr_title"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJ=
+JOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fpro=
+duct%2FB071W6VYTZ%2Fref%3Dpe_805970_243588010_em_1p_9_ti&A=3DZT4PBMESB0GQVK=
+AIWPARPC6DV9WA&H=3DOVFWCEFMG1HEPPI8OH0QY0S6C5WA&ref_=3Dpe_805970_243588010_=
+em_1p_9_ti" style=3D"text-decoration: underline; color:#336699; font-size: =
+14px"  >Uma Surpresa do Destino</a> </span> </td></tr> <tr class=3D"pr_byli=
+ne"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:12=
+px;font-weight:normal;             font-style:normal;text-decoration:none;c=
+olor:#333;text-align:left;" class=3D"pr_byline"> <a href=3D"https://www.ama=
+zon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%=
+2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUTF8%26field-author%3DLiliane%2520=
+%2520Borges%26search-alias%3Ddigital-text%26ref_%3Dpe_805970_243588010&A=3D=
+KOLG0IYIDYRDYIEH7N2TOWWY1IOA&H=3DMLIXD3XBYADZHBSB3VCUEYVXL9SA&ref_=3Dpe_805=
+970_243588010" style=3D'text-decoration: none; color: #336699; font-size: 1=
+2px'>Liliane  Borges</a> <span class=3D"byLinePipe">(Autor)</span> </span> =
+</td></tr> <tr class=3D"spacer"><td height=3D"10"><div width=3D"1" class=3D=
+"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> =
+<tr class=3D"pr_price_our"><td> <span style=3D"font-family: Arial, Helvetic=
+a, sans-serif; font-size: 12px;"> <span class=3D"pr_price_label">Pre=C3=A7o=
+:</span> <span style=3D"font-size: 13px; font-weight: bold; color: #CC0000;=
+" class=3D"pr_price_highlight">R$ 6,99</span> </span> </span> </td></tr> </=
+table></td> <td width=3D"105" align=3D"center" valign=3D"top"> <div class=
+=3D"pr_learn_more"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTL=
+CQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%=
+2Fproduct%2FB071W6VYTZ%2Fref%3Dpe_805970_243588010_em_1p_9_lm&A=3DSMJR5IVC7=
+Y2BAAHFUVEGLFVQEYIA&H=3D2DBAETOCJHKAWM0BV7XHI2CXAIYA&ref_=3Dpe_805970_24358=
+8010_em_1p_9_lm"  ><img src=3D"https://images-na.ssl-images-amazon.com/imag=
+es/G/32/tea/learn-more._CB307034741_.jpg" width=3D"160" alt=3D"Saiba mais" =
+height=3D"27" border=3D"0" /></a> </div> <div class=3D"pr_wishlist"> <div w=
+idth=3D"1" class=3D"spacer" style=3D"font-size:5px;line-height:5px;">&nbsp;=
+</div> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=
+=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fitem-disp=
+atch%2Fref%3Dpe_805970_243588010_em_1p_9_atw%3F_encoding%3DUTF8%26action%3D=
+add-to-registry.wishlist%26asin.1%3DB071W6VYTZ%26submit.add-to-registry.wis=
+hlist.x%3D1%26submit.add-to-registry.wishlist.y%3D1%26template-name%3Dstore=
+s%252Fdetail&A=3D7D1HAWLAWB3K8ZNH7B21QDANKBIA&H=3DBBJDHNCNNFEBFFXBBEDYOMAJG=
+KQA&ref_=3Dpe_805970_243588010_em_1p_9_atw"  ><img src=3D"https://images-na=
+.ssl-images-amazon.com/images/G/32/tea/add-wishlist._CB332975953_.jpg" widt=
+h=3D"160" alt=3D"Adicionar =C3=A0 lista de desejos" height=3D"27" border=3D=
+"0" /></a> </div> </td> </tr> </table> <table width=3D"620" cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" align=3D"left" class=3D"seperator"> <tr h=
+eight=3D"10"><td width=3D"620" height=3D"10"><div width=3D"620" class=3D"sp=
+acer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr=
+ height=3D"1"><td bgcolor=3D"#eaebec" width=3D"620" height=3D"1"><div width=
+=3D"620" class=3D"spacer" style=3D"font-size:1px;line-height:1px;">&nbsp;</=
+div></td></tr> <tr height=3D"10"><td width=3D"620" height=3D"10"><div width=
+=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;=
+</div></td></tr> </table> </td> <td width=3D"15"><div width=3D"15" class=3D=
+"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> </tr>=
+ <tr> <td width=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-siz=
+e:15px;line-height:15px;">&nbsp;</div></td> <td width=3D"620" valign=3D"top=
+" align=3D"left" class=3D"pr_container"> <table width=3D"620" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" class=3D"list_product"> <tr> <td widt=
+h=3D"150" align=3D"left" valign=3D"top" class=3D"pr_image"> <a href=3D"http=
+s://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=
+=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB0727ZSBDN%2Fref%3Dpe_8=
+05970_243588010_em_1p_10_im&A=3DEA5OVBSJPM9QHWUZP6HPHX4SCP4A&H=3DDAER9KLM7I=
+0AT7MDZ8SW4CQW3S8A&ref_=3Dpe_805970_243588010_em_1p_10_im"  > <img src=3D"h=
+ttps://images-na.ssl-images-amazon.com/images/I/51ywwJFUCJL._SL500_SS140_PJ=
+ku-sticker-v5,TopRight,-21,-12_.jpg" width=3D"140" height=3D"140" class=3D"=
+pr_image_140 pr_image_desktop" alt=3D"Ensina-me O Prazer" border=3D"0" /> <=
+/a> </td> <td width=3D"365" valign=3D"top" align=3D"left"> <table cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0"> <tr class=3D"pr_title"><td> <span =
+style=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:14px;            =
+ font-style:normal;text-align:left;color:#336699;" class=3D"pr_title"> <a h=
+ref=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71D=
+GHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB0727ZSBDN%2=
+Fref%3Dpe_805970_243588010_em_1p_10_ti&A=3DSYABMVFHMAC3EQAXHFTVU4MB1YMA&H=
+=3DCBK6KSHVBQKBG7BWDKLAPQ5RNRAA&ref_=3Dpe_805970_243588010_em_1p_10_ti" sty=
+le=3D"text-decoration: underline; color:#336699; font-size: 14px"  >Ensina-=
+me O Prazer</a> </span> </td></tr> <tr class=3D"pr_byline"><td> <span style=
+=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:12px;font-weight:norma=
+l;             font-style:normal;text-decoration:none;color:#333;text-align=
+:left;" class=3D"pr_byline"> <a href=3D"https://www.amazon.com.br/gp/r.html=
+?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.=
+br%2Fs%3F_encoding%3DUTF8%26field-author%3DAlessa%2520Ablle%26search-alias%=
+3Ddigital-text%26ref_%3Dpe_805970_243588010&A=3D3KPDRS9FUKIKB9WOAVHFTFWEDHA=
+A&H=3DYZHZQ9TB1UYWAXDL0KKJGARQVD4A&ref_=3Dpe_805970_243588010" style=3D'tex=
+t-decoration: none; color: #336699; font-size: 12px'>Alessa Ablle</a> <span=
+ class=3D"byLinePipe">(Autor)</span>, <a href=3D"https://www.amazon.com.br/=
+gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.am=
+azon.com.br%2Fs%3F_encoding%3DUTF8%26field-author%3DArtessa%2520Covers%26se=
+arch-alias%3Ddigital-text%26ref_%3Dpe_805970_243588010&A=3DIRHCYVV7EWRGJTXW=
+EEGUVHPIF90A&H=3DSTH1PUMY6P98SR5XAHGIYTEBAFCA&ref_=3Dpe_805970_243588010" s=
+tyle=3D'text-decoration: none; color: #336699; font-size: 12px'>Artessa Cov=
+ers</a> <span class=3D"byLinePipe">(Ilustrador)</span> </span> </td></tr> <=
+tr class=3D"spacer"><td height=3D"10"><div width=3D"1" class=3D"spacer" sty=
+le=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr class=3D=
+"pr_price_our"><td> <span style=3D"font-family: Arial, Helvetica, sans-seri=
+f; font-size: 12px;"> <span class=3D"pr_price_label">Pre=C3=A7o:</span> <sp=
+an style=3D"font-size: 13px; font-weight: bold; color: #CC0000;" class=3D"p=
+r_price_highlight">R$ 9,98</span> </span> </span> </td></tr> </table></td> =
+<td width=3D"105" align=3D"center" valign=3D"top"> <div class=3D"pr_learn_m=
+ore"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D=
+20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB0=
+727ZSBDN%2Fref%3Dpe_805970_243588010_em_1p_10_lm&A=3DYOUXE8RQ6FCEGYELPQLNFA=
+KLLUGA&H=3DRGADAMBBSACJMGANDDHMMDYE2B4A&ref_=3Dpe_805970_243588010_em_1p_10=
+_lm"  ><img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/=
+learn-more._CB307034741_.jpg" width=3D"160" alt=3D"Saiba mais" height=3D"27=
+" border=3D"0" /></a> </div> <div class=3D"pr_wishlist"> <div width=3D"1" c=
+lass=3D"spacer" style=3D"font-size:5px;line-height:5px;">&nbsp;</div> <a hr=
+ef=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DG=
+HY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dp=
+e_805970_243588010_em_1p_10_atw%3F_encoding%3DUTF8%26action%3Dadd-to-regist=
+ry.wishlist%26asin.1%3DB0727ZSBDN%26submit.add-to-registry.wishlist.x%3D1%2=
+6submit.add-to-registry.wishlist.y%3D1%26template-name%3Dstores%252Fdetail&=
+A=3DTEZAI0LYAZAVN7TSVBE3JZTMCQGA&H=3DSZJ5Q5QJYP8QFVZCRNZDI59TXNIA&ref_=3Dpe=
+_805970_243588010_em_1p_10_atw"  ><img src=3D"https://images-na.ssl-images-=
+amazon.com/images/G/32/tea/add-wishlist._CB332975953_.jpg" width=3D"160" al=
+t=3D"Adicionar =C3=A0 lista de desejos" height=3D"27" border=3D"0" /></a> <=
+/div> </td> </tr> </table> <table width=3D"620" cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" align=3D"left" class=3D"seperator"> <tr height=3D"10"=
+><td width=3D"620" height=3D"10"><div width=3D"620" class=3D"spacer" style=
+=3D"font-size:10px;line-height:10px;">&nbsp;</div></td></tr> <tr height=3D"=
+1"><td bgcolor=3D"#eaebec" width=3D"620" height=3D"1"><div width=3D"620" cl=
+ass=3D"spacer" style=3D"font-size:1px;line-height:1px;">&nbsp;</div></td></=
+tr> <tr height=3D"10"><td width=3D"620" height=3D"10"><div width=3D"620" cl=
+ass=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td>=
+</tr> </table> </td> <td width=3D"15"><div width=3D"15" class=3D"spacer" st=
+yle=3D"font-size:15px;line-height:15px;">&nbsp;</div></td> </tr> <tr> <td w=
+idth=3D"15"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line=
+-height:15px;">&nbsp;</div></td> <td width=3D"620" valign=3D"top" align=3D"=
+left" class=3D"pr_container"> <table width=3D"620" cellspacing=3D"0" cellpa=
+dding=3D"0" border=3D"0" class=3D"list_product"> <tr> <td width=3D"150" ali=
+gn=3D"left" valign=3D"top" class=3D"pr_image"> <a href=3D"https://www.amazo=
+n.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2=
+F%2Fwww.amazon.com.br%2Fgp%2Fproduct%2FB07258HCMK%2Fref%3Dpe_805970_2435880=
+10_em_1p_11_im&A=3DMFLU3QUVQMEE4XTKOTJJGZN2HOGA&H=3DVT7NOOF4XTVUAADWAPQSUQM=
+RHL4A&ref_=3Dpe_805970_243588010_em_1p_11_im"  > <img src=3D"https://images=
+-na.ssl-images-amazon.com/images/I/51Q8b0ZyhRL._SL500_SS140_PJku-sticker-v5=
+,TopRight,-25,-12_.jpg" width=3D"140" height=3D"140" class=3D"pr_image_140 =
+pr_image_desktop" alt=3D"Um bilion=C3=A1rio raro (Os Sinclair, livro 1)" bo=
+rder=3D"0" /> </a> </td> <td width=3D"365" valign=3D"top" align=3D"left"> <=
+table cellspacing=3D"0" cellpadding=3D"0" border=3D"0"> <tr class=3D"pr_tit=
+le"><td> <span style=3D"font-family:Arial,Helvetica,Sans-Serif;font-size:14=
+px;             font-style:normal;text-align:left;color:#336699;" class=3D"=
+pr_title"> <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ=
+&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amazon.com.br%2Fgp%2Fproduct=
+%2FB07258HCMK%2Fref%3Dpe_805970_243588010_em_1p_11_ti&A=3DDRIPWMB118E2MMVJT=
+VXLZTFUM4GA&H=3DTMHEAOBKFSCITHI4BD3RGOJ5TEWA&ref_=3Dpe_805970_243588010_em_=
+1p_11_ti" style=3D"text-decoration: underline; color:#336699; font-size: 14=
+px"  >Um bilion=C3=A1rio raro (Os Sinclair, livro 1)</a> </span> </td></tr>=
+ <tr class=3D"pr_byline"><td> <span style=3D"font-family:Arial,Helvetica,Sa=
+ns-Serif;font-size:12px;font-weight:normal;             font-style:normal;t=
+ext-decoration:none;color:#333;text-align:left;" class=3D"pr_byline"> <a hr=
+ef=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DG=
+HY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUTF8%26field-=
+author%3DJ.%2520S.%2520Scott%26search-alias%3Ddigital-text%26ref_%3Dpe_8059=
+70_243588010&A=3D55MJZTFYBZUKSG5KSPKABT2ZBPMA&H=3DGWITLEDI3FRRAYRQAEWGDCDKG=
+68A&ref_=3Dpe_805970_243588010" style=3D'text-decoration: none; color: #336=
+699; font-size: 12px'>J. S. Scott</a> <span class=3D"byLinePipe">(Autor)</s=
+pan>, <a href=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D=
+20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fs%3F_encoding%3DUT=
+F8%26field-author%3DAlice%2520Klesck%26search-alias%3Ddigital-text%26ref_%3=
+Dpe_805970_243588010&A=3DUYBVHKM2LXW2CK3R6ZGRW4X3VDCA&H=3DVT7NDUATM3RQALUXA=
+OJWFRM6ZZUA&ref_=3Dpe_805970_243588010" style=3D'text-decoration: none; col=
+or: #336699; font-size: 12px'>Alice Klesck</a> <span class=3D"byLinePipe">(=
+Tradutor)</span> </span> </td></tr> <tr class=3D"spacer"><td height=3D"10">=
+<div width=3D"1" class=3D"spacer" style=3D"font-size:10px;line-height:10px;=
+">&nbsp;</div></td></tr> <tr class=3D"pr_price_our"><td> <span style=3D"fon=
+t-family: Arial, Helvetica, sans-serif; font-size: 12px;"> <span class=3D"p=
+r_price_label">Pre=C3=A7o:</span> <span style=3D"font-size: 13px; font-weig=
+ht: bold; color: #CC0000;" class=3D"pr_price_highlight">R$ 12,68</span> </s=
+pan> </span> </td></tr> </table></td> <td width=3D"105" align=3D"center" va=
+lign=3D"top"> <div class=3D"pr_learn_more"> <a href=3D"https://www.amazon.c=
+om.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2=
+Fwww.amazon.com.br%2Fgp%2Fproduct%2FB07258HCMK%2Fref%3Dpe_805970_243588010_=
+em_1p_11_lm&A=3DCMAZMIJ4KZDJWWOASCEOQMPEOAUA&H=3DONWK5TVUUTX700TBVI2NCEMAIS=
+KA&ref_=3Dpe_805970_243588010_em_1p_11_lm"  ><img src=3D"https://images-na.=
+ssl-images-amazon.com/images/G/32/tea/learn-more._CB307034741_.jpg" width=
+=3D"160" alt=3D"Saiba mais" height=3D"27" border=3D"0" /></a> </div> <div c=
+lass=3D"pr_wishlist"> <div width=3D"1" class=3D"spacer" style=3D"font-size:=
+5px;line-height:5px;">&nbsp;</div> <a href=3D"https://www.amazon.com.br/gp/=
+r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttps%3A%2F%2Fwww.amaz=
+on.com.br%2Fgp%2Fitem-dispatch%2Fref%3Dpe_805970_243588010_em_1p_11_atw%3F_=
+encoding%3DUTF8%26action%3Dadd-to-registry.wishlist%26asin.1%3DB07258HCMK%2=
+6submit.add-to-registry.wishlist.x%3D1%26submit.add-to-registry.wishlist.y%=
+3D1%26template-name%3Dstores%252Fdetail&A=3D6ZMRXVGDWLXNBMTCL5IJBKCKABAA&H=
+=3D0JG1DVASXIT1DON0EFJHG0JSSGCA&ref_=3Dpe_805970_243588010_em_1p_11_atw"  >=
+<img src=3D"https://images-na.ssl-images-amazon.com/images/G/32/tea/add-wis=
+hlist._CB332975953_.jpg" width=3D"160" alt=3D"Adicionar =C3=A0 lista de des=
+ejos" height=3D"27" border=3D"0" /></a> </div> </td> </tr> </table> <table =
+width=3D"620" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"lef=
+t" class=3D"seperator"> <tr height=3D"10"><td width=3D"620" height=3D"10"><=
+div width=3D"620" class=3D"spacer" style=3D"font-size:10px;line-height:10px=
+;">&nbsp;</div></td></tr> <tr height=3D"1"><td bgcolor=3D"#eaebec" width=3D=
+"620" height=3D"1"><div width=3D"620" class=3D"spacer" style=3D"font-size:1=
+px;line-height:1px;">&nbsp;</div></td></tr> <tr height=3D"10"><td width=3D"=
+620" height=3D"10"><div width=3D"620" class=3D"spacer" style=3D"font-size:1=
+0px;line-height:10px;">&nbsp;</div></td></tr> </table> </td> <td width=3D"1=
+5"><div width=3D"15" class=3D"spacer" style=3D"font-size:15px;line-height:1=
+5px;">&nbsp;</div></td> </tr> </table> </td> </tr> </table> <table width=3D=
+"640" cellpadding=3D"0" cellspacing=3D"0" align=3D"center"    bgcolor=3D"#f=
+fffff" class=3D"outro"> <tr height=3D"5" class=3D"spacer"><td><div width=3D=
+"640" class=3D"spacer" style=3D"font-size:5px;line-height:5px;">&nbsp;</div=
+></td></tr> <tr> <td> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" align=3D"left" class=3D"list_see_more"> <tr> <td width=3D"15"><div width=
+=3D"15" class=3D"spacer" style=3D"font-size:10px;line-height:10px;">&nbsp;<=
+/div></td> <td width=3D"10" valign=3D"top"> <img src=3D"https://images-na.s=
+sl-images-amazon.com/images/G/32/tea/a4._CB332975958_.gif" width=3D"10" alt=
+=3D"&lt;" height=3D"13" border=3D"0" /> </td> <td align=3D"left"> <a href=
+=3D"https://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY=
+&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2Fsim%2FB0728ND4JK%2F2%2Fref%3Dpe=
+_805970_243588010_pe_vfe&A=3DR9O5JOBCAJJSLR5P04RAPGIQYZKA&H=3DKKDY8JX6R7RUD=
+6K8SMNFU5UHIA4A&ref_=3Dpe_805970_243588010_pe_vfe" style=3D"font-family:Ari=
+al,Helvetica,Sans-Serif;font-size:12px;font-weight:normal;               fo=
+nt-style:normal;text-decoration:none;color:#004B91;text-align:left;">
+              Visualizar mais itens similares
+            </a> </td> <td width=3D"15"><div width=3D"15" class=3D"spacer" =
+style=3D"font-size:10px;line-height:10px;">&nbsp;</div></td> </tr> </table>=
+ </td> </tr> <tr height=3D"15" class=3D"spacer"><td><div width=3D"640" clas=
+s=3D"spacer" style=3D"font-size:15px;line-height:15px;">&nbsp;</div></td></=
+tr> </table> <table width=3D"640" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0"    style=3D"border-collapse:collapse;" class=3D"outro" align=3D"cen=
+ter"> <tr height=3D"2"> <td bgcolor=3D"#ccccc9" width=3D"640" height=3D"2">=
+<div width=3D"640" class=3D"spacer" style=3D"font-size:2px;line-height:2px;=
+">&nbsp;</div></td> </tr> </table> </center> </td></tr> <!-- ContentSymphon=
+y slots below the main content --> <tr><td> <center> <table class=3Dcs-slot=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" bgcolor=
+=3D"#ffffff"> <tr align=3D"center"><td> </td></tr> </table> </center> </td>=
+</tr> <!--Store footer for the email  --> <tr><td> <center>
+       =20
+
+
+
+
+<style type=3D"text/css">
+    @media only screen and (max-width: 480px) {
+        .sef_footer_linkfarm { display: none !important; }
+    }
+</style>
+
+
+
+<style type=3D"text/css">
+    @media only screen and (max-width: 480px) {
+        body[yahoo] .deviceWidth { width: 300px !important; }
+        body[yahoo] .x-site {display: none;}
+    }
+</style>
+
+<table width=3D"640" class=3D"deviceWidth" border=3D"0" align=3D"center" ce=
+llpadding=3D"8" cellspacing=3D"0" bgcolor=3D"#FFFFFF">
+    <tr><td width=3D"305">
+
+
+        <table border=3D"0" align=3D"left" cellpadding=3D"6" cellspacing=3D=
+"0" class=3D"settings" cborder=3D"0" width=3D"305">
+            <tr>
+                <td align=3D"left"><a href=3D"https://www.amazon.com.br/gp/=
+r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazo=
+n.com.br%2Fref%3Dpe_805970_243588010_pe_footer_amazonlogo%2F&A=3DANL4Y1C9U1=
+HEWSQ1RQ7VP69IDAAA&H=3D8LWTMMFSI33TOZINUTCDQ96CG2GA&ref_=3Dpe_805970_243588=
+010_pe_footer_amazonlogo" target=3D"_blank"><img src=3D"http://g-ec2.images=
+-amazon.com/images/G/32/kindle/merch/email/amazon_br_logo.gif" alt=3D"Amazo=
+n.com.br"border=3D"0"align=3D"left"/></a></td>
+            </tr>
+        </table></td>
+        <td align=3D"right"><table class=3D"connect" border=3D"0" cellpaddi=
+ng=3D"6" cellspacing=3D"0" align=3D"right" width=3D"305">
+            <tr>
+                <td align=3D"right"><span style=3D"font-family:arial,sans-s=
+erif; font-size:10px; line-height:10px; color:#666">Amazon nas Redes Sociai=
+s</span></td>
+                <td class=3D"facebook"><font style=3D"font-family: verdana,=
+arial,sans-serif; font-size: 10px; color: #999;" color=3D"#999" face=3D"ver=
+dana,arial,sans-serif" size=3D"1"><a href=3D"https://www.amazon.com.br/gp/r=
+.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon=
+.com.br%2Fgp%2Fredirect.html%2Fref%3Dpe_805970_243588010_pe_fb_ftr%2F%3Floc=
+ation%3Dhttp%3A%2F%2Fwww.facebook.com%2Famazon.com.br%26token%3D6BD0FB927CC=
+51E76FF446584B1040F70EA7E88E1&A=3DUCQBG9I1VLIRQVHMV5OHCJ4JDZ8A&H=3DU6DX6DAI=
+QM8JKCWKE61NCCGRO4WA&ref_=3Dpe_805970_243588010_pe_fb_ftr" target=3D"_blank=
+"><img src=3D"http://g-ecx.images-amazon.com/images/G/01/us-mail/FBlogo.gif=
+" alt=3D"image" border=3D"0" height=3D"30" hspace=3D"0" vspace=3D"0" width=
+=3D"30" style=3D"width:30px; height:30px;" /></a></font></td>
+                <td class=3D"twitter"><font style=3D"font-family: verdana,a=
+rial,sans-serif; font-size: 10px; color: #999;" color=3D"#999" face=3D"verd=
+ana,arial,sans-serif" size=3D"1"><a href=3D"https://www.amazon.com.br/gp/r.=
+html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DC&U=3Dhttp%3A%2F%2Fwww.amazon.=
+com.br%2Fgp%2Fredirect.html%2Fref%3Dpe_805970_243588010_pe_tw_ftr%2F%3Floca=
+tion%3Dhttp%3A%2F%2Ftwitter.com%2Famazonbr%26token%3D7A1A4AE8F6CE0BD277D829=
+5E58702D283F329C0F&A=3DLCUCEAGNKRFHRELM29F8MZC70TWA&H=3DS3KCA8K8XQCFX7C5VJZ=
+HJHYAKUUA&ref_=3Dpe_805970_243588010_pe_tw_ftr" target=3D"_blank"><img src=
+=3D"http://g-ecx.images-amazon.com/images/G/01/us-mail/TwitterLogo.gif" alt=
+=3D"image" border=3D"0" height=3D"30" hspace=3D"0" vspace=3D"0" width=3D"30=
+" style=3D"width:30px; height:30px;" /></a></font></td>
+            </tr>
+        </table></td>
+    </tr>
+</table>
+<table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcol=
+or=3D"white" align=3D"center" height=3D"3" class=3D"deviceWidth"><tbody><tr=
+>
+    <td width=3D"620" bgcolor=3D"white" align=3D"center"><p width=3D"100%" =
+style=3D"border-bottom: 3px solid #666666; height: 0px !important; max-heig=
+ht: 0px !important; font-size:0px; margin: 0;">&nbsp;</p></td>
+</tr></tbody></table>
+
+
+
+
+
+<table width=3D"640" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=
+=3D"center">
+
+    <tr>
+    =09<td>
+        =09<table cellpadding=3D"0" cellspacing=3D"0">
+            =09<tr>
+                    <td width=3D"10"><img width=3D"10" height=3D"0" style=
+=3D"display:block;" src=3D"http://g-ec2.images-amazon.com/images/G/32/kindl=
+e/merch/global/gif_transparente.gif"/></td>
+                    <td width=3D"630">
+                    =09<table cellpadding=3D"0" cellspacing=3D"0">
+                            <tr>
+                            =09<td>
+                                =09<font face=3D"verdana,arial,sans-serif" =
+size=3D"1" color=3D"#999999" style=3D"font-family: verdana,arial,sans-serif=
+; font-size: 10px; color: #999999;">
+Esperamos que essa mensagem tenha sido =C3=BAtil para voc=C3=AA. No entanto=
+, se voc=C3=AA prefere n=C3=A3o receber mais este tipo de comunica=C3=A7=C3=
+=A3o da Amazon.com.br no email thiagors1983@gmail.com, clique <a href=3D"ht=
+tps://www.amazon.com.br/gp/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DX=
+&U=3Dhttp%3A%2F%2Fwww.amazon.com.br%2F%2Fgp%2Fgss%2Fo%2F1CMB13alNIUjW7nQkIr=
+gnpH6BTfK8ntLNhQNF6kX8jH2AzSBJB.D2l6BmGyrhR2QU&A=3DGXHYHAYDLSOJ8AG04OMMPE32=
+NIWA&H=3D15ZNNVWHBX6FGZZFYRZPXFZTCGGA">aqui</a>. <br /><br />
+Por favor, note que os pre=C3=A7os de produtos e sua disponibilidade est=C3=
+=A3o sujeitos a altera=C3=A7=C3=B5es.<br /><br />
+&copy; Amazon.com, Inc. ou suas afiliadas. Todos os direitos reservados. Am=
+azon, Kindle e o logotipo da Amazon s=C3=A3o marcas registradas da Amazon.c=
+om, Inc. ou de suas afiliadas. Refer=C3=AAncia: 243588010. <br /><br />
+ </font>
+                              =09</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width=3D"10"><img width=3D"10" height=3D"0" style=
+=3D"display:block;" src=3D"http://g-ec2.images-amazon.com/images/G/32/kindl=
+e/merch/global/gif_transparente.gif" />
+=09              =20
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+      </center> </td></tr> </table> <img src=3D"https://www.amazon.com.br/g=
+p/r.html?C=3D2YTLCQVJJJOOQ&R=3D20P6K3I71DGHY&T=3DE&U=3Dhttps%3A%2F%2Fimages=
+-na.ssl-images-amazon.com%2Fimages%2FG%2F01%2Fnav%2Ftransp.gif&A=3D9OFW4UPX=
+K26NAFAQ6OPQ2UCG9A0A&H=3DGPDLVWW7E1PLWWFEBUPHH26RPFIA" /></body> </html>
+
+
+
+
+------=_Part_129195961_1881839118.1498551158955--
+
+------=_Part_129195960_1684949722.1498551158955--

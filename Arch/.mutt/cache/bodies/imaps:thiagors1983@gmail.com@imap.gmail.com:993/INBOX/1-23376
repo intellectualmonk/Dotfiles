@@ -1,0 +1,176 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.134.2 with SMTP id j2csp6821381pjj;
+        Thu, 14 Dec 2017 07:04:56 -0800 (PST)
+X-Received: by 10.157.61.73 with SMTP id a67mr4851940otc.178.1513263896362;
+        Thu, 14 Dec 2017 07:04:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513263896; cv=none;
+        d=google.com; s=arc-20160816;
+        b=etvNIG9BWf9k1+JMoegcxoZjWewPIpIYsA7Ty0EeUddS+KRT+lyoq8AI6FVeFYIOc4
+         TZHU+BxL+skyYuDdH5bZQ3QgNNoJ9iQLZ8D4cncCtxU8jT6CYI8By4M9PX5r1A2+Fvte
+         8gm6BYEabkWeAdzc3sgwQH8sctwsNcNZbTo/x+j0YzyHg4HW6ZGktH4P56aFzHhZYWwq
+         Orl5RkfT1F6g1Trj19hj4VsWHTXxuNFooTv1tkBKVpcAWHLCQIfUyDEnKu73z+APa66T
+         DDcKNuV1YSPfknoODx39LO7wUIyk05XcBxpEC7iPoyjGC1Eydk9Oe8rT1FDa1W8RvxI5
+         So5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:references:list-unsubscribe
+         :reply-to:date:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=MVYRvwxS1KuqUEiK9+Q3nLLhqqFlp867rR1wL5wfJ7g=;
+        b=YJcS+pyM2CgsZ6FsokyfhYO4Ff1Dpl8zJJV1SNxWIyWtdpDmWRmKMuXWBApoIf7LYJ
+         RfIB7s5nJu6d5vIfzk1CU0W3niTSwCYN3GhZ6ttjFL5x5ZxJ5Pj2O+87GRh6gsNNQ2Du
+         zgY5rT9s9eoCDJLpcYN2jiB+kwEke58sJ9HypdawYYKYJl3wgUjuESSHAuJf6s27Y3MP
+         QdLhTpyyCc0XJc3aPFJRGbfvBMYRoLi/haK2rbvt8lh1wXgJwz2KNM4VLq7fc7wFR6ku
+         mNwVmjLNPJZR06srC9iw28XEH/ma67FwTWXLA6q3icI76o7QK2uq8ga/sps0wzHuDlPE
+         gG1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=NYrA5f4H;
+       spf=pass (google.com: domain of replyto-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=replyto-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <replyto-ec0dd@plus.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id t80sor2269161ioi.142.2017.12.14.07.04.55
+        for <thiagors1983@gmail.com>
+        (Google Transport Security);
+        Thu, 14 Dec 2017 07:04:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of replyto-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=NYrA5f4H;
+       spf=pass (google.com: domain of replyto-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=replyto-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:references:precedence
+         :message-id:subject:from:to;
+        bh=MVYRvwxS1KuqUEiK9+Q3nLLhqqFlp867rR1wL5wfJ7g=;
+        b=NYrA5f4HJbr41opBz/bFRZeoo/KcIDtsnOESOwSfN2ecqdaCe4fi1rmxwPfI5GimZC
+         o8wNkEnL4fIn6/5AauKLx+8vwy6bsoK0kOUdWKxSn5cOkAdjSesUFJND0ul+uQwnQ98i
+         jFxgixCcxCXxNOJ1DSDgh6SmMU/oMoexTb7qZTFZiAZmoBuls9WC989zpsFcXZmhTUXL
+         ro6QKLi31E02LKUANcqowKYKs7X60RmNgSq3hquILzkQZaRl2eQitafEYMNIn5GzvKev
+         wZTsjHbeYhn+9p7ZJ5bcgzPnzCjYu4NtZJ5MUrIc0TjLB/m/vV34GmcNEikayGWo0lC9
+         dSfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :references:precedence:message-id:subject:from:to;
+        bh=MVYRvwxS1KuqUEiK9+Q3nLLhqqFlp867rR1wL5wfJ7g=;
+        b=JL8G2HU+WJ9bNUdyTbXVp7f2nw8aSR7eq8uaCWYxywkjHu0xXjZtSJpv95FIQ0HnLr
+         JpmAoNbVGmxjhEP9LO098kMoEstQVmk2+qw1d4GzMfeiiiJdm3890FxoDQwmz+RRY4tp
+         K/IHWonEJheiGf4eVak9aW5oKP+rFk3QG3ETpwXftcm2SMfWlnv7oLsLgUAYPE3iJ75R
+         PtkvUnWvVnbEtb97l+vmSQF2qKTnrz0BievCo+q4GOe0ATU9umg55/tLU9PPxErLEqWz
+         d5xrab5lkLst87FhulMtmU1gQKmRES62neEdCZGfcHPrr9n3PqK2CSBFqDIPV9hRAGXu
+         IqJw==
+X-Gm-Message-State: AKGB3mJYN31GuwT7jj6clvWIVynzxLLSVe58+ohSrloc95kWlfI/yMXm
+	seIF4+mfHaIV80F0jdSoZD1IsJB69AcxA1Wa+LmkwyQOabsgpavDlEs6mkC7
+X-Google-Smtp-Source: ACJfBotck91yOa2HLIDRwKEWK5ZNClVGy32B8Z/RJ16uafTijvT3AI86sVbLT0qgKzhQj7USPDMkPSgDRix1IQ16TMw+O7xduMcvpgJc2sI6JbV0
+MIME-Version: 1.0
+X-Received: by 10.107.9.69 with SMTP id j66mr4142547ioi.73.1513263895751; Thu,
+ 14 Dec 2017 07:04:55 -0800 (PST)
+Date: Thu, 14 Dec 2017 07:04:55 -0800 (PST)
+X-Notifications: XEAAAAE4ONyWXpSse_-BKOXZzL2I
+X-Notification-ID: g:CgxncGx1c19zdHJlYW0aI3oxM2V4MXJvM3hldGhoaGp4MDRjY3oweXp0MnRqdHNoaGdjMhlhOlNUUkVBTTpkNDRhNjk3NmQzODBkNjEz
+X-Entity-Ref-ID: z13ex1ro3xethhhjx04ccz0yzt2tjtshhgc
+X-Notification-Type: STREAM_COMMENT_NEW
+X-Sender-ID: 110794512961847202415
+Reply-To: "Google+ (Wandeson Ricardo)" <replyto+CmhDZ3huY0d4MWMxOXpkSEpsWVcwYUkzb3hNMlY0TVhKdk0zaGxkR2hvYUdwNE1EUmpZM293ZVhwME1uUnFkSE5vYUdkak1obGhPbE5VVWtWQlRUcGtORFJoTmprM05tUXpPREJrTmpFehDs0bqW8gwqI3oxM2V4MXJvM3hldGhoaGp4MDRjY3oweXp0MnRqdHNoaGdj+AI3v7_UAAAAAWjaHl79DU6IVDWspJZ7KzKJX6K3NzR-L@plus.google.com>
+X-Notification-Category: STREAM
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMmsbi5iw-TruEKwprFb6E6pSYY5oQNASIu8hz0EHvx-DeMGMohg7orMn8LrkuoAtqo6UOUufmY-Mmvhf4cQVkpfe1ThxeCt6DjoLheeczA_T8WapMYYlYmodFPqIaWzjVlQcMLzIH3En-IJZoQcB6Pz6qvOqWXJ_xL_a_3-mvPsYUgwIEk>
+References: <z13ex1ro3xethhhjx04ccz0yzt2tjtshhgc@plus.google.com>
+X-UB: 6
+Precedence: bulk
+Message-ID: <-377168695@plus.google.com>
+Subject: Re: Dwm 
+From: "Google+ (Wandeson Ricardo)" <replyto-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="001a113ed0baf52a9205604e34d4"
+
+--001a113ed0baf52a9205604e34d4
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+V2FuZGVzb24gUmljYXJkbyBjb21lbnRvdSBlbSBzdWEgcG9zdGFnZW0uICJBbWF6aW5nLiBUaGFu
+a3MuIiBWZWphIGEgIA0KcG9zdGFnZW0gY29tcGxldGEgcGFyYSBjb21lbnRhcjogIA0KaHR0cHM6
+Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4
+ODU5NzE1MzImZW1pZD1DSmlVMUtmamlkZ0NGWnFqSVFvZFVoWUZCZyZwYXRoPSUyRjEwNTAyMzc0
+Mzg0MjAyMjM2NjEwOSUyRnBvc3RzJTJGalBWOFlzY2lQaE4mZHQ9MTUxMzI2Mzg5NTU5NyZ1Yj1T
+VFJFQU1fQ09NTUVOVF9ORVcgIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIENsaXF1ZSBhcXVp
+IHBhcmEgaWdub3JhciBlc3RhIHBvc3RhZ2VtOiAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9f
+L25vdGlmaWNhdGlvbnMvZW1saW5rP2Vtcj0wNTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNKaVUx
+S2ZqaWRnQ0ZacWpJUW9kVWhZRkJnJnBhdGg9JTJGMTA1MDIzNzQzODQyMDIyMzY2MTA5JTJGcG9z
+dHMlMkZqUFY4WXNjaVBoTiUyRm9wJTJGbXV0ZSZkdD0xNTEzMjYzODk1NTk3JnViPVNUUkVBTV9D
+T01NRU5UX05FVyAgDQpJZ25vcmUgVGhpYWdvIFNpbHZhIHBhcmEgcGFyYXIgZGUgcmVjZWJlciBu
+b3RpZmljYcOnw7VlcyBkZWxlLiAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9fL25vdGlmaWNh
+dGlvbnMvZW1saW5rP2Vtcj0wNTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNKaVUxS2ZqaWRnQ0Za
+cWpJUW9kVWhZRkJnJnBhdGg9JTJGMTA1MDIzNzQzODQyMDIyMzY2MTA5JTJGb3AlMkZtdXRlJmR0
+PTE1MTMyNjM4OTU1OTcmdWI9U1RSRUFNX0NPTU1FTlRfTkVXICANCk91IHNpZ2EgZXN0ZSBsaW5r
+IHBhcmEgYXR1YWxpemFyIGFzIGNvbmZpZ3VyYcOnw7VlcyBkZSBub3RpZmljYcOnw6NvIGRlIHN1
+YSAgDQpww6FnaW5hIGRvIEdvb2dsZSs6ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90
+aWZpY2F0aW9ucy9lbWxpbms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q0ppVTFLZmpp
+ZGdDRlpxaklRb2RVaFlGQmcmcGF0aD0lMkZzZXR0aW5ncyUyRnBsdXMmZHQ9MTUxMzI2Mzg5NTU5
+NyZ1Yj1TVFJFQU1fQ09NTUVOVF9ORVcgIA0KUmVzcG9uZGEgYSBlc3RlIGUtbWFpbCBwYXJhIGNv
+bWVudGFyIG91IHZpc3VhbGl6ZSBhIHBvc3RhZ2VtLiAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNv
+bS9fL25vdGlmaWNhdGlvbnMvZW1saW5rP2Vtcj0wNTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNK
+aVUxS2ZqaWRnQ0ZacWpJUW9kVWhZRkJnJnBhdGg9JTJGMTA1MDIzNzQzODQyMDIyMzY2MTA5JTJG
+cG9zdHMlMkZqUFY4WXNjaVBoTiZkdD0xNTEzMjYzODk1NTk3JnViPVNUUkVBTV9DT01NRU5UX05F
+VyAgDQoqRGljYSBkZSBwcml2YWNpZGFkZToqIHByb3RlamEgc3VhcyBpbmZvcm1hw6fDtWVzLiBS
+ZW1vdmEgc3VhIGFzc2luYXR1cmEgZGUgIA0KZS1tYWlsIGFudGVzIGRlIHJlc3BvbmRlci4gR29v
+Z2xlIEluYy4sIDE2MDAgQW1waGl0aGVhdHJlIFBrd3ksIE1vdW50YWluICANClZpZXcsIENBIDk0
+MDQzIFVTQQ0KDQo=
+--001a113ed0baf52a9205604e34d4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:389985ecd5400000 --><div st=
+yle=3D"border:solid 1px #dfdfdf;color:#686868;font:13px Arial"><div style=
+=3D"background-color:#fff;padding:20px;"><table cellpadding=3D0 cellspacing=
+=3D0><tr><td style=3D"padding-right:15px;vertical-align:top"><a href=3D"htt=
+ps://plus.google.com/_/notifications/emlink?emr=3D05152803313885971532&emid=
+=3DCJiU1KfjidgCFZqjIQodUhYFBg&path=3D%2F110794512961847202415&dt=3D15132638=
+95597&ub=3DSTREAM_COMMENT_NEW"><img width=3D"75" height=3D"75" style=3D"bor=
+der:solid 1px #cccccc;" src=3D"https://lh6.googleusercontent.com/-b07v9ZK12=
+Ik/AAAAAAAAAAI/AAAAAAAAET8/2Dk2SkPlbJk/s75-c-k-a-no/photo.jpg"/></a></td><t=
+d style=3D"width:578px;color:#333;font:13px Arial;vertical-align:top"><div =
+style=3D"padding-bottom:10px">Amazing. Thanks.</div><div>Somente membros da=
+ comunidade <a href=3D"https://plus.google.com/_/notifications/emlink?emr=
+=3D05152803313885971532&emid=3DCJiU1KfjidgCFZqjIQodUhYFBg&path=3D%2Fcommuni=
+ties%2F113935870359973712582&dt=3D1513263895597&ub=3DSTREAM_COMMENT_NEW" st=
+yle=3D"color:#3366CC;text-decoration:none">Arch Linux</a> podem postar ou c=
+omentar.</div><div style=3D"margin-top:10px"><a href=3D"https://plus.google=
+.com/_/notifications/emlink?emr=3D05152803313885971532&emid=3DCJiU1KfjidgCF=
+ZqjIQodUhYFBg&path=3D%2F105023743842022366109%2Fposts%2FjPV8YsciPhN&dt=3D15=
+13263895597&ub=3DSTREAM_COMMENT_NEW" style=3D"background-color:#d44b38;bord=
+er:solid 1px #dfdfdf;border-radius:3px;color:#fff;display:inline-block;font=
+-family: Arial;font-size:13px;height:30px;line-height:30px;min-width:54px;p=
+adding:1px 20px;text-align:center;text-decoration:none;white-space:nowrap;"=
+>Ver postagem</a></div></td></tr></table></div><div style=3D"border-top:sol=
+id 1px #dfdfdf;padding:0 20px;background-color:#f5f5f5"><table cellpadding=
+=3D0 cellspacing=3D0 style=3D"height:50px"><tbody><tr><td style=3D"vertical=
+-align:middle;width:100%; color:#636363;font:11px Arial; line-height:120%">=
+Responda a este e-mail para comentar. <a href=3D"https://plus.google.com/_/=
+notifications/emlink?emr=3D05152803313885971532&emid=3DCJiU1KfjidgCFZqjIQod=
+UhYFBg&path=3D%2F110794512961847202415&dt=3D1513263895597&ub=3DSTREAM_COMME=
+NT_NEW" style=3D"$ij.linkStyle">Wandeson Ricardo</a> comentou em sua postag=
+em. <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280=
+3313885971532&emid=3DCJiU1KfjidgCFZqjIQodUhYFBg&path=3D%2F11079451296184720=
+2415%2Fop%2Fmute&dt=3D1513263895597&ub=3DSTREAM_COMMENT_NEW" style=3D"color=
+:#3366CC;text-decoration:none">Ignore Wandeson Ricardo</a> para parar de re=
+ceber notifica=C3=A7=C3=B5es dele.  <a href=3D"https://plus.google.com/_/no=
+tifications/emlink?emr=3D05152803313885971532&emid=3DCJiU1KfjidgCFZqjIQodUh=
+YFBg&path=3D%2F105023743842022366109%2Fposts%2FjPV8YsciPhN%2Fop%2Fmute&dt=
+=3D1513263895597&ub=3DSTREAM_COMMENT_NEW" style=3D"color:#3366CC;text-decor=
+ation:none">Ignorar</a> atualiza=C3=A7=C3=B5es desta postagem. Esta notific=
+a=C3=A7=C3=A3o foi enviada para thiagors1983@gmail.com. Acesse suas <a href=
+=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859715=
+32&emid=3DCJiU1KfjidgCFZqjIQodUhYFBg&path=3D%2Fsettings%2Fplus&dt=3D1513263=
+895597&ub=3DSTREAM_COMMENT_NEW" style=3D"color:#3366CC;text-decoration:none=
+">configura=C3=A7=C3=B5es de envio de notifica=C3=A7=C3=B5es</a> para atual=
+izar seu endere=C3=A7o. <a href=3D"https://notifications.google.com/unsubsc=
+ribe/AJ7SsMmsbi5iw-TruEKwprFb6E6pSYY5oQNASIu8hz0EHvx-DeMGMohg7orMn8LrkuoAtq=
+o6UOUufmY-Mmvhf4cQVkpfe1ThxeCt6DjoLheeczA_T8WapMYYlYmodFPqIaWzjVlQcMLzIH3En=
+-IJZoQcB6Pz6qvOqWXJ_xL_a_3-mvPsYUgwIEk" style=3D"color:#3366CC;text-decorat=
+ion:none">Cancelar inscri=C3=A7=C3=A3o</a> destes e-mails.<br><b>Dica de pr=
+ivacidade:</b> proteja suas informa=C3=A7=C3=B5es. Remova sua assinatura de=
+ e-mail antes de responder.<br>Google Inc., 1600 Amphitheatre Pkwy, Mountai=
+n View, CA 94043 USA<br></td><td style=3D"padding:0px;"><img src=3D"https:/=
+/ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_89x27dp.png" alt=
+=3D"Google+"/></td></tr></tbody></table></div></div></body></html>
+--001a113ed0baf52a9205604e34d4--

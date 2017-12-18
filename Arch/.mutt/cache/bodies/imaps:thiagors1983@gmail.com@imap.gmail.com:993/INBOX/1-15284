@@ -1,0 +1,825 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp1895161pje;
+        Mon, 26 Jun 2017 18:55:00 -0700 (PDT)
+X-Received: by 10.233.235.201 with SMTP id b192mr3891407qkg.138.1498528500843;
+        Mon, 26 Jun 2017 18:55:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498528500; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vrbE5oybn3B7m8BV9eOZ3/rrVe25dO+8RLNtjmIZuE5z57KKWw7ivY7GwYWfZwYF3m
+         69s+8394tOPQIPYLroLMsx90yJMf6tKcR59oiL7ec3gJ2W4PvqRFX6acLmCHasK87Op/
+         pS1v/pbwKBYrZA4woHdq1kG15RZgTBPyTrIBftCa608lk9A61U/siwrqL7SwVs/e/+IL
+         4Otvye6dMz7ZEDam8Vkjyy4AI9p2AG8n86vOcGMJCTVJbEb6LTJ3moFMpdIao+tQEGv1
+         mpjOlffAQHBtuA/Sh0R0IydQHFFKD1Ac3qj8lVOHdMPIda7TYaJSOP8AX6OmrS+P7WPg
+         7erw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:auto-submitted:list-unsubscribe
+         :content-transfer-encoding:mime-version:subject:message-id:to
+         :reply-to:from:date:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=EbtUNiZ6VwKa/WF+LhSvJwa3/C+gYVMMEbp/59ZBSII=;
+        b=gsPmTBtvRS6GFFjnfZ96ODrxfC2yHGSBaD2wyjunMPDRrUwuKi1R3BCWY4T7iy/Hjb
+         Fa3517siqezYqHacbhAj2WjuW1lRF0an+9T0UuCSZx6oGVY6oFOROn+ZlO5E+labW4nZ
+         fMPRE+j1Lshiswgn5CNNtbuVs/ZNHZU42Co38t4Aj6EnTMKtN5l6oDh6LF35U7GcHLn+
+         AMjWOlNdWksqL8jdueaUMJqMR0aCk7B+AhI8CP/npC2c5ydqyMdxmSL8Gr8gCs0AN72u
+         I14xSvdh6F1W9etZpahwROS0Lz/wKJU6vQYSrS4LQeLKrEuLwaUg0CbsHJ6A1/sG1t9a
+         LPrg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@insynchq.com header.b=m767O8CJ;
+       dkim=pass header.i=@amazonses.com header.b=l5YjVPrb;
+       spf=pass (google.com: domain of 0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@amazonses.com designates 54.240.9.75 as permitted sender) smtp.mailfrom=0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@amazonses.com
+Return-Path: <0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@amazonses.com>
+Received: from a9-75.smtp-out.amazonses.com (a9-75.smtp-out.amazonses.com. [54.240.9.75])
+        by mx.google.com with ESMTPS id 139si1538853qkk.236.2017.06.26.18.55.00
+        for <thiagors1983@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 26 Jun 2017 18:55:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@amazonses.com designates 54.240.9.75 as permitted sender) client-ip=54.240.9.75;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@insynchq.com header.b=m767O8CJ;
+       dkim=pass header.i=@amazonses.com header.b=l5YjVPrb;
+       spf=pass (google.com: domain of 0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@amazonses.com designates 54.240.9.75 as permitted sender) smtp.mailfrom=0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=pwkrg5wzbkotpfvspiwb56joksm44ek2; d=insynchq.com; t=1498528500;
+	h=Date:From:Reply-To:To:Message-ID:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding:List-Unsubscribe;
+	bh=t2fETI8HaKlTKH137z471DVRMRHSwrlmEuZUWnmSFXU=;
+	b=m767O8CJXFlrTF+YWjA9FL1T9Vk3bEQjN76Fc36qRpI+e5k9q9k+NddRjVqC0K0o
+	2dKbFGcGiz6IOv+cAFa4QkM9w+uuyShGpH/2RHd4lSYFvUroujqFEl8VB4Wm8qXyC0Y
+	fJSBZJUAFlaHmmZ/EpC2wS3jzn9uVyumgy5sXtiA=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1498528500;
+	h=Date:From:Reply-To:To:Message-ID:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding:List-Unsubscribe:Feedback-ID;
+	bh=t2fETI8HaKlTKH137z471DVRMRHSwrlmEuZUWnmSFXU=;
+	b=l5YjVPrb+/SsucOGUXOlIRhbudoB0rNhCdAmlgQZvSSO/AKEpVqp/UeYKlU5/XIY
+	6C7QwXo4cHYArZvr4P/0D6+HPvuVRbU4HF6+9Lf5MGzVeC8JUxffpxMJumClYASrhsR
+	dVaMLQyo0NcdxacIZoTH98JtbFiPW2T1hio4td1U=
+Date: Tue, 27 Jun 2017 01:54:59 +0000
+From: Insync Forums =?UTF-8?B?4p2k?= summary <support-notification@insynchq.com>
+Reply-To: Insync Forums =?UTF-8?B?4p2k?= summary <support-notification@insynchq.com>
+To: thiagors1983@gmail.com
+Message-ID: <0100015ce742482b-4c06cac6-bc99-4210-90a3-a56453de753b-000000@email.amazonses.com>
+Subject: =?UTF-8?Q?[Insync_Forums_=E2=9D=A4]_Summary?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5951baf3ba0b6_6b3f9003c75484749047a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+List-Unsubscribe: <http://forums.insynchq.com/email/unsubscribe/ed45331f5be94f653af5ef8c8e3fae2885b4f8afafd894a52834480f93dbbc9b>
+X-Auto-Response-Suppress: All
+Auto-Submitted: auto-generated
+X-SES-Outgoing: 2017.06.27-54.240.9.75
+Feedback-ID: 1.us-east-1.kMPw8yWuaLivva0y4oCs8H+U0sOXjFz/H1BJQEUL2g0=:AmazonSES
+
+
+----==_mimepart_5951baf3ba0b6_6b3f9003c75484749047a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+A brief summary of [Insync Forums =E2=9D=A4][1] since your last visit on =
+April 24
+
+3 New Topics
+1 Unread Messages
+5 New Posts
+
+-------------------------------------------------------------------------=
+-------
+
+### Popular Topics
+
+[Error initiating insync on 64-bit OS elementary loki][2]
+
+ Good morning, I have a problem with insync. I installed insync in elemen=
+tary OS loki however when I open the application Appears the following er=
+ror "it seems that another Insync app is currently running.Will quit now"=
+ Closing the application what should I do? Do you have a solution?
+-------------------------------------------------------------------------=
+-------
+
+
+[Error insync in elementary os loki][3]
+
+ Bom dia, estou com um problema no insync  eu instalei insync no elementa=
+ry OS loki por=C3=A9m quando abro a aplica=C3=A7=C3=A3o aparece o seguite=
+ erro "  it seems that another Insync app is currently running.Will quit =
+now" fechando a aplica=C3=A7=C3=A3o o que devo fazer? tem solu=C3=A7=C3=A3=
+o?
+-------------------------------------------------------------------------=
+-------
+
+
+[Duplicate Folders displaying like "(2)" and "(3)"][4]
+
+ The phenomena below may be a bug of insync, or one of Google Drive, but =
+I will tell this as a bug report. =
+
+
+Recently, I moved my mail folder (mh-style) with 150,000 files to Google =
+Drive. Syncing is mostly perfect, but it caused some troubles several tim=
+es. Most prominent bug is folder duplication. For example, the folder str=
+ucture below =
+
+
+  Mails --- settings ---+--- imapcache                                  |=
+                                  +--- mimetmp                           =
+       |                                  +--- newscache                 =
+                 |                                  +--- plugins         =
+                         |                                  +--- template=
+s                                  |                                  +--=
+- tmp                                  |                                 =
+ +--- uidl =
+
+
+there is (are) several duplicate folders like =
+
+
+  Mails --- settings ---+--- imapcache                                  |=
+             ...
+-------------------------------------------------------------------------=
+-------
+
+
+
+
+
+
+
+
+[1]: http://forums.insynchq.com/
+[2]: http://forums.insynchq.com/t/error-initiating-insync-on-64-bit-os-el=
+ementary-loki/9564
+[3]: http://forums.insynchq.com/t/error-insync-in-elementary-os-loki/9563=
+
+[4]: http://forums.insynchq.com/t/duplicate-folders-displaying-like-2-and=
+-3/9578
+
+
+
+This summary is sent from [Insync Forums =E2=9D=A4][1] when we haven't se=
+en you in a while. To unsubscribe [click here][5].
+
+[5]: http://forums.insynchq.com/email/unsubscribe/ed45331f5be94f653af5ef8=
+c8e3fae2885b4f8afafd894a52834480f93dbbc9b
+
+
+
+
+----==_mimepart_5951baf3ba0b6_6b3f9003c75484749047a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<body>
+
+
+
+  <meta http-equiv=3D"Content-type" name=3D"viewport" content=3D"initial-=
+scale=3D1.0, maximum-scale=3D1.0, user-scalable=3Dno, width=3Ddevice-widt=
+h">
+  <title></title>
+
+
+
+
+<!--[if mso]>
+<style type=3D"text/css">
+body, table, td, th, h1, h2, h3 {font-family: Helvetica, Arial, sans-seri=
+f !important;}
+</style>
+<![endif]-->
+
+<span style=3D"display:none!important;color:#f3f3f3;font-size:1px;line-he=
+ight:1px;max-height:0;max-width:0;mso-hide:all!important;opacity:0;overfl=
+ow:hidden;visibility:hidden">
+  A brief summary since your last visit on April 24
+</span>
+
+<table style=3D"background-color:#ffffff;width:100%;">
+  <tr>
+    <td align=3D"center" style=3D"text-align: center;padding: 20px 0; fon=
+t-family:Helvetica,Arial,sans-serif;">
+
+  <a href=3D"http://forums.insynchq.com" style=3D"text-decoration: none; =
+font-weight: bold; color: #006699;; color:#333333;font-size:22px;text-dec=
+oration:none;">
+    <img src=3D"http://forums.insynchq.com/uploads/default/39/3ac55e33510=
+a900e.png" height=3D"40" style=3D"clear:both;display:block;height:40px;ma=
+rgin:auto;max-width:100%;outline:0;text-decoration:none;" alt=3D"Insync F=
+orums =E2=9D=A4">
+  </a>
+
+    </td>
+  </tr>
+</table>
+
+<table style=3D"width:100%;background:#f3f3f3;padding:0;border-spacing:0;=
+font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:200;lin=
+e-height:1.3;vertical-align:top;">
+  <tr>
+    <td style=3D"width:5%;vertical-align:top;padding:0;">
+      <div style=3D"background-color: #2F70AC; color: #FFFFFF;">
+        <table style=3D"border-spacing:0;padding:0;width:100%">
+          <tbody>
+            <tr>
+              <td height=3D"400px" style=3D"height:400px;border-collapse:=
+collapse!important;margin:0;mso-line-height-rule:exactly;padding:0;">=C2=A0=
+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+    <td style=3D"vertical-align:top;padding:0;font-family:Helvetica,Arial=
+,sans-serif;">
+      <table align=3D"center" style=3D"background-color: #2F70AC; color: =
+#FFFFFF;; border-spacing:0;margin:0;padding:0;text-align:inherit;vertical=
+-align:top;width:100%">
+        <tbody>
+          <tr>
+            <td style=3D"border-collapse:collapse!important;color:#0a0a0a=
+;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;wo=
+rd-wrap:normal">
+
+<br>
+<center style=3D"background-color: #2F70AC; color: #FFFFFF;; font-size:22=
+px;font-weight:400;">Since your last visit</center>
+
+
+
+<table style=3D"table-layout:fixed;margin:10px 0 20px 0;padding:0;vertica=
+l-align:top;width:100%">
+<tbody>
+  <tr>
+      <td style=3D"text-align:center;font-size:36px;font-weight:400;">
+        <a href=3D"http://forums.insynchq.com/new" style=3D"text-decorati=
+on: none; font-weight: bold; color: #006699;; background-color: #2F70AC; =
+color: #FFFFFF;"><strong>3</strong></a>
+      </td>
+      <td style=3D"text-align:center;font-size:36px;font-weight:400;">
+        <a href=3D"http://forums.insynchq.com/my/messages" style=3D"text-=
+decoration: none; font-weight: bold; color: #006699;; background-color: #=
+2F70AC; color: #FFFFFF;"><strong>1</strong></a>
+      </td>
+      <td style=3D"text-align:center;font-size:36px;font-weight:400;">
+        <a href=3D"http://forums.insynchq.com/new" style=3D"text-decorati=
+on: none; font-weight: bold; color: #006699;; background-color: #2F70AC; =
+color: #FFFFFF;"><strong>5</strong></a>
+      </td>
+  </tr>
+  <tr>
+      <td style=3D"font-size:14px;font-weight:400;text-align:center;">
+        <a href=3D"http://forums.insynchq.com/new" style=3D"text-decorati=
+on: none; font-weight: bold; color: #006699;; background-color: #2F70AC; =
+color: #FFFFFF;"><strong>New Topics</strong></a>
+      </td>
+      <td style=3D"font-size:14px;font-weight:400;text-align:center;">
+        <a href=3D"http://forums.insynchq.com/my/messages" style=3D"text-=
+decoration: none; font-weight: bold; color: #006699;; background-color: #=
+2F70AC; color: #FFFFFF;"><strong>Unread Messages</strong></a>
+      </td>
+      <td style=3D"font-size:14px;font-weight:400;text-align:center;">
+        <a href=3D"http://forums.insynchq.com/new" style=3D"text-decorati=
+on: none; font-weight: bold; color: #006699;; background-color: #2F70AC; =
+color: #FFFFFF;"><strong>New Posts</strong></a>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+<center style=3D"background-color: #2F70AC; color: #FFFFFF;; font-size:22=
+px;font-weight:400;margin-bottom: 8px;">Popular Topics</center>
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table align=3D"center" style=3D"border-spacing:0;background:#fefef=
+e;margin:0;padding:0;text-align:center;vertical-align:top;width:100%">
+        <tbody>
+          <tr>
+            <td style=3D"-moz-hyphens:auto;-webkit-hyphens:auto;border-co=
+llapse:collapse!important;color:#0a0a0a;hyphens:auto;line-height:1.3;marg=
+in:0;padding:0;text-align:left;vertical-align:top;word-wrap:normal">
+
+<!--   Beginning of Popular Topic   -->
+<table style=3D"width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"margin:0;padding:0 0 0 16px;text-align:left;vertical-a=
+lign:top;">
+        <p style=3D"color:#8f8f8f;line-height:1.3;margin: 20px 0 0 0;">
+          <a href=3D"http://forums.insynchq.com/c/bugs-issues/linux-bugs-=
+issues" style=3D"text-decoration: none; font-weight: bold; color: #006699=
+;; font-size: 0.857em; white-space: nowrap; display: inline-block; positi=
+on: relative; line-height: 1.5; margin-top: 5px; margin-right: 5px;"><spa=
+n style=3D"background-color: #BF1E2E;display: block; position: absolute; =
+width: 100%; height: 100%;"></span><span style=3D"background-color: #F159=
+2A;left: 5px; display: block; position: absolute; width: calc(100% - 5px)=
+; height: 100%;"></span><span style=3D"color: #FFFFFF;margin-left: 5px;  =
+position: relative; padding: 0 5px; margin-top: 2px;max-width: 150px; ove=
+rflow: hidden; text-overflow: ellipsis;" data-drop-close=3D"true">Linux b=
+ugs + issues</span></a>
+        </p>
+      </td>
+      <td style=3D"margin:0;padding: 0 16px 0 0;text-align:right;vertical=
+-align:top;">
+        <p style=3D"color:#8f8f8f;line-height:1.3;margin:20px 0 0 0;font-=
+weight:400;">
+          June 23
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"vertical-align:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"padding: 0 8px 8px 16px; text-align:left; width:100%;"=
+>
+        <h2 style=3D"font-size:18px;font-weight:400;line-height:1.3;margi=
+n:0;padding:0;word-wrap:normal">
+          <a href=3D"http://forums.insynchq.com/t/error-initiating-insync=
+-on-64-bit-os-elementary-loki/9564" style=3D"text-decoration: none; font-=
+weight: bold; color: #006699;; font-weight:400;line-height:1.3;margin:0;p=
+adding:0;text-decoration:none">
+            <strong>Error initiating insync on 64-bit OS elementary loki<=
+/strong>
+          </a>
+        </h2>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"padding:0;position:relative;text-align:left;vertical-alig=
+n:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"color:#0a0a0a;line-height:1.3;margin:0 auto;padding:0 =
+0 0 16px;width:50px;">
+        <img src=3D"http://forums.insynchq.com/user_avatar/forums.insynch=
+q.com/denis_pereira/45/3679_1.png" style=3D"border-radius:50%;clear:both;=
+display:block;float:none;height:50px;width:50px;margin:0;max-width:100%;o=
+utline:0;text-align:center;text-decoration:none;" align=3D"center">
+      </td>
+      <td style=3D"color:#0a0a0a;padding:0 16px 0 8px;text-align:left;ver=
+tical-align:top;">
+            <h6 style=3D"color:inherit;line-height:1.3;margin:0;padding:0=
+;font-weight: normal;font-size:16px;">Denis Pereira</h6>
+          <p style=3D"color:inherit;font-size:14px;font-weight:400;line-h=
+eight:1.3;margin:0 0 8px 0;padding:0;word-wrap:normal;">Denis_Pereira</p>=
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"border-bottom:1px solid #f3f3f3;padding:0;text-align:left=
+;vertical-align:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"color:#0a0a0a;font-size:14px;padding:0 16px 0 16px;tex=
+t-align:left;width:100%;font-weight:normal;">
+        <p>Good morning, I have a problem with insync.<br>I installed ins=
+ync in elementary OS loki however when I open the application<br>Appears =
+the following error "it seems that another Insync app is currently runnin=
+g.Will quit now"<br>Closing the application<br>what should I do? Do you h=
+ave a solution?</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"padding:0;text-align:left;vertical-align:top;width:100%; =
+margin-top:20px;">
+  <tbody>
+    <tr>
+      <td style=3D"padding:0 8px 16px 16px;text-align:left;white-space:no=
+wrap;vertical-align:top;width:75px">
+        <img src=3D"http://forums.insynchq.com/images/emails/heart.png" s=
+tyle=3D"clear:both;display:inline-block;float:left;height:20px;margin:0;m=
+ax-width:100%;opacity:.4;outline:0;text-decoration:none;width:auto">
+        <p style=3D"color:#8f8f8f;float:left;line-height:1.3;margin:0 5px=
+ 10px 5px;padding:0;text-align:left;font-weight:400;">0</p>
+      </td>
+      <td style=3D"padding:0 8px 16px 8px;text-align:left;white-space:now=
+rap;vertical-align:top;width:75px">
+        <img src=3D"http://forums.insynchq.com/images/emails/comment.png"=
+ style=3D"clear:none;display:inline-block;float:left;height:20px;margin:0=
+;max-width:100%;opacity:.4;outline:0;text-decoration:none;width:auto">
+        <p style=3D"color:#8f8f8f;float:left;line-height:1.3;margin:0 5px=
+ 10px 5px;padding:0;text-align:left;font-weight:400;">0</p>
+      </td>
+      <td style=3D"padding:0 8px 16px 8px;text-align:left;white-space:now=
+rap;vertical-align:top;">
+            <img src=3D"http://forums.insynchq.com/user_avatar/forums.ins=
+ynchq.com/denis_pereira/45/3679_1.png" style=3D"border-radius:50%;clear:b=
+oth;display:inline-block;height:20px;width:20px;outline:0;text-decoration=
+:none;">
+      </td>
+      <td style=3D"line-height:1.3;padding:0 16px 0 8px;text-align:right;=
+white-space:nowrap;vertical-align:top;">
+        <a href=3D"http://forums.insynchq.com/t/error-initiating-insync-o=
+n-64-bit-os-elementary-loki/9564" style=3D"text-decoration: none; font-we=
+ight: bold; color: #006699;; background-color: #2F70AC; color: #FFFFFF;; =
+width:100%;text-decoration:none;padding:8px 16px;white-space:nowrap;">
+          Read More
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style=3D"background-color:#f3f3f3;">
+  <table style=3D"padding:0;width:100%">
+    <tbody><tr><td height=3D"20px" style=3D"border-collapse:collapse!impo=
+rtant;line-height:20px;margin:0;mso-line-height-rule:exactly;padding:0;">=
+=C2=A0</td></tr></tbody>
+  </table>
+</div>
+<!--   End of Popular Topic   -->
+
+
+
+<!--   Beginning of Popular Topic   -->
+<table style=3D"width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"margin:0;padding:0 0 0 16px;text-align:left;vertical-a=
+lign:top;">
+        <p style=3D"color:#8f8f8f;line-height:1.3;margin: 20px 0 0 0;">
+          <a href=3D"http://forums.insynchq.com/c/bugs-issues" style=3D"t=
+ext-decoration: none; font-weight: bold; color: #006699;; font-size: 0.85=
+7em; white-space: nowrap; display: inline-block; position: relative; line=
+-height: 1.5; margin-top: 5px; margin-right: 5px;"><span style=3D"backgro=
+und-color: #BF1E2E;display: block; position: absolute; width: 100%; heigh=
+t: 100%;"></span><span style=3D"color: #FFFFFF; position: relative; paddi=
+ng: 0 5px; margin-top: 2px;max-width: 150px; overflow: hidden; text-overf=
+low: ellipsis;" data-drop-close=3D"true" title=3D"Did you run into a prob=
+lem with Insync that you can" t seem to fix ask our friendly neighborhood=
+ support hero save you>bugs + issues</span></a>
+        </p>
+      </td>
+      <td style=3D"margin:0;padding: 0 16px 0 0;text-align:right;vertical=
+-align:top;">
+        <p style=3D"color:#8f8f8f;line-height:1.3;margin:20px 0 0 0;font-=
+weight:400;">
+          June 23
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"vertical-align:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"padding: 0 8px 8px 16px; text-align:left; width:100%;"=
+>
+        <h2 style=3D"font-size:18px;font-weight:400;line-height:1.3;margi=
+n:0;padding:0;word-wrap:normal">
+          <a href=3D"http://forums.insynchq.com/t/error-insync-in-element=
+ary-os-loki/9563" style=3D"text-decoration: none; font-weight: bold; colo=
+r: #006699;; font-weight:400;line-height:1.3;margin:0;padding:0;text-deco=
+ration:none">
+            <strong>Error insync in elementary os loki</strong>
+          </a>
+        </h2>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"padding:0;position:relative;text-align:left;vertical-alig=
+n:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"color:#0a0a0a;line-height:1.3;margin:0 auto;padding:0 =
+0 0 16px;width:50px;">
+        <img src=3D"http://forums.insynchq.com/user_avatar/forums.insynch=
+q.com/denis_pereira/45/3679_1.png" style=3D"border-radius:50%;clear:both;=
+display:block;float:none;height:50px;width:50px;margin:0;max-width:100%;o=
+utline:0;text-align:center;text-decoration:none;" align=3D"center">
+      </td>
+      <td style=3D"color:#0a0a0a;padding:0 16px 0 8px;text-align:left;ver=
+tical-align:top;">
+            <h6 style=3D"color:inherit;line-height:1.3;margin:0;padding:0=
+;font-weight: normal;font-size:16px;">Denis Pereira</h6>
+          <p style=3D"color:inherit;font-size:14px;font-weight:400;line-h=
+eight:1.3;margin:0 0 8px 0;padding:0;word-wrap:normal;">Denis_Pereira</p>=
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"border-bottom:1px solid #f3f3f3;padding:0;text-align:left=
+;vertical-align:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"color:#0a0a0a;font-size:14px;padding:0 16px 0 16px;tex=
+t-align:left;width:100%;font-weight:normal;">
+        <p>Bom dia, estou com um problema no insync <br>eu instalei insyn=
+c no elementary OS loki por=C3=A9m quando abro a aplica=C3=A7=C3=A3o<br>a=
+parece o seguite erro "  it seems that another Insync app is currently ru=
+nning.Will quit now"<br>fechando a aplica=C3=A7=C3=A3o<br>o que devo faze=
+r? tem solu=C3=A7=C3=A3o?</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"padding:0;text-align:left;vertical-align:top;width:100%; =
+margin-top:20px;">
+  <tbody>
+    <tr>
+      <td style=3D"padding:0 8px 16px 16px;text-align:left;white-space:no=
+wrap;vertical-align:top;width:75px">
+        <img src=3D"http://forums.insynchq.com/images/emails/heart.png" s=
+tyle=3D"clear:both;display:inline-block;float:left;height:20px;margin:0;m=
+ax-width:100%;opacity:.4;outline:0;text-decoration:none;width:auto">
+        <p style=3D"color:#8f8f8f;float:left;line-height:1.3;margin:0 5px=
+ 10px 5px;padding:0;text-align:left;font-weight:400;">0</p>
+      </td>
+      <td style=3D"padding:0 8px 16px 8px;text-align:left;white-space:now=
+rap;vertical-align:top;width:75px">
+        <img src=3D"http://forums.insynchq.com/images/emails/comment.png"=
+ style=3D"clear:none;display:inline-block;float:left;height:20px;margin:0=
+;max-width:100%;opacity:.4;outline:0;text-decoration:none;width:auto">
+        <p style=3D"color:#8f8f8f;float:left;line-height:1.3;margin:0 5px=
+ 10px 5px;padding:0;text-align:left;font-weight:400;">0</p>
+      </td>
+      <td style=3D"padding:0 8px 16px 8px;text-align:left;white-space:now=
+rap;vertical-align:top;">
+            <img src=3D"http://forums.insynchq.com/user_avatar/forums.ins=
+ynchq.com/denis_pereira/45/3679_1.png" style=3D"border-radius:50%;clear:b=
+oth;display:inline-block;height:20px;width:20px;outline:0;text-decoration=
+:none;">
+      </td>
+      <td style=3D"line-height:1.3;padding:0 16px 0 8px;text-align:right;=
+white-space:nowrap;vertical-align:top;">
+        <a href=3D"http://forums.insynchq.com/t/error-insync-in-elementar=
+y-os-loki/9563" style=3D"text-decoration: none; font-weight: bold; color:=
+ #006699;; background-color: #2F70AC; color: #FFFFFF;; width:100%;text-de=
+coration:none;padding:8px 16px;white-space:nowrap;">
+          Read More
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style=3D"background-color:#f3f3f3;">
+  <table style=3D"padding:0;width:100%">
+    <tbody><tr><td height=3D"20px" style=3D"border-collapse:collapse!impo=
+rtant;line-height:20px;margin:0;mso-line-height-rule:exactly;padding:0;">=
+=C2=A0</td></tr></tbody>
+  </table>
+</div>
+<!--   End of Popular Topic   -->
+
+
+
+<!--   Beginning of Popular Topic   -->
+<table style=3D"width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"margin:0;padding:0 0 0 16px;text-align:left;vertical-a=
+lign:top;">
+        <p style=3D"color:#8f8f8f;line-height:1.3;margin: 20px 0 0 0;">
+          <a href=3D"http://forums.insynchq.com/c/bugs-issues" style=3D"t=
+ext-decoration: none; font-weight: bold; color: #006699;; font-size: 0.85=
+7em; white-space: nowrap; display: inline-block; position: relative; line=
+-height: 1.5; margin-top: 5px; margin-right: 5px;"><span style=3D"backgro=
+und-color: #BF1E2E;display: block; position: absolute; width: 100%; heigh=
+t: 100%;"></span><span style=3D"color: #FFFFFF; position: relative; paddi=
+ng: 0 5px; margin-top: 2px;max-width: 150px; overflow: hidden; text-overf=
+low: ellipsis;" data-drop-close=3D"true" title=3D"Did you run into a prob=
+lem with Insync that you can" t seem to fix ask our friendly neighborhood=
+ support hero save you>bugs + issues</span></a>
+        </p>
+      </td>
+      <td style=3D"margin:0;padding: 0 16px 0 0;text-align:right;vertical=
+-align:top;">
+        <p style=3D"color:#8f8f8f;line-height:1.3;margin:20px 0 0 0;font-=
+weight:400;">
+          June 26
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"vertical-align:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"padding: 0 8px 8px 16px; text-align:left; width:100%;"=
+>
+        <h2 style=3D"font-size:18px;font-weight:400;line-height:1.3;margi=
+n:0;padding:0;word-wrap:normal">
+          <a href=3D"http://forums.insynchq.com/t/duplicate-folders-displ=
+aying-like-2-and-3/9578" style=3D"text-decoration: none; font-weight: bol=
+d; color: #006699;; font-weight:400;line-height:1.3;margin:0;padding:0;te=
+xt-decoration:none">
+            <strong>Duplicate Folders displaying like "(2)" and "(3)"</st=
+rong>
+          </a>
+        </h2>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"padding:0;position:relative;text-align:left;vertical-alig=
+n:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"color:#0a0a0a;line-height:1.3;margin:0 auto;padding:0 =
+0 0 16px;width:50px;">
+        <img src=3D"http://forums.insynchq.com/letter_avatar_proxy/v2/let=
+ter/t/a6a055/45.png" style=3D"border-radius:50%;clear:both;display:block;=
+float:none;height:50px;width:50px;margin:0;max-width:100%;outline:0;text-=
+align:center;text-decoration:none;" align=3D"center">
+      </td>
+      <td style=3D"color:#0a0a0a;padding:0 16px 0 8px;text-align:left;ver=
+tical-align:top;">
+            <h6 style=3D"color:inherit;line-height:1.3;margin:0;padding:0=
+;font-weight: normal;font-size:16px;">=E5=AF=BA=E8=96=97=E6=B7=B3=E4=B9=9F=
+</h6>
+          <p style=3D"color:inherit;font-size:14px;font-weight:400;line-h=
+eight:1.3;margin:0 0 8px 0;padding:0;word-wrap:normal;">terakin</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"border-bottom:1px solid #f3f3f3;padding:0;text-align:left=
+;vertical-align:top;width:100%">
+  <tbody>
+    <tr>
+      <td style=3D"color:#0a0a0a;font-size:14px;padding:0 16px 0 16px;tex=
+t-align:left;width:100%;font-weight:normal;">
+        <p>The phenomena below may be a bug of insync, or one of Google D=
+rive, but I will tell this as a bug report.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style=3D"padding:0;text-align:left;vertical-align:top;width:100%; =
+margin-top:20px;">
+  <tbody>
+    <tr>
+      <td style=3D"padding:0 8px 16px 16px;text-align:left;white-space:no=
+wrap;vertical-align:top;width:75px">
+        <img src=3D"http://forums.insynchq.com/images/emails/heart.png" s=
+tyle=3D"clear:both;display:inline-block;float:left;height:20px;margin:0;m=
+ax-width:100%;opacity:.4;outline:0;text-decoration:none;width:auto">
+        <p style=3D"color:#8f8f8f;float:left;line-height:1.3;margin:0 5px=
+ 10px 5px;padding:0;text-align:left;font-weight:400;">1</p>
+      </td>
+      <td style=3D"padding:0 8px 16px 8px;text-align:left;white-space:now=
+rap;vertical-align:top;width:75px">
+        <img src=3D"http://forums.insynchq.com/images/emails/comment.png"=
+ style=3D"clear:none;display:inline-block;float:left;height:20px;margin:0=
+;max-width:100%;opacity:.4;outline:0;text-decoration:none;width:auto">
+        <p style=3D"color:#8f8f8f;float:left;line-height:1.3;margin:0 5px=
+ 10px 5px;padding:0;text-align:left;font-weight:400;">1</p>
+      </td>
+      <td style=3D"padding:0 8px 16px 8px;text-align:left;white-space:now=
+rap;vertical-align:top;">
+            <img src=3D"http://forums.insynchq.com/letter_avatar_proxy/v2=
+/letter/t/a6a055/45.png" style=3D"border-radius:50%;clear:both;display:in=
+line-block;height:20px;width:20px;outline:0;text-decoration:none;">
+            <img src=3D"http://forums.insynchq.com/user_avatar/forums.ins=
+ynchq.com/quyin/45/2226_1.png" style=3D"border-radius:50%;clear:both;disp=
+lay:inline-block;height:20px;width:20px;outline:0;text-decoration:none;">=
+
+      </td>
+      <td style=3D"line-height:1.3;padding:0 16px 0 8px;text-align:right;=
+white-space:nowrap;vertical-align:top;">
+        <a href=3D"http://forums.insynchq.com/t/duplicate-folders-display=
+ing-like-2-and-3/9578" style=3D"text-decoration: none; font-weight: bold;=
+ color: #006699;; background-color: #2F70AC; color: #FFFFFF;; width:100%;=
+text-decoration:none;padding:8px 16px;white-space:nowrap;">
+          Read More
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style=3D"background-color:#f3f3f3;">
+  <table style=3D"padding:0;width:100%">
+    <tbody><tr><td height=3D"20px" style=3D"border-collapse:collapse!impo=
+rtant;line-height:20px;margin:0;mso-line-height-rule:exactly;padding:0;">=
+=C2=A0</td></tr></tbody>
+  </table>
+</div>
+<!--   End of Popular Topic   -->
+
+
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+    <td style=3D"width:5%;vertical-align:top;padding:0;">
+      <!-- Background that goes down part-way behind content -->
+      <div style=3D"background-color: #2F70AC; color: #FFFFFF;">
+        <table style=3D"border-spacing:0;padding:0;width:100%">
+          <tbody>
+            <tr>
+              <td height=3D"400px" style=3D"height:400px;border-collapse:=
+collapse!important;margin:0;mso-line-height-rule:exactly;padding:0;">=C2=A0=
+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+    =
+
+    <td style=3D"width:5%;padding:0;">=C2=A0</td>
+  =
+
+
+<style>
+  @media only screen {
+    html {
+      min-height: 100%;
+      background: #f3f3f3
+    }
+  }
+
+  @media only screen and (max-width:900px) {
+    table.body img {
+      width: auto;
+      height: auto
+    }
+    table.body center {
+      min-width: 0!important;
+    }
+    table.body .side-spacer {
+      width: 2.5%!important;
+    }
+    table.body .column,
+    table.body .columns {
+      height: auto!important;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 16px!important;
+      padding-right: 16px!important
+    }
+    table.body .column .column,
+    table.body .column .columns,
+    table.body .columns .column,
+    table.body .columns .columns {
+      padding-left: 0!important;
+      padding-right: 0!important
+    }
+  }
+</style>
+
+
+
+
+<div style=3D"color:#666; font-size:95%; text-align:center; padding-top:1=
+5px;">
+  This summary is sent from <a href=3D"http://forums.insynchq.com" style=3D=
+"text-decoration: none; font-weight: bold; color: #006699;; color: #0088c=
+c">Insync Forums =E2=9D=A4</a> when we haven't seen you in a while. To un=
+subscribe <a style=3D"text-decoration: none; font-weight: bold; color: #0=
+06699;; color: #0088cc" href=3D"http://forums.insynchq.com/email/unsubscr=
+ibe/ed45331f5be94f653af5ef8c8e3fae2885b4f8afafd894a52834480f93dbbc9b">cli=
+ck here</a>.
+</div>
+
+
+
+<!-- prevent Gmail on iOS font size manipulation -->
+<div style=3D"display:none;white-space:nowrap;font:15px courier;line-heig=
+ht:0">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0
+  =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0</div>
+
+
+
+
+</body>=
+
+----==_mimepart_5951baf3ba0b6_6b3f9003c75484749047a--

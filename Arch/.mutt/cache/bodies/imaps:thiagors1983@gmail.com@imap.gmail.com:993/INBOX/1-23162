@@ -1,0 +1,194 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.134.2 with SMTP id j2csp1642569pjj;
+        Sun, 10 Dec 2017 05:16:15 -0800 (PST)
+X-Received: by 10.237.53.48 with SMTP id a45mr22767134qte.71.1512911775185;
+        Sun, 10 Dec 2017 05:16:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1512911775; cv=none;
+        d=google.com; s=arc-20160816;
+        b=DQ1fNRrP1UQCYaY1s2Go0QTpyNxnKC9719IScJMpS2rnZqqMtEHHVNVhqa7iatWgVl
+         hFIuoBuwqHf4BQ/JFxRrtQad/cRGTW+SusfEGhyjpxEEUalWxxZPEkbGUxglboGmflpm
+         kz1IXM9OnfJ+SF3nVeAdKl0904kASIhyPSdGRAbHe65KosUSLmkVSEaJSy7fj0OGLt7N
+         9wx00xAJzExY96EchlX/GuLBP+45bgU7dTlbA+nrRQ4K2AtIx70JVh9zS+TJ6FQpKp1T
+         HYhzdPuFrQTH8wBULC71bdSeucZ976+DUeMpdJvvrwv/SO41Yz64OzON6gialROktF+N
+         0TNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=plQaEutEXoePdeL5Of+XBPnBZS11/PTqfVo+/FmssMI=;
+        b=nb0Fw0j1B4vpMnttLztktXAgW2DBGUE9Tobv+7S0TO1P+M3ys3c5NHYU8VEGdZCQ5O
+         V75cd5AbL8qhrrgn1T8xncWNZYiv3jPwh9NsAdggfRcCsRIzsaldBAVzfYb2Ju0/h5eC
+         bJdeyUopvQzjbWThaeOa3XmPzuRxArjgSUvBoZ4nq9ysR5+GLLJAcdtwmT6O4Fd2tZIo
+         PNCwnprjXWYwgFY4zCNkJB6XbYAMnaAO2ObyWcEt0EyBhiaB2lldmaAXPEv3ZdHWgVCW
+         ZBzlijsWRn/NrqyU5wMSoBqVRddAf2Twe7pR/CWFroQMr8At4QmBLKRtpATzxWkaFAgC
+         boaw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=T7qLi2Xd;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 14sor8513222qkm.0.2017.12.10.05.16.14
+        for <thiagors1983@gmail.com>
+        (Google Transport Security);
+        Sun, 10 Dec 2017 05:16:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=T7qLi2Xd;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=plQaEutEXoePdeL5Of+XBPnBZS11/PTqfVo+/FmssMI=;
+        b=T7qLi2Xdv7BYTjZ4I1eu855IpxO7R8sxBCFBSJgwVwb+r9alVnnMVbrD/iJmm06xhp
+         noE2aI3AjbOb5hP+557IXUCDbiZO1QMD+S8GHfv/pvSj9q9JYQOg4yjyXpIi6UbmqKPg
+         wymWv0DyqCoqL9sXqdceBmSHl+1lPILkbNle6oE0An3E7RbhUUiI100kN5W5BSxSchX2
+         7QiUp5dgeVmHnI7gBguB+n/Ei2Tt76YKNjZ6L+A2KomhJRq5NvNxoIGGJxjIMHOsQadQ
+         t4chn+2EzLJz20aQoZ7w8FRnsLpggJX83QVaohdtJ/WV84f1kPpixRxDJvSoJ5S8hRB0
+         Xd2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=plQaEutEXoePdeL5Of+XBPnBZS11/PTqfVo+/FmssMI=;
+        b=sgCtHUsSRJCEiBSQbWrqUa2yvYGXnpwwiOiLRfnwe009v9ud9HlIc7CKoLTimdpTur
+         cJRZ0q+/oHPTAEoRXyZ7h5Npq4yvk+8EuohHnN2WX6wCnAptAma0ybc96l2mOQgyygDx
+         GHXbPPEBO9YWT3iH8FB9ehXTLcEb2zvgHk6iiyK0lU+lOOnd40KLiaUKh4Nm9CDIeVMi
+         VnusTrsJInuoKS4fiZpDzlgmb9OgiCKA7LcApS092z+R4eRsNcfpN7juV0HyarpG5mR7
+         T6jJuYnMjr9+RH8D6wOISK7quYL6gjO+E7KhSv9J1AlcimJRk1ewVy7mmbObsidCLZVS
+         4u4A==
+X-Gm-Message-State: AKGB3mJNVHxvOJQzi4tSTSe2gwhcfeAgijIvEz2RvM2TJ8PCYSDpt7SL
+	KbctQRqIZWY0/iXi/OHppqK1FgsKDnx6vM9XUiUw1WMPa3xkjX8AetOmaMuM
+X-Google-Smtp-Source: AGs4zMaB4bAXTbs+UqBAeB0la1gxukpDJ2q3oLZHU2+lZ4nqjwewepcVHOck2U4fXI+U8PTYG0FJokdHYSMLE+xyntXImyPM+LXjSErPpMK4X9l0
+MIME-Version: 1.0
+X-Received: by 10.55.200.67 with SMTP id c64mr25863442qkj.43.1512911774389;
+ Sun, 10 Dec 2017 05:16:14 -0800 (PST)
+Date: Sun, 10 Dec 2017 05:16:14 -0800 (PST)
+X-Notifications: XEAAAAKZ8sqhMHGxjx8R17aZrZfU
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTA5MzQzOTkyMDQwOTYzMTY0OTc1MiZhOlNRVUFSRV9TVUJTQ1JJUFRJT046MGMwZjMxYzEyN2Y3NWE0Mw
+X-Entity-Ref-ID: z12ufjkwboazdh00j23pun3ismukv30nk
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 105812208904804047916
+Reply-To: "Google+ (Erik Dubois)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMnATe-uC9XzQgZoDBGwh5Z1ZMd_1SZWmG-vTmhN8FnGutAOTtjRB7YuqCFh47aQHlxWnAe0hr69x-7iinsI46_aKZar_3hAFKwxV0f3E_jUcqoHeFjml0btLBibUxilG95foqqiV_cWh4xQvTjUcgSWKSAw7iSazsJBqKVWbbr1k7z4tBg>
+X-UB: 63
+Precedence: bulk
+Message-ID: <-488258303@plus.google.com>
+Subject: [ArchMerge] New conky can be installed and tested from...
+From: "Google+ (Erik Dubois)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="001a1143ecd4e3945f055ffc3832"
+
+--001a1143ecd4e3945f055ffc3832
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RXJpayBEdWJvaXMgY29tcGFydGlsaG91IHVtYSBwb3N0YWdlbSBjb20gQXJjaE1lcmdlLiBWZWph
+OiAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9fL25vdGlmaWNhdGlvbnMvZW1saW5rP2Vtcj0w
+NTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNKRFFqY2ZEXzljQ0ZjUWZKUW9kYlRjSkhnJnBhdGg9
+JTJGMTA1ODEyMjA4OTA0ODA0MDQ3OTE2JTJGcG9zdHMlMkYzV1hyendrM1VMVCZkdD0xNTEyOTEx
+Nzc0Mjc4JnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KVm9jw6ogcmVjZWJldSBlc3RlIGUtbWFp
+bCBwb3JxdWUgc2UgaW5zY3JldmV1IG5vIEFyY2hNZXJnZSBubyBHb29nbGUrLiAgDQpBcmNoTWVy
+Z2UgIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9
+MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DSkRRamNmRF85Y0NGY1FmSlFvZGJUY0pIZyZwYXRo
+PSUyRmNvbW11bml0aWVzJTJGMTA5MzQzOTkyMDQwOTYzMTY0OTc1JmR0PTE1MTI5MTE3NzQyNzgm
+dWI9U1FVQVJFX1NVQlNDUklQVElPTiAgDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gQWx0ZXJl
+IHF1YWlzIG5vdGlmaWNhw6fDtWVzIHZvY8OqIHJlY2ViZSBkZXN0YSAgDQpjb211bmlkYWRlOiAg
+DQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9fL25vdGlmaWNhdGlvbnMvZW1saW5rP2Vtcj0wNTE1
+MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNKRFFqY2ZEXzljQ0ZjUWZKUW9kYlRjSkhnJnBhdGg9JTJG
+Y29tbXVuaXRpZXMlMkYxMDkzNDM5OTIwNDA5NjMxNjQ5NzUlM0Zwcm9tbyUzRG5vdGlmaWNhdGlv
+bnMmZHQ9MTUxMjkxMTc3NDI3OCZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANCkVzdGEgbm90aWZp
+Y2HDp8OjbyBmb2kgZW52aWFkYSBwYXJhIHRoaWFnb3JzMTk4M0BnbWFpbC5jb20uIEFjZXNzZSBz
+dWFzICANCmNvbmZpZ3VyYcOnw7VlcyBkZSBlbnZpbyBkZSBub3RpZmljYcOnw7VlcyBwYXJhIGF0
+dWFsaXphciBzZXUgZW5kZXJlw6dvOiAgDQpodHRwczovL3BsdXMuZ29vZ2xlLmNvbS9fL25vdGlm
+aWNhdGlvbnMvZW1saW5rP2Vtcj0wNTE1MjgwMzMxMzg4NTk3MTUzMiZlbWlkPUNKRFFqY2ZEXzlj
+Q0ZjUWZKUW9kYlRjSkhnJnBhdGg9JTJGc2V0dGluZ3MlMkZwbHVzJmR0PTE1MTI5MTE3NzQyNzgm
+dWI9U1FVQVJFX1NVQlNDUklQVElPTiAgDQpDYW5jZWxhciBpbnNjcmnDp8OjbyBkZXNzZXMgZS1t
+YWlsczogIA0KaHR0cHM6Ly9ub3RpZmljYXRpb25zLmdvb2dsZS5jb20vdW5zdWJzY3JpYmUvQUo3
+U3NNbkFUZS11QzlYelFnWm9EQkd3aDVaMVpNZF8xU1pXbUctdlRtaE44Rm5HdXRBT1R0alJCN1l1
+cUNGaDQ3YVFIbHhXbkFlMGhyNjl4LTdpaW5zSTQ2X2FLWmFyXzNoQUZLd3hWMGYzRV9qVWNxb0hl
+RmptbDBidExCaWJVeGlsRzk1Zm9xcWlWX2NXaDR4UXZUalVjZ1NXS1NBdzdpU2F6c0pCcUtWV2Ji
+cjFrN3o0dEJnDQoNCg==
+--001a1143ecd4e3945f055ffc3832
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:a4f924fc33400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">Erik Dubois compartilhou um=
+a <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033=
+13885971532&amp;emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&amp;path=3D%2F10581220890=
+4804047916%2Fposts%2F3WXrzwk3ULT&amp;dt=3D1512911774278&amp;ub=3DSQUARE_SUB=
+SCRIPTION" style=3D"color:#3366CC;text-decoration:none">postagem</a> com <a=
+ href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280331388=
+5971532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=3D%2Fcommunities%2F109343992=
+040963164975&dt=3D1512911774278&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3=
+366CC;text-decoration:none">ArchMerge</a><div style=3D"margin-top:20px;widt=
+h:0;height:0; border-bottom:10px solid #fff; border-left:10px solid transpa=
+rent; border-right:10px solid transparent"></div></div></td><td style=3D"ve=
+rtical-align:middle;text-align:right;padding-right:30px"><img src=3D"https:=
+//ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_118x36dp.png"/>=
+</td></tr></table><div style=3D"font-size:14px;line-height:18px;background-=
+color:#fff;"><div style=3D"padding:30px 40px 40px"><table cellpadding=3D0 c=
+ellspacing=3D0><tr><td style=3D"padding-right:15px;vertical-align:top"><a h=
+ref=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859=
+71532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=3D%2F105812208904804047916&dt=
+=3D1512911774278&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"75" height=3D"75" =
+style=3D"border:solid 1px #cccccc;" src=3D"https://lh6.googleusercontent.co=
+m/-yockbNN0sV4/AAAAAAAAAAI/AAAAAAAAf50/rEm4Cf59974/s75-c-k-a-no/photo.jpg"/=
+></a></td><td style=3D"width:578px;color:#333;font:13px Arial;vertical-alig=
+n:top"><div style=3D"padding-bottom:10px;"><strong>Erik Dubois</strong>:</d=
+iv><div style=3D"padding-bottom:10px">New conky can be installed and tested=
+ from <span class=3D"proflinkWrapper"><span class=3D"proflinkPrefix">+</spa=
+n><a class=3D"proflink" href=3D"https://plus.google.com/1009248740374303255=
+34" oid=3D"100924874037430325534">Willem O</a></span>.<br />sudo pacman -Sy=
+yu<br />wo-conky-clock-<wbr>lua<br />wo-conky-system-l<wbr>ua<br />Copy/pas=
+te from /etc/skel/.config/co<wbr>nky (check terminal)</div><div style=3D"ma=
+rgin-top:14px;background:#eee"><a href=3D"https://plus.google.com/_/notific=
+ations/emlink?emr=3D05152803313885971532&amp;emid=3DCJDQjcfD_9cCFcQfJQodbTc=
+JHg&amp;path=3D%2F105812208904804047916%2Fposts%2F3WXrzwk3ULT&amp;dt=3D1512=
+911774278&amp;ub=3DSQUARE_SUBSCRIPTION"><img src=3D"https://lh3.googleuserc=
+ontent.com/-IB-k9zJPZZc/Wi0yLFIVuLI/AAAAAAAA0sQ/2_PM1T8kNAUb3INhbSTzIxkvUks=
+pvafgwCJoC/w506-h750/conky.png" style=3D"max-width:100%;margin-left:auto;ma=
+rgin-right:auto;display:block;border:0;" alt=3D"imagem n=C3=A3o exibida"></=
+a></div><br/><a href=3D"https://plus.google.com/_/notifications/emlink?emr=
+=3D05152803313885971532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=3D%2F1058122=
+08904804047916%2Fposts%2F3WXrzwk3ULT&dt=3D1512911774278&ub=3DSQUARE_SUBSCRI=
+PTION" style=3D"background-color:#d44b38;border:solid 1px #dfdfdf;border-ra=
+dius:3px;color:#fff;display:inline-block;font-family: Arial;font-size:13px;=
+height:30px;line-height:30px;min-width:54px;padding:1px 20px;text-align:cen=
+ter;text-decoration:none;white-space:nowrap;">Ver postagem</a></td></tr></t=
+able></div></div><div style=3D"border-top:solid 1px #dfdfdf;background-colo=
+r:#fff; padding:30px;font-size:14px;line-height:18px;border-radius:0 0 5px =
+5px">Voc=C3=AA est=C3=A1 recebendo este e-mail pela inscri=C3=A7=C3=A3o rea=
+lizada no <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0=
+5152803313885971532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=3D%2Fcommunities=
+%2F109343992040963164975&dt=3D1512911774278&ub=3DSQUARE_SUBSCRIPTION" style=
+=3D"color:#3366CC;text-decoration:none">ArchMerge</a> do Google+.</div></di=
+v><div style=3D"padding-top:10px;color:#999;font:11px Arial;width:670px"><a=
+ href=3D"https://plus.google.com/_/notifications/emlink?emr=3D0515280331388=
+5971532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=3D%2F105812208904804047916%2=
+Fop%2Fmute&dt=3D1512911774278&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#336=
+6CC;text-decoration:none">Ignore Erik Dubois</a> para parar de receber noti=
+fica=C3=A7=C3=B5es dele.  <a href=3D"https://plus.google.com/_/notification=
+s/emlink?emr=3D05152803313885971532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=
+=3D%2Fcommunities%2F109343992040963164975%3Fpromo%3Dnotifications&dt=3D1512=
+911774278&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:=
+none">Altere</a> quais notifica=C3=A7=C3=B5es voc=C3=AA recebe desta comuni=
+dade. Esta notifica=C3=A7=C3=A3o foi enviada para thiagors1983@gmail.com. A=
+cesse suas <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D=
+05152803313885971532&emid=3DCJDQjcfD_9cCFcQfJQodbTcJHg&path=3D%2Fsettings%2=
+Fplus&dt=3D1512911774278&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;t=
+ext-decoration:none">configura=C3=A7=C3=B5es de envio de notifica=C3=A7=C3=
+=B5es</a> para atualizar seu endere=C3=A7o. <a href=3D"https://notification=
+s.google.com/unsubscribe/AJ7SsMnATe-uC9XzQgZoDBGwh5Z1ZMd_1SZWmG-vTmhN8FnGut=
+AOTtjRB7YuqCFh47aQHlxWnAe0hr69x-7iinsI46_aKZar_3hAFKwxV0f3E_jUcqoHeFjml0btL=
+BibUxilG95foqqiV_cWh4xQvTjUcgSWKSAw7iSazsJBqKVWbbr1k7z4tBg" style=3D"color:=
+#3366CC;text-decoration:none">Cancelar inscri=C3=A7=C3=A3o</a> destes e-mai=
+ls.<br/>Google Inc., 1600 Amphitheatre Pkwy, Mountain View, CA 94043 USA</d=
+iv></body></html>
+--001a1143ecd4e3945f055ffc3832--

@@ -80,19 +80,21 @@ OPTIONS
 	      on name conflict).
 
        --remote
-	      Sends the rest of command line to the active vifm server (one of
-	      already running instances if any).  When	there  is  no  server,
-	      quits  silently.	There is no limit on how many arguments can be
+	      Sends  the rest of the command line to another instance of vifm,
+	      --server-name is treated just like any other argument and should
+	      precede  --remote on the command line.  When there is no server,
+	      quits silently.  There is no limit on how many arguments can  be
 	      processed.  One can combine --remote with -c <command> or +<com-
-	      mand>  to	 execute  command in already running instance of vifm.
+	      mand> to execute commands in already running instance  of	 vifm.
 	      See also "Client-Server" section below.
 
        -c <command> or +<command>
-	      Run command-line mode <command> on startup.   Commands  in  such
+	      Run  command-line	 mode  <command> on startup.  Commands in such
 	      arguments are executed in the order they appear in command line.
 	      Commands with spaces or special symbols must be enclosed in dou-
-	      ble  or  single  quotes or all special symbols should be escaped
-	      (the exact syntax strongly depends on shell).
+	      ble or single quotes or all special symbols  should  be  escaped
+	      (the  exact  syntax strongly depends on shell).  "+" argument is
+	      equivalent to "$" and thus picks last item of of the view.
 
        --help, -h
 	      Show a brief command summary and exit vifm.
@@ -123,8 +125,8 @@ Basic Movement
        j, gj or Ctrl-N
 	      move cursor down one line.
 
-       h      when 'lsview' is off move up one directory, otherwise move  left
-	      one file.
+       h      when 'lsview' is off move up  one	 directory  (moves  to	parent
+	      directory node in tree view), otherwise move left one file.
 
        l      when  'lsview'  is off move into a directory or launches a file,
 	      otherwise move right one file.
@@ -287,7 +289,7 @@ Pane manipulation
 Marks
        Marks are set the same way as they are in vi.
 
-       You can use this characters for marks [a-z][A-Z][0-9].
+       You can use these characters for marks [a-z][A-Z][0-9].
 
        m[a-z][A-Z][0-9]
 	      set a mark for the file at the current cursor position.
@@ -318,34 +320,39 @@ Searching
 
        ?      perform backward search with top item of search pattern history.
 
-       Matches are automatically selected  if  'hlsearch'  is  set.   Enabling
-       'incsearch'  makes  search  interactive.	  'ignorecase' and 'smartcase'
+       Trailing slash for directories is taken into account, so	 /\/  searches
+       for  directories	 and  symbolic links to directories.  At the moment //
+       works too, but this can change in the future, so consider escaping  the
+       slash if not typing pattern by hand.
+
+       Matches	are  automatically  selected  if  'hlsearch' is set.  Enabling
+       'incsearch' makes search	 interactive.	'ignorecase'  and  'smartcase'
        options affect case sensitivity of search queries.
 
 
        [count]n
-	      go to the next file matching last search	pattern.   Takes  last
+	      go  to  the  next file matching last search pattern.  Takes last
 	      search direction into account.
 
        [count]N
-	      go  to  the  previous  file matching last search pattern.	 Takes
+	      go to the previous file matching	last  search  pattern.	 Takes
 	      last search direction into account.
 
-       If 'hlsearch' option is set, hitting n/N to perform search  and	go  to
+       If  'hlsearch'  option  is set, hitting n/N to perform search and go to
        the first matching item resets current selection in normal mode.	 It is
        not the case if search was already performed on files in the directory,
-       thus  selection	is  not reset after clearing selection with escape key
+       thus selection is not reset after clearing selection  with  escape  key
        and hitting n/N key again.
 
        Note: vifm uses extended regular expressions for / and ?.
 
 
        [count]f[character]
-	      search forward for file with [character] as first	 character  in
+	      search  forward  for file with [character] as first character in
 	      name.  Search wraps around the end of the list.
 
        [count]F[character]
-	      search  backward for file with [character] as first character in
+	      search backward for file with [character] as first character  in
 	      name.  Search wraps around the end of the list.
 
        [count];
@@ -354,13 +361,13 @@ Searching
        [count],
 	      find the previous match of f or F.
 
-       Note: f, F, ; and , wrap around list beginning and end  when  they  are
+       Note:  f,  F,  ; and , wrap around list beginning and end when they are
        used alone and they don't wrap when they are used as selectors.
 
 File Filters
        There are three basic file filters:
 
-	 - dot files filter (excluding "." and ".." special directories, which
+	 - dot files filter (excluding "." and ".." special directories, whose
 	   appearance is controlled by the 'dotdirs' option);
 
 	 - manual filter for file names;
@@ -370,8 +377,8 @@ File Filters
 	 - local filter for file names (see description of the "=" normal mode
 	   command).
 
-       Performing  operations  on  manual  filter for file names automatically
-       does the same on automatic one.	The  file  name	 filter	 is  separated
+       Performing operations on manual filter  for  file  names	 automatically
+       does  the  same	on  automatic  one.  The file name filter is separated
        mainly for convenience purpose and to get more deterministic behaviour.
 
        The basic vim folding key bindings are used for filtering files.
@@ -380,7 +387,7 @@ File Filters
 
        Filtered files are not checked in / search or :commands.
 
-       Files  and  directories	are  filtered separately.  For this a slash is
+       Files and directories are filtered separately.  For  this  a  slash  is
        appended to a directory name before testing whether it matches the fil-
        ter.  Examples:
 
@@ -410,8 +417,13 @@ File Filters
 
        zr     remove local filter.
 
-       zd     exclude  selection or current file from custom view.  Does noth-
-	      ing for regular view.
+       zd     exclude selection or current file	 from  a  custom  view.	  Does
+	      nothing  for  regular  view.   For tree view excluding directory
+	      excludes that sub-tree.  For compare views  zd  hides  group  of
+	      adjacent identical files, count can be specified as 1 to exclude
+	      just single file or selected items instead.  Files excluded this
+	      way are not counted as filtered out and can't be returned unless
+	      view is reloaded.
 
        =regular expression pattern
 	      filter out files that don't match regular	 expression.   Whether
@@ -518,8 +530,11 @@ Other Normal Mode Keys
        cg     only for *nix
 	      change file group.
 
-       cp     change file attributes (permission on  *nix  and	properties  on
-	      Windows).
+       [count]cp
+	      change file attributes (permission on  *nix  and	properties  on
+	      Windows).	  If  [count]  is specified, it's treated as numerical
+	      argument	for  non-recursive  `chmod`  command  (of   the	  form
+	      [0-7]{3,4}).
 
        [count]C
 	      clone file [count] times.
@@ -559,6 +574,21 @@ Other Normal Mode Keys
 
        Ctrl-R redo last change.
 
+       dp     in compare view of "ofboth grouppaths" kind, makes corresponding
+	      entry of the other pane equal to the current one.	 The semantics
+	      is as follows:
+	       - nothing done for identical entries
+	       - if file is missing in current view, its pair gets removed
+	       - if file is missing or differs in other view, it's replaced
+	       - file pairs are defined by matching relative paths
+	      File  removal obeys 'trash' option.  When the option is enabled,
+	      the operation can be undone/redone (although  results  won't  be
+	      visible automatically).
+	      Unlike  in  Vim,	this  operation	 is performed on a single line
+	      rather than a set of adjacent changes.
+
+       do     same as dp, but applies changes in the opposite direction.
+
        v or V enter visual mode, clears current selection.
 
        [count]Ctrl-A
@@ -571,22 +601,44 @@ Other Normal Mode Keys
 
        ZZ     same as :quit.
 
-       .      repeat  last  command-line  command (not normal mode command) of
-	      this session (does nothing right after startup or :restart  com-
-	      mand).   The  command doesn't depend on command-line history and
+       .      repeat last command-line command (not normal  mode  command)  of
+	      this  session (does nothing right after startup or :restart com-
+	      mand).  The command doesn't depend on command-line  history  and
 	      can be used with completely disabled history.
 
-       (      goto previous group.  Groups are defined by primary sorting key.
-	      For name and iname members of each group have same first letter,
-	      for all other sorting keys vifm uses size, uid, ...
+       (      go  to  previous	group.	 Groups are defined by primary sorting
+	      key.  For name and iname members of each group have  same	 first
+	      letter, for all other sorting keys vifm uses size, uid, ...
 
-       )      goto next group.	See ( key description above.
+       )      go to next group.	 See ( key description above.
 
-       {      similar to ( key, but always considers whether entry is file  or
-	      directory	 and  thus  speeds  up	navigation to closest previous
+       {      similar  to ( key, but always considers whether entry is file or
+	      directory and thus speeds	 up  navigation	 to  closest  previous
 	      entry of the opposite type.
 
        }      same as {, but in forward direction.
+
+       [c     go  to previous mismatched entry in directory comparison view or
+	      do nothing.
+
+       ]c     go to next mismatched entry in directory comparison view	or  do
+	      nothing.
+
+       [d     go to previous directory entry or do nothing.
+
+       ]d     go to next directory entry or do nothing.
+
+       [s     go to previous selected entry or do nothing.
+
+       ]s     go to next selected entry or do nothing.
+
+       [z     go to first sibling of current entry.
+
+       ]z     go to last sibling of current entry.
+
+       zj     go to next directory sibling of current entry or do nothing.
+
+       zk     go to previous directory sibling of current entry or do nothing.
 
 Using Count
        You can use count with commands like yy.
@@ -597,37 +649,37 @@ Using Count
        Or you can use count with motions passed to y, d or D.
 
        d[count]j
-	      delete (count + 1) files starting from current  cursor  position
+	      delete  (count  + 1) files starting from current cursor position
 	      upward.
 
 Registers
-       vifm  supports  multiple registers for temporary storing list of yanked
+       vifm supports multiple registers for temporary storing list  of	yanked
        or deleted files.
 
        Registers should be specified by hitting double quote key followed by a
-       register	 name.	 Count	is  specified after register name.  By default
+       register name.  Count is specified after	 register  name.   By  default
        commands use unnamed register, which has double quote as its name.
 
-       Though all commands accept registers, most  of  commands	 ignores  them
-       (for  example H or Ctrl-U).  Other commands can fill register or append
+       Though  all  commands  accept  registers, most of commands ignores them
+       (for example H or Ctrl-U).  Other commands can fill register or	append
        new files to it.
 
        Presently vifm supports ", _, a-z and A-Z characters as register names.
 
        As mentioned above " is unnamed register and has special meaning of the
-       default	register.  Every time when you use named registers (a-z and A-
-       Z) unnamed register is updated to contain same list  of	files  as  the
+       default register.  Every time when you use named registers (a-z and  A-
+       Z)  unnamed  register  is  updated to contain same list of files as the
        last used register.
 
-       _  is black hole register.  It can be used for writing, but its list is
+       _ is black hole register.  It can be used for writing, but its list  is
        always empty.
 
-       Registers with names from a to z and from A to Z are named ones.	  Low-
-       ercase  registers  are cleared before adding new files, while uppercase
+       Registers  with names from a to z and from A to Z are named ones.  Low-
+       ercase registers are cleared before adding new files,  while  uppercase
        aren't and should be used to append new files to the existing file list
        of appropriate lowercase register (A for a, B for b, ...).
 
-       Registers  can be changed on :empty command if they contain files under
+       Registers can be changed on :empty command if they contain files	 under
        trash directory (see "Trash directory" section below).
 
        Registers do not contain one file more than once.
@@ -640,7 +692,7 @@ Registers
 
 	 "Ad
 
-       removes one file and append its name to register a (and to the  unnamed
+       removes	one file and append its name to register a (and to the unnamed
        register),
 
 	 p or "ap or "Ap
@@ -648,10 +700,10 @@ Registers
        inserts previously yanked and deleted files into current directory.
 
 Selectors
-       y,  d, D, !, gu and gU commands accept selectors.  You can combine them
+       y, d, D, !, gu and gU commands accept selectors.	 You can combine  them
        with any of selectors below to quickly remove or yank several files.
 
-       Most of selectors are like vi motions: j, k, gg, G, H, L, M, %,	f,  F,
+       Most  of	 selectors are like vi motions: j, k, gg, G, H, L, M, %, f, F,
        ;, comma, ', ^, 0 and $.	 But there are some additional ones.
 
        a      all files in current view.
@@ -675,7 +727,7 @@ Selectors
 
 	 - 2dj - delete file under cursor and two below;
 
-	 - 2y6gg - yank all files from cursor position to  12th	 file  in  the
+	 - 2y6gg  -  yank  all	files from cursor position to 12th file in the
 	   list.
 
 Visual Mode
@@ -685,34 +737,34 @@ Visual Mode
 
 	 - selection editing submode.
 
-       Both  modes  select files in range from cursor position at which visual
-       mode was entered to current cursor position (let's call	it  "selection
+       Both modes select files in range from cursor position at	 which	visual
+       mode  was  entered to current cursor position (let's call it "selection
        region").  Each of two borders can be adjusted by swapping them via "o"
-       or "O" keys and updating cursor position	 with  regular	cursor	motion
-       keys.   Obviously,  once	 initial  cursor position is altered this way,
+       or  "O"	keys  and  updating cursor position with regular cursor motion
+       keys.  Obviously, once initial cursor position  is  altered  this  way,
        real start position becomes unavailable.
 
-       Plain Vim-like visual mode starts with cleared selection, which is  not
-       restored	 on  rejecting selection ("Escape", "Ctrl-C", "v", "V").  Con-
-       trary to it, selection editing doesn't clear previously selected	 files
-       and  restores  them after reject.  Accepting selection by performing an
+       Plain  Vim-like visual mode starts with cleared selection, which is not
+       restored on rejecting selection ("Escape", "Ctrl-C", "v",  "V").	  Con-
+       trary  to it, selection editing doesn't clear previously selected files
+       and restores them after reject.	Accepting selection by	performing  an
        operation on selected items (e.g. yanking them via "y") moves cursor to
-       the  top of current selection region (not to the top most selected file
+       the top of current selection region (not to the top most selected  file
        of the view).
 
-       In turn, selection editing supports three types	of  editing  (look  at
+       In  turn,  selection  editing  supports three types of editing (look at
        statusbar to know which one is currently active):
 
 	 - append - amend selection by selecting elements in selection region;
 
-	 - remove  -  amend  selection	by  deselecting	 elements in selection
+	 - remove - amend  selection  by  deselecting  elements	 in  selection
 	   region;
 
-	 - invert - amend selection by	inverting  selection  of  elements  in
+	 - invert  -  amend  selection	by  inverting selection of elements in
 	   selection region.
 
-       No  matter  how	you  activate selection editing it starts in "append".
-       One can switch type of operation (in the order given above) via	"Ctrl-
+       No matter how you activate selection editing  it	 starts	 in  "append".
+       One  can switch type of operation (in the order given above) via "Ctrl-
        G" key.
 
        Almost all normal mode keys work in visual mode, but instead of accept-
@@ -720,19 +772,19 @@ Visual Mode
 
        Enter  save selection and go back to normal mode not moving cursor.
 
-       av     leave visual mode if in amending mode (restores previous	selec-
+       av     leave  visual mode if in amending mode (restores previous selec-
 	      tion), otherwise switch to amending selection mode.
 
        gv     restore previous visual selection.
 
        v, V, Ctrl-C or Escape
-	      leave  visual  mode if not in amending mode, otherwise switch to
+	      leave visual mode if not in amending mode, otherwise  switch  to
 	      normal visual selection.
 
-       Ctrl-G switch type of amending by round robin scheme: append ->	remove
+       Ctrl-G switch  type of amending by round robin scheme: append -> remove
 	      -> invert.
 
-       :      enter  command  line  mode.  Selection is cleared on leaving the
+       :      enter command line mode.	Selection is cleared  on  leaving  the
 	      mode.
 
        o      switch active selection bound.
@@ -776,7 +828,7 @@ View Mode
 	      scroll forward one half-window (and set half-window to [count]).
 
        [count]u, [count]Ctrl-U
-	      scroll  backward	one  half-window  (and	set   half-window   to
+	      scroll   backward	  one  half-window  (and  set  half-window  to
 	      [count]).
 
        r, Ctrl-R, Ctrl-L
@@ -784,7 +836,7 @@ View Mode
 
        R      reload view preserving scroll position.
 
-       F      toggle  automatic	 forwarding.   Roughly	equivalent to periodic
+       F      toggle automatic forwarding.   Roughly  equivalent  to  periodic
 	      file reload and scrolling to the bottom.	The behaviour is simi-
 	      lar to `tail -F` or F key in less.
 
@@ -798,7 +850,7 @@ View Mode
 	      repeat previous search (for [count]-th occurrence).
 
        [count]N
-	      repeat  previous	search	in  reverse  direction (for [count]-th
+	      repeat previous search  in  reverse  direction  (for  [count]-th
 	      occurrence).
 
        [count]g, [count]<, [count]Alt-<
@@ -810,16 +862,16 @@ View Mode
        [count]p, [count]%
 	      scroll to the beginning of the file (or N percent into file).
 
-       v      invoke an editor to edit the current  file  being	 viewed.   The
-	      command  for  editing  is taken from the 'vicmd'/'vixcmd' option
-	      value and extended with middle line number prepended by  a  plus
+       v      invoke  an  editor  to  edit the current file being viewed.  The
+	      command for editing is taken from	 the  'vicmd'/'vixcmd'	option
+	      value  and  extended with middle line number prepended by a plus
 	      sign and name of the current file.
 
-       All  "Ctrl-W  x" keys work the same was as in Normal mode.  Active mode
-       is automatically changed on navigating among windows.   When  less-like
-       mode  activated	on  file preview is left using one by "Ctrl-W x" keys,
+       All "Ctrl-W x" keys work the same was as in Normal mode.	  Active  mode
+       is  automatically  changed on navigating among windows.	When less-like
+       mode activated on file preview is left using one by  "Ctrl-W  x"	 keys,
        its state is stored until another file is displayed using preview (it's
-       possible	 to leave the mode, hide preview pane, do something else, then
+       possible to leave the mode, hide preview pane, do something else,  then
        get back to the file and show preview pane again with previously stored
        state in it).
 
@@ -827,12 +879,12 @@ Command line Mode
        These keys are available in all submodes of the command line mode: com-
        mand, search, prompt and filtering.
 
-       Down, Up, Left, Right, Home, End and Delete are extended keys and  they
-       are  not	 available  if	vifm  is compiled with --disable-extended-keys
+       Down,  Up, Left, Right, Home, End and Delete are extended keys and they
+       are not available if  vifm  is  compiled	 with  --disable-extended-keys
        option.
 
        Esc, Ctrl-C
-	      leave command line mode,	cancels	 input.	  Cancelled  input  is
+	      leave  command  line  mode,  cancels  input.  Cancelled input is
 	      saved into appropriate history and can be recalled later.
 
        Ctrl-M, Enter
@@ -862,7 +914,7 @@ Command line Mode
 
        Alt-F  go to the end of next word.
 
-       Ctrl-U remove  characters  from	cursor	position till the beginning of
+       Ctrl-U remove characters from cursor position  till  the	 beginning  of
 	      line.
 
        Ctrl-K remove characters from cursor position till the end of line.
@@ -873,14 +925,14 @@ Command line Mode
        Ctrl-D, Delete
 	      remove character under the cursor.
 
-       Ctrl-W remove characters from cursor position  till  the	 beginning  of
+       Ctrl-W remove  characters  from	cursor	position till the beginning of
 	      previous word.
 
-       Alt-D  remove  characters  from	cursor	position till the beginning of
+       Alt-D  remove characters from cursor position  till  the	 beginning  of
 	      next word.
 
        Ctrl-T swap the order of current and previous character and move cursor
-	      forward  or,  if	cursor past the end of line, swap the order of
+	      forward or, if cursor past the end of line, swap	the  order  of
 	      two last characters in the line.
 
        Alt-.  insert last part of previous command to current cursor position.
@@ -896,13 +948,13 @@ Command line Mode
        Up     recall more recent command-line from history, that begins as the
 	      current command-line.
 
-       Down   recall  older command-line from history, that begins as the cur-
+       Down   recall older command-line from history, that begins as the  cur-
 	      rent command-line.
 
        Ctrl-] trigger abbreviation expansion.
 
 Pasting special values
-       The shortcuts listed below insert specified values into current	cursor
+       The  shortcuts listed below insert specified values into current cursor
        position.  Last key of every shortcut references value that it inserts:
 	 - c - [c]urrent file
 	 - d - [d]irectory path
@@ -915,9 +967,9 @@ Pasting special values
 	 - = - local filter, which is bound to "=" in normal mode
 
        Values related to filelist in current pane are available through Ctrl-X
-       prefix, while values from the other pane have  doubled  Ctrl-X  key  as
-       their  prefix  (doubled Ctrl-X is presumably easier to type than upper-
-       case letters; it's still easy to remap the keys to correspond to	 names
+       prefix,	while  values  from  the other pane have doubled Ctrl-X key as
+       their prefix (doubled Ctrl-X is presumably easier to type  than	upper-
+       case  letters; it's still easy to remap the keys to correspond to names
        of similar macros).
 
        Ctrl-X c
@@ -933,7 +985,7 @@ Pasting special values
 	      name root of current file of the active pane.
 
        Ctrl-X t
-	      the  last	 component  of	path  to  the current directory of the
+	      the last component of path  to  the  current  directory  of  the
 	      active pane.
 
        Ctrl-X Ctrl-X c
@@ -968,8 +1020,8 @@ Pasting special values
 
 Command line editing
        vifm provides a facility to edit several kinds of data, that is usually
-       edited in command-line mode, in external editor (using  command	speci-
-       fied  by 'vicmd' or 'vixcmd' option).  This has at least two advantages
+       edited  in  command-line mode, in external editor (using command speci-
+       fied by 'vicmd' or 'vixcmd' option).  This has at least two  advantages
        over built-in command-line mode:
 	 - one can use full power of Vim to edit text;
 	 - finding and reusing history entries becomes possible.
@@ -980,8 +1032,8 @@ Command line editing
 	 - backward search;
 	 - file rename (see description of cw and cW normal mode keys).
 
-       Editing command-line using external editor is activated by  the	Ctrl-G
-       shortcut.   It's	 also  possible	 to do almost the same from Normal and
+       Editing	command-line  using external editor is activated by the Ctrl-G
+       shortcut.  It's also possible to do almost the  same  from  Normal  and
        Visual modes using q:, q/ and q? commands.
 
        Temporary file created for the purpose of editing the line has the fol-
@@ -990,19 +1042,19 @@ Command line editing
 	 1. First line, which is either empty or contains text already entered
 	    in command-line.
 
-	 2. 2nd and all other lines with history items starting with the  most
-	    recent  one.   Altering this lines in any way won't change history
+	 2. 2nd	 and all other lines with history items starting with the most
+	    recent one.	 Altering this lines in any way won't  change  history
 	    items stored by vifm.
 
-       After editing application is finished the first line  of	 the  file  is
-       taken  as  the  result  of operation, when the application returns zero
-       exit code.  If the application returns an error (see :cquit command  in
+       After  editing  application  is	finished the first line of the file is
+       taken as the result of operation, when  the  application	 returns  zero
+       exit  code.  If the application returns an error (see :cquit command in
        Vim), all the edits made to the file are ignored, but the initial value
        of the first line is saved in appropriate history.
 
 More Mode
        This is the mode that appears when status bar content is so big that it
-       doesn't	fit  on the screen.  One can identify the mode by "-- More --"
+       doesn't fit on the screen.  One can identify the mode by "--  More  --"
        message at the bottom.
 
        The following keys are handled in this mode:
@@ -1040,12 +1092,12 @@ More Mode
 Commands
        Commands are executed with :command_name<Enter>
 
-       Commented out lines should start with  the  double  quote  symbol  ("),
-       which  may be preceded by whitespace characters intermixed with colons.
-       Inline comments can be added at the end of the line after double	 quote
-       symbol,	only  last  line of a multi-line command can contain such com-
-       ment.  Not all commands support inline comments as  their  syntax  con-
-       flicts  with  names  of	registers  and	fields where double quotes are
+       Commented  out  lines  should  start  with the double quote symbol ("),
+       which may be preceded by whitespace characters intermixed with  colons.
+       Inline  comments can be added at the end of the line after double quote
+       symbol, only last line of a multi-line command can  contain  such  com-
+       ment.   Not  all	 commands support inline comments as their syntax con-
+       flicts with names of registers  and  fields  where  double  quotes  are
        allowed.
 
        Most of the commands have two forms: complete and the short one.	 Exam-
@@ -1053,7 +1105,7 @@ Commands
 
 	 :noh[lsearch]
 
-       This  means  the	 complete  command is nohlsearch, and the short one is
+       This means the complete command is nohlsearch, and  the	short  one  is
        noh.
 
        Most of command-line commands completely reset selection in the current
@@ -1061,14 +1113,14 @@ Commands
 
 	 - ":invert s" most likely leaves some files selected;
 
-	 - :if	and :else commands doesn't affect selection on successful exe-
+	 - :if and :else commands doesn't affect selection on successful  exe-
 	   cution.
 
        '|' can be used to separate commands, so you can give multiple commands
-       in  one	line.	If you want to use '|' in an argument, precede it with
+       in one line.  If you want to use '|' in an argument,  precede  it  with
        '\'.
 
-       These commands see '|' as  part	of  their  arguments  even  when  it's
+       These  commands	see  '|'  as  part  of	their arguments even when it's
        escaped:
 
 	   :[range]!
@@ -1076,6 +1128,8 @@ Commands
 	   :cmap
 	   :cnoremap
 	   :command
+	   :dmap
+	   :dnoremap
 	   :filetype
 	   :fileviewer
 	   :filextype
@@ -1094,7 +1148,7 @@ Commands
 	   :windo
 	   :winrun
 
-       To  be able to use another command after one of these, wrap it with the
+       To be able to use another command after one of these, wrap it with  the
        :execute command.  An example:
 
 	 if filetype('.') == 'reg' | execute '!!echo regular file' | endif
@@ -1108,10 +1162,10 @@ Commands
 	      :$ move to the bottom of the list.
 
        :[count]command
-	      The  only	 builtin  :[count]command  are	:[count]d[elete]   and
+	      The   only  builtin  :[count]command  are	 :[count]d[elete]  and
 	      :[count]y[ank].
 
-       :d3    would  delete  three files starting at the current file position
+       :d3    would delete three files starting at the current	file  position
 	      moving down.
 
        :3d    would delete one file at the third line in the list.
@@ -1123,7 +1177,7 @@ Commands
 
        :[range]!command &
 
-       same as above, but the command is run in the  background	 using	vifm's
+       same  as	 above,	 but the command is run in the background using vifm's
        means.
 
        Programs that write to stdout like "ls" create an error message showing
@@ -1145,26 +1199,26 @@ Commands
 
        :[range]alink[!?]
 	      create absolute symbolic links to files in directory of inactive
-	      view.  With "?"  prompts for destination file names in  an  edi-
+	      view.   With  "?"	 prompts for destination file names in an edi-
 	      tor.  "!" forces overwrite.
 
        :[range]alink[!] path
-	      create  absolute	symbolic links to files in directory specified
-	      by the path (absolute  or	 relative  to  directory  of  inactive
+	      create absolute symbolic links to files in  directory  specified
+	      by  the  path  (absolute	or  relative  to directory of inactive
 	      view).
 
        :[range]alink[!] name1 name2...
-	      create  absolute	symbolic  links of files in directory of other
-	      view giving each next link a corresponding name from  the	 argu-
+	      create absolute symbolic links of files in  directory  of	 other
+	      view  giving  each next link a corresponding name from the argu-
 	      ment list.
 
 						:apropos
 
        :apropos keyword...
 	      create a menu of items returned by the apropos command.  Select-
-	      ing an item in  the  menu	 opens	corresponding  man  page.   By
-	      default  the  command  relies on the external "apropos" utility,
-	      which can be customized by altering value	 of  the  'aproposprg'
+	      ing  an  item  in	 the  menu  opens  corresponding man page.  By
+	      default the command relies on the	 external  "apropos"  utility,
+	      which  can  be  customized by altering value of the 'aproposprg'
 	      option.
 
 						:autocmd
@@ -1174,16 +1228,16 @@ Commands
 		- DirEnter - performed on entering a directory
 	      Event name is case insensitive.
 
-	      {pat}  is	 a  comma-separated  list  of modified globs patterns,
+	      {pat} is a comma-separated  list	of  modified  globs  patterns,
 	      which can contain tilde or environment variables.	 All paths use
-	      slash  ('/') as directory separator.  The pattern can start with
-	      a '!', which negates it.	Patterns that do not  contain  slashes
-	      are  matched  against the last item of the path only (e.g. "dir"
-	      in "/path/dir").	Literal comma can be entered by	 doubling  it.
+	      slash ('/') as directory separator.  The pattern can start  with
+	      a	 '!',  which negates it.  Patterns that do not contain slashes
+	      are matched against the last item of the path only  (e.g.	 "dir"
+	      in  "/path/dir").	  Literal comma can be entered by doubling it.
 	      Two modifications to globs matching are as follows:
-		-  *  - never matches a slash (i.e., can signify single direc-
+		- *  - never matches a slash (i.e., can signify single	direc-
 	      tory level)
-		- ** - matches any character (i.e., can match  path  of	 arbi-
+		-  **  -  matches any character (i.e., can match path of arbi-
 	      trary depth)
 
 	      {cmd} is a :command or several of them separated with '|'.
@@ -1193,7 +1247,7 @@ Commands
 		- *.d	      - matches directories ending with ".d" anywhere
 		- **.git      - matches something.git, but not .git anywhere
 		- **/.git/**  - matches /path/.git/objects, but not /path/.git
-		-  **/.git/**/ - matches /path/.git/ only (because of trailing
+		- **/.git/**/ - matches /path/.git/ only (because of  trailing
 	      slash)
 		-  /etc/*	-  matches  /etc/conf.d/,  /etc/X11,  but  not
 	      /etc/X11/fs
@@ -1202,14 +1256,14 @@ Commands
 		- /etc/**/**  - matches /etc/ itself and any file below it
 
        :au[tocmd] [{event}] [{pat}]
-	      list  those autocommands that match given event-pattern combina-
+	      list those autocommands that match given event-pattern  combina-
 	      tion.
-	      {event} and {pat} can be omitted to list all  autocommands.   To
-	      list  any autocommands for specific pattern one can use * place-
+	      {event}  and  {pat} can be omitted to list all autocommands.  To
+	      list any autocommands for specific pattern one can use *	place-
 	      holder in place of {event}.
 
        :au[tocmd]! [{event}] [{pat}]
-	      remove autocommands that match given event-pattern  combination.
+	      remove  autocommands that match given event-pattern combination.
 	      Syntax is the same as for listing above.
 
        :apropos
@@ -1221,14 +1275,14 @@ Commands
 	      bookmark current directory with specified tags.
 
        :bmark! path tag1 [tag2 [tag3...]]
-	      same  as :bmark, but allows bookmarking specific path instead of
-	      current directory.  This is for use in vifmrc and for  bookmark-
+	      same as :bmark, but allows bookmarking specific path instead  of
+	      current  directory.  This is for use in vifmrc and for bookmark-
 	      ing files.
 
-	      Path  can contain macros that expand to single path (%c, %C, %d,
+	      Path can contain macros that expand to single path (%c, %C,  %d,
 	      %D) or those that can expand to multiple paths, but contain only
-	      one  (%f, %F, %rx).  The latter is done for convenience on using
-	      the command interactively.  Complex macros that  include	spaces
+	      one (%f, %F, %rx).  The latter is done for convenience on	 using
+	      the  command  interactively.  Complex macros that include spaces
 	      (e.g. "%c:gs/ /_") should be escaped.
 
 						:bmarks
@@ -1237,14 +1291,14 @@ Commands
 	      display all bookmarks in a menu.
 
        :bmarks [tag1 [tag2...]]
-	      display  menu  of	 bookmarks  that  include all of the specified
+	      display menu of bookmarks that  include  all  of	the  specified
 	      tags.
 
 						:bmgo
 
        :bmgo [tag1 [tag2...]]
-	      when there are more than one match acts  exactly	like  :bmarks,
-	      otherwise	 navigates  to	single match immediately (and fails if
+	      when  there  are	more than one match acts exactly like :bmarks,
+	      otherwise navigates to single match immediately  (and  fails  if
 	      there is no match).
 
 						:cabbrev
@@ -1253,13 +1307,13 @@ Commands
 	      display menu of command-line mode abbreviations.
 
        :ca[bbrev] lhs-prefix
-	      display command-line mode	 abbreviations	which  left-hand  side
+	      display  command-line  mode  abbreviations  which left-hand side
 	      starts with specified prefix.
 
        :ca[bbrev] lhs rhs
-	      register	new  or	 overwrites existing abbreviation for command-
-	      line mode.  rhs can contain spaces  and  any  special  sequences
-	      accepted	in  rhs	 of  mappings  (see "Mappings" section below).
+	      register new or overwrites existing  abbreviation	 for  command-
+	      line  mode.   rhs	 can  contain spaces and any special sequences
+	      accepted in rhs of  mappings  (see  "Mappings"  section  below).
 	      Abbreviations are expanded non-recursively.
 
 						:cnoreabbrev
@@ -1268,11 +1322,11 @@ Commands
 	      display menu of command-line mode abbreviations.
 
        :cnorea[bbrev] lhs-prefix
-	      display command-line mode	 abbreviations	which  left-hand  side
+	      display  command-line  mode  abbreviations  which left-hand side
 	      starts with specified prefix.
 
        :cnorea[bbrev] lhs rhs
-	      same  as :cabbrev, but mappings in rhs are ignored during expan-
+	      same as :cabbrev, but mappings in rhs are ignored during	expan-
 	      sion.
 
 						:cd
@@ -1286,10 +1340,10 @@ Commands
 	      change directory to ~/dir.
 
        :cd /curr/dir /other/dir
-	      change directory of the current pane to /curr/dir and  directory
-	      of  the other pane to /other/dir.	 Relative paths are assumed to
+	      change  directory of the current pane to /curr/dir and directory
+	      of the other pane to /other/dir.	Relative paths are assumed  to
 	      be relative to directory of current view.	 Command won't fail if
-	      one  of directories is invalid.  All forms of the command accept
+	      one of directories is invalid.  All forms of the command	accept
 	      macros.
 
        :cd! /dir
@@ -1303,7 +1357,7 @@ Commands
 						:chmod
 
        :[range]chmod
-	      display file attributes (permission on *nix  and	properties  on
+	      display  file  attributes	 (permission on *nix and properties on
 	      Windows) change dialog.
 
        :[range]chmod[!] arg...
@@ -1319,23 +1373,23 @@ Commands
 
        :[range]chown [user][:][group]
 	      only for *nix
-	      change owner and/or group of  files.   Operates  on  directories
+	      change  owner  and/or  group  of files.  Operates on directories
 	      recursively.
 
 						:clone
 
        :[range]clone[!?]
-	      clones  files  in current directory.  With "?" vifm will open vi
+	      clones files in current directory.  With "?" vifm will  open  vi
 	      to edit file names.  "!" forces overwrite.  Macros are expanded.
 
        :[range]clone[!] path
-	      clones files to directory specified with the path	 (absolute  or
-	      relative	to  current directory).	 "!" forces overwrite.	Macros
+	      clones  files  to directory specified with the path (absolute or
+	      relative to current directory).  "!" forces  overwrite.	Macros
 	      are expanded.
 
        :[range]clone[!] name1 name2...
-	      clones files in current directory giving each next clone a  cor-
-	      responding  name	from the argument list.	 "!" forces overwrite.
+	      clones  files in current directory giving each next clone a cor-
+	      responding name from the argument list.  "!"  forces  overwrite.
 	      Macros are expanded.
 
 						:colorscheme
@@ -1344,23 +1398,23 @@ Commands
 	      print current color scheme name on the status bar.
 
        :colo[rscheme]
-	      display a menu with a list of available color schemes.  You  can
-	      choose  primary  color  scheme  here.  It is used for view if no
-	      directory specific colorscheme fits  current  path.   It's  also
-	      used  to	set  border  color  (except view titles) and colors in
+	      display  a menu with a list of available color schemes.  You can
+	      choose primary color scheme here.	 It is used  for  view	if  no
+	      directory	 specific  colorscheme	fits  current path.  It's also
+	      used to set border color (except	view  titles)  and  colors  in
 	      menus and dialogs.
 
        :colo[rscheme] color_scheme_name
-	      change primary color scheme to color_scheme_name.	  In  case  of
-	      errors  (e.g.  some colors are not supported by terminal) either
+	      change  primary  color  scheme to color_scheme_name.  In case of
+	      errors (e.g. some colors are not supported by  terminal)	either
 	      nothing is changed or color scheme is reset to builtin colors to
 	      ensure that TUI is left in a usable state.
 
        :colo[rscheme] color_scheme_name directory
-	      associate	 directory with the color scheme.  The directory argu-
-	      ment can be either absolute or relative path  when  :colorscheme
-	      command  is  executed from command line, but mandatory should be
-	      an absolute path when the command is executed in scripts	loaded
+	      associate directory with the color scheme.  The directory	 argu-
+	      ment  can	 be either absolute or relative path when :colorscheme
+	      command is executed from command line, but mandatory  should  be
+	      an  absolute path when the command is executed in scripts loaded
 	      at startup (until vifm is completely loaded).
 
 						:comclear
@@ -1378,14 +1432,14 @@ Commands
 
        :com[mand] name action
 	      set a new user command.
-	      Trying  to  use  a reserved command name will result in an error
+	      Trying to use a reserved command name will result	 in  an	 error
 	      message.
 	      Use :com[mand]! to overwrite a previously set command.
-	      Unlike vim user commands do not have to  start  with  a  capital
-	      letter.	User commands are run in a shell by default.  To run a
-	      command in the background you must set it as a  background  com-
+	      Unlike  vim  user	 commands  do not have to start with a capital
+	      letter.  User commands are run in a shell by default.  To run  a
+	      command  in  the background you must set it as a background com-
 	      mand with & at the end of the commands action (:com rm rm %f &).
-	      Command name cannot contain numbers or special  symbols  (except
+	      Command  name  cannot contain numbers or special symbols (except
 	      '?' and '!').
 
        :com[mand] name /pattern
@@ -1395,7 +1449,7 @@ Commands
 	      set local filter value.
 
        :com[mand] name filter{:filter args}
-	      set  file	 name  filter  (see :filter command description).  For
+	      set file name filter (see	 :filter  command  description).   For
 	      example:
 
 		" display only audio files
@@ -1404,12 +1458,27 @@ Commands
 		:command noaudio filter!/.+.\(mp3|wav|mp3|flac|ogg|m4a|wma|ape\)$/i
 
        :com[mand] cmd :commands
-	      set kind of an alias for internal command	 (like	in  a  shell).
-	      Passes  range  given  to alias to an aliased command, so running
+	      set  kind	 of  an	 alias for internal command (like in a shell).
+	      Passes range given to alias to an aliased	 command,  so  running
 	      :%cp after
 		:command cp :copy %a
 	      equals
 		:%copy
+
+						:compare
+
+       :compare	 [byname  |  bysize  |	bycontents  |  listall	| listunique |
+       listdups | ofboth | ofone | groupids | grouppaths | skipempty]...
+	      compare files in one or two views according the arguments.   The
+	      default is "bycontents listall ofboth grouppaths".  See "Compare
+	      views" section below for details.	 Tree structure is  incompati-
+	      ble with ls-like view, so value of 'lsview' option is ignored.
+
+						:copen
+
+       :cope[n]
+	      opens menu with contents of the last displayed menu with naviga-
+	      tion to files by default, if any.
 
 						:copy
 
@@ -1585,19 +1654,24 @@ Commands
 		       \ {Extract here}
 		       \ tar -xf %c,
 
+	      Note  that  on  OS X when `open` is used to call an app, vifm is
+	      unable to check whether that app is actually available.	So  if
+	      automatic	 skipping  of programs that aren't there is desirable,
+	      `open` should be replaced with an actual command.
+
        :filet[ype] filename
-	      list  (in	 menu  mode)  currently registered patterns that match
+	      list (in menu mode) currently  registered	 patterns  that	 match
 	      specified file name.  Same as ":filextype filename".
 
 						:filextype
 
        :filex[type] pattern-list [{ description }] def_program,program2,...
 	      same as :filetype, but this command is ignored if not running in
-	      X.   In X :filextype is equal to :filetype.  See "Patterns" sec-
-	      tion below for pattern definition.   See	also  "Automatic  FUSE
+	      X.  In X :filextype is equal to :filetype.  See "Patterns"  sec-
+	      tion  below  for	pattern	 definition.  See also "Automatic FUSE
 	      mounts" section below.
 
-	      For  example,  consider  the following settings (the order might
+	      For example, consider the following settings  (the  order	 might
 	      seem strange, but it's for the demonstration purpose):
 
 		filetype *.html,*.htm
@@ -1615,7 +1689,7 @@ Commands
 			\ {Open with uzbl}
 			\ uzbl-browser %f %i &,
 
-	      If you're using vifm inside a terminal emulator that is  running
+	      If  you're using vifm inside a terminal emulator that is running
 	      in graphical environment (when X is used on *nix; always on Win-
 	      dows), vifm attempts to run application in this order:
 
@@ -1625,8 +1699,8 @@ Commands
 	      4. firefox
 	      5. uzbl
 
-	      If there is no graphical environment (checked presence of	 $DIS-
-	      PLAY  environment	 variable  on *nix; never happens on Windows),
+	      If  there is no graphical environment (checked presence of $DIS-
+	      PLAY environment variable on *nix; never	happens	 on  Windows),
 	      the list will look like:
 
 	      1. lynx
@@ -1634,24 +1708,28 @@ Commands
 
 	      Just as if all :filextype commands were not there.
 
-	      The purpose of such differentiation is to allow comfortable  use
+	      The  purpose of such differentiation is to allow comfortable use
 	      of vifm with same settings in desktop environment/through remote
 	      connection (SSH)/in native console.
 
+	      Note  that  on OS X $DISPLAY isn't defined unless you define it,
+	      so :filextype should be used only if you set  $DISPLAY  in  some
+	      way.
+
        :filext[ype] filename
-	      list (in menu mode) currently  registered	 patterns  that	 match
+	      list  (in	 menu  mode)  currently registered patterns that match
 	      specified file name.  Same as ":filetype filename".
 
 						:fileviewer
 
        :filev[iewer] pattern-list command1,command2,...
-	      register	specified  list of commands as viewers for each of the
+	      register specified list of commands as viewers for each  of  the
 	      patterns.	 Viewer is a command which output is captured and dis-
 	      played in one of the panes of vifm after pressing "e" or running
-	      :view command.  When the command doesn't	contain	 any  of  vifm
-	      macros,  name  of	 current  file is appended as if command ended
-	      with %c macro.  Comma escaping and missing  commands  processing
-	      rules  as	 for  :filetype apply to this command.	See "Patterns"
+	      :view  command.	When  the  command doesn't contain any of vifm
+	      macros, name of current file is appended	as  if	command	 ended
+	      with  %c	macro.	Comma escaping and missing commands processing
+	      rules as for :filetype apply to this  command.   See  "Patterns"
 	      section below for pattern definition.
 
 	      Example for zip archives:
@@ -1659,7 +1737,7 @@ Commands
 		fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c, echo "No zip to preview:"
 
        :filev[iewer] filename
-	      list (in menu mode) currently  registered	 patterns  that	 match
+	      list  (in	 menu  mode)  currently registered patterns that match
 	      specified filename.
 
 						:filter
@@ -1667,20 +1745,20 @@ Commands
        :filter[!] regular_expression_pattern
 
        :filter[!] /regular_expression_pattern/[flags]
-	      will  filter  all	 the  files  out of the directory listing that
-	      match the regular expression.  Using second variant you can  use
+	      will filter all the files out  of	 the  directory	 listing  that
+	      match  the regular expression.  Using second variant you can use
 	      the bar ('|') symbol without escaping.  Empty regular expression
-	      (specified by //, "" or '') means using of the last search  pat-
+	      (specified  by //, "" or '') means using of the last search pat-
 	      tern.  Use '!' to control state of filter inversion after updat-
-	      ing filter value (also see 'cpoptions' description).  Filter  is
-	      matched  case sensitively on *nix and case insensitively on Win-
+	      ing  filter value (also see 'cpoptions' description).  Filter is
+	      matched case sensitively on *nix and case insensitively on  Win-
 	      dows.
 
 	      Supported flags:
 		- "i" makes filter case insensitive;
 		- "I" makes filter case sensitive.
 
-	      Flags might be repeated multiple times,  later  ones  win	 (e.g.
+	      Flags  might  be	repeated  multiple times, later ones win (e.g.
 	      "iiiI" is equivalent to "I" and "IiIi" is the same as "i").
 
 	      " filter all files ending in .o from the filelist.
@@ -1700,17 +1778,17 @@ Commands
 						:find
 
        :[range]fin[d] pattern
-	      display  results	of  find  command in the menu.	Searches among
-	      selected files if any.  Accepts macros.  By default the  command
-	      relies  on  the external "find" utility, which can be customized
+	      display results of find command in  the  menu.   Searches	 among
+	      selected	files if any.  Accepts macros.	By default the command
+	      relies on the external "find" utility, which can	be  customized
 	      by altering value of the 'findprg' option.
 
        :[range]fin[d] -opt...
-	      same as :find  above,  but  user	defines	 all  find  arguments.
+	      same  as	:find  above,  but  user  defines  all find arguments.
 	      Searches among selected files if any.
 
        :[range]fin[d] path -opt...
-	      same  as	:find  above,  but  user  defines  all find arguments.
+	      same as :find  above,  but  user	defines	 all  find  arguments.
 	      Ignores selection and range.
 
        :[range]fin[d]
@@ -1719,25 +1797,25 @@ Commands
 						:finish
 
        :fini[sh]
-	      stop sourcing a script. Can only be used in a vifm script	 file.
+	      stop  sourcing a script. Can only be used in a vifm script file.
 	      This is a quick way to skip the rest of the file.
 
 						:grep
 
        :[range]gr[ep][!] pattern
-	      will  show  results  of  grep  command  in the menu.  Add "!" to
-	      request inversion of search (look for lines that	do  not	 match
-	      pattern).	  Searches  among  selected  files if any and no range
+	      will show results of grep command	 in  the  menu.	  Add  "!"  to
+	      request  inversion  of  search (look for lines that do not match
+	      pattern).	 Searches among selected files if  any	and  no	 range
 	      given.  Ignores binary files by default.	By default the command
-	      relies  on  the external "grep" utility, which can be customized
+	      relies on the external "grep" utility, which can	be  customized
 	      by altering value of the 'grepprg' option.
 
        :[range]gr[ep][!] -opt...
-	      same as :grep above, but user defines all grep arguments,	 which
+	      same  as :grep above, but user defines all grep arguments, which
 	      are not escaped.	Searches among selected files if any.
 
        :[range]gr[ep][!]
-	      repeats  last :grep command.  "!" of this command inverts "!" in
+	      repeats last :grep command.  "!" of this command inverts "!"  in
 	      repeated command.
 
 						:help
@@ -1747,13 +1825,13 @@ Commands
 
        :h[elp] argument
 	      is the same as using ':h argument' in vim.  Use vifm-<something>
-	      to  get  help  on vifm (tab completion works).  This form of the
+	      to get help on vifm (tab completion works).  This	 form  of  the
 	      command doesn't work when 'vimhelp' option is off.
 
 						:highlight
 
        :hi[ghlight]
-	      will show information about all highlight groups in the  current
+	      will  show information about all highlight groups in the current
 	      directory.
 
        :hi[ghlight] clear
@@ -1763,7 +1841,7 @@ Commands
 	      will show information on given highlight group or file name pat-
 	      tern of color scheme used in the active view.
 
-       :hi[ghlight]  (	group-name  |	{pat1,pat2,...}	  |   /regexp/[iI]   )
+       :hi[ghlight]   (	  group-name   |   {pat1,pat2,...}  |  /regexp/[iI]  )
        cterm=style | ctermfg=color | ctermbg=color
 	      sets  style  (cterm),  foreground	 (ctermfg)  or/and  background
 	      (ctermbg) parameters of highlight group or file name pattern for
@@ -1800,6 +1878,8 @@ Commands
 	- Device - color of block and character devices
 	- Executable - color of executable files
 	- Fifo - color of fifo pipes
+	-  CmpMismatch	- color of mismatched files in side-by-side comparison
+       by path
 
        Available colors:
 	- -1 or default or none - default or transparent
@@ -2093,23 +2173,24 @@ Commands
 
 						:mkdir
 
-       :mkdir[!] dir ...
-	      creates  directories  with  given	 names.	 "!" means make parent
-	      directories as needed.  Macros are expanded.
+       :[line]mkdir[!] dir ...
+	      create  directories  at specified paths.	The [line] can be used
+	      to pick node in a tree-view.  "!" means make parent  directories
+	      as needed.  Macros are expanded.
 
 						:move
 
        :[range]m[ove][!?][ &]
-	      move files to directory of other view.   With  "?"  prompts  for
+	      move  files  to  directory  of other view.  With "?" prompts for
 	      destination file names in an editor.  "!" forces overwrite.
 
        :[range]m[ove][!] path[ &]
-	      move  files  to  directory  specified with the path (absolute or
+	      move files to directory specified with  the  path	 (absolute  or
 	      relative to directory of other view).  "!" forces overwrite.
 
        :[range]m[ove][!] name1 name2...[ &]
-	      move files to directory of other view giving each	 next  file  a
-	      corresponding  name  from	 the  argument list.  "!" forces over-
+	      move  files  to  directory of other view giving each next file a
+	      corresponding name from the argument  list.   "!"	 forces	 over-
 	      write.
 
 						:nohlsearch
@@ -2121,9 +2202,9 @@ Commands
 
        :norm[al][!] commands
 	      execute normal mode commands.  If "!" is used, user defined map-
-	      pings  are  ignored.   Unfinished	 last command is aborted as if
-	      <esc> or <c-c> was typed.	 A ":" should be  completed  as	 well.
-	      Commands	can't  start  with  a space, so put a count of 1 (one)
+	      pings are ignored.  Unfinished last command  is  aborted	as  if
+	      <esc>  or	 <c-c>	was typed.  A ":" should be completed as well.
+	      Commands can't start with a space, so put a  count  of  1	 (one)
 	      before it.
 
 						:only
@@ -2138,18 +2219,19 @@ Commands
 						:pushd
 
        :pushd[!] /curr/dir [/other/dir]
-	      add pane directories to stack and	 process  arguments  like  :cd
+	      add  pane	 directories  to  stack and process arguments like :cd
 	      command.
 
        :pushd exchange the top two items of the directory stack.
 
 						:put
 
-       :pu[t][!] [reg] [ &]
-	      puts  files  from specified register (" by default) into current
-	      directory.  "!" moves files from their original location instead
-	      of  copying them.	 During this operation no confirmation dialogs
-	      will be shown, all checks are performed beforehand.
+       :[line]pu[t][!] [reg] [ &]
+	      puts files from specified register (" by default)	 into  current
+	      directory.   The [line] can be used to pick node in a tree-view.
+	      "!" moves files "!" moves files  from  their  original  location
+	      instead  of copying them.	 During this operation no confirmation
+	      dialogs will be shown, all checks are performed beforehand.
 
 						:pwd
 
@@ -2227,6 +2309,9 @@ Commands
 	      window for each new file edited or program launched from vifm.
 	      This requires screen version 3.9.9 or newer for  the  screen  -X
 	      argument or tmux (1.8 version or newer is recommended).
+
+       :screen!
+	      enable integration with terminal multiplexers.
 
        :screen?
 	      display	whether	 integration  with  terminal  multiplexers  is
@@ -2329,13 +2414,38 @@ Commands
 	      vifm  adaptive  to  environment  it uses $SHELL if it's defined,
 	      otherwise 'shell' value is used.
 
+
+						:siblnext
+
+       :siblnext[!]
+
+	      change directory to next sibling directory of current path using
+	      value  of global sort option of current pane.  "!" enables wrap-
+	      ping.
+
+	      For example, say, you're at /boot and root listing  starts  like
+	      this:
+
+		  bin/
+		  boot/
+		  dev/
+		  ...
+
+	      Issuing :siblnext will navigate to /dev.
+
+
+						:siblprev
+
+       :siblprev[!]
+	      same as :siblnext, but in the opposite direction.
+
 						:sort
 
        :sor[t]
-	      display dialog with different  sorting  methods,	when  one  can
+	      display  dialog  with  different	sorting	 methods, when one can
 	      select primary sorting key.  When 'viewcolumns' options is empty
-	      and 'lsview' is off, changing  primary  sorting  key  will  also
-	      affect  view  look  (in particular the second column of the view
+	      and  'lsview'  is	 off,  changing	 primary sorting key will also
+	      affect view look (in particular the second column	 of  the  view
 	      will be changed).
 
 						:source
@@ -2352,7 +2462,7 @@ Commands
 	      toggle horizontal window splitting.
 
        :sp[lit] path
-	      splits the window horizontally to show  both  file  directories.
+	      splits  the  window  horizontally to show both file directories.
 	      Also changes other pane to path (absolute or relative to current
 	      directory of active pane).
 
@@ -2361,14 +2471,14 @@ Commands
        :[range]s[ubstitute]/pattern/string/[flags]
 	      for each file in range replace a match of pattern with string.
 
-       String can contain \0...\9 to link to capture groups (\0 -  all	match,
+       String  can  contain \0...\9 to link to capture groups (\0 - all match,
        \1 - first group, etc.).
 
        Pattern is stored in search history.
 
        Available flags:
 
-	 - i  -	 ignore case (the 'ignorecase' and 'smartcase' options are not
+	 - i - ignore case (the 'ignorecase' and 'smartcase' options  are  not
 	   used)
 
 	 - I - don't ignore case (the 'ignorecase' and 'smartcase' options are
@@ -2388,17 +2498,18 @@ Commands
 						:sync
 
        :sync [relative path]
-	      change  the  other pane to the current pane directory or to some
+	      change the other pane to the current pane directory or  to  some
 	      path  relative  to  the  current	directory.   Using  macros  is
 	      allowed.
 
        :sync! change the other pane to the current pane directory and synchro-
-	      nize cursor position.  If current pane displays custom  list  of
-	      files,  position	before	entering it is used (current one might
+	      nize  cursor  position.  If current pane displays custom list of
+	      files, position before entering it is used  (current  one	 might
 	      not make any sense).
 
 
-       :sync! [location | cursorpos | localopts | filters | filelist | all]...
+       :sync!  [location | cursorpos | localopts | filters | filelist | tree |
+       all]...
 	      change enumerated properties of the other pane to	 match	corre-
 	      sponding	properties  of	the  current pane.  Arguments have the
 	      following meanings:
@@ -2415,32 +2526,45 @@ Commands
 		- filelist  -  list  of	 files for custom view (implies "loca-
 		  tion");
 
+		- tree - tree structure for tree view (implies "location");
+
 		- all - all of the above.
 
 						:touch
 
-       :touch file...
-	      create file(s).  Aborts  on  errors.   Doesn't  update  time  of
-	      existing files.  Macros are expanded.
+       :[line]touch file...
+	      create files at specified paths.	 Aborts	 on  errors.   Doesn't
+	      update  time  of existing files.	The [line] can be used to pick
+	      node in a tree-view.  Macros are expanded.
 
 						:tr
 
        :[range]tr/pattern/string/
 	      for each file in range transliterate the characters which appear
-	      in pattern to  the  corresponding	 character  in	string.	  When
-	      string  is shorter than pattern, it's padded with its last char-
+	      in  pattern  to  the  corresponding  character  in string.  When
+	      string is shorter than pattern, it's padded with its last	 char-
 	      acter.
 
 						:trashes
 
        :trashes
 	      lists all valid trash directories in a menu.  Only non-empty and
-	      writable	trash directories are shown.  This is exactly the list
+	      writable trash directories are shown.  This is exactly the  list
 	      of directories that are cleared when :empty command is executed.
 
        :trashes?
-	      same as :trashes, but also displays size of  each	 trash	direc-
+	      same  as	:trashes,  but also displays size of each trash direc-
 	      tory.
+
+						:tree
+
+       :tree  turn pane into tree view with current directory as a root.   The
+	      tree  view  is implemented on top of a custom view, but is auto-
+	      matically kept in sync with file system state and considers  all
+	      the  filters.   Thus the structure corresponds to what one would
+	      see on visiting the directories  manually.   Tree	 structure  is
+	      incompatible  with  ls-like view, so value of 'lsview' option is
+	      ignored.
 
 						:undolist
 
@@ -2450,23 +2574,23 @@ Commands
 						:unlet
 
        :unl[et][!] $ENV_VAR1 $ENV_VAR2 ...
-	      remove  environment variables. Add ! to omit displaying of warn-
+	      remove environment variables. Add ! to omit displaying of	 warn-
 	      ings about nonexistent variables.
 
 						:unselect
 
        :[range]unselect
-	      unselect files in the given range (current file if no  range  is
+	      unselect	files  in the given range (current file if no range is
 	      given).
 
        :unselect {pattern}
 	      unselect files that match specified pattern.  Possible {pattern}
 	      forms are described in "Patterns" section below.	Trailing slash
-	      for  directories	is taken into account, so `:unselect */` unse-
+	      for directories is taken into account, so `:unselect  */`	 unse-
 	      lects directories.
 
        :unselect !{external command}
-	      unselect files from  the	list  supplied	by  external  command.
+	      unselect	files  from  the  list	supplied  by external command.
 	      Files are matched by full paths, relative paths are converted to
 	      absolute ones beforehand.
 
@@ -2494,7 +2618,7 @@ Commands
 
        :volumes
 	      only for MS-Windows
-	      display menu with volume list.  Hitting l (or Enter)  key	 opens
+	      display  menu  with volume list.	Hitting l (or Enter) key opens
 	      appropriate volume in the current pane.
 
 						:vsplit
@@ -2506,8 +2630,8 @@ Commands
 	      toggle window vertical splitting.
 
        :vs[plit] path
-	      split  the window vertically to show both file directories.  And
-	      changes other pane to path  (absolute  or	 relative  to  current
+	      split the window vertically to show both file directories.   And
+	      changes  other  pane  to	path  (absolute or relative to current
 	      directory of active pane).
 
 						:wincmd
@@ -2523,7 +2647,7 @@ Commands
 						:winrun
 
        :winrun type [command...]
-	      execute  command	for pane(s), which is determined by type argu-
+	      execute command for pane(s), which is determined by  type	 argu-
 	      ment:
 		- ^ - top-left pane
 		- $ - bottom-right pane
@@ -2538,7 +2662,7 @@ Commands
 
 						:wq
 
-       :wq[!] same as :quit, but ! only disables check	of  backgrounded  com-
+       :wq[!] same  as	:quit,	but ! only disables check of backgrounded com-
 	      mands.
 
 						:xit
@@ -2560,8 +2684,14 @@ Commands
 	      map lhs key sequence to rhs in command line mode.
 
 
+					      :cmap :dmap  :mmap  :nmap	 :qmap
+       :vmap
+
        :cm[ap] lhs rhs
 	      map lhs to rhs in command line mode.
+
+       :dm[ap] lhs rhs
+	      map lhs to rhs in dialog modes.
 
        :mm[ap] lhs rhs
 	      map lhs to rhs in menu mode.
@@ -2575,10 +2705,14 @@ Commands
        :vm[ap] lhs rhs
 	      map lhs to rhs in visual mode.
 
-						:map
+
+						:*map
 
        :cm[ap]
 	      list all maps in command line mode.
+
+       :dm[ap]
+	      list all maps in dialog modes.
 
        :mm[ap]
 	      list all maps in menu mode.
@@ -2592,11 +2726,14 @@ Commands
        :vm[ap]
 	      list all maps in visual mode.
 
-						:map beginning
+						:*map beginning
 
        :cm[ap] beginning
 	      list  all	 maps  in command line mode that start with the begin-
 	      ning.
+
+       :dm[ap] beginning
+	      list all maps in dialog modes that start with the beginning.
 
        :mm[ap] beginning
 	      list all maps in menu mode that start with the beginning.
@@ -2613,31 +2750,38 @@ Commands
 						:noremap
 
        :no[remap] lhs rhs
-	      map the key sequence lhs to {rhs} for normal and	visual	modes,
-	      but disallow mapping of rhs.
+	      map the key sequence lhs to rhs for normal and visual modes, but
+	      disallow mapping of rhs.
 
        :no[remap]! lhs rhs
-	      map  the	key  sequence  lhs to {rhs} for command line mode, but
-	      disallow mapping of rhs.
+	      map  the key sequence lhs to rhs for command line mode, but dis-
+	      allow mapping of rhs.
+
+		       :cnoremap  :dnoremap  :mnoremap	 :nnoremap   :qnoremap
+       :vnoremap
 
        :cno[remap] lhs rhs
-	      map the key sequence lhs to {rhs} for  command  line  mode,  but
-	      disallow mapping of rhs.
+	      map  the key sequence lhs to rhs for command line mode, but dis-
+	      allow mapping of rhs.
 
-       :mn[oremap] lhs rhs
-	      map  the	key  sequence lhs to {rhs} for menu mode, but disallow
+       :dn[oremap] lhs rhs
+	      map the key sequence lhs to rhs for dialog modes,	 but  disallow
 	      mapping of rhs.
 
+       :mn[oremap] lhs rhs
+	      map the key sequence lhs to rhs for menu mode, but disallow map-
+	      ping of rhs.
+
        :nn[oremap] lhs rhs
-	      map the key sequence lhs to {rhs} for normal mode, but  disallow
+	      map the key sequence lhs to rhs for normal  mode,	 but  disallow
 	      mapping of rhs.
 
        :qn[oremap] lhs rhs
-	      map  the	key  sequence lhs to {rhs} for view mode, but disallow
-	      mapping of rhs.
+	      map the key sequence lhs to rhs for view mode, but disallow map-
+	      ping of rhs.
 
        :vn[oremap] lhs rhs
-	      map the key sequence lhs to {rhs} for visual mode, but  disallow
+	      map the key sequence lhs to rhs for visual  mode,	 but  disallow
 	      mapping of rhs.
 
 						:unmap
@@ -2648,8 +2792,14 @@ Commands
        :unm[ap]! lhs
 	      remove the mapping of lhs from command line mode.
 
+				   :cunmap  :dunmap  :munmap  :nunmap  :qunmap
+       :vunmap
+
        :cu[nmap] lhs
 	      remove the mapping of lhs from command line mode.
+
+       :du[nmap] lhs
+	      remove the mapping of lhs from dialog modes.
 
        :mu[nmap] lhs
 	      remove the mapping of lhs from menu mode.
@@ -2683,7 +2833,7 @@ Ranges
 
 	 :.,$delete
 
-       would  delete  the  files  from	the current position to the end of the
+       would delete the files from the current position	 to  the  end  of  the
        filelist.
 
 	 :3delete4
@@ -2698,7 +2848,7 @@ Ranges
 Command macros
        The command macros may be used in user commands.
 
-       %a     User  arguments.	 When  user arguments contain macros, they are
+       %a     User arguments.  When user arguments contain  macros,  they  are
 	      expanded before preforming substitution of %a.
 
        %c %"c The current file under the cursor.
@@ -2716,7 +2866,7 @@ Command macros
        %D %"D Full path to other file list directory.
 
        %rx %"rx
-	      Full paths to files in the register {x}.	 In  case  of  invalid
+	      Full  paths  to  files  in the register {x}.  In case of invalid
 	      symbol in place of {x}, it's processed with the rest of the line
 	      and default register is used.
 
@@ -2725,13 +2875,22 @@ Command macros
        %M     Same as %m, but l (or Enter) key is handled like for :locate and
 	      :find commands.
 
-       %u     Process  command output as list of paths and compose custom view
+       %u     Process command output as list of paths and compose custom  view
 	      out of it.
 
-       %U     Same as %u, but implies less list updates inside vifm, which  is
+       %U     Same  as %u, but implies less list updates inside vifm, which is
 	      absence of sorting at the moment.
 
+       %Iu    same as %u, but gives up terminal before running	external  com-
+	      mand.
+
+       %IU    same  as	%U, but gives up terminal before running external com-
+	      mand.
+
        %S     Show command output in the status bar.
+
+       %q     redirect command output to quick view,  which  is	 activated  if
+	      disabled.
 
        %s     Execute  command	in split window of active terminal multiplexer
 	      (ignored if not running inside one).
@@ -2938,8 +3097,8 @@ Patterns
        tern matching.
 
        The  last  form is implicitly refers to one of others.  :highlight does
-       not accept undecorated form, while :filetype,  :filextype,  :fileviewer
-       and 'classify' treat it as list of name globs.
+       not accept undecorated form, while :filetype, :filextype,  :fileviewer,
+       :select, :unselect and 'classify' treat it as list of name globs.
 
        Regular expression patterns are case insensitive by default.
 
@@ -3055,6 +3214,25 @@ Globs
 	      type: integer
 	      default: terminal width on startup
 	      Terminal width in characters.
+
+       'caseoptions'
+	      type: charset
+	      default: ""
+	      This option gives additional control over	 case  sensitivity  by
+	      allowing	overriding  default behaviour to either always be case
+	      sensitive or always be case insensitive.	Possible  values  form
+	      pairs  of	 lower	and upper case letters that configure specific
+	      aspect of behaviour:
+		p - always ignore case of paths during completion.
+		P - always match case of paths during completion.
+		g - always ignore case of characters for f/F/;/,.
+		G - always match case of characters for f/F/;/,.
+
+	      At most one item of each pair takes affect, if both or more  are
+	      present,	only  the  last one matters.  When none of pair's ele-
+	      ments are present, the behaviour is default (depends on  operat-
+	      ing system for path completion and on values of 'ignorecase' and
+	      'smartcase' options for file navigation).
 
        'cdpath' 'cd'
 	      type: string list
@@ -3174,19 +3352,27 @@ Globs
 	      less of value of this option.  "../" disappears at the moment at
 	      least one file is created.
 
+       'dotfiles'
+	      type: boolean
+	      default: false
+	      Whether dot files are shown in the view.	Can be controlled with
+	      z* bindings.
+
        'fastrun'
 	      type: boolean
 	      default: false
-	      With this option turned on you can run  partially	 entered  com-
-	      mands  with unambiguous beginning using :! (e.g. :!Te instead of
+	      With  this  option  turned on you can run partially entered com-
+	      mands with unambiguous beginning using :! (e.g. :!Te instead  of
 	      :!Terminal or :!Te<tab>).
 
        'fillchars' 'fcs'
 	      type: string list
 	      default: ""
 	      Sets characters used to fill borders.
-		item	   default  Used for
-		vborder:c  ' '	    left, middle and right vertical borders
+
+		item	     default	used for
+		vborder:c     '	 '	  left, middle and right vertical bor-
+	      ders
 
 	      If value is omitted, its default value is used.  Example:
 
@@ -3313,28 +3499,29 @@ Globs
 
        'iec'  type: boolean
 	      default: false
-	      Use KiB, MiB, ... instead of KB, MB, ...
+	      Use KiB, MiB, ... suffixes instead of K, M,  ...	when  printing
+	      size in human-friendly format.
 
        'ignorecase' 'ic'
 	      type: boolean
 	      default: false
-	      Ignore case in search patterns (:substitute, / and  ?  commands)
-	      and  characters  after f and F commands.	It doesn't affect file
+	      Ignore  case  in search patterns (:substitute, / and ? commands)
+	      and characters after f and F commands.  It doesn't  affect  file
 	      filtering.
 
        'incsearch' 'is'
 	      type: boolean
 	      default: false
 	      When this option is set, search and view update for local filter
-	      is  be performed starting from initial cursor position each time
+	      is be performed starting from initial cursor position each  time
 	      search pattern is changed.
 
        'iooptions'
 	      type: set
 	      default:
-	      Controls details of file operations.  The following  values  are
+	      Controls	details	 of file operations.  The following values are
 	      available:
-	       -  fastfilecloning - perform fast file cloning (copy-on-write),
+	       - fastfilecloning - perform fast file cloning  (copy-on-write),
 	      when available
 				   (available on Linux and btrfs file system).
 
@@ -3351,25 +3538,25 @@ Globs
        'locateprg'
 	      type: string
 	      default: "locate %a"
-	      Specifies format for an external command to be  invoked  by  the
-	      :locate  command.	 The format supports expanding of macros, spe-
-	      cific for a particular *prg option, and %% sequence for  insert-
-	      ing  percent  sign literally.  This option should include the %a
-	      macro to specify placement of arguments passed  to  the  :locate
-	      command.	 If the macro is not used, it will be implicitly added
+	      Specifies	 format	 for  an external command to be invoked by the
+	      :locate command.	The format supports expanding of macros,  spe-
+	      cific  for a particular *prg option, and %% sequence for insert-
+	      ing percent sign literally.  This option should include  the  %a
+	      macro  to	 specify  placement of arguments passed to the :locate
+	      command.	If the macro is not used, it will be implicitly	 added
 	      after a space to the value of this option.
 
-	      Optional %u or %U macro could be used (if both specified	%U  is
-	      chosen)  to  force redirection to custom or unsorted custom view
+	      Optional	%u  or %U macro could be used (if both specified %U is
+	      chosen) to force redirection to custom or unsorted  custom  view
 	      respectively.
 
        'mintimeoutlen'
 	      type: integer
 	      default: 150
-	      The fracture of 'timeoutlen'  in	milliseconds  that  is	waited
-	      between  subsequent input polls, which affects various asynchro-
-	      nous operations (detecting changes  made	by  external  applica-
-	      tions,  monitoring background jobs, redrawing UI).  There are no
+	      The  fracture  of	 'timeoutlen'  in  milliseconds that is waited
+	      between subsequent input polls, which affects various  asynchro-
+	      nous  operations	(detecting  changes  made by external applica-
+	      tions, monitoring background jobs, redrawing UI).	 There are  no
 	      strict guarantees, however the higher this value is, the less is
 	      CPU load in idle mode.
 
@@ -3377,17 +3564,17 @@ Globs
 	      type: boolean
 	      default: false
 	      scope: local
-	      When  this  option  is  set, directory view will be displayed in
-	      multiple columns with file names similar to output  of  `ls  -x`
-	      command.	 See  "ls-like view" section below for format descrip-
+	      When this option is set, directory view  will  be	 displayed  in
+	      multiple	columns	 with  file names similar to output of `ls -x`
+	      command.	See "ls-like view" section below for  format  descrip-
 	      tion.
 
        'number' 'nu'
 	      type: boolean
 	      default: false
 	      scope: local
-	      Print line number in front  of  each  file  name	when  'lsview'
-	      option  is  turned  off.	 Use 'numberwidth' to control width of
+	      Print  line  number  in  front  of  each file name when 'lsview'
+	      option is turned off.  Use 'numberwidth'	to  control  width  of
 	      line number.  Also see 'relativenumber'.
 
        'numberwidth' 'nuw'
@@ -3400,9 +3587,9 @@ Globs
 	      type: boolean
 	      default: false
 	      scope: local
-	      Print relative line number in  front  of	each  file  name  when
-	      'lsview'	option	is  turned  off.  Use 'numberwidth' to control
-	      width of line number.   Various  combinations  of	 'number'  and
+	      Print  relative  line  number  in	 front	of each file name when
+	      'lsview' option is turned off.   Use  'numberwidth'  to  control
+	      width  of	 line  number.	 Various  combinations of 'number' and
 	      'relativenumber' lead to such results:
 
 				      nonumber		     number
@@ -3419,13 +3606,13 @@ Globs
        'rulerformat' 'ruf'
 	      type: string
 	      default: "%l/%S "
-	      Determines  the  content	of the ruler.  Its minimal width is 13
-	      characters and it's right aligned.  Following  macros  are  sup-
+	      Determines the content of the ruler.  Its minimal	 width	is  13
+	      characters  and  it's  right aligned.  Following macros are sup-
 	      ported:
-	       %=  - separation point between left and right aligned halves of
+	       %= - separation point between left and right aligned halves  of
 	      the line
 	       %l - file number
-	       %L - total number of files  in  view  (including	 filtered  out
+	       %L  -  total  number  of	 files in view (including filtered out
 	      ones)
 	       %- - number of filtered out files
 	       %S - number of displayed files
@@ -3434,9 +3621,9 @@ Globs
 	       %[ - designates beginning of an optional block
 	       %] - designates end of an optional block
 
-	      Percent  sign  can  be followed by optional minimum field width.
+	      Percent sign can be followed by optional	minimum	 field	width.
 	      Add '-' before minimum field width if you want field to be right
-	      aligned.	 Note  ambiguity  with	number	of filtered out files,
+	      aligned.	Note ambiguity with  number  of	 filtered  out	files,
 	      which can be resolved with the help of width field ("%0-").
 
 	      Example:
@@ -3451,14 +3638,14 @@ Globs
        'scrollbind' 'scb'
 	      type: boolean
 	      default: false
-	      When this option is set, vifm will try  to  keep	difference  of
+	      When  this  option  is  set, vifm will try to keep difference of
 	      scrolling positions of two windows constant.
 
        'scrolloff' 'so'
 	      type: integer
 	      default: 0
-	      Minimal  number of screen lines to keep above and below the cur-
-	      sor.  If you want cursor line to always be in the middle of  the
+	      Minimal number of screen lines to keep above and below the  cur-
+	      sor.   If you want cursor line to always be in the middle of the
 	      view (except at the beginning or end of the file list), set this
 	      option to some large value (e.g. 999).
 
@@ -3474,25 +3661,50 @@ Globs
 	      Contains	a  sequence  of	 single-character  flags.   Each  flag
 	      enables shortening of some message displayed by vifm in the TUI.
 	      Flags:
-	      T	 -  truncate status-bar messages in the middle if they are too
-	      long to fit on the command line.	"..." will appear in the  mid-
+	      T - truncate status-bar messages in the middle if they  are  too
+	      long  to fit on the command line.	 "..." will appear in the mid-
 	      dle.
 	      p - use tilde shortening in view titles.
+
+
+       'sizefmt'
+	      type: string list
+	      default: "units:iec"
+	      Configures the way size is formatted in human-friendly way.
+
+		  item		value	      meaning
+		  units:	iec	      Use 1024 byte units (K  or  KiB,
+	      etc.).
+					      See 'iec' option.
+				si	      Use 1000 byte units (KB, etc.).
+		  precision:	i > 0	      How many fraction digits to con-
+	      sider.
+				{not set}     Precision of 1 for integer  part
+	      < 10,
+					      0 otherwise (provides old behav-
+	      iour).
+
+	      Numbers are rounded from zero.  Trailing zeros are dropped.
+
+	      Example:
+
+		set sizefmt=units:iec,precision:2
+
 
        'slowfs'
 	      type: string list
 	      default: ""
 	      only for *nix
-	      A	 list of mounter fs name beginnings (first column in /etc/mtab
-	      or /proc/mounts) or paths prefixes for fs/directories that  work
-	      too  slow	 for  you.   This option can be used to stop vifm from
-	      making some requests to particular kinds of  file	 systems  that
-	      can  slow	 down file browsing.  Currently this means don't check
+	      A list of mounter fs name beginnings (first column in  /etc/mtab
+	      or  /proc/mounts) or paths prefixes for fs/directories that work
+	      too slow for you.	 This option can be used  to  stop  vifm  from
+	      making  some  requests  to particular kinds of file systems that
+	      can slow down file browsing.  Currently this means  don't	 check
 	      if directory has changed, skip check if target of symbolic links
-	      exists,  assume  that  link  target  located  on slow fs to be a
-	      directory (allows entering directories and navigating  to	 files
+	      exists, assume that link target located  on  slow	 fs  to	 be  a
+	      directory	 (allows  entering directories and navigating to files
 	      via gf).	If you set the option to "*", it means all the systems
-	      are considered slow (useful for cygwin,  where  all  the	checks
+	      are  considered  slow  (useful  for cygwin, where all the checks
 	      might render vifm very slow if there are network mounts).
 
 	      Example for autofs root /mnt/autofs:
@@ -3502,20 +3714,20 @@ Globs
        'smartcase' 'scs'
 	      type: boolean
 	      default: false
-	      Overrides	 the  ignorecase option if the search pattern contains
-	      at least one upper case character.  Only	used  when  ignorecase
+	      Overrides the ignorecase option if the search  pattern  contains
+	      at  least	 one  upper case character.  Only used when ignorecase
 	      option is enabled.  It doesn't affect file filtering.
 
        'sort' type: string list
 	      default: +name on *nix and +iname on Windows
 	      scope: local
-	      Sets  list of sorting keys (first item is primary key, second is
+	      Sets list of sorting keys (first item is primary key, second  is
 	      secondary key, etc.):
 		 [+-]ext     - extension of files and directories
 		 [+-]fileext - extension of files only
 		 [+-]name    - name (including extension)
 		 [+-]iname   - name (including extension, ignores case)
-		 [+-]type		 -		file		  type
+		 [+-]type		  -		 file		  type
 	      (dir/reg/exe/link/char/block/sock/fifo)
 		 [+-]dir     - directory grouping (directory < file)
 		 [+-]gid     - group id (*nix only)
@@ -3528,22 +3740,22 @@ Globs
 		 [+-]size    - size
 		 [+-]nitems  - number of items in a directory (zero for files)
 		 [+-]groups  - groups extracted via regexps from 'sortgroups'
-		 [+-]target   -	 symbolic  link	 target	 (empty for other file
+		 [+-]target  - symbolic link  target  (empty  for  other  file
 	      types)
 		 [+-]atime   - time accessed (e.g. read, executed)
 		 [+-]ctime   - time changed (changes in metadata, e.g. mode)
 		 [+-]mtime   - time modified (when file contents is changed)
 
-	      Note: look for st_atime, st_ctime and st_mtime in "man  2	 stat"
+	      Note:  look  for st_atime, st_ctime and st_mtime in "man 2 stat"
 	      for more information on time keys.
 
-	      '+'  means ascending sort for this key, and '-' means descending
+	      '+' means ascending sort for this key, and '-' means  descending
 	      sort.
 
-	      "dir" key is somewhat similar in	this  regard  but  it's	 added
-	      implicitly:  when	 "dir" is not specified, sorting behaves as if
+	      "dir"  key  is  somewhat	similar	 in this regard but it's added
+	      implicitly: when "dir" is not specified, sorting behaves	as  if
 	      it was the first key in the list.	 That's why if one wants sort-
-	      ing  algorithm  to  mix  directories  and files, "dir" should be
+	      ing algorithm to mix directories	and  files,  "dir"  should  be
 	      appended to sorting option, for example like this:
 
 		set sort+=dir
@@ -3552,7 +3764,7 @@ Globs
 
 		set sort=-size,dir
 
-	      Value of the option is checked to include dir  key  and  default
+	      Value  of	 the  option is checked to include dir key and default
 	      sorting key (name on *nix, iname on Windows).  Here is what hap-
 	      pens if one of them is missing:
 
@@ -3575,13 +3787,13 @@ Globs
 	      type: string
 	      default: ""
 	      scope: local
-	      Sets  comma-separated  list  of  regular	expressions to use for
-	      group sorting, double comma is literal comma.   Each  expression
-	      should  contain  at least one group or its value will be consid-
-	      ered to be always empty.	 Only  first  match  of	 each  regular
-	      expression  is  considered.  Groups are considered from right to
-	      first similar to 'sort', first group divides list of files  into
-	      sub-groups,  each	 of which is sorted by the second group and so
+	      Sets comma-separated list of  regular  expressions  to  use  for
+	      group  sorting,  double comma is literal comma.  Each expression
+	      should contain at least one group or its value will  be  consid-
+	      ered  to	be  always  empty.   Only  first match of each regular
+	      expression is considered.	 Groups are considered from  right  to
+	      first  similar to 'sort', first group divides list of files into
+	      sub-groups, each of which is sorted by the second group  and  so
 	      on.
 
 	      Example:
@@ -3597,11 +3809,16 @@ Globs
        'statusline' 'stl'
 	      type: string
 	      default: ""
-	      Determines  the content of the status line (the line right above
-	      command-line).  Empty string means use same format like in  pre-
+	      Determines the content of the status line (the line right	 above
+	      command-line).   Empty string means use same format like in pre-
 	      vious versions.  Following macros are supported:
 
 	      - %t - file name (considering value of the 'classify' option)
+
+	      - %T - symbolic link target (empty for other filetypes)
+
+	      - %f - file name relative to current directory (considers 'clas-
+		sify')
 
 	      - %A  -  file  attributes	 (permissions on *nix or properties on
 		Windows) %u - user name or uid (if it cannot be resolved)
@@ -3616,6 +3833,10 @@ Globs
 
 	      - %d - file modification date (uses 'timefmt' option)
 
+	      - %D - path of the other pane for single-pane layout
+
+	      - %a - amount of free space available at current partition
+
 	      - %z - short tips/tricks/hints that chosen  randomly  after  one
 		minute period
 
@@ -3627,8 +3848,8 @@ Globs
 
 		set statusline="  %t%= %A %10u:%-7g %15s %20d "
 
-	      On  Windows file properties include next flags (upper case means
-	      flag is on):
+	      On  Windows  file	 properties include the following flags (upper
+	      case means flag is on):
 	       A - archive
 	       H - hidden
 	       I - content isn't indexed
@@ -3976,6 +4197,7 @@ Expression syntax
 		  'string'		  string constant, ' is doubled
 		  &option		  option value
 		  $VAR			  environment variable
+		  v:var			  builtin variable
 		  function(expr1, ...)	  function call
 
        ".." indicates that the operations in this level can be concatenated.
@@ -4137,6 +4359,13 @@ Expression syntax
 	 'This is my $PATH env: ' . $PATH
 	 'vifmrc at ' . $MYVIFMRC . ' is used.'
 
+       builtin variable
+       --------------------
+       v:var		     builtin variable
+
+       Information exposed by vifm for use in scripting.  Only v:servername at
+       the moment.
+
        function call
        -------------
        function(expr1, ...)  function call
@@ -4151,20 +4380,20 @@ Expression syntax
 Functions
        USAGE		   RESULT	 DESCRIPTION
 
-       chooseopt({opt})	   String	 Queries choose parameters  passed  on
+       chooseopt({opt})	    String	   Queries choose parameters passed on
        startup.
-       executable({expr})   Integer	  Checks whether {expr} command avail-
+       executable({expr})  Integer	 Checks whether {expr} command	avail-
        able.
        expand({expr})	   String	 Expands special keywords in {expr}.
        filetype({fnum})	   String	 Returns file type from position.
        getpanetype()	   String	 Returns type of current pane.
-       has({property})	   Integer	 Checks whether	 instance  has	{prop-
+       has({property})	    Integer	   Checks  whether instance has {prop-
        erty}.
-       layoutis({type})	    Integer	   Checks  whether  layout  is of type
+       layoutis({type})	   Integer	 Checks	 whether  layout  is  of  type
        {type}.
-       paneisat({loc})	   Integer	 Checks whether	 current  pane	is  at
+       paneisat({loc})	    Integer	   Checks  whether  current pane is at
        {loc}.
-       system({command})    String	   Executes  shell command and returns
+       system({command})   String	 Executes shell	 command  and  returns
        its output.
 
        chooseopt({opt})
@@ -4179,8 +4408,8 @@ Functions
        executable({expr})
 
        If {expr} is absolute or relative path, checks whether path destination
-       exists and refers to an executable, otherwise  checks  whether  command
-       named  {expr}  is  present  in directories listed in $PATH.  Checks for
+       exists  and  refers  to an executable, otherwise checks whether command
+       named {expr} is present in directories listed  in  $PATH.   Checks  for
        various	executable  extensions	on  Windows.   Returns	boolean	 value
        describing result of the check.
 
@@ -4198,8 +4427,8 @@ Functions
 
        expand({expr})
 
-       Expands	environment variables and macros in {expr} just like it's done
-       for command-line commands.  Returns a  string.	See  "Command  macros"
+       Expands environment variables and macros in {expr} just like it's  done
+       for  command-line  commands.   Returns  a string.  See "Command macros"
        section above.
 
        Examples:
@@ -4213,7 +4442,7 @@ Functions
 
        filetype({fnum})
 
-       The  result  is	a string, which represents file type and is one of the
+       The result is a string, which represents file type and is  one  of  the
        list:
 	   exe	  executables
 	   reg	  regular files
@@ -4235,11 +4464,12 @@ Functions
 	   regular	regular file listing of some directory
 	   custom	custom file list (%u)
 	   very-custom	very custom file list (%U)
+	   tree		tree view
 
        has({property})
 
-       Allows  examining  internal  parameters from scripts to e.g. figure out
-       environment in which application is running.  Returns 1 if property  is
+       Allows examining internal parameters from scripts to  e.g.  figure  out
+       environment  in which application is running.  Returns 1 if property is
        true/present, otherwise 0 is returned.  Currently the following proper-
        ties are supported (anything else will yield 0):
 	   unix	 runs in *nix-like environment (including Cygwin)
@@ -4256,7 +4486,7 @@ Functions
 
        layoutis({type})
 
-       Checks whether current interface layout is {type} or not, where	{type}
+       Checks  whether current interface layout is {type} or not, where {type}
        can be:
 	   only	   single-pane mode
 	   split   double-pane mode (either vertical or horizon split)
@@ -4266,7 +4496,7 @@ Functions
        Usage example:
 
 	 " automatically split vertically before enabling preview
-	 :nnoremap w :if layoutis('only') | vsplit | endif | view<cr>
+	 :nnoremap w :if layoutis('only') | vsplit | endif | view!<cr>
 
        paneisat({loc})
 
@@ -4279,9 +4509,9 @@ Functions
 
        system({command})
 
-       Runs the command in shell and returns its output (joined standard  out-
-       put  and	 standard error streams).  All trailing newline characters are
-       stripped to allow easy appending	 to  command  output.	Ctrl-C	should
+       Runs  the command in shell and returns its output (joined standard out-
+       put and standard error streams).	 All trailing newline  characters  are
+       stripped	 to  allow  easy  appending  to command output.	 Ctrl-C should
        interrupt the command.
 
        Usage example:
@@ -4290,11 +4520,11 @@ Functions
 	 command! cdgit :execute 'cd' system('git rev-parse --git-dir')
 
 Menus and dialogs
-       When  navigating	 to some path from a menu there is a difference in end
-       location depending on whether path has trailing slash  or  not.	 Files
-       normally	 don't have trailing slashes so "file/" won't work and one can
-       only navigate to a file anyway.	On the	other  hand  with  directories
-       there  are  two	options:  navigate to a directory or inside of it.  To
+       When navigating to some path from a menu there is a difference  in  end
+       location	 depending  on	whether path has trailing slash or not.	 Files
+       normally don't have trailing slashes so "file/" won't work and one  can
+       only  navigate  to  a  file anyway.  On the other hand with directories
+       there are two options: navigate to a directory or  inside  of  it.   To
        allow both use cases, the first one is used on paths like "dir" and the
        second one for "dir/".
 
@@ -4342,33 +4572,33 @@ Menus and dialogs
        :x[it] and :{range} are supported).
 
        b - interpret content of the menu as list of paths and use it to create
-       custom  view  in	 place	of previously active pane.  See "Custom views"
+       custom view in place of previously active  pane.	  See  "Custom	views"
        section below.
        B - same as above, but creates unsorted view.
 
-       v - load menu content into quickfix list of the editor (Vim  compatible
-       by  assumption)	or  if	list  doesn't have separators after file names
+       v  - load menu content into quickfix list of the editor (Vim compatible
+       by assumption) or if list doesn't  have	separators  after  file	 names
        (colons) open each line as a file name.
 
 
-       Below is description of additional commands and reaction	 on  selection
+       Below  is  description of additional commands and reaction on selection
        in some menus and dialogs.
 
        Apropos menu
 
-       Selecting  menu	item  run  man on a given topic.  Menu won't be closed
+       Selecting menu item run man on a given topic.   Menu  won't  be	closed
        automatically to allow view several pages one by one.
 
        Command-line mode abbreviations menu
 
        Type dd on an abbreviation to remove it.
 
-       c leaves menu preserving file selection and inserts right-hand side  of
+       c  leaves menu preserving file selection and inserts right-hand side of
        selected command into command-line.
 
        Color scheme menu
 
-       Selecting  name	of a color scheme applies it the same way as if ":col-
+       Selecting name of a color scheme applies it the same way as  if	":col-
        orscheme <name>" was executed on the command-line.
 
        Commands menu
@@ -4403,12 +4633,12 @@ Menus and dialogs
 
        Directory history and Trashes menus
 
-       Selecting directory name will change directory of the current  view  as
+       Selecting  directory  name will change directory of the current view as
        if :cd command was used.
 
        Directory stack menu
 
-       Selecting  directory  name  will rotate stack to put selected directory
+       Selecting directory name will rotate stack to  put  selected  directory
        pair at the top of the stack.
 
        Filetype menu
@@ -4421,13 +4651,13 @@ Menus and dialogs
 
        Grep, find, locate, bookmarks and user menu with navigation (%M macro)
 
-       gf - navigate  previously  active  view	to  currently  selected	 item.
+       gf  -  navigate	previously  active  view  to  currently selected item.
        Leaves menu mode except for grep menu.  Pressing Enter key has the same
        effect.
 
        e - open selected path in the editor, stays in menu mode.
 
-       c - leave menu preserving file selection and insert file name after  :!
+       c  - leave menu preserving file selection and insert file name after :!
        in command-line mode.
 
        User menu without navigation (%m macro)
@@ -4437,23 +4667,23 @@ Menus and dialogs
 
        Grep menu
 
-       Selecting file (via Enter or l key) opens it in editor set  by  'vicmd'
-       at  given  line	number.	  Menu	won't be closed automatically to allow
+       Selecting  file	(via Enter or l key) opens it in editor set by 'vicmd'
+       at given line number.  Menu won't  be  closed  automatically  to	 allow
        viewing more than one result.
 
        See above for "gf" and "e" keys description.
 
        Command-line history menu
 
-       Selecting an item executes it as command-line command, search query  or
+       Selecting  an item executes it as command-line command, search query or
        local filter.
 
-       c  leaves menu preserving file selection and inserts line into command-
+       c leaves menu preserving file selection and inserts line into  command-
        line of appropriate kind.
 
        Volumes menu
 
-       Selecting a drive navigates previously active pane to the root of  that
+       Selecting  a drive navigates previously active pane to the root of that
        drive.
 
        Fileinfo dialog
@@ -4478,43 +4708,59 @@ Menus and dialogs
 
        - X - means that it has different value for files in selection.
 
-       - d  (*nix only) - (only for execute flags) means u-x+X, g-x+X or o-x+X
-	 argument for the chmod program.  If you're not on OS X	 and  want  to
-	 remove	 execute  permission  bit  from all files, but preserve it for
+       - d (*nix only) - (only for execute flags) means u-x+X, g-x+X or	 o-x+X
+	 argument  for	the  chmod program.  If you're not on OS X and want to
+	 remove execute permission bit from all files,	but  preserve  it  for
 	 directories, set all execute flags to 'd' and check 'Set Recursively'
 	 flag.
+
+       Jobs menu
+
+       dd requests cancellation of job under cursor.  The job won't be removed
+       from  the list, but marked as being cancelled (if cancellation was suc-
+       cessfully requested).  A message will pop up if	the  job  has  already
+       stopped.	  Note	that on Windows cancelling external programs like this
+       might not work, because their parent shell doesn't have any windows.
+
+       e key displays errors of selected job if any were collected.  They  are
+       displayed  in a new menu, but you can get back to jobs menu by pressing
+       h.
+
 
 Custom views
        Definition
 
-       Normally	 file views contain list of files from a single directory, but
-       sometimes it's useful to populate them with list of files that  do  not
+       Normally file views contain list of files from a single directory,  but
+       sometimes  it's	useful to populate them with list of files that do not
        belong to the same directory, which is what custom views are for.
 
        Presentation
 
-       Custom  views are still related to directory they were in before custom
-       list was loaded.	 Path to that directory (original  directory)  can  be
+       Custom views are still related to directory they were in before	custom
+       list  was  loaded.   Path to that directory (original directory) can be
        seen in the title of a custom view.
 
        Files in same directory have to be named differently, this doesn't hold
        for custom views thus seeing just file names might be rather confusing.
        In order to give an idea where files come from and when possible, rela-
-       tive paths to original directory of the view  is	 displayed,  otherwise
+       tive  paths  to	original directory of the view is displayed, otherwise
        full path is used instead.
 
        Custom views normally don't contain any inexistent files.
 
        Navigation
 
-       Custom  views  have  some  differences related to navigation in regular
+       Custom views have some differences related  to  navigation  in  regular
        views.
 
-       gf - acts similar to gf on symbolic links and navigates to the file  at
+       gf  - acts similar to gf on symbolic links and navigates to the file at
        its real
 	    location.
 
-       h, gh - return to the original directory.
+       h - go to closes parent node in tree  view,  otherwise  return  to  the
+       original directory.
+
+       gh - return to the original directory.
 
        Opening ".." entry also causes return to the original directory.
 
@@ -4564,6 +4810,112 @@ Custom views
        On the other hand, operations that use files of	a  custom  view	 as  a
        source  (e.g. yanking, copying, moving file from custom view, deletion)
        and operations that modify names are all allowed.
+
+Compare views
+       Kinds
+
+       :compare can produce four different results depending on arguments:
+	- single compare view (ofone and either listall or listdups);
+	- single custom view (ofone and listunique);
+	- two compare views (ofboth and either listall or listdups);
+	- two custom views (ofboth and listunique).
+
+       The first two display files of one file system tree.   Here  duplicates
+       are  files that have at least one copy in the same tree.	 The other two
+       kinds of operation compare two trees, in	 which	duplicates  are	 files
+       that are found in both trees.
+
+       Lists of unique files are presented in custom views because there is no
+       file grouping to preserve as all file ids are  guaranteed  to  be  dis-
+       tinct.
+
+       Creation
+
+       Arguments  passed  to  :compare	form four categories each with its own
+       prefix and is responsible for particular property of operation.
+
+       Which files to compare:
+	- ofboth - compares files of two panes against each other;
+	- ofone	 - compares files of the same directory.
+
+       How files are compared:
+	- byname     - by their name only;
+	- bysize     - only by their size;
+	- bycontents - by combination of size and hash of file contents.
+
+       Which files to display:
+	- listall    - all files;
+	- listunique - unique files only;
+	- listdups   - only duplicated files.
+
+       How results are grouped (has no effect if "ofone" specified):
+	- groupids   - files considered identical are always adjacent in  out-
+       put;
+	-  grouppaths  -  file system ordering is preferred (this also enables
+       displaying identically named files as mismatches).
+
+       Which files to omit:
+	- skipempty - ignore empty files.
+
+       Each argument can appear multiple times, the rightmost one of the group
+       is considered.  Arguments alter default behaviour instead of substitut-
+       ing it.
+
+       Examples
+
+       The defaults corresponds to probably the most common use case  of  com-
+       paring  files in two trees with grouping by paths, so the following are
+       equivalent:
+
+	 :compare
+	 :compare bycontents grouppaths
+	 :compare bycontents listall ofboth grouppaths
+
+       Another use case is to find duplicates in the current sub-tree:
+
+	 :compare listdups ofone
+
+       The following command lists files that are unique to each pane:
+
+	 :compare listunique
+
+       Look
+
+       The view can't switch to ls-like view as it's unable to	display	 diff-
+       like data.
+
+       Comparison  views  have	second column displaying id of the file, files
+       with same id are considered to be equal.	 The view  columns  configura-
+       tion is predefined.
+
+       Behaviour
+
+       When  two  views	 are  being  compared against each other the following
+       changes to the regular behaviour apply:
+	- views are scrolled synchronously (as if 'scrollbind' was set);
+	- views' cursors are synchronized;
+	- local filtering is disabled (its results wouldn't be meaningful);
+	- zd excludes groups of adjacent identical files, 1zd gives usual  be-
+       haviour;
+	- sorting is permanently disabled (ordering is fixed);
+	- removed files hide their counter pairs;
+	- exiting one of the views terminates the other immediately;
+	- renaming files isn't blocked, but isn't taken into account and might
+       require regeneration of comparison;
+	- entries which indicate absence of equivalent file have  empty	 names
+       and can be matched as such;
+	-  when	 unique	 files	of  both  views are listed custom views can be
+       empty, this absence of unique files is stated clearly.
+
+       One compare view has similar properties (those that are applicable  for
+       single pane).
+
+       Files are gathered in this way:
+	- recursively starting at current location of the view;
+	-  dot files are excluded if view hides them at the moment of compari-
+       son;
+	- directories are not taken into account;
+	- symbolic links to directories are ignored.
 
 Startup
        On startup vifm determines several variables that are used  during  the
@@ -4747,6 +5099,8 @@ ls-like view
        like they do in Vim, since such operations would be uncommon  for  file
        manipulating  tasks.   Thus,  for  example, dd will remove only current
        file.
+
+       Note that tree-view and compare view inhibit ls-like view.
 
 Column view
        View columns are described by a comma-separated list of column descrip-
@@ -4979,6 +5333,20 @@ Client-Server
 	 vifm --remote ~
 	 vifm --remote /usr/bin /tmp
 
+       If there are several running instances, the  target  can	 be  specified
+       with  --server-name  option (otherwise, the first one lexicographically
+       is used):
+
+	 vifm --server-name work --remote ~/work/project
+
+       List of names of running instances can be  obtained  via	 --server-list
+       option.	Name of the current one is available via v:servername.
+
+
+       v:servername
+	      server  name  of	the  running  vifm instance.  Empty if client-
+	      server feature is disabled.
+
 Plugin
        Plugin for using vifm in vim as a file selector.
 
@@ -5062,4 +5430,4 @@ AUTHOR
 
 
 
-vifm 0.8.2			 July 16, 2016			       VIFM(1)
+vifm 0.9			 June 18, 2017			       VIFM(1)

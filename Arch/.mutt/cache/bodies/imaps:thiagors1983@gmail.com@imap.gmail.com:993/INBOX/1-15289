@@ -1,0 +1,220 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.150.194 with SMTP id y2csp2244046pje;
+        Tue, 27 Jun 2017 03:25:34 -0700 (PDT)
+X-Received: by 10.55.26.150 with SMTP id l22mr5040778qkh.4.1498559134337;
+        Tue, 27 Jun 2017 03:25:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498559134; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PkIRlxt/lBO/Vgc6sSfA+ktNLJvN5DUhZG6IKK1ubWxOtFjgi/SSz2Yb9JNB6O8kE5
+         GWpKd6JVnI5lpszA6i2drfklLWLuMpr/eHCUSjYE7oo6BQlCyfXjlV+WVmxbKp7AxrNt
+         BXULWlGVUZtheeXYZbIMFRO5iwitpBFArc9JAerfWbX2ok4WYGnGxyZJEdJEwWSuwu9A
+         efk7IqUJim0wG4N4yyS3lDyKiqZzgLVG6lO1hofqzIFrF/Q3QJtWB+4IM1LjtlgVxAvT
+         epX/ZjUcE1S6pORS44TSyFOiWzz2Pnkor1AoETzmjj+uWaH/dV/9Dyqm4NLivz4UKKE4
+         LYhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:list-id:mime-version:list-unsubscribe:date
+         :subject:to:from:dkim-signature:arc-authentication-results;
+        bh=RlaTG6VMil/bDnbtd6XWZfZrZq0y5YEXLQp9e5hXr8s=;
+        b=i/+NzYh1b5FBHQWsgJgDIdPOH7TIiDX0qXAPAzFj++pJ+ZqyxRQ4u1EJgmKVNlZduC
+         qexCc97QWw5dC2PaGW16IjlCWjkCJaFbruQY50kCRB3+FJB/t7sxk7Vh+OwZF1L5X+KJ
+         LTNK/Cqi7jRf1lP6S2PwJECg0ElueJak8UU5EK/IwSLhg1Vp/UCy7xi4LNlHYl6AdEC8
+         TyBsRxMfssHHLcj4U2FRGco6eQKhPQ9d9VE7aYjuFvoau/jb9dJZHw6os7HYE7iWTD5L
+         Z32mHVOqxzSghm4zyVktPQygz7RH5Az9oWhWXFXlCW7k6uS+GQUFpYts+t0+Z7dp/vkm
+         5J7Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@info.zattini.com.br header.b=MK1a1QHc;
+       spf=pass (google.com: domain of bounce-16_html-14468296-68756-1430015-1281@bounce.info.zattini.com.br designates 68.232.198.221 as permitted sender) smtp.mailfrom=bounce-16_HTML-14468296-68756-1430015-1281@bounce.info.zattini.com.br;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=zattini.com.br
+Return-Path: <bounce-16_HTML-14468296-68756-1430015-1281@bounce.info.zattini.com.br>
+Received: from mta4.info.zattini.com.br (mta4.info.zattini.com.br. [68.232.198.221])
+        by mx.google.com with ESMTPS id c33si2403121qte.236.2017.06.27.03.25.33
+        for <thiagors1983@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Jun 2017 03:25:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-16_html-14468296-68756-1430015-1281@bounce.info.zattini.com.br designates 68.232.198.221 as permitted sender) client-ip=68.232.198.221;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@info.zattini.com.br header.b=MK1a1QHc;
+       spf=pass (google.com: domain of bounce-16_html-14468296-68756-1430015-1281@bounce.info.zattini.com.br designates 68.232.198.221 as permitted sender) smtp.mailfrom=bounce-16_HTML-14468296-68756-1430015-1281@bounce.info.zattini.com.br;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=zattini.com.br
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=200608; d=info.zattini.com.br;
+ h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:List-ID:Message-ID:Content-Type; i=zattini@info.zattini.com.br;
+ bh=utr2Xqf4JGDbk86B5ka9C4RJwLY=;
+ b=MK1a1QHcLNJeULgjZxj7VqHhk3mtM2T6i8X7rOsOOdGf+0+D5yowpRqxW4TmLCdyHidHeCmFrfEC
+   nsOZ+wsLR6RJuEEybX+jVsMR+bKNxSj+3f3lBrrBRK/E2X4aX8k6NiI2lgX/VuHbnvm4s+XkSwiS
+   fWNCQCFuMJUeiXDqXcc=
+Received: by mta4.info.zattini.com.br id ha8p9s163hsm for <thiagors1983@gmail.com>; Tue, 27 Jun 2017 04:08:19 -0600 (envelope-from <bounce-16_HTML-14468296-68756-1430015-1281@bounce.info.zattini.com.br>)
+From: "Zattini" <zattini@info.zattini.com.br>
+To: <thiagors1983@gmail.com>
+Subject: =?UTF-8?Q?Oba!_TOP_marcas_pela_metade_do_pre=C3=A7o!?=
+Date: Tue, 27 Jun 2017 04:08:19 -0600
+List-Unsubscribe: <mailto:leave-fd8415761a3c402029-fe57157471620c7f7c12-feef1278726102-fea115747664047c70-ff3315727d65@leave.info.zattini.com.br>
+MIME-Version: 1.0
+List-ID: <1430015_68756.xt.local>
+X-CSA-Complaints: whitelistcomplaints@eco.de
+x-job: 1430015_68756
+Message-ID: <bf4ec845-f182-4c01-a5ba-32098f6dd4c7@xtnvmta1103.xt.local>
+Feedback-ID: 1430015:68756:68.232.198.221:sfmktgcld
+Content-Type: multipart/alternative;
+	boundary="Id4NyAbhKiy5=_?:"
+
+This is a multi-part message in MIME format.
+
+--Id4NyAbhKiy5=_?:
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Zattini.com.br
+  
+ 
+
+
+
+
+ Caso não consiga visualizar, 
+ 
+http://view.info.zattini.com.br/?qs=5c3a40909d6fb91cbbbd055b686531441d859ba645a163db844ea64fac882b4d46f76f017fb602616673e7b3a50957526ed68deeebb7d0756e23f57dd9b3aa25948747945d4bc870 
+acesse este link
+
+ Adicione 
+ 
+mailto:zattini@info.zattini.com.br 
+zattini@info.zattini.com.br  ao seus contatos
+ 
+
+ 
+ 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb91258c8e2bdfcdc3d09ea7f442c4ae582f5356cf195dc28283459201c994991d842845a0290c7515ec7247ab0e991aa0a50d70a6070caf0b42a4 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125aa6a9fe357d3bc6106c68ea856fc8360d6f38aec8afc6fc1b5af4c18c098fa7df5ca69b665d978658aeec11673dc44a8ee47fa5f0455a924 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb91250f96cee403fd535c549ec63a7fee3d42614554e43cb15ebe990bbb889a2b904fa4a41f4f1e264714f7b5805c39abb79a8d81f451973d9096 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb91257bfc6ce98f600bbc7604dda2b9a92fd5e25a9648b5f9afb8508b2d78eeebf4e02b08c61e9f52f99836a525dad6a6cfa4bac0cd078daaba87 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb91257f067fee629fca3c55489b520dcdbde4672ac5831915e98549a56ce45a9fb642959fa0419ae11bdca99bc1758c0e0eca3593807f486be21e 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125d81069c5e43825edd1aeb34d0c79dac6a3bd874e0074d8be632719f608a769c5f8ab7f0e6cb8da55258e5b4303f601c6aa4acdb9683c3eab 
+
+ 
+ 
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125024b42f2fffcabb0ed2aedf56dea4c1b2d09d7b7322b6f850558bd3d4f8a58bc7327c18b275d32e954a2cd8472b2c21e1e241e09253fdd7d 
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb91251b2aaa2f99f393f99cc11f53541ef305f7fcc939ec63d1326a58d96645714a6988b2de25704a806f14bf9573214d143604479d508658570a 
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125d792a1726fc14cc449ab3b344011efd7b0b23ea373a315ca750575c153fa8254f76525a10e97e9e506aff45361e72a49bc10c2a342a2d345 
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb91254eb5f0ee14364cd0646fc0eee682e37328a3691ce4b7f75bd352ad909ad5c36045df6759685ac1bf32c806927eaeb30d162f5c5cd7841455 
+
+
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125644c0c0c7f0d50fc4aa54d20224fdbc13aefcec0b48a324ef64669a5063f3fb526c7d049cc8046210fbe972bdcd40ab15b0054e48216ed0a 
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125bf74a7452b0b4053ce2c6ee8a60beaea2e793fb56784e26b443fe64165d9b3b50ef457c14446c0fb165d1d5dad15e2fb43428cbb07d56ee5 
+
+
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb912527fcc1c5641d38beeea850ef9b47b6c5bf7c9fdcd81bb3c1c3ab0357a52bf7fc13edaf283117deb77e04a70bd6bd3701 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125b7704124f1d418e7b7842eda52a46e23f914eed676c9009211564f1bd83e79ec20cf8a905f8ad99f4a1145c35237fd11 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125bebcbfbf50719b043deccdf211c3fc0e8135af09753948a613f9b41d9e6cbcf9b013a9244f636f028e8d96fc1624d758 
+
+http://click.info.zattini.com.br/?qs=e361aae02bcb912520322455ef5575001646846707a88797984dba6c0d5f55efbbef3d3f678ff7922ac0171706f2aa2fe2592e485c648b85 
+
+A newsletter é um serviço prestado a você pela Zattini, para lhe manter informado das melhores ofertas e seleção de produtos. Adicione o endereço 
+ 
+mailto:zattini@info.zattini.com.br 
+zattini@info.zattini.com.br  à sua lista de contatos para nossas mensagens serem direcionadas à caixa principal. 
+ Esse e-mail foi enviado para 
+ 
+mailto:thiagors1983@gmail.com&ET_USER_ID=306C9AE045B49598195FE87535046CB4 
+thiagors1983@gmail.com  endereço fornecido no ato do cadastramento.
+ 
+ As ofertas anunciadas neste e-mail são válidas até 27/06/2017, ou enquanto durarem os estoques.
+ Preços e condições
+ Preços e condições válidos somente para compra por meio desta mensagem. Caso haja diferença de preço ou descrição do produto entre este e-mail e o site, a condição válida e praticada será a do site. Compras feitas com cartões podem ser parceladas em até 10x sem juros, respeitando-se o valor da parcela mínima de R$ 40,00.
+ Promoções
+ As promoções da Zattini não são cumulativas. As promoções classificadas como “Só Hoje” são válidas somente na data de disparo do e-mail. Trata-se de um aviso informativo, não significa que você está comprando este produto nem tenha feito uma reserva de compra deste item. As imagens encontradas no e-mail são meramente ilustrativas.
+ 
+ Para esclarecer dúvidas ou enviar sugestões, acesse nossa 
+ 
+http://click.info.zattini.com.br/?qs=e361aae02bcb9125e42930250723f86570da492a8476ad91de7548e36cf68cf8e066abf2d11d03a06964a4d966b0f3161257e40682469b9ddee9cb3bee422565 
+Central de Relacionamento .
+ 
+ Nosso endereço é Rua Vergueiro, 943 - Liberdade - CEP 01504-000 - São Paulo - SP – Brasil
+ 
+
+Não deseja mais receber nossas mensagens? 
+ 
+http://click.info.zattini.com.br/subscription_center.aspx?qs=7c8d80735c175c87a77c5ddf2e961c1068eaecfa138548ea203dd782ac9c8a6c7c5d3fddd502c2207c06eb48975f3ac032837b7513ee30c0 
+Acesse este link .
+ 
+
+
+
+--Id4NyAbhKiy5=_?:
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Zattini.com.br
+    </title></head><body><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Colcci, Cavalera, Ellus, vem ver!</div><table width="100%" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" align="center"><img src="http://click.info.zattini.com.br/open.aspx?ffcb10-feef1278726102-fe5b157471630c797316-fea115747664047c70-ff981576-fe57157471620c7f7c12-ff3315727d65" width="1" height="1"><img src="http://pixel.monitor1.returnpath.net/pixel.gif?r=57af32516d812f52242cfba0e294326d591d49a2&s=[EMAIL]&c=[JOBID]&t=news&cat=zattini" width="1" height="1" /><!--   --><tr><td><table align="center" border="0" cellpadding="0" width="560" cellspacing="0"><tr><td><!-- CONFIGURACAO DE CAMPAIGN --><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><!--  --></td></tr></tbody></table>
+<table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><!--  --></td></tr></tbody></table><!-- CONFIGURACAO DE CAMPAIGN --><!-- /******************************************* TAGUEAMENTO AUTOMATICO DOS LINKS *******************************************/  /******************************************* TAGUEAMENTO AUTOMATICO DOS LINKS *******************************************/ --><table class="header" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 560px; font-family: 'trebuchet ms', sans-serif;"><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;">&nbsp;
+                      </td></tr><tr><td class="username-holder" style="border-collapse: collapse; font-family: 'trebuchet ms', sans-serif;"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; display: inline; font-family: 'trebuchet ms', sans-serif;"><strong></strong></p></td><td class="info-holder" style="border-collapse: collapse; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right"><p style="margin: 0; padding: 0; margin-bottom: 0; font-size: 11px; line-height: 11px; display: inline; font-family: 'trebuchet ms', sans-serif;">
+                          Caso não consiga visualizar, 
+                          <a href="http://view.info.zattini.com.br/?qs=5c3a40909d6fb91cbbbd055b686531441d859ba645a163db844ea64fac882b4d46f76f017fb602616673e7b3a50957526ed68deeebb7d0756e23f57dd9b3aa25948747945d4bc870" style="color: #000000; text-decoration: none;"><strong>acesse este link</strong></a><br>
+                          Adicione 
+                          <a href="mailto:zattini@info.zattini.com.br" style="color: #000000; text-decoration: none;">zattini@info.zattini.com.br</a> ao seus contatos
+                        </p></td></tr></table><table class="header" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 560px; font-family: 'trebuchet ms', sans-serif;"><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;">&nbsp;
+                      </td></tr><tr><td class="column" align="left" style="border-collapse: collapse; padding: 0; font-family: 'trebuchet ms', sans-serif;"><a class="brand" href="http://click.info.zattini.com.br/?qs=e361aae02bcb91258c8e2bdfcdc3d09ea7f442c4ae582f5356cf195dc28283459201c994991d842845a0290c7515ec7247ab0e991aa0a50d70a6070caf0b42a4" target="_blank" style="color: #000000; text-decoration: none; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;"><img src="http://imgemail.zattini.com.br/responsivo/img_v5/01_zattini.jpg" alt="Zattini" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td>
+<td class="column" align="right" style="border-collapse: collapse; padding: 0 ; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right"><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125aa6a9fe357d3bc6106c68ea856fc8360d6f38aec8afc6fc1b5af4c18c098fa7df5ca69b665d978658aeec11673dc44a8ee47fa5f0455a924" class="item" target="_blank" style="color: #000000; text-decoration: none; display: inline-block; vertical-align: middle;"><img src="http://imgemail.zattini.com.br/responsivo/img_v5/02_mulheres.jpg" alt="Mulheres" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="column" align="right" style="border-collapse: collapse; padding: 0 ; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right">
+<a href="http://click.info.zattini.com.br/?qs=e361aae02bcb91250f96cee403fd535c549ec63a7fee3d42614554e43cb15ebe990bbb889a2b904fa4a41f4f1e264714f7b5805c39abb79a8d81f451973d9096" class="item" target="_blank" style="color: #000000; text-decoration: none; display: inline-block; vertical-align: middle;"><img src="http://imgemail.zattini.com.br/responsivo/img_v5/03_homens.jpg" alt="Homens" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="column" align="right" style="border-collapse: collapse; padding: 0 ; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right">
+<a href="http://click.info.zattini.com.br/?qs=e361aae02bcb91257bfc6ce98f600bbc7604dda2b9a92fd5e25a9648b5f9afb8508b2d78eeebf4e02b08c61e9f52f99836a525dad6a6cfa4bac0cd078daaba87" class="item" target="_blank" style="color: #000000; text-decoration: none; display: inline-block; vertical-align: middle;"><img src="http://imgemail.zattini.com.br/responsivo/img_v5/04_criancas.jpg" alt="Infantil" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="column" align="right" style="border-collapse: collapse; padding: 0 ; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right">
+<a href="http://click.info.zattini.com.br/?qs=e361aae02bcb91257f067fee629fca3c55489b520dcdbde4672ac5831915e98549a56ce45a9fb642959fa0419ae11bdca99bc1758c0e0eca3593807f486be21e" class="item" target="_blank" style="color: #000000; text-decoration: none; display: inline-block; vertical-align: middle;"><img src="http://imgemail.zattini.com.br/responsivo/img_v5/05_outlet.jpg" alt="Outlet" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td><td class="column" align="right" style="border-collapse: collapse; padding: 0 ; text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right">
+<a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125d81069c5e43825edd1aeb34d0c79dac6a3bd874e0074d8be632719f608a769c5f8ab7f0e6cb8da55258e5b4303f601c6aa4acdb9683c3eab" class="item" target="_blank" style="color: #000000; text-decoration: none; display: inline-block; vertical-align: middle"><img src="http://imgemail.zattini.com.br/responsivo/img_v5/06_beleza.jpg" alt="Beleza" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; border: none;"></a></td></tr><tr><td class="space" colspan="2" style="border-collapse: collapse; font-size: 0; height: 20px; font-family: 'trebuchet ms', sans-serif;">&nbsp;
+                      </td></tr></table><!--HEADER--></td></tr></table></td></tr><table align="center" border="0" cellpadding="0" width="560" cellspacing="0"><tr><td><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tr><td><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125024b42f2fffcabb0ed2aedf56dea4c1b2d09d7b7322b6f850558bd3d4f8a58bc7327c18b275d32e954a2cd8472b2c21e1e241e09253fdd7d" title=""   data-linkto="http://"><img data-assetid="620" src="http://imgemail.zattini.com.br/2017/20170627/news_masc/img/01.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style="">
+<tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb91251b2aaa2f99f393f99cc11f53541ef305f7fcc939ec63d1326a58d96645714a6988b2de25704a806f14bf9573214d143604479d508658570a" title=""   data-linkto="http://"><img data-assetid="620" src="http://imgemail.zattini.com.br/2017/20170627/news_masc/img/02.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style="margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px; "><tbody><tr><td class="stylingblock-content-wrapper camarker-inner" style="padding-top: 0px;padding-right: 7px;padding-bottom: 0px;padding-left: 7px;">
+<table cellspacing="0" cellpadding="0" style="width: 100%;"><tbody><tr><td><table cellspacing="0" cellpadding="0" style="width: 100%;"><tbody><tr><td class="responsive-td" valign="top" style="width: 50%; padding-right: 0px;"><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125d792a1726fc14cc449ab3b344011efd7b0b23ea373a315ca750575c153fa8254f76525a10e97e9e506aff45361e72a49bc10c2a342a2d345" title=""   data-linkto="http://"><img data-assetid="620" src="http://imgemail.zattini.com.br/2017/20170627/news_masc/img/03.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table></td>
+<td class="responsive-td" valign="top" style="width: 50%; padding-left: 0px;"><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb91254eb5f0ee14364cd0646fc0eee682e37328a3691ce4b7f75bd352ad909ad5c36045df6759685ac1bf32c806927eaeb30d162f5c5cd7841455" title=""   data-linkto="http://"><img data-assetid="620" src="http://imgemail.zattini.com.br/2017/20170627/news_masc/img/04.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody>
+</table></td></tr></tbody></table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125644c0c0c7f0d50fc4aa54d20224fdbc13aefcec0b48a324ef64669a5063f3fb526c7d049cc8046210fbe972bdcd40ab15b0054e48216ed0a" title=""   data-linkto="http://"><img data-assetid="620" src="http://imgemail.zattini.com.br/2017/20170627/news_masc/img/05.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody></table><table cellpadding="0" cellspacing="0" width="100%" class="stylingblock-content-wrapper" style=""><tbody><tr><td class="stylingblock-content-wrapper camarker-inner">
+<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125bf74a7452b0b4053ce2c6ee8a60beaea2e793fb56784e26b443fe64165d9b3b50ef457c14446c0fb165d1d5dad15e2fb43428cbb07d56ee5" title=""   data-linkto="http://"><img data-assetid="626" src="http://imgemail.zattini.com.br/2017/20170627/news_masc/img/06.jpg" height="auto" width="100%" style="height:auto;width:100%;display: block;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"></a></td></tr></tbody></table></td></tr></tbody>
+</table></td></tr></table><table align="center" border="0" cellpadding="0" width="560" cellspacing="0"><tr><td class="column" style="border-collapse: collapse;  text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right" valign="top"><img src="http://imgemail.zattini.com.br/responsivo/img_v3/01.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block; width: 100%;"/></td></tr></table><table  align="center" border="0" cellpadding="0" width="560" cellspacing="0"><tr>
+<td class="column" style="border-collapse: collapse;  text-align: right; font-family: 'trebuchet ms', sans-serif;" align="right" valign="middle"><img class="marginauto imagemcem" src="http://imgemail.zattini.com.br/responsivo/img_v6/02.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block; width:100%"/></td></tr></table><tr><td><table  align="center" border="0" cellpadding="0" width="560" cellspacing="0" bgcolor="#090909"><tr><td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle">
+<img src="http://imgemail.zattini.com.br/responsivo/img_v3/03.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;width:100%"/></td><td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle"><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb912527fcc1c5641d38beeea850ef9b47b6c5bf7c9fdcd81bb3c1c3ab0357a52bf7fc13edaf283117deb77e04a70bd6bd3701"><img src="http://imgemail.zattini.com.br/responsivo/img_v3/04.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;width:100%"/></a></td>
+<td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle"><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125b7704124f1d418e7b7842eda52a46e23f914eed676c9009211564f1bd83e79ec20cf8a905f8ad99f4a1145c35237fd11"><img src="http://imgemail.zattini.com.br/responsivo/img_v3/05.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;width:100%"/></a></td><td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle"><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125bebcbfbf50719b043deccdf211c3fc0e8135af09753948a613f9b41d9e6cbcf9b013a9244f636f028e8d96fc1624d758">
+<img src="http://imgemail.zattini.com.br/responsivo/img_v3/06.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;width:100%"/></a></td><td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle"><a href="http://click.info.zattini.com.br/?qs=e361aae02bcb912520322455ef5575001646846707a88797984dba6c0d5f55efbbef3d3f678ff7922ac0171706f2aa2fe2592e485c648b85"><img src="http://imgemail.zattini.com.br/responsivo/img_v3/07.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;width:100%"/></a></td>
+<td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle"><img src="http://imgemail.zattini.com.br/responsivo/img_v3/08.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;width:100%"/></td></tr></table><table  align="center" border="0" cellpadding="0" width="560" cellspacing="0" bgcolor="#090909"><tr><td class="column" style="border-collapse: collapse;   font-family: 'trebuchet ms', sans-serif;" align="center" valign="middle">
+<img src="http://imgemail.zattini.com.br/responsivo/img_v3/09.jpg" alt="" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"/></td></tr></table></td></tr><tr><td><table border="0" width="560" bgcolor="#ffffff" cellpadding="0" cellspacing="0" align="center"><tr><td width="10"   bgcolor="#ffffff" align="center"></td><td align="center"><font face="Trebuchet MS, Helvetica,sans-serif" size="2" color="#6a6a6a"><br/>A newsletter é um serviço prestado a você pela Zattini, para lhe manter informado das melhores ofertas e seleção de produtos. Adicione o endereço 
+                    <a style="text-decoration:underline; color:#000000" href="mailto:zattini@info.zattini.com.br">zattini@info.zattini.com.br</a> à sua lista de contatos para nossas mensagens serem direcionadas à caixa principal. 
+                    Esse e-mail foi enviado para 
+                    <a style="text-decoration:none; color:gray" href="mailto:thiagors1983@gmail.com&ET_USER_ID=306C9AE045B49598195FE87535046CB4" >thiagors1983@gmail.com</a> endereço fornecido no ato do cadastramento.
+                    <br/><br/>
+                    As ofertas anunciadas neste e-mail são válidas até 27/06/2017, ou enquanto durarem os estoques.
+                    <br/><br/><strong>Preços e condições</strong><br/>
+                    Preços e condições válidos somente para compra por meio desta mensagem. Caso haja diferença de preço ou descrição do produto entre este e-mail e o site, a condição válida e praticada será a do site. Compras feitas com cartões podem ser parceladas em até 10x sem juros, respeitando-se o valor da parcela mínima de R$ 40,00.
+                    <br/><br/><strong>Promoções</strong><br/>
+                    As promoções da Zattini não são cumulativas. As promoções classificadas como “Só Hoje” são válidas somente na data de disparo do e-mail. Trata-se de um aviso informativo, não significa que você está comprando este produto nem tenha feito uma reserva de compra deste item. As imagens encontradas no e-mail são meramente ilustrativas.
+                    <br/><br/>
+                    Para esclarecer dúvidas ou enviar sugestões, acesse nossa 
+                    <a style="text-decoration:underline; color:gray" href="http://click.info.zattini.com.br/?qs=e361aae02bcb9125e42930250723f86570da492a8476ad91de7548e36cf68cf8e066abf2d11d03a06964a4d966b0f3161257e40682469b9ddee9cb3bee422565"  target="_blank">Central de Relacionamento</a>.
+                    <br/><br/>
+                    Nosso endereço é Rua Vergueiro, 943 - Liberdade - CEP 01504-000 - São Paulo - SP – Brasil
+                    <br/><br/></font></td><td width="10"   bgcolor="#ffffff" align="right"></td></tr></table></td></tr><tr><td><table border="0" width="560" bgcolor="#ffffff" cellpadding="0" cellspacing="0" align="center"><tr><td width="10"   bgcolor="#ffffff" align="left"></td><td  align="center"><font face="Trebuchet MS, Helvetica,sans-serif" size="2" color="#000000"><br/>Não deseja mais receber nossas mensagens? 
+                    <a style="text-decoration:underline; color:#000000" href="http://click.info.zattini.com.br/subscription_center.aspx?qs=7c8d80735c175c87a77c5ddf2e961c1068eaecfa138548ea203dd782ac9c8a6c7c5d3fddd502c2207c06eb48975f3ac032837b7513ee30c0"  target="_blank">Acesse este link</a>.
+                  </font></td><td width="10"   bgcolor="#ffffff" align="right"></td></tr></table></td></tr></table></body></html>
+
+--Id4NyAbhKiy5=_?:--
+

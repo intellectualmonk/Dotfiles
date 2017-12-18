@@ -1,0 +1,196 @@
+Delivered-To: thiagors1983@gmail.com
+Received: by 10.100.134.2 with SMTP id j2csp43241pjj;
+        Fri, 15 Dec 2017 14:54:09 -0800 (PST)
+X-Received: by 10.36.178.78 with SMTP id h14mr9905710iti.107.1513378449733;
+        Fri, 15 Dec 2017 14:54:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1513378449; cv=none;
+        d=google.com; s=arc-20160816;
+        b=cY0y+V6mJZe2v2U6vnrcukqhTz7RYjqQNqA3GtQdkZzmFx4kH6FlqZjbSTkGRxKTkS
+         0zhPUA2K4klJGqkjfTVQsT9E8hX48qYAVUF45TguSscKz4iFDLVnRzvVVXNK4l5uRmUG
+         MeLQvT7PxGBhSqSSHUWrxZpzJUsNtCaw2R+oDnUyfXua7/qAnjG1TL4N7poDxxQl24g0
+         Eup+RT6nTFFyIsf19tP1xc+vMqPr79C4bNfyLcZKopuTg7ElTUN6goXRA+T7izRfWSp9
+         KHbfdjXqBxYoAprQLR5wIRdmQvwWlkp2+thERktpD1kiNmo9DZbuJDVWGoFH0QGiLsyz
+         nK1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:precedence:list-unsubscribe:reply-to
+         :date:mime-version:dkim-signature:arc-authentication-results;
+        bh=ji5ryy92jRrnTg2FkSOB0Lj2CLaQArTUQeYTM/kPTno=;
+        b=qOmXrbyjJl+y+Elzp7a7uAb/qjzCjoJ03oK3RMFQPBrMVONfPvKaEplgkNBhigM5UF
+         QUSweDPQ5dfFTV+ceNmcFBQD9Uq0RBPnw7pZFopYhZB1lS9FuJw0geoW1mSv/pBgxP6m
+         A6UKOllRbi4Ycz2SZreCe4Bc0t+pFyk2Z9u1JpZEltXepXYPFJ3ufI79tGWvNhke90lw
+         o/pNDexJQgs/iT0A9vtp4v4wRPIjpb3+1Gv0fepYDl8ywOZtj5m1sGoGja7lQqXqC+1u
+         jAohHAbvanlaoxAhG+xl236lOEEa9YFKdxflujYPb4U+YkUu2di5UFzI9Wu+//aKqTmR
+         Mw8Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=l5krcgFb;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+Return-Path: <noreply-ec0dd@plus.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id c16sor4063962ioc.52.2017.12.15.14.54.09
+        for <thiagors1983@gmail.com>
+        (Google Transport Security);
+        Fri, 15 Dec 2017 14:54:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@plus.google.com header.s=20160623 header.b=l5krcgFb;
+       spf=pass (google.com: domain of noreply-ec0dd@plus.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=noreply-ec0dd@plus.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=plus.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=plus.google.com; s=20160623;
+        h=mime-version:date:reply-to:list-unsubscribe:precedence:message-id
+         :subject:from:to;
+        bh=ji5ryy92jRrnTg2FkSOB0Lj2CLaQArTUQeYTM/kPTno=;
+        b=l5krcgFb8hq/bSa94S1ARXjpS5rbOlROdRqFD+e3JZshhO996wrAkRwWr8yHi8k2/V
+         4bIcGPQH8mQPo34aVlt0ibAykliNAhAEzOIkqCNTbBShINUuSuBvlBJMHS3h3lAKq2Nc
+         KabFDdfliQOlbl9rOqL5BVehWYZ7bP0mke03jRq2Sgw46Fer2jC00vogRjwTuZaM2Wja
+         X3q9FdNcsx6YhJYyecuVgNmTo05k9Kn6Ebr2+Kk8MpCCqAztEE8IIMM5890v4k7JCFzC
+         aN6K37xugrqsqhTi4WMNCXuiO2qfixEL84/piOz8bBeebEYqOdXyMomkYmncCsvGu/8L
+         bpig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:list-unsubscribe
+         :precedence:message-id:subject:from:to;
+        bh=ji5ryy92jRrnTg2FkSOB0Lj2CLaQArTUQeYTM/kPTno=;
+        b=JG+63awSHkmHocfmq7bjwJYGQ9Aa124r7ctW8WqomLK2kxvglTFXaTIs9s66BStsHq
+         dVn5GI5dX8+55GNCIMHEuJk6jtEiNIDue7mEOtrTFBkAIUf8sHv+4rUNGEZYXJBfBzcA
+         EYrRFjPoazoJTww3QDbXK4Hg8zM26Gv+yhbXsQsSBqb+hYR84OeDTesrB1ftXKNmV3Y2
+         xvGv12ffojZJvyEK09E0pZEPmEoURnh0+ypO+7HmDCx17MKzRkvkD8flsh3WZbnGElZf
+         R9l0Fph/PvjhdckECqwe+cVAPQ0XQvmMVy0BGsOioUGx97LOtjZd4+4VxpyYWMdlekMw
+         9Efw==
+X-Gm-Message-State: AKGB3mIko0uSxuWPRHgTmTPe2hWCm6eol4sGZm4CIPQ/EM7xLJCQUyUC
+	537FaKvVbka/NsQqpscjruCMemfxDishxdMAdPY52WgkuoMKTkpqaRrhWLgI
+X-Google-Smtp-Source: ACJfBotPxrrN2mcCexeeLNGq+6nsmpeGbeixg7QiUQzUyfhQhgRkum3yzrFMYgVEyPtMKvbXv8hhuzBGKWH14NszD88P2HhQ7QhrvtFveOZyJpSq
+MIME-Version: 1.0
+X-Received: by 10.107.162.142 with SMTP id l136mr7730412ioe.16.1513378448941;
+ Fri, 15 Dec 2017 14:54:08 -0800 (PST)
+Date: Fri, 15 Dec 2017 14:54:08 -0800 (PST)
+X-Notifications: XEAAAACTI_Usp3w_WN6UbvLRKhA0
+X-Notification-ID: g:ChFncGx1c19jb21tdW5pdGllcxoVMTEwMDc1ODE1MTIzNjM1MzAwNTY5MiZhOlNRVUFSRV9TVUJTQ1JJUFRJT046MmE2MTkxNzc3ODg0MmZiZA
+X-Entity-Ref-ID: z133yljzmn3zczcqn04cclyq3ujszvi5uk00k
+X-Notification-Type: SQUARE_SUBSCRIPTION
+X-Sender-ID: 112358751535127362228
+Reply-To: "Google+ (Jose Mena)" <noreply-ec0dd@plus.google.com>
+X-Notification-Category: SQUARE
+List-Unsubscribe: <https://notifications.google.com/unsubscribe/AJ7SsMlSBpXfQeDpWLMWQYIj17BODUoymMENlZaho57ZbeI6wysQHEVAzFtzNtZAbsh7FWCAeJYdO6O5OkjLoBgEGacKAPj7SslWc8R8ADVyVsLtxr0JMX3WyZ4od_TPiL6nYY37nOF8IqXWHva-1axMUaz7MiVSGKRajeLedm_BRcJpclvIM5g>
+X-UB: 63
+Precedence: bulk
+Message-ID: <-1585596723@plus.google.com>
+Subject: [Usemos Linux] HOLA A TODOS LES HAGO UNA CONSULTA ALGUIEN...
+From: "Google+ (Jose Mena)" <noreply-ec0dd@plus.google.com>
+To: thiagors1983@gmail.com
+Content-Type: multipart/alternative; boundary="001a1140f578dc2346056068e092"
+
+--001a1140f578dc2346056068e092
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+Sm9zZSBNZW5hIGNvbXBhcnRpbGhvdSB1bWEgcG9zdGFnZW0gY29tIFVzZW1vcyBMaW51eC4gVmVq
+YTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9
+MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DUENJOElhT2pkZ0NGVUlCQWdvZC1fTUt3QSZwYXRo
+PSUyRjExMjM1ODc1MTUzNTEyNzM2MjIyOCUyRnBvc3RzJTJGY0xZd1RNMURrQlEmZHQ9MTUxMzM3
+ODQ0ODg0MiZ1Yj1TUVVBUkVfU1VCU0NSSVBUSU9OICANClZvY8OqIHJlY2ViZXUgZXN0ZSBlLW1h
+aWwgcG9ycXVlIHNlIGluc2NyZXZldSBubyBVc2Vtb3MgTGludXggbm8gR29vZ2xlKy4gIA0KVXNl
+bW9zIExpbnV4ICANCmh0dHBzOi8vcGx1cy5nb29nbGUuY29tL18vbm90aWZpY2F0aW9ucy9lbWxp
+bms/ZW1yPTA1MTUyODAzMzEzODg1OTcxNTMyJmVtaWQ9Q1BDSThJYU9qZGdDRlVJQkFnb2QtX01L
+d0EmcGF0aD0lMkZjb21tdW5pdGllcyUyRjExMDA3NTgxNTEyMzYzNTMwMDU2OSZkdD0xNTEzMzc4
+NDQ4ODQyJnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+IEFsdGVyZSBxdWFpcyBub3RpZmljYcOnw7VlcyB2b2PDqiByZWNlYmUgZGVzdGEgIA0KY29tdW5p
+ZGFkZTogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vXy9ub3RpZmljYXRpb25zL2VtbGluaz9l
+bXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DUENJOElhT2pkZ0NGVUlCQWdvZC1fTUt3QSZw
+YXRoPSUyRmNvbW11bml0aWVzJTJGMTEwMDc1ODE1MTIzNjM1MzAwNTY5JTNGcHJvbW8lM0Rub3Rp
+ZmljYXRpb25zJmR0PTE1MTMzNzg0NDg4NDImdWI9U1FVQVJFX1NVQlNDUklQVElPTiAgDQpFc3Rh
+IG5vdGlmaWNhw6fDo28gZm9pIGVudmlhZGEgcGFyYSB0aGlhZ29yczE5ODNAZ21haWwuY29tLiBB
+Y2Vzc2Ugc3VhcyAgDQpjb25maWd1cmHDp8O1ZXMgZGUgZW52aW8gZGUgbm90aWZpY2HDp8O1ZXMg
+cGFyYSBhdHVhbGl6YXIgc2V1IGVuZGVyZcOnbzogIA0KaHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20v
+Xy9ub3RpZmljYXRpb25zL2VtbGluaz9lbXI9MDUxNTI4MDMzMTM4ODU5NzE1MzImZW1pZD1DUENJ
+OElhT2pkZ0NGVUlCQWdvZC1fTUt3QSZwYXRoPSUyRnNldHRpbmdzJTJGcGx1cyZkdD0xNTEzMzc4
+NDQ4ODQyJnViPVNRVUFSRV9TVUJTQ1JJUFRJT04gIA0KQ2FuY2VsYXIgaW5zY3Jpw6fDo28gZGVz
+c2VzIGUtbWFpbHM6ICANCmh0dHBzOi8vbm90aWZpY2F0aW9ucy5nb29nbGUuY29tL3Vuc3Vic2Ny
+aWJlL0FKN1NzTWxTQnBYZlFlRHBXTE1XUVlJajE3Qk9EVW95bU1FTmxaYWhvNTdaYmVJNnd5c1FI
+RVZBekZ0ek50WkFic2g3RldDQWVKWWRPNk81T2tqTG9CZ0VHYWNLQVBqN1NzbFdjOFI4QURWeVZz
+THR4cjBKTVgzV3laNG9kX1RQaUw2bllZMzduT0Y4SXFYV0h2YS0xYXhNVWF6N01pVlNHS1JhamVM
+ZWRtX0JSY0pwY2x2SU01Zw0KDQo=
+--001a1140f578dc2346056068e092
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr"><body><!-- X-Notifications: 1:083f2559d5400000 --><div st=
+yle=3D"border-radius:5px;border:solid 1px #dfdfdf;font-family:Arial;word-wr=
+ap:break-word;width:670px"><table cellpadding=3D0 cellspacing=3D0 style=3D"=
+background-color:#ededed; border-radius:5px 5px 0 0;width:670px"><tr><td><d=
+iv style=3D"padding:30px 30px 0;font-size:20px">Jose Mena compartilhou uma =
+<a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152803313=
+885971532&amp;emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&amp;path=3D%2F1123587515351=
+27362228%2Fposts%2FcLYwTM1DkBQ&amp;dt=3D1513378448842&amp;ub=3DSQUARE_SUBSC=
+RIPTION" style=3D"color:#3366CC;text-decoration:none">postagem</a> com <a h=
+ref=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859=
+71532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2Fcommunities%2F11007581512=
+3635300569&dt=3D1513378448842&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#336=
+6CC;text-decoration:none">Usemos Linux</a><div style=3D"margin-top:20px;wid=
+th:0;height:0; border-bottom:10px solid #fff; border-left:10px solid transp=
+arent; border-right:10px solid transparent"></div></div></td><td style=3D"v=
+ertical-align:middle;text-align:right;padding-right:30px"><img src=3D"https=
+://ssl.gstatic.com/images/branding/google_plus/1x/gplus_word_118x36dp.png"/=
+></td></tr></table><div style=3D"font-size:14px;line-height:18px;background=
+-color:#fff;"><div style=3D"padding:30px 40px 40px"><table cellpadding=3D0 =
+cellspacing=3D0><tr><td style=3D"padding-right:15px;vertical-align:top"><a =
+href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152803313885=
+971532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2F112358751535127362228&dt=
+=3D1513378448842&ub=3DSQUARE_SUBSCRIPTION"><img width=3D"75" height=3D"75" =
+style=3D"border:solid 1px #cccccc;" src=3D"https://lh5.googleusercontent.co=
+m/-T9RnRYq6IXI/AAAAAAAAAAI/AAAAAAAAA7k/s52RYRIERmI/s75-c-k-a-no/photo.jpg"/=
+></a></td><td style=3D"width:578px;color:#333;font:13px Arial;vertical-alig=
+n:top"><div style=3D"padding-bottom:10px;"><strong>Jose Mena</strong>:</div=
+><div style=3D"padding-bottom:10px">HOLA A TODOS LES HAGO UNA CONSULTA ALGU=
+IEN USA ESTE ADAPTADOR USB INALAMBRICO CON LINUX?=E2=80=A6 LE CUENTO TENGO =
+UNA PC DE ESCRITORIO CON WINDOWS 7 Y QUIERO CAMBIAR POR UN LINUX=E2=80=A6 E=
+L A=C3=91O PASADO INTENTE INSTALAR LINUX MINT PERO NO HUBO FORMA DE HACER A=
+NDAR LOS DRIVER DEL ADAPTADOR USB INALAMBRICO ESTE A=C3=91O QUIERO INTENTAR=
+ CON OTRA DISTRIBUCION ESCUCHO SUS EXPERIENCIAS Y CONSEJOS DESDE YA GRACIAS=
+ A TODOS DE ANTE MANO. <br>NOTA: EN CASO DE NO PODER HACER ANDAR CON NINGUN=
+A DISTRIBUCION TENGO OTRO ADAPTADOR USB QUE...</div><div style=3D"margin-to=
+p:14px;background:#eee"><a href=3D"https://plus.google.com/_/notifications/=
+emlink?emr=3D05152803313885971532&amp;emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&amp=
+;path=3D%2F112358751535127362228%2Fposts%2FcLYwTM1DkBQ&amp;dt=3D15133784488=
+42&amp;ub=3DSQUARE_SUBSCRIPTION"><img src=3D"https://lh3.googleusercontent.=
+com/-VX25NLFivn8/WjRQ7in-8II/AAAAAAAAHL4/1n8RWK84xnErbgwgyrRIevqDqq9EDRlxAC=
+JoC/w506-h750/TP-LINK.jpeg" style=3D"max-width:100%;margin-left:auto;margin=
+-right:auto;display:block;border:0;" alt=3D"imagem n=C3=A3o exibida"></a></=
+div><br/><a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05=
+152803313885971532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2F112358751535=
+127362228%2Fposts%2FcLYwTM1DkBQ&dt=3D1513378448842&ub=3DSQUARE_SUBSCRIPTION=
+" style=3D"background-color:#d44b38;border:solid 1px #dfdfdf;border-radius:=
+3px;color:#fff;display:inline-block;font-family: Arial;font-size:13px;heigh=
+t:30px;line-height:30px;min-width:54px;padding:1px 20px;text-align:center;t=
+ext-decoration:none;white-space:nowrap;">Ver postagem</a></td></tr></table>=
+</div></div><div style=3D"border-top:solid 1px #dfdfdf;background-color:#ff=
+f; padding:30px;font-size:14px;line-height:18px;border-radius:0 0 5px 5px">=
+Voc=C3=AA est=C3=A1 recebendo este e-mail pela inscri=C3=A7=C3=A3o realizad=
+a no <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528=
+03313885971532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2Fcommunities%2F11=
+0075815123635300569&dt=3D1513378448842&ub=3DSQUARE_SUBSCRIPTION" style=3D"c=
+olor:#3366CC;text-decoration:none">Usemos Linux</a> do Google+.</div></div>=
+<div style=3D"padding-top:10px;color:#999;font:11px Arial;width:670px"><a h=
+ref=3D"https://plus.google.com/_/notifications/emlink?emr=3D051528033138859=
+71532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2F112358751535127362228%2Fo=
+p%2Fmute&dt=3D1513378448842&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366C=
+C;text-decoration:none">Ignore Jose Mena</a> para parar de receber notifica=
+=C3=A7=C3=B5es dele.  <a href=3D"https://plus.google.com/_/notifications/em=
+link?emr=3D05152803313885971532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2=
+Fcommunities%2F110075815123635300569%3Fpromo%3Dnotifications&dt=3D151337844=
+8842&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-decoration:none"=
+>Altere</a> quais notifica=C3=A7=C3=B5es voc=C3=AA recebe desta comunidade.=
+ Esta notifica=C3=A7=C3=A3o foi enviada para thiagors1983@gmail.com. Acesse=
+ suas <a href=3D"https://plus.google.com/_/notifications/emlink?emr=3D05152=
+803313885971532&emid=3DCPCI8IaOjdgCFUIBAgod-_MKwA&path=3D%2Fsettings%2Fplus=
+&dt=3D1513378448842&ub=3DSQUARE_SUBSCRIPTION" style=3D"color:#3366CC;text-d=
+ecoration:none">configura=C3=A7=C3=B5es de envio de notifica=C3=A7=C3=B5es<=
+/a> para atualizar seu endere=C3=A7o. <a href=3D"https://notifications.goog=
+le.com/unsubscribe/AJ7SsMlSBpXfQeDpWLMWQYIj17BODUoymMENlZaho57ZbeI6wysQHEVA=
+zFtzNtZAbsh7FWCAeJYdO6O5OkjLoBgEGacKAPj7SslWc8R8ADVyVsLtxr0JMX3WyZ4od_TPiL6=
+nYY37nOF8IqXWHva-1axMUaz7MiVSGKRajeLedm_BRcJpclvIM5g" style=3D"color:#3366C=
+C;text-decoration:none">Cancelar inscri=C3=A7=C3=A3o</a> destes e-mails.<br=
+/>Google Inc., 1600 Amphitheatre Pkwy, Mountain View, CA 94043 USA</div></b=
+ody></html>
+--001a1140f578dc2346056068e092--
