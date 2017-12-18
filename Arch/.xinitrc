@@ -72,17 +72,17 @@ xrandr --dpi 96
 thunar --daemon &
 [ !  -s ~/.config/mpd/pid ] && mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-wmname LG3D
+#wmname LG3D
 nitrogen --restore &
 numlockx on &
-(sleep 3s && conky -c ~/.xmonad/scripts/conky_dzen2 | dzen2 -p -ta r -e 'button3=' -fn 'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#03070B' -x 365 -h 25 -w 1050) &
+#(sleep 3s && conky -c ~/.xmonad/scripts/conky_dzen2 | dzen2 -p -ta r -e 'button3=' -fn 'xft:Bitstream Vera Sans Mono:size=7:antialias=true' -fg '#FCFCFC' -bg '#03070B' -x 365 -h 25 -w 1050) &
 
 ##----------------------------------------------------------------------------##
 ## startx
 ##----------------------------------------------------------------------------##
 
 _start_session() {
-  session=${1:-dwm}
+  session=${1:-bspwm}
   case $session in
       bspwm             ) exec bspwm;;
       xmonad            ) exec xmonad;;
