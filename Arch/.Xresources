@@ -32,11 +32,10 @@ URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select,font-size,ta
 !! general settings
 !!----------------------------------------------------------------------------!!
 
-urxvt.font:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
-urxvt.boldFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
-uRxvt.imFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
-uRxvt.italicFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9
-
+urxvt.font:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9,xft:FontAwesome:size10
+urxvt.boldFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9,xft:FontAwesome:size10
+uRxvt.imFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9,xft:FontAwesome:size10
+uRxvt.italicFont:xft:pragmatapro for powerline:size=9,xft:meguri:pixelsize=9,xft:PowerlineSymbols:size=9,xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=9,xft:FontAwesome:size10
 
 URxvt.font-size.step: 4
 URxvt.keysym.C-plus:      font-size:increase
@@ -55,7 +54,7 @@ URxvt.visualBell: False
 URxvt.saveLines: 1024
 URxvt.mouseWheelScrollPage: true
 URxvt.termName: rxvt-unicode-256color
-URxvt.geometry: 153x26+302+161
+URxvt.geometry: 90x20
 
 !!----------------------------------------------------------------------------!!
 !! Clipboard
@@ -100,45 +99,51 @@ URxvt.cursorBlink: true
 
 URxvt.colorIT:                        #DEDEDE
 URxvt.colorBD:                        #B1ACAC
-!URxvt.colorUL:                        #1A8A74
+!URxvt.colorUL:                       #1A8A74
 URxvt.highlightTextColor:             #ffffff
 URxvt.highlightColor:                 #1A8A74
-!URxvt.underlineColor:                 #1D1F21
+!URxvt.underlineColor:                #1D1F21
 
 !!----------------------------------------------------------------------------!!
 !!General   colors
 !!----------------------------------------------------------------------------!!
 
-*background:   #17181a
-*foreground:   #c5c8c6
-*cursorColor:  #c5c8c6
 
-! black
-*color0:       #17181a
-*color8:       #969896
-! red
-*color1:       #C12B4D
-*color9:       #EA1F4D
-! green
-*color2:       #b5bd68
-*color10:      #282a2e
-! yellow
-*color3:       #f0c674
-*color11:      #373b41
-! blue
-*color4:       #81a2be
-*color12:      #b4b7b4
-! magenta
-*color5:       #b294bb
-*color13:      #e0e0e0
-! cyan
-*color6:       #8abeb7
-*color14:       #8ABEB7
-! white
-*color7:       #c5c8c6
-*color15:      #ffffff
-
-
+*.foreground:  #7c8fa4
+*.background:  #0e1011
+*.cursorColor: #708284
+!
+! Black
+*.color0:      #002831
+*.color8:      #001e27
+!
+! Red
+*.color1:      #e63853
+*.color9:      #e1003f
+!
+! Green
+*.color2:      #5eb83c
+*.color10:     #1d9000
+!
+! Yellow
+*.color3:      #a57706
+*.color11:     #cd9409
+!
+! Blue
+*.color4:      #359ddf
+*.color12:     #006fc0
+!
+! Magenta
+*.color5:      #d75cff
+*.color13:     #a200da
+!
+! Cyan
+*.color6:      #4b73a2
+*.color14:     #005794
+!
+! White
+*.color7:      #dcdcdc
+*.color15:     #e2e2e2
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
