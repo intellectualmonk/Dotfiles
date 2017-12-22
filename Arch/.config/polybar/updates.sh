@@ -1,12 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
-pac=$(checkupdates|perl -lne 'END { print $. }' )
-aur=$(cower -u| perl -lne 'END { print $. }' )
+updates_arch=$(checkupdates |perl -lne 'END { print $. }')
 
-check=$((pac + aur))
-if [[ "$check" != "0" ]]
-then
-    echo "$pac %{F#C02A4C} %{F-} $aur"
+if ! updates_aur=$(trizen -Su --aur 2> /dev/null |perl -lne 'END { print $. }'); then
+    updates_aur=0
+fi
+
+updates=$(("$updates_arch" + "$updates_aur"))
+
+if [ "$updates" != "0" ]; then
+    echo "%{F#C02A4C}%{F-} $updates"
 else
     echo "%{F#C02A4C}%{F-}Updated"
 fi
