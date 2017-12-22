@@ -40,7 +40,7 @@ filetype plugin on "Enables the recognition files
 filetype indent on
 set magic "Enable regular expressions
 set background=dark     " we're using a dark bg
-colorscheme bubblegum-256-dark  " colorscheme from plugin
+colorscheme badwolf  " colorscheme from plugin
 set laststatus=2        " always show statusline
 set ruler   "Ruler breaks
 set wrap    "It allows navigation within a long line with j and k
@@ -162,7 +162,6 @@ nnoremap <C-S-tab> :tabprevious<CR>
 nnoremap <C-tab>   :tabnext<CR>
 nnoremap <C-t>     :tabnew<CR>
 
-
 "Save,exit and quit
 
 inoremap <C-s> <esc>:w<cr>                 " save files
@@ -235,6 +234,8 @@ augroup END
 " Settings for  Patogen
 execute pathogen#infect()
 
+"autocmd vimenter * NERDTree
+
 " NerdTree {
           if isdirectory(expand('~/.vim/bundle/nerdtree'))
               map <C-e> :NERDTreeToggle<CR>
@@ -253,12 +254,6 @@ execute pathogen#infect()
               let g:nerdtree_tabs_open_on_gui_startup=0
           endif
       " }
-
-" Settings for Vim-Nerdtree-Tabs
-
-let g:nerdtree_tabs_open_on_console_startup = 1
-let g:nerdtree_tabs_focus_on_files = 1
-
 
 " " Settings for Vim-airline
 let g:airline_theme = 'molokai'
@@ -388,11 +383,6 @@ let g:jedi#usages_command = '<leader>n'
 let g:jedi#completions_command = '<C-Space>'
 let g:jedi#rename_command = '<leader>r'
 
-" Settings for Vim-hybrid
-
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-
 " Settings for CtrlP
 
 let g:ctrlp_map = '<c-p>'
@@ -411,23 +401,4 @@ let g:ctrlp_custom_ignore = {
 
 " Settings for Vim-Supertab
 let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
-
-"Settings for vim-flavored-markdown
-" Markdown Syntax Support
-augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
-
-" Settings for Writting
-let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
-"let g:languagetool_jar = '/opt/languagetool/languagetool-commandline.jar'
-
-" Settings Vim-pencil
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init()
-augroup END
-
 
