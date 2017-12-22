@@ -7,5 +7,5 @@ notifications=$(curl -fs https://api.github.com/notifications?access_token=$TOKE
 if [ "$notifications" -gt 0 ]; then
     echo "# $notifications"
 else
-    echo " 0 "
+    echo ""
 fi
