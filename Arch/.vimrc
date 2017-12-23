@@ -88,6 +88,28 @@ augroup pep8
     \ set fileformat=unix
 augroup END
 
+"Format documents
+autocmd FileType txt,txt2tags,markdown,textile set
+  \ textwidth=78
+  \ shiftwidth=2
+  \ wrap
+  \ wrapscan
+  \ wrapmargin=78
+  \ formatoptions+=t
+  \ spell
+
+autocmd FileType html,textile set
+  \ wrapmargin=0
+  \ textwidth=0
+
+" Store backups under $HOME/.vim/backup
+set backupdir=$HOME/.vim/backup
+set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
+
+" Keep swap files under $HOME/.vim/swap
+set directory=$HOME/.vim/swap/,.,$HOME/tmp,/tmp
+
+" Errorformats
 match ErrorMsg '\s\+$'
 
 " Removes trailing spaces
@@ -143,8 +165,8 @@ set foldcolumn=0
 set ignorecase " Search case insensitive...
 set smartcase
 set incsearch " Shows the match while typing
-set nobackup " Don't create annoying backup files
-set nowritebackup
+set writebackup "  Do keep a backup while working
+set backupcopy=yes "Keep attributes of original file
 set startofline "It allows you to change the column when moving through the line
 set showmatch "Every time you close a parenthesis, bracket or brace, Vi shows where it was opened. If there is no  pair.
 
