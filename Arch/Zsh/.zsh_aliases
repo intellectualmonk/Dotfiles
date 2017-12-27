@@ -11,7 +11,7 @@
  alias autogit="git add Arch && git commit -m ':construction:' && git push origin master"
 
 #Aliases - Shortcuts to commands
- alias ls='ls -F -h --color=auto'
+ alias ls='python $HOME/better-ls/lsicons.py'
  alias dir='dir --color=auto'
  alias vdir='vdir --color=auto'
  alias grep='grep --color=auto'

@@ -14,43 +14,31 @@
 
 source  /usr/share/fzf/key-bindings.zsh
 source  /usr/share/fzf/completion.zsh
-
-export WORKON_HOME=~/.virtualenvs
+source ~/Zsh/.zsh_aliases
+source ~/Zsh/.zsh_functions
 source /usr/bin/virtualenvwrapper.sh
-
 source /etc/profile.d/autojump.zsh
 
+# Yet another colouriser for beautifying your logfiles or output of commands.
 [[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
-if [ -f ~/Zsh/.zsh_aliases ]; then
-  source ~/Zsh/.zsh_aliases
-fi
-
-if [ -f ~/Zsh/.zsh_functions ]; then
-  source ~/Zsh/.zsh_functions
-fi
-
 #Syntax-highlighting  similar to shell Fish. Its necessary install the package zsh-syntax-highlighting
- source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+#ZSH port of the FISH shell's history search
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 #Fish-like autosuggestions for zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-
 # pkgfile includes a "command not found" hook for Bash and Zsh that will automatically search the official repositories, when entering an unrecognized command:
-  source /usr/share/doc/pkgfile/command-not-found.zsh
- 
-# Historic
- export HISTFILE=${HOME}/.zsh_history
- export HISTSIZE=5000
- export SAVEHIST=$HISTSIZE
+source /usr/share/doc/pkgfile/command-not-found.zsh
  
 # Historic options:
  setopt EXTENDED_HISTORY
  setopt HIST_VERIFY
  setopt HIST_REDUCE_BLANKS
+
  setopt HIST_IGNORE_ALL_DUPS
  
 setopt autopushd pushdsilent pushdtohome
@@ -81,7 +69,6 @@ autoload -U zmv
 # Enabling self-correction:
 setopt correct
 setopt correct_all
-export sprompt="$(print '%{\e[37m%}zsh: Corrigir para %S%r%s ? (n|y|e): %{\e[0m%}')"
  
 # Allows the use of wildcards: *?_-.[]~=/&;!#$%^(){}<>
 setopt extended_glob
@@ -197,10 +184,11 @@ zmodload zsh/zpty
 
 unsetopt nomatch
 
+# Disable percent sign
 setopt PROMPT_CR
 setopt PROMPT_SP
-export PROMPT_EOL_MARK=""
 
+# Dirstack
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 DIRSTACKSIZE=20
 
@@ -217,24 +205,8 @@ zle -N self-insert url-quote-magic
 #    source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 #fi
 
-
-#precmd () {
-#      vcs_info
-#      print -Pn "\e]0;[%n@%M][%~]%#\a"
-#} 
-
-#export PROMPT="
-#┌─[⛧  %n ⛧ ]──────────────────────[%~]
-#└─[〠 %M 〠]─╼ "                          
-
-#RPROMPT=$'${vcs_info_msg_0_}\✠'
+source  ~/Zsh/.prompt.zsh
  
-# prompt hjem 8bit vimode                                                         
-
-PROMPT="%1d%F{1} ➜ "
-source /home/morgareth/zsh-git-prompt/zshrc.sh
-RPROMPT='$(git_super_status)'
-
 
 # Syntax coloring# wget https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -O ~/.dircolors
 eval $(dircolors -b $HOME/.dircolors)
